@@ -1,0 +1,23 @@
+.auth-box {
+	background-color: #1C1F26;
+	box-shadow: 0 0 3px 0px #000;
+	border-radius: 5px !important;
+	overflow: hidden;
+}
+
+.auth-box__container {
+	padding: 32px;
+	min-width: 950px;
+}
+
+.box-auth {
+	display: flex;
+}
+
+.box-auth__column:first-child {
+	flex: 0 1 70%;
+}
+
+.box-auth__column:last-child {
+	flex: 0 1 30%;
+}
