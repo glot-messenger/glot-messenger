@@ -1,0 +1,12 @@
+.btn {
+   padding: 11px;
+   background-color: #049DEA;
+   border-radius: 3px !important;
+   box-shadow: 0 0 3px 0px #000;
+}
+
+.btn__container {
+   color: aliceblue;
+   font-size: 16px;
+   line-height: 120%;
+}

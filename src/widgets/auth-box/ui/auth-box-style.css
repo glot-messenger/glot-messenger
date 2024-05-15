@@ -22,6 +22,10 @@
 	flex: 0 1 30%;
 }
 
+.box-auth__head {
+	margin-bottom: 25px;
+}
+
 .head-box-auth {
 	display: flex;
 	flex-direction: column;

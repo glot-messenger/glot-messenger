@@ -1,0 +1,48 @@
+.text-field {
+
+}
+
+.text-field__wrapper {
+   margin-bottom: 20px;
+}
+
+.text-field__container {
+
+}
+
+.text-field__label-container {
+   margin-bottom: 7px;
+   display: flex;
+}
+
+.text-field__required-flag {
+   color: #DA3E41;
+   margin-right: 2px;
+}
+
+.text-field__label-input {
+   color: #90959B;
+   font-size: 12px;
+   font-weight: 700;
+   text-transform: uppercase;
+}
+
+.text-field__block-input {
+   box-shadow: 0 0 3px 0px #000;
+   margin-bottom: 7px;
+}
+
+.text-field__input {
+   background-color: #2B303B;
+   width: 100%;
+   height: 100%;
+   padding: 10px;
+   border-radius: 3px !important;
+   color: #D6D9DC;
+   font-size: 16px;
+}
+
+.text-field__error-message-input {
+   color: #DA3E41;
+   font-size: 12px;
+}

@@ -9,11 +9,7 @@ const HTMLElement = document.getElementById('root') as HTMLElement;
 
 const root = ReactDOM.createRoot(HTMLElement);
 
-root.render(
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>
-);
+root.render(<App />);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
