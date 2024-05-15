@@ -5,13 +5,14 @@
 	overflow: hidden;
 }
 
-.auth-box__container {
+.auth-box__wrapper {
 	padding: 32px;
-	min-width: 950px;
+	width: 950px;
 }
 
-.box-auth {
+.box-auth__container {
 	display: flex;
+	margin: 0px -20px;
 }
 
 .box-auth__column:first-child {
@@ -20,6 +21,10 @@
 
 .box-auth__column:last-child {
 	flex: 0 1 30%;
+}
+
+.box-auth__column {
+	padding: 0px 20px;
 }
 
 .box-auth__head {

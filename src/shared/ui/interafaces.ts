@@ -1,3 +1,5 @@
+import type { ReactElement, JSXElementConstructor, ReactPortal, ReactNode } from 'react';
+
 export interface ITextFieldProps {
    placeholder: string;
    label: string;
@@ -21,3 +23,4 @@ export interface IFormComponentProps {
    onSubmit: (data: any) => void;
 };
 
+export type MyChild = ReactElement<any, string | JSXElementConstructor<any>> | ReactPortal | Iterable<ReactNode>;

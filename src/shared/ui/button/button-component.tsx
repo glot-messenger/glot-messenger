@@ -1,6 +1,6 @@
 import React from 'react';
 import './button-component-style.css';
-import { IButtonComponentProps } from '../interafaces';
+import type { IButtonComponentProps } from '../interafaces';
 
 const ButtonComponent: React.FC<IButtonComponentProps> = ({ textBtn, type, titleHover }) => {
    return (

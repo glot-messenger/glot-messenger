@@ -1,27 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './form-component-style.css';
-import type { IFormComponentProps } from '../interafaces';
+import type { ReactNode, FormEvent } from 'react';
+import type { IFormComponentProps, MyChild } from '../interafaces';
+import { isNotPrimitive } from '../../lib/utils/is-not-primitive';
+import { isNullable } from '../../lib/utils/is-nullable';
+
 
 const FormComponent: React.FC<IFormComponentProps> = ({ children, data, onSubmit }) => {
-   const newChildrens = React.Children.map(children, (child) => {
-      if (!child) {
-         return child;
-      }
+	const [dataForm, setDataForm] = useState(data || {});
 
-      if (typeof child !== 'object') {
-         return child;
-      }
+	const [error, setError] = useState({});
 
-      const v: React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal = child;
+	const onChange = (name: string, value: string): void => {
 
-      console.log(child);
-   });
+	};
 
-   return (
-      <form className='form'>
-         {children}
-      </form>
-   );
+	function submitForm(event: FormEvent<HTMLFormElement>): void {
+		event.preventDefault();
+
+		onSubmit(dataForm);
+	};
+
+	const newChildrens = React.Children.map(children, (child) => {
+		if (isNullable(child)) {
+			return child;
+		}
+
+		if (!isNotPrimitive(child)) {
+			return child;
+		}
+
+		function isContainsPropertiesTypeAndPropsInChild(childInstance: MyChild): childInstance is Exclude<MyChild, Iterable<ReactNode>> {
+			if (childInstance.hasOwnProperty('type') && childInstance.hasOwnProperty('props')) {
+				return true;
+			}
+
+			return false;
+		}
+
+		if (!isContainsPropertiesTypeAndPropsInChild(child)) {
+			return child;
+		}
+
+		if (typeof child.type === 'string') {
+			return child;
+		}
+
+		if (!child.props.typeElement) {
+			return child;
+		}
+
+		let newProps;
+
+		// if (child.props.typeElement === 'button' && (child.props.type === 'submit' || child.props.type === undefined)) {
+		// 	return 
+		// }
+
+		return child;
+	});
+
+	return (
+		<form className='form' onSubmit={submitForm}>
+			{children}
+		</form>
+	);
 };
 
 export { FormComponent };
