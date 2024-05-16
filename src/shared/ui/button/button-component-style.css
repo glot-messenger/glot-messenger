@@ -3,6 +3,11 @@
    background-color: #049DEA;
    border-radius: 3px !important;
    box-shadow: 0 0 3px 0px #000;
+	transition: background-color 0.2s ease 0s;
+}
+
+.btn:hover {
+	background-color: #006496;
 }
 
 .btn__container {

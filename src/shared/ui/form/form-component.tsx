@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, cloneElement } from 'react';
 import './form-component-style.css';
 import type { ReactNode, FormEvent } from 'react';
-import type { IFormComponentProps, MyChild } from '../interafaces';
+import type { IFormComponentProps, MyChild, IInstanceWithKeyAndValue } from '../interafaces';
 import { isNotPrimitive } from '../../lib/utils/is-not-primitive';
 import { isNullable } from '../../lib/utils/is-nullable';
 
@@ -9,10 +9,13 @@ import { isNullable } from '../../lib/utils/is-nullable';
 const FormComponent: React.FC<IFormComponentProps> = ({ children, data, onSubmit }) => {
 	const [dataForm, setDataForm] = useState(data || {});
 
-	const [error, setError] = useState({});
+	const [errorState, setErrorState] = useState<any>({});
 
-	const onChange = (name: string, value: string): void => {
-
+	const onChange = ({ key, value }: IInstanceWithKeyAndValue): void => {
+		setDataForm({
+			...dataForm,
+			[key]: value
+		});
 	};
 
 	function submitForm(event: FormEvent<HTMLFormElement>): void {
@@ -46,22 +49,31 @@ const FormComponent: React.FC<IFormComponentProps> = ({ children, data, onSubmit
 			return child;
 		}
 
-		if (!child.props.typeElement) {
+		const typeEl = child.props.typeElement;
+
+		if (!typeEl) {
 			return child;
 		}
 
 		let newProps;
 
-		// if (child.props.typeElement === 'button' && (child.props.type === 'submit' || child.props.type === undefined)) {
-		// 	return 
-		// }
+		if (typeEl === 'textField') {
+			newProps = {
+				...child.props,
+				value: dataForm[child.props.name],
+				error: errorState[child.props.name],
+				onChange
+			}
+
+			return cloneElement(child, newProps);
+		}
 
 		return child;
 	});
 
 	return (
 		<form className='form' onSubmit={submitForm}>
-			{children}
+			{newChildrens}
 		</form>
 	);
 };

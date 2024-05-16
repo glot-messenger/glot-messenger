@@ -1,13 +1,21 @@
 import type { ReactElement, JSXElementConstructor, ReactPortal, ReactNode } from 'react';
 
+export interface IInstanceWithKeyAndValue {
+	key: string;
+	value: string;
+};
+
 export interface ITextFieldProps {
    placeholder: string;
    label: string;
    type: string;
    name: string;
+	titleHover: string;
+	typeElement: 'textField';
+	value?: string;
    error?: string;
    isRequired?: boolean;
-   typeElement: 'textField';
+	onChange?: (data: IInstanceWithKeyAndValue) => void;
 };
 
 export interface IButtonComponentProps {
