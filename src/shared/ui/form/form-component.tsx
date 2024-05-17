@@ -1,12 +1,15 @@
-import React, { useState, cloneElement } from 'react';
+import React, { useState, cloneElement, useEffect } from 'react';
 import './form-component-style.css';
 import type { ReactNode, FormEvent } from 'react';
-import type { IFormComponentProps, MyChild, IInstanceWithKeyAndValue } from '../interafaces';
-import { isNotPrimitive } from '../../lib/utils/is-not-primitive';
-import { isNullable } from '../../lib/utils/is-nullable';
+import type { IFormComponentProps } from '../interafaces';
+import type { MyChild, IInstanceWithKeyAndValue } from '../../types/auxiliary';
+import {
+	isNotPrimitive,
+	isNullable,
+	validator
+} from '../../lib';
 
-
-const FormComponent: React.FC<IFormComponentProps> = ({ children, data, onSubmit }) => {
+function FormComponent<T>({ children, data, onSubmit, schemeForValidator }: IFormComponentProps<T>) {
 	const [dataForm, setDataForm] = useState(data || {});
 
 	const [errorState, setErrorState] = useState<any>({});
@@ -16,6 +19,16 @@ const FormComponent: React.FC<IFormComponentProps> = ({ children, data, onSubmit
 			...dataForm,
 			[key]: value
 		});
+	};
+
+	function validation(): void {
+		console.log(dataForm);
+
+		const errorsResult = validator.validate(dataForm, schemeForValidator);
+
+		console.log(errorsResult);
+
+		setErrorState(errorsResult);
 	};
 
 	function submitForm(event: FormEvent<HTMLFormElement>): void {
@@ -70,6 +83,10 @@ const FormComponent: React.FC<IFormComponentProps> = ({ children, data, onSubmit
 
 		return child;
 	});
+
+	useEffect((): void => {
+		validation();
+	}, [dataForm]);
 
 	return (
 		<form className='form' onSubmit={submitForm}>
