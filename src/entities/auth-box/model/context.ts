@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import type { IAuthBoxData } from './interfaces';
 
-const defaultValue = {
+const defaultValue: IAuthBoxData = {
 	title: 'Ууупс... Что-то пошло не так...',
 	subTitle: 'Пират Глот с планеты Катрук атаковал нас',
 	titleHover: 'Команда разработчиков уже разбирается в вопросе. Виновник будет наказан!',

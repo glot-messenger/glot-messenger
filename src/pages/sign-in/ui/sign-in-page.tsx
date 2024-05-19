@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './sign-in-page-style.css';
-import { AuthBox } from '../../../widgets/auth-box';
+import { AuthBox } from '../../../widgets';
 import {
 	TextField,
 	ButtonComponent,
@@ -9,10 +9,7 @@ import {
 	schemeFormSignInPage
 } from '../../../shared';
 
-interface IDataFormSignIn {
-	login: string;
-	password: string;
-}
+import type { IDataFormSignIn } from './interafaces';
 
 const SignInPage: React.FC = () => {
 	const [dataForm] = useState<IDataFormSignIn>({

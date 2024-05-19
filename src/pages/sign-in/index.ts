@@ -1,3 +1,3 @@
-import { SignInPage } from './ui/sign-in-page';
+import { SignInPage } from './ui';
 
 export { SignInPage };

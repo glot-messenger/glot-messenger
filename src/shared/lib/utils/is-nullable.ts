@@ -1,4 +1,4 @@
-function isNullable(value: unknown): value is null | undefined {
+export function isNullable(value: unknown): value is null | undefined {
 	if (typeof value === 'undefined') {
 		return true;
 	}
@@ -9,5 +9,3 @@ function isNullable(value: unknown): value is null | undefined {
 
 	return false;
 };
-
-export { isNullable };

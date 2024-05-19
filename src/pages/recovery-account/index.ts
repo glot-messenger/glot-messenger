@@ -1,3 +1,3 @@
-import { RecoveryAccountPage } from './ui/recovery-account-page';
+import { RecoveryAccountPage } from './ui';
 
 export { RecoveryAccountPage };

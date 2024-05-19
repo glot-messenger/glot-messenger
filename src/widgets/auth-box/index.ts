@@ -1,3 +1,3 @@
-import { AuthBox } from './ui/auth-box';
+import { AuthBox } from './ui';
 
 export { AuthBox };

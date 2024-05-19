@@ -13,7 +13,7 @@ interface IManuallyTransmittedDataForButton {
 	textBtn: string;
 	type: 'submit' | 'reset' | 'button';
 	titleHover: string;
-  typeElement: 'button';
+	typeElement: 'button';
 };
 
 type IManuallyTransmittedDataForTextFields = IManuallyTransmittedDataForFields & { typeElement: 'textField' };

@@ -5,21 +5,28 @@ import {
 	RouterProvider,
 } from 'react-router-dom';
 
-import { HomePage } from '../../pages/home';
-import { AuthPage } from '../../pages/auth';
-import { RecoveryAccountPage } from '../../pages/recovery-account';
-import { SignInPage } from '../../pages/sign-in';
-import { SignUpPage } from '../../pages/sign-up';
+import { HomePage } from './home';
+import { AuthPage } from './auth';
+import { RecoveryAccountPage } from './recovery-account';
+import { SignInPage } from './sign-in';
+import { SignUpPage } from './sign-up';
+import { AuthBoxConditionProvider } from '../features';
 
-import { AuthBoxConditionProvider } from '../../processes/providers';
+import {
+	HOME,
+	AUTH,
+	RECOVERY_ACCOUNT_SEGMENT,
+	SIGN_IN_SEGMENT,
+	SIGN_UP_SEGMENT
+} from '../shared';
 
 const router = createBrowserRouter([
 	{
-		path: '/',
+		path: HOME,
 		element: <HomePage />
 	},
 	{
-		path: '/auth',
+		path: AUTH,
 		element: (
 			<AuthBoxConditionProvider>
 				<AuthPage />
@@ -27,15 +34,15 @@ const router = createBrowserRouter([
 		),
 		children: [
 			{
-				path: 'recovery-account',
+				path: RECOVERY_ACCOUNT_SEGMENT,
 				element: <RecoveryAccountPage />
 			},
 			{
-				path: 'sign-in',
+				path: SIGN_IN_SEGMENT,
 				element: <SignInPage />
 			},
 			{
-				path: 'sign-up',
+				path: SIGN_UP_SEGMENT,
 				element: <SignUpPage />
 			}
 		]

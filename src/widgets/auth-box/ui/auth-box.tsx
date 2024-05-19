@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './auth-box-style.css';
 import type { IAuthBoxProps } from './interafaces';
-import { ConditionAuthBoxContext } from '../../../entities/auth-box';
+import { ConditionAuthBoxContext } from '../../../entities';
 import { Link } from 'react-router-dom';
 
 const AuthBox: React.FC<IAuthBoxProps> = ({ children }) => {

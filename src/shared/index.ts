@@ -1,38 +1,36 @@
-// core
-import authBoxData from './core/auth-box-data.json';
-// core/schemes
-import { schemeFormSignInPage } from './core/schemes/scheme-form-sign-in-page';
-// ui
-import { TextField } from './ui/text-field/text-field';
-import { ButtonComponent } from './ui/button/button-component';
-import { FormComponent } from './ui/form/form-component';
-// lib/utils
-import { isNotPrimitive } from './lib/utils/is-not-primitive';
-import { isNullable } from './lib/utils/is-nullable';
-// types
-import type {
-	IStylePadding,
-	IStyleBorder,
-	MyChild,
-	IInstanceWithKeyAndValue
-} from './types/auxiliary';
 // config
-import { configChildrensForFormSignInPage } from './config/config-childrens-for-forms-on-pages';
+import { configChildrensForFormSignInPage } from './config';
+// core
+import { authBoxData, textFieldEyeData, schemeFormSignInPage, HOME, AUTH, RECOVERY_ACCOUNT_SEGMENT, SIGN_IN_SEGMENT, SIGN_UP_SEGMENT } from './core';
+import type { ISchemeFormSignInPage } from './core';
+// lib
+import { validator, isNullable, isNotPrimitive, isContainsPropertiesTypeAndPropsInChild } from './lib';
+// types
+import type { MyChild, IInstanceWithKeyAndValue } from './types';
+// ui
+import { TextField, ButtonComponent, FormComponent } from './ui';
 
 export {
+	configChildrensForFormSignInPage,
 	authBoxData,
+	textFieldEyeData,
+	schemeFormSignInPage,
+	validator,
+	isNullable,
+	isNotPrimitive,
+	isContainsPropertiesTypeAndPropsInChild,
 	TextField,
 	ButtonComponent,
 	FormComponent,
-	isNotPrimitive,
-	isNullable,
-	configChildrensForFormSignInPage,
-	schemeFormSignInPage
+	HOME,
+	AUTH,
+	RECOVERY_ACCOUNT_SEGMENT,
+	SIGN_IN_SEGMENT,
+	SIGN_UP_SEGMENT
 };
 
 export type {
-	IStylePadding,
-	IStyleBorder,
+	ISchemeFormSignInPage,
 	MyChild,
 	IInstanceWithKeyAndValue
 };

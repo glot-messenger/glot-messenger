@@ -23,10 +23,6 @@ const schemeFormSignInPage: ISchemeFormSignInPage = {
 			message: 'Поле пароль должно содержать не меньше 11 символов',
 			value: 11
 		},
-		[MAX]: {
-			message: 'Поле пароль может содержать максимально 42 символа',
-			value: 41
-		},
 		[NUMBER_REQUIRED]: {
 			message: 'Поле пароль должно содержать в себе хотя бы одну цифру'
 		},
@@ -35,6 +31,10 @@ const schemeFormSignInPage: ISchemeFormSignInPage = {
 		},
 		[UPPER_CASE_ELEMENT_REQUIRED]: {
 			message: 'Поле пароль должно содержать хотя бы одну букву в верхнем регистре. Эта буква должна быть на латинице.'
+		},
+		[MAX]: {
+			message: 'Поле пароль может содержать максимально 42 символа',
+			value: 42
 		}
 	}
 };

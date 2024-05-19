@@ -1,9 +1,8 @@
-import { validator } from './utils/validator';
-import { isNullable } from './utils/is-nullable';
-import { isNotPrimitive } from './utils/is-not-primitive';
+import { validator, isNullable, isNotPrimitive, isContainsPropertiesTypeAndPropsInChild } from './utils';
 
 export {
 	validator,
 	isNullable,
-	isNotPrimitive
+	isNotPrimitive,
+	isContainsPropertiesTypeAndPropsInChild
 };

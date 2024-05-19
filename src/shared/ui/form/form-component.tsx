@@ -1,18 +1,20 @@
 import React, { useState, cloneElement, useEffect } from 'react';
 import './form-component-style.css';
-import type { ReactNode, FormEvent } from 'react';
-import type { IFormComponentProps } from '../interafaces';
-import type { MyChild, IInstanceWithKeyAndValue } from '../../types/auxiliary';
+import type { FormEvent } from 'react';
+import type { IFormComponentProps } from './interafaces';
+import type { IInstanceWithKeyAndValue } from '../../types';
 import {
 	isNotPrimitive,
 	isNullable,
-	validator
+	validator,
+	isContainsPropertiesTypeAndPropsInChild
 } from '../../lib';
+import type { ISchemeFormSignInPage } from '../../core';
 
-function FormComponent<T>({ children, data, onSubmit, schemeForValidator }: IFormComponentProps<T>) {
+function FormComponent<T extends ISchemeFormSignInPage>({ children, data, onSubmit, schemeForValidator }: IFormComponentProps<T>) {
 	const [dataForm, setDataForm] = useState(data || {});
 
-	const [errorState, setErrorState] = useState<any>({});
+	const [errorState, setErrorState] = useState<Record<string, string>>({});
 
 	const onChange = ({ key, value }: IInstanceWithKeyAndValue): void => {
 		setDataForm({
@@ -22,11 +24,7 @@ function FormComponent<T>({ children, data, onSubmit, schemeForValidator }: IFor
 	};
 
 	function validation(): void {
-		console.log(dataForm);
-
 		const errorsResult = validator.validate(dataForm, schemeForValidator);
-
-		console.log(errorsResult);
 
 		setErrorState(errorsResult);
 	};
@@ -37,6 +35,8 @@ function FormComponent<T>({ children, data, onSubmit, schemeForValidator }: IFor
 		onSubmit(dataForm);
 	};
 
+	const isDisabledSubmitBtn: boolean = Object.keys(errorState).length > 0;
+
 	const newChildrens = React.Children.map(children, (child) => {
 		if (isNullable(child)) {
 			return child;
@@ -44,14 +44,6 @@ function FormComponent<T>({ children, data, onSubmit, schemeForValidator }: IFor
 
 		if (!isNotPrimitive(child)) {
 			return child;
-		}
-
-		function isContainsPropertiesTypeAndPropsInChild(childInstance: MyChild): childInstance is Exclude<MyChild, Iterable<ReactNode>> {
-			if (childInstance.hasOwnProperty('type') && childInstance.hasOwnProperty('props')) {
-				return true;
-			}
-
-			return false;
 		}
 
 		if (!isContainsPropertiesTypeAndPropsInChild(child)) {
@@ -76,7 +68,16 @@ function FormComponent<T>({ children, data, onSubmit, schemeForValidator }: IFor
 				value: dataForm[child.props.name],
 				error: errorState[child.props.name],
 				onChange
-			}
+			};
+
+			return cloneElement(child, newProps);
+		}
+
+		if (typeEl === 'button' && child.props.type === 'submit') {
+			newProps = {
+				...child.props,
+				isDisabled: isDisabledSubmitBtn
+			};
 
 			return cloneElement(child, newProps);
 		}

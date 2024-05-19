@@ -1,9 +1,7 @@
 import type { IValidator } from './interafaces';
-import { IS_REQUIRED, MIN, MAX, NUMBER_REQUIRED, SYMBOL_REQUIRED, UPPER_CASE_ELEMENT_REQUIRED } from '../../core/names-rules';
+import { IS_REQUIRED, MIN, MAX, NUMBER_REQUIRED, SYMBOL_REQUIRED, UPPER_CASE_ELEMENT_REQUIRED } from '../../core';
 
 class Validator implements IValidator {
-	constructor() {};
-
 	#applyRulesToData(keyD: any, nameR: any, rule: any, data: any) {
 		let isError: boolean = false;
 
@@ -17,6 +15,21 @@ class Validator implements IValidator {
 			case MAX:
 				isError = data[keyD].length > rule.value;
 			break;
+			case NUMBER_REQUIRED:
+				isError = !(
+					/[1234567890]/.test(data[keyD])
+				);
+			break;
+			case SYMBOL_REQUIRED:
+				isError = !(
+					/[!?@#$%^&*]/.test(data[keyD])
+				);
+			break;
+			case UPPER_CASE_ELEMENT_REQUIRED:
+				isError = !(
+					/[A-Z]/.test(data[keyD])
+				);
+			break;
 			default:
 				console.log(`Something went wrong. ${nameR} is not correct value!!! The developers are already working on restoring the correct operation of the application.`);
 			break;
@@ -25,7 +38,7 @@ class Validator implements IValidator {
 		return isError;
 	};
 
-	validate(data: any, scheme: any): void {
+	validate(data: any, scheme: any): any {
 		const error: any = {};
 
 		for (const keyData of Object.keys(scheme)) {

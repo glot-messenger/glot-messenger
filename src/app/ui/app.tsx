@@ -1,6 +1,6 @@
 import React from 'react';
 import './app-style.css';
-import { Router } from '../router';
+import { Router } from '../../pages';
 
 const App: React.FC = () => {
 	return (
@@ -8,6 +8,6 @@ const App: React.FC = () => {
 			<Router />
 		</div>
 	);
-}
+};
 
 export { App };

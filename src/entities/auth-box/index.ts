@@ -1,3 +1,3 @@
-import { ConditionAuthBoxContext } from './model/context';
+import { ConditionAuthBoxContext } from './model';
 
 export { ConditionAuthBoxContext };

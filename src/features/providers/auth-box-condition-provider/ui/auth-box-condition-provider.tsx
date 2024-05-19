@@ -1,9 +1,9 @@
 import React from 'react';
-import { ConditionAuthBoxContext } from '../../../entities/auth-box';
+import { ConditionAuthBoxContext } from '../../../../entities';
 import type { IAuthBoxProviderProps, SegmentAuthPath } from './interafaces';
 import { useLocation, useNavigate } from 'react-router-dom';
 import type { NavigateFunction } from 'react-router-dom';
-import { authBoxData } from '../../../shared';
+import { authBoxData } from '../../../../shared';
 
 const AuthBoxConditionProvider: React.FC<IAuthBoxProviderProps> = ({ children }): React.ReactElement<any, any> | null => {
 	const { pathname } = useLocation();
