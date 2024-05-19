@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 import type { IAuthBoxData } from './interfaces';
+import { HOME } from '../../../shared';
 
 const defaultValue: IAuthBoxData = {
 	title: 'Ууупс... Что-то пошло не так...',
@@ -11,7 +12,7 @@ const defaultValue: IAuthBoxData = {
 		name: 'glot.svg',
 		alt: 'Пират Глот с планеты Катрук',
 		titleHover: 'Нажмите, чтобы перейти на главную!',
-		path: '/'
+		path: HOME
 	}
 };
 

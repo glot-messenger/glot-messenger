@@ -4,13 +4,13 @@ interface ILiteRule {
 
 type IMiddleRule = ILiteRule & { value: number };
 
-interface ISchemeFormLoginField {
+interface ISchemeFormLoginField extends Object {
 	isRequired: ILiteRule;
 	min: IMiddleRule;
 	max: IMiddleRule;
 };
 
-interface ISchemeFormPasswordField {
+interface ISchemeFormPasswordField extends Object {
 	isRequired: ILiteRule;
 	min: IMiddleRule;
 	max: IMiddleRule;
@@ -19,7 +19,7 @@ interface ISchemeFormPasswordField {
 	uppercaseElementRequired: ILiteRule;
 };
 
-export interface ISchemeFormSignInPage {
+export interface ISchemeFormSignInPage extends Object {
 	login: ISchemeFormLoginField;
 	password: ISchemeFormPasswordField;
 };

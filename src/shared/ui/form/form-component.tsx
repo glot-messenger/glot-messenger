@@ -3,18 +3,20 @@ import './form-component-style.css';
 import type { FormEvent } from 'react';
 import type { IFormComponentProps } from './interafaces';
 import type { IInstanceWithKeyAndValue } from '../../types';
+
 import {
 	isNotPrimitive,
 	isNullable,
 	validator,
 	isContainsPropertiesTypeAndPropsInChild
 } from '../../lib';
+
 import type { ISchemeFormSignInPage } from '../../core';
 
-function FormComponent<T extends ISchemeFormSignInPage>({ children, data, onSubmit, schemeForValidator }: IFormComponentProps<T>) {
-	const [dataForm, setDataForm] = useState(data || {});
+function FormComponent<S extends ISchemeFormSignInPage, D extends Record<keyof S, unknown>>({ children, data, onSubmit, schemeForValidator }: IFormComponentProps<S, D>) {
+	const [dataForm, setDataForm] = useState<D>(data);
 
-	const [errorState, setErrorState] = useState<Record<string, string>>({});
+	const [errorState, setErrorState] = useState<Map<keyof D, string>>(new Map());
 
 	const onChange = ({ key, value }: IInstanceWithKeyAndValue): void => {
 		setDataForm({
@@ -24,7 +26,7 @@ function FormComponent<T extends ISchemeFormSignInPage>({ children, data, onSubm
 	};
 
 	function validation(): void {
-		const errorsResult = validator.validate(dataForm, schemeForValidator);
+		const errorsResult = validator.validate<S, D>(dataForm, schemeForValidator);
 
 		setErrorState(errorsResult);
 	};
@@ -63,10 +65,12 @@ function FormComponent<T extends ISchemeFormSignInPage>({ children, data, onSubm
 		let newProps;
 
 		if (typeEl === 'textField') {
+			const valueNameChild = child.props.name as keyof S;
+
 			newProps = {
 				...child.props,
-				value: dataForm[child.props.name],
-				error: errorState[child.props.name],
+				value: dataForm[valueNameChild],
+				error: errorState.get(valueNameChild),
 				onChange
 			};
 

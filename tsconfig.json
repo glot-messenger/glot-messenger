@@ -13,12 +13,13 @@
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,
 		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noEmit": true,
 		"module": "esnext",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"verbatimModuleSyntax": true,
-		"noEmit": true,
 		"jsx": "react-jsx"
 	},
 	"include": [

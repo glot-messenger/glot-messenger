@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './sign-in-page-style.css';
 import { AuthBox } from '../../../widgets';
+
 import {
 	TextField,
 	ButtonComponent,

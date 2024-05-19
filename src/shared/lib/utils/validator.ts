@@ -1,8 +1,9 @@
 import type { IValidator } from './interafaces';
 import { IS_REQUIRED, MIN, MAX, NUMBER_REQUIRED, SYMBOL_REQUIRED, UPPER_CASE_ELEMENT_REQUIRED } from '../../core';
+import type { ISchemeFormSignInPage } from '../../core';
 
 class Validator implements IValidator {
-	#applyRulesToData(keyD: any, nameR: any, rule: any, data: any) {
+	#applyRulesToData(keyD: any, nameR: any, rule: any, data: any): boolean {
 		let isError: boolean = false;
 
 		switch(nameR) {
@@ -38,15 +39,25 @@ class Validator implements IValidator {
 		return isError;
 	};
 
-	validate(data: any, scheme: any): any {
-		const error: any = {};
+	validate<S extends ISchemeFormSignInPage, D extends Record<keyof S, unknown>>(data: D, scheme: S): Map<keyof D, string> {
+		const error: Map<keyof D, string> = new Map();
 
-		for (const keyData of Object.keys(scheme)) {
-			for (const nameRule of Object.keys(scheme[keyData])) {
+		const arrayKeysData = Object.keys(scheme) as Array<keyof S>;
+
+		for (let m = 0; m < arrayKeysData.length; m++) {
+			const keyData = arrayKeysData[m];
+
+			const instanceRules = scheme[keyData];
+
+			const arrayNamesRules = Object.keys(instanceRules) as Array<keyof typeof instanceRules>;
+
+			for (let i = 0; i < arrayNamesRules.length; i++) {
+				const nameRule = arrayNamesRules[i];
+
 				const result = this.#applyRulesToData(keyData, nameRule, scheme[keyData][nameRule], data);
 
-				if (result && error[keyData] === undefined) {
-					error[keyData] = scheme[keyData][nameRule].message;
+				if (result && error.get(keyData) === undefined) {
+					error.set(keyData, scheme[keyData][nameRule].message);
 
 					break;
 				}

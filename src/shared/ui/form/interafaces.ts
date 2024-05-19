@@ -1,6 +1,6 @@
-export interface IFormComponentProps<T = unknown> {
+export interface IFormComponentProps<S = unknown, D = unknown> {
 	children: React.ReactNode;
-	data: any;
-	onSubmit: (data: any) => void;
-	schemeForValidator: T;
+	data: D;
+	onSubmit: (data: D) => void;
+	schemeForValidator: S;
 };
