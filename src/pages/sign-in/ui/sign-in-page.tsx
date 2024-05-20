@@ -19,7 +19,7 @@ const SignInPage: React.FC = () => {
 	});
 
 	function submitFn(data: IDataFormSignIn): void {
-		console.log('Отправляю данные формы', data);
+		console.log('Отправляю данные формы для входа!', data);
 	};
 
 	return (

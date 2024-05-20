@@ -3,7 +3,10 @@ import type {
 	IInstanceRules
 } from './schemes';
 
-import { schemeFormSignInPage } from './schemes';
+import {
+	schemeFormSignInPage,
+	schemeFormSignUpPage
+} from './schemes';
 
 import {
 	IS_REQUIRED,
@@ -36,6 +39,7 @@ export {
 	SYMBOL_REQUIRED,
 	UPPER_CASE_ELEMENT_REQUIRED,
 	schemeFormSignInPage,
+	schemeFormSignUpPage,
 	authBoxData,
 	textFieldEyeData,
 	HOME,

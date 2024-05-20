@@ -1,3 +1,9 @@
-import { configChildrensForFormSignInPage } from './config-childrens-for-forms-on-pages';
+import {
+	configChildrensForFormSignInPage,
+	configChildrensForFormSignUpPage
+} from './config-childrens-for-forms-on-pages';
 
-export { configChildrensForFormSignInPage };
+export {
+	configChildrensForFormSignInPage,
+	configChildrensForFormSignUpPage
+};

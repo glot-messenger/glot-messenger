@@ -23,3 +23,9 @@ export interface IManuallyTransmittedDataForFieldsFormSignInPage {
 	password: IManuallyTransmittedDataForTextFields;
 	button: IManuallyTransmittedDataForButton;
 };
+
+export interface IManuallyTransmittedDataForFieldsFormSignUpPage {
+	login: IManuallyTransmittedDataForTextFields;
+	password: IManuallyTransmittedDataForTextFields;
+	button: IManuallyTransmittedDataForButton;
+};
