@@ -11,12 +11,12 @@ import {
 	isContainsPropertiesTypeAndPropsInChild
 } from '../../lib';
 
-import type { ISchemeFormSignInPage } from '../../core';
+import type { ISchemeForForm } from '../../core';
 
-function FormComponent<S extends ISchemeFormSignInPage, D extends Record<keyof S, unknown>>({ children, data, onSubmit, schemeForValidator }: IFormComponentProps<S, D>) {
+function FormComponent<S extends ISchemeForForm, D extends Record<string, string>>({ children, data, onSubmit, schemeForValidator }: IFormComponentProps<S, D>) {
 	const [dataForm, setDataForm] = useState<D>(data);
 
-	const [errorState, setErrorState] = useState<Map<keyof D, string>>(new Map());
+	const [errorState, setErrorState] = useState<Record<PropertyKey, string>>({});
 
 	const onChange = ({ key, value }: IInstanceWithKeyAndValue): void => {
 		setDataForm({
@@ -65,12 +65,10 @@ function FormComponent<S extends ISchemeFormSignInPage, D extends Record<keyof S
 		let newProps;
 
 		if (typeEl === 'textField') {
-			const valueNameChild = child.props.name as keyof S;
-
 			newProps = {
 				...child.props,
-				value: dataForm[valueNameChild],
-				error: errorState.get(valueNameChild),
+				value: dataForm[child.props.name],
+				error: errorState[child.props.name],
 				onChange
 			};
 

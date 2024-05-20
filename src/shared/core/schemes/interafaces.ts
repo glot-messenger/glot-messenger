@@ -1,25 +1,20 @@
-interface ILiteRule {
+interface IMessageRule {
 	message: string;
 };
 
-type IMiddleRule = ILiteRule & { value: number };
-
-interface ISchemeFormLoginField extends Object {
-	isRequired: ILiteRule;
-	min: IMiddleRule;
-	max: IMiddleRule;
+interface IValueRule {
+	value: number;
 };
 
-interface ISchemeFormPasswordField extends Object {
-	isRequired: ILiteRule;
-	min: IMiddleRule;
-	max: IMiddleRule;
-	numberRequired: ILiteRule;
-	symbolRequired: ILiteRule;
-	uppercaseElementRequired: ILiteRule;
+export interface IInstanceRules {
+	isRequired?: IMessageRule;
+	min?: IMessageRule & IValueRule;
+	max?: IMessageRule & IValueRule;
+	numberRequired?: IMessageRule;
+	symbolRequired?: IMessageRule;
+	uppercaseElementRequired?: IMessageRule;
 };
 
-export interface ISchemeFormSignInPage extends Object {
-	login: ISchemeFormLoginField;
-	password: ISchemeFormPasswordField;
+export interface ISchemeForForm {
+	[key: string]: IInstanceRules;
 };

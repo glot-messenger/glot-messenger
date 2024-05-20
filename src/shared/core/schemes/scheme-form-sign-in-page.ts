@@ -1,7 +1,15 @@
-import type { ISchemeFormSignInPage } from './interafaces';
-import { IS_REQUIRED, MIN, MAX, NUMBER_REQUIRED, SYMBOL_REQUIRED, UPPER_CASE_ELEMENT_REQUIRED } from '../names-rules';
+import type { ISchemeForForm } from './interafaces';
 
-const schemeFormSignInPage: ISchemeFormSignInPage = {
+import {
+	IS_REQUIRED,
+	MIN,
+	MAX,
+	NUMBER_REQUIRED,
+	SYMBOL_REQUIRED,
+	UPPER_CASE_ELEMENT_REQUIRED
+} from '../names-rules';
+
+const schemeFormSignInPage: ISchemeForForm = {
 	login: {
 		[IS_REQUIRED]: {
 			message: 'Поле логин является обязательным к заполнению'

@@ -1,4 +1,8 @@
-import type { ISchemeFormSignInPage } from './schemes';
+import type {
+	ISchemeForForm,
+	IInstanceRules
+} from './schemes';
+
 import { schemeFormSignInPage } from './schemes';
 
 import {
@@ -42,5 +46,6 @@ export {
 };
 
 export type {
-	ISchemeFormSignInPage
+	ISchemeForForm,
+	IInstanceRules
 };

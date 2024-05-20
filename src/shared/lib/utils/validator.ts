@@ -1,34 +1,52 @@
 import type { IValidator } from './interafaces';
-import { IS_REQUIRED, MIN, MAX, NUMBER_REQUIRED, SYMBOL_REQUIRED, UPPER_CASE_ELEMENT_REQUIRED } from '../../core';
-import type { ISchemeFormSignInPage } from '../../core';
+
+import {
+	IS_REQUIRED,
+	MIN,
+	MAX,
+	NUMBER_REQUIRED,
+	SYMBOL_REQUIRED,
+	UPPER_CASE_ELEMENT_REQUIRED
+} from '../../core';
+
+import type {
+	ISchemeForForm,
+	IInstanceRules
+} from '../../core';
 
 class Validator implements IValidator {
-	#applyRulesToData(keyD: any, nameR: any, rule: any, data: any): boolean {
+	_applyRulesToData(keyD: string, nameR: keyof IInstanceRules, rule: IInstanceRules, data: Record<string, string>): boolean {
 		let isError: boolean = false;
+
+		const value: string = data[keyD];
 
 		switch(nameR) {
 			case IS_REQUIRED:
-				isError = data[keyD].length === 0;
+				isError = value.length === 0;
 			break;
 			case MIN:
-				isError = data[keyD].length < rule.value;
+				const m = rule[nameR];
+
+				isError = !(m && value.length >= m.value);
 			break;
 			case MAX:
-				isError = data[keyD].length > rule.value;
+				const x = rule[nameR];
+
+				isError = !(x && value.length <= x.value);
 			break;
 			case NUMBER_REQUIRED:
 				isError = !(
-					/[1234567890]/.test(data[keyD])
+					/[1234567890]/.test(value)
 				);
 			break;
 			case SYMBOL_REQUIRED:
 				isError = !(
-					/[!?@#$%^&*]/.test(data[keyD])
+					/[!?@#$%^&*]/.test(value)
 				);
 			break;
 			case UPPER_CASE_ELEMENT_REQUIRED:
 				isError = !(
-					/[A-Z]/.test(data[keyD])
+					/[A-Z]/.test(value)
 				);
 			break;
 			default:
@@ -39,27 +57,31 @@ class Validator implements IValidator {
 		return isError;
 	};
 
-	validate<S extends ISchemeFormSignInPage, D extends Record<keyof S, unknown>>(data: D, scheme: S): Map<keyof D, string> {
-		const error: Map<keyof D, string> = new Map();
+	validate<S extends ISchemeForForm, D extends Record<string, string>>(data: D, scheme: S): Record<PropertyKey, string> {
+		const error: Record<PropertyKey, string> = {};
 
-		const arrayKeysData = Object.keys(scheme) as Array<keyof S>;
+		const arrKeysData: string[] = Object.keys(scheme);
 
-		for (let m = 0; m < arrayKeysData.length; m++) {
-			const keyData = arrayKeysData[m];
+		for (let v = 0; v < arrKeysData.length; v++) {
+			const keyData: string = arrKeysData[v]; // login  password
 
-			const instanceRules = scheme[keyData];
+			const instanceRules: IInstanceRules = scheme[keyData];
 
-			const arrayNamesRules = Object.keys(instanceRules) as Array<keyof typeof instanceRules>;
+			const arrNamesRules = Object.keys(instanceRules) as Array<keyof IInstanceRules>;
 
-			for (let i = 0; i < arrayNamesRules.length; i++) {
-				const nameRule = arrayNamesRules[i];
+			for (let x = 0; x < arrNamesRules.length; x++) {
+				const nameRule: keyof IInstanceRules = arrNamesRules[x]; // isRequired  min  max  numberRequired  symbolRequired  uppercaseElementRequired
 
-				const result = this.#applyRulesToData(keyData, nameRule, scheme[keyData][nameRule], data);
+				const result = this._applyRulesToData(keyData, nameRule, instanceRules, data);
 
-				if (result && error.get(keyData) === undefined) {
-					error.set(keyData, scheme[keyData][nameRule].message);
+				if (result) {
+					const messageTxt: string = instanceRules[nameRule]?.message || '';
 
-					break;
+					if (messageTxt && error[keyData] === undefined) {
+						error[keyData] = messageTxt;
+
+						break;
+					}
 				}
 			}
 		}

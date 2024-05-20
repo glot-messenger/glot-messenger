@@ -1,4 +1,3 @@
 export interface IDataFormSignIn {
-	login: string;
-	password: string;
+	[key: string]: string;
 };
