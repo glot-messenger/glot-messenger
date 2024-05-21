@@ -1,3 +1,3 @@
-import { SignUpPage } from "./ui";
+import { SignUpPage } from './ui';
 
 export { SignUpPage };

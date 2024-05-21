@@ -5,12 +5,12 @@ import type { ITextFieldProps } from './interafaces';
 import type { IStylePadding, IStyleBorder } from '../../types';
 import { textFieldEyeData } from '../../core';
 
-const TextField: React.FC<ITextFieldProps> = ({ placeholder, label, type, name, error, isRequired, titleHover, onChange, value, nameIcon, alt }) => {
+const TextField: React.FC<ITextFieldProps> = ({ placeholder, label, type, name, error, isRequired, titleHover, onChange, value, nameIcon, alt, description }) => {
 	const [typeInput, setTypeInput] = useState<string>(type);
 
 	const [isFocusInput, setFocusInput] = useState<boolean>(false);
 
-	const isPasswordTextField: boolean = name === 'password' && type === 'password';
+	const isPasswordTextField: boolean = (name === 'password' || name === 'repeatPassword') && type === 'password';
 
 	const paddingStyleForPasswordInput: IStylePadding = isPasswordTextField ? { padding: '10px 60px 10px 45px' } : { padding: '10px 10px 10px 45px' };
 
@@ -40,10 +40,13 @@ const TextField: React.FC<ITextFieldProps> = ({ placeholder, label, type, name, 
 		<div className='text-field text-field__wrapper'>
 			<div className='text-field__container'>
 				<div className='text-field__label-container'>
-					{isRequired &&
-						<span className='text-field__required-flag'>*</span>
-					}
-					<label className='text-field__label-input' htmlFor={name}>{label}</label>
+					<div className='text-field__label-group'>
+						{isRequired &&
+							<span className='text-field__required-flag'>*</span>
+						}
+						<label className='text-field__label-input' htmlFor={name}>{label}</label>
+					</div>
+					<p className='text-field__label-description'>{description}</p>
 				</div>
 				<div className='text-field__block-input' style={borderStyleForBlockInput}>
 					<img className='text-field__icon-input' src={`/assets/icons/${nameIcon}`} alt={alt} />

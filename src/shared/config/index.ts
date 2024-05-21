@@ -1,9 +1,11 @@
 import {
 	configChildrensForFormSignInPage,
-	configChildrensForFormSignUpPage
+	configChildrensForFormSignUpPage,
+	configChildrensForFormRecoveryAccountPage
 } from './config-childrens-for-forms-on-pages';
 
 export {
 	configChildrensForFormSignInPage,
-	configChildrensForFormSignUpPage
+	configChildrensForFormSignUpPage,
+	configChildrensForFormRecoveryAccountPage
 };

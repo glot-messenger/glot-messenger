@@ -9,6 +9,7 @@ export interface ITextFieldProps {
 	typeElement: 'textField';
 	nameIcon: string;
 	alt: string;
+	description: string;
 	value?: string;
 	error?: string;
 	isRequired?: boolean;

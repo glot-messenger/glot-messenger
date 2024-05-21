@@ -1,11 +1,11 @@
-.sign-up {
+.recovery-account {
 	width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 }
 
-.sign-up__content {
+.recovery-account__content {
 	flex: 1 1 auto;
 	display: flex;
 	justify-content: center;

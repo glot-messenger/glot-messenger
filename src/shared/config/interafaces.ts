@@ -7,6 +7,7 @@ interface IManuallyTransmittedDataForFields {
 	name: string;
 	nameIcon: string;
 	alt: string;
+	description: string;
 };
 
 interface IManuallyTransmittedDataForButton {
@@ -25,7 +26,18 @@ export interface IManuallyTransmittedDataForFieldsFormSignInPage {
 };
 
 export interface IManuallyTransmittedDataForFieldsFormSignUpPage {
+	email: IManuallyTransmittedDataForTextFields;
 	login: IManuallyTransmittedDataForTextFields;
+	userName: IManuallyTransmittedDataForTextFields;
 	password: IManuallyTransmittedDataForTextFields;
+	repeatPassword: IManuallyTransmittedDataForTextFields;
+	secretPhrase: IManuallyTransmittedDataForTextFields;
+	button: IManuallyTransmittedDataForButton;
+};
+
+export interface IManuallyTransmittedDataForFieldsFormRecoveryAccountPage {
+	email: IManuallyTransmittedDataForTextFields;
+	login: IManuallyTransmittedDataForTextFields;
+	secretPhrase: IManuallyTransmittedDataForTextFields;
 	button: IManuallyTransmittedDataForButton;
 };

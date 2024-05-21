@@ -1,5 +1,6 @@
 import { schemeFormSignInPage } from './scheme-form-sign-in-page';
 import { schemeFormSignUpPage } from './scheme-form-sign-up-page';
+import { schemeFormRecoveryAccountPage } from './scheme-form-recovery-account-page';
 
 import type {
 	ISchemeForForm,
@@ -8,7 +9,8 @@ import type {
 
 export {
 	schemeFormSignInPage,
-	schemeFormSignUpPage
+	schemeFormSignUpPage,
+	schemeFormRecoveryAccountPage
 };
 
 export type {

@@ -6,7 +6,9 @@ import {
 	MAX,
 	NUMBER_REQUIRED,
 	SYMBOL_REQUIRED,
-	UPPER_CASE_ELEMENT_REQUIRED
+	UPPER_CASE_ELEMENT_REQUIRED,
+	IS_IDENTICAL,
+	IS_EMAIL
 } from '../../core';
 
 import type {
@@ -36,17 +38,27 @@ class Validator implements IValidator {
 			break;
 			case NUMBER_REQUIRED:
 				isError = !(
-					/[1234567890]/.test(value)
+					/[1234567890]/m.test(value)
 				);
 			break;
 			case SYMBOL_REQUIRED:
 				isError = !(
-					/[!?@#$%^&*]/.test(value)
+					/[!?@#$%^&*]/m.test(value)
 				);
 			break;
 			case UPPER_CASE_ELEMENT_REQUIRED:
 				isError = !(
-					/[A-Z]/.test(value)
+					/[A-Z]/um.test(value)
+				);
+			break;
+			case IS_IDENTICAL:
+				const z = rule[nameR];
+
+				isError = !(z && value === data[z.targetValue]);
+			break;
+			case IS_EMAIL:
+				isError = !(
+					/^(.)+@(.)+[.](.)+$/.test(value)
 				);
 			break;
 			default:

@@ -6,6 +6,10 @@ interface IValueRule {
 	value: number;
 };
 
+interface ITargetValue {
+	targetValue: string;
+};
+
 export interface IInstanceRules {
 	isRequired?: IMessageRule;
 	min?: IMessageRule & IValueRule;
@@ -13,6 +17,8 @@ export interface IInstanceRules {
 	numberRequired?: IMessageRule;
 	symbolRequired?: IMessageRule;
 	uppercaseElementRequired?: IMessageRule;
+	isIdentical?: IMessageRule & ITargetValue;
+	isEmail?: IMessageRule;
 };
 
 export interface ISchemeForForm {

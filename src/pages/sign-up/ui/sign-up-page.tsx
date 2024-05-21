@@ -4,7 +4,9 @@ import { AuthBox } from '../../../widgets';
 
 import {
 	FormComponent,
+	ButtonComponent,
 	TextField,
+	CheckboxField,
 	configChildrensForFormSignUpPage,
 	schemeFormSignUpPage
 } from '../../../shared';
@@ -13,8 +15,12 @@ import type { IDataFormSignUp } from './interafaces';
 
 const SignUpPage: React.FC = () => {
 	const [dataForm] = useState<IDataFormSignUp>({
+		email: '',
 		login: '',
-		password: ''
+		userName: '',
+		password: '',
+		repeatPassword: '',
+		secretPhrase: ''
 	});
 
 	function submitFn(data: IDataFormSignUp): void {
@@ -26,8 +32,14 @@ const SignUpPage: React.FC = () => {
 			<div className='sign-up__content'>
 				<AuthBox>
 					<FormComponent onSubmit={submitFn} data={dataForm} schemeForValidator={schemeFormSignUpPage}>
+						<TextField {...configChildrensForFormSignUpPage.email} />
 						<TextField {...configChildrensForFormSignUpPage.login} />
+						<TextField {...configChildrensForFormSignUpPage.userName} />
 						<TextField {...configChildrensForFormSignUpPage.password} />
+						<TextField {...configChildrensForFormSignUpPage.repeatPassword} />
+						<TextField {...configChildrensForFormSignUpPage.secretPhrase} />
+						<CheckboxField />
+						<ButtonComponent {...configChildrensForFormSignUpPage.button} />
 					</FormComponent>
 				</AuthBox>
 			</div>

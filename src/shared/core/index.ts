@@ -5,7 +5,8 @@ import type {
 
 import {
 	schemeFormSignInPage,
-	schemeFormSignUpPage
+	schemeFormSignUpPage,
+	schemeFormRecoveryAccountPage
 } from './schemes';
 
 import {
@@ -14,7 +15,9 @@ import {
 	MAX,
 	NUMBER_REQUIRED,
 	SYMBOL_REQUIRED,
-	UPPER_CASE_ELEMENT_REQUIRED
+	UPPER_CASE_ELEMENT_REQUIRED,
+	IS_IDENTICAL,
+	IS_EMAIL
 } from './names-rules';
 
 import authBoxData  from './auth-box-data.json';
@@ -38,8 +41,11 @@ export {
 	NUMBER_REQUIRED,
 	SYMBOL_REQUIRED,
 	UPPER_CASE_ELEMENT_REQUIRED,
+	IS_IDENTICAL,
+	IS_EMAIL,
 	schemeFormSignInPage,
 	schemeFormSignUpPage,
+	schemeFormRecoveryAccountPage,
 	authBoxData,
 	textFieldEyeData,
 	HOME,

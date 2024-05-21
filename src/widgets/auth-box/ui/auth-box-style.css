@@ -7,7 +7,7 @@
 
 .auth-box__wrapper {
 	padding: 32px;
-	width: 950px;
+	width: 1000px;
 }
 
 .box-auth__container {
@@ -21,6 +21,8 @@
 
 .box-auth__column:last-child {
 	flex: 0 1 30%;
+	display: flex;
+	align-items: center;
 }
 
 .box-auth__column {
