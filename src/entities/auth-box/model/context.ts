@@ -1,6 +1,11 @@
 import { createContext } from 'react';
 import type { IAuthBoxData } from './interfaces';
-import { HOME } from '../../../shared';
+
+import {
+	HOME,
+	AUTH,
+	SIGN_IN_SEGMENT
+} from '../../../shared';
 
 const defaultValue: IAuthBoxData = {
 	title: 'Ууупс... Что-то пошло не так...',
@@ -13,7 +18,16 @@ const defaultValue: IAuthBoxData = {
 		alt: 'Пират Глот с планеты Катрук',
 		titleHover: 'Нажмите, чтобы перейти на главную!',
 		path: HOME
-	}
+	},
+	links: [
+		{
+			text: 'Перейти на страницу входа',
+			pathConfig: {
+				text: 'Войти',
+				path: `${AUTH}/${SIGN_IN_SEGMENT}`
+			}
+		}
+	]
 };
 
 export const ConditionAuthBoxContext = createContext<IAuthBoxData>(defaultValue);

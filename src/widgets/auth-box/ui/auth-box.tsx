@@ -5,9 +5,11 @@ import { ConditionAuthBoxContext } from '../../../entities';
 import { Link } from 'react-router-dom';
 
 const AuthBox: React.FC<IAuthBoxProps> = ({ children }) => {
-	const { title, subTitle, titleHover, phrase, subPhrase, icon } = useContext(ConditionAuthBoxContext);
+	const { title, subTitle, titleHover, phrase, subPhrase, icon, links } = useContext(ConditionAuthBoxContext);
 
 	const { name, alt, path, titleHover: iconTitleHover } = icon;
+
+	// ОТРИСОВАТЬ БЛОК В ПРАВОЙ КОЛОНКЕ LINKS
 
 	return (
 		<div className='auth-box'>

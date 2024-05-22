@@ -5,6 +5,21 @@ interface IIcon {
 	path: string;
 };
 
+interface ILink {
+	text: string;
+	path: string;
+};
+
+interface ITransferToPage  {
+	text: string;
+	pathConfig: ILink;
+};
+
+interface ILinksBlock {
+	title: string;
+	data: Array<ITransferToPage>;
+};
+
 export interface IAuthBoxData {
 	title: string;
 	subTitle: string;
@@ -12,4 +27,5 @@ export interface IAuthBoxData {
 	phrase: string;
 	subPhrase: string;
 	icon: IIcon;
+	links: ILinksBlock;
 };
