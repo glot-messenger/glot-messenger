@@ -28,7 +28,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
 
+.checkbox-field__checker.active {
+	background-color: #049DEA;
 }
 
 .checkbox-field__icon-checker {
@@ -54,6 +57,10 @@
 
 .checkbox-field__content:hover .checkbox-field__checker {
 	background-color: #49545f;
+}
+
+.checkbox-field__content:hover .checkbox-field__checker.active {
+	background-color: #049DEA;
 }
 
 .checkbox-field__required-flag {
