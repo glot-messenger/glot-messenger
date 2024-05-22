@@ -102,6 +102,11 @@ const schemeFormSignUpPage: ISchemeForForm = {
 			message: 'Поле для ввода секретной фразы может содержать максимально 72 символа',
 			value: 72
 		}
+	},
+	acceptanceOfTermsPoliciesAndRules: {
+		[IS_REQUIRED]: {
+			message: 'Поле пользовательского соглашения должно быть выбрано, чтобы мы могли перейти к совместному взаимодействию'
+		}
 	}
 };
 

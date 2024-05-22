@@ -13,7 +13,7 @@ import {
 
 import type { ISchemeForForm } from '../../core';
 
-function FormComponent<S extends ISchemeForForm, D extends Record<string, string>>({ children, data, onSubmit, schemeForValidator }: IFormComponentProps<S, D>) {
+function FormComponent<S extends ISchemeForForm, D extends Record<string, string | boolean>>({ children, data, onSubmit, schemeForValidator }: IFormComponentProps<S, D>) {
 	const [dataForm, setDataForm] = useState<D>(data);
 
 	const [errorState, setErrorState] = useState<Record<PropertyKey, string>>({});
@@ -64,7 +64,7 @@ function FormComponent<S extends ISchemeForForm, D extends Record<string, string
 
 		let newProps;
 
-		if (typeEl === 'textField') {
+		if (typeEl === 'textField' || typeEl === 'checkboxField') {
 			newProps = {
 				...child.props,
 				value: dataForm[child.props.name],

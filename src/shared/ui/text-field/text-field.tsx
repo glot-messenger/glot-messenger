@@ -58,7 +58,7 @@ const TextField: React.FC<ITextFieldProps> = ({ placeholder, label, type, name, 
 					}
 				</div>
 				{error && 
-					<div className='text-field__error-message-input'>{error}</div>
+					<p className='text-field__error-message-input'>{error}</p>
 				}
 			</div>
 		</div>

@@ -17,14 +17,30 @@ import type {
 } from '../../core';
 
 class Validator implements IValidator {
-	_applyRulesToData(keyD: string, nameR: keyof IInstanceRules, rule: IInstanceRules, data: Record<string, string>): boolean {
+	_applyRulesToData(keyD: string, nameR: keyof IInstanceRules, rule: IInstanceRules, data: Record<string, string | boolean>): boolean {
 		let isError: boolean = false;
 
-		const value: string = data[keyD];
+		const value: string | boolean = data[keyD];
+
+		if (typeof value === 'boolean') {
+			if (nameR === IS_REQUIRED) {
+				isError = !(value);
+
+			} else {
+				console.log(`Value is boolean type. It can only be applied to IS_REQUIRED rule. The same rule applies - ${nameR}.`);
+			}
+
+			return isError;
+		}
 
 		switch(nameR) {
 			case IS_REQUIRED:
-				isError = value.length === 0;
+				isError = !(new Boolean(value).valueOf());
+			break;
+			case IS_IDENTICAL:
+				const z = rule[nameR];
+
+				isError = !(z && value === data[z.targetValue]);
 			break;
 			case MIN:
 				const m = rule[nameR];
@@ -51,25 +67,20 @@ class Validator implements IValidator {
 					/[A-Z]/um.test(value)
 				);
 			break;
-			case IS_IDENTICAL:
-				const z = rule[nameR];
-
-				isError = !(z && value === data[z.targetValue]);
-			break;
 			case IS_EMAIL:
 				isError = !(
 					/^(.)+@(.)+[.](.)+$/.test(value)
 				);
 			break;
 			default:
-				console.log(`Something went wrong. ${nameR} is not correct value!!! The developers are already working on restoring the correct operation of the application.`);
+				console.log(`Something went wrong. ${nameR} (rule) is not correct value!!! The developers are already working on restoring the correct operation of the application.`);
 			break;
 		}
 
 		return isError;
 	};
 
-	validate<S extends ISchemeForForm, D extends Record<string, string>>(data: D, scheme: S): Record<PropertyKey, string> {
+	validate<S extends ISchemeForForm, D extends Record<string, string | boolean>>(data: D, scheme: S): Record<PropertyKey, string> {
 		const error: Record<PropertyKey, string> = {};
 
 		const arrKeysData: string[] = Object.keys(scheme);

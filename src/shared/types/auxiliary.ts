@@ -12,5 +12,5 @@ export type MyChild = ReactElement<any, string | JSXElementConstructor<any>> | R
 
 export interface IInstanceWithKeyAndValue {
 	key: string;
-	value: string;
+	value: string | boolean;
 };

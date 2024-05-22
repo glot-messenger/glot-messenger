@@ -1,4 +1,4 @@
-interface IManuallyTransmittedDataForFields {
+interface IManuallyTransmittedDataForFieldsFull {
 	titleHover: string;
 	isRequired?: boolean;
 	placeholder: string;
@@ -10,6 +10,14 @@ interface IManuallyTransmittedDataForFields {
 	description: string;
 };
 
+interface IManuallyTransmittedDataForFieldsAverage {
+	titleHover: string;
+	isRequired?: boolean;
+	label: string;
+	name: string;
+	description: string;
+};
+
 interface IManuallyTransmittedDataForButton {
 	textBtn: string;
 	type: 'submit' | 'reset' | 'button';
@@ -17,7 +25,9 @@ interface IManuallyTransmittedDataForButton {
 	typeElement: 'button';
 };
 
-type IManuallyTransmittedDataForTextFields = IManuallyTransmittedDataForFields & { typeElement: 'textField' };
+type IManuallyTransmittedDataForTextFields = IManuallyTransmittedDataForFieldsFull & { typeElement: 'textField' };
+
+type IManuallyTransmittedDataForCheckboxFields = IManuallyTransmittedDataForFieldsAverage & { typeElement: 'checkboxField' };
 
 export interface IManuallyTransmittedDataForFieldsFormSignInPage {
 	login: IManuallyTransmittedDataForTextFields;
@@ -32,6 +42,7 @@ export interface IManuallyTransmittedDataForFieldsFormSignUpPage {
 	password: IManuallyTransmittedDataForTextFields;
 	repeatPassword: IManuallyTransmittedDataForTextFields;
 	secretPhrase: IManuallyTransmittedDataForTextFields;
+	acceptanceOfTermsPoliciesAndRules: IManuallyTransmittedDataForCheckboxFields;
 	button: IManuallyTransmittedDataForButton;
 };
 

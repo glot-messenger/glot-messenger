@@ -1,7 +1,40 @@
-.checkbox-field {
-
+.checkbox-field__wrapper {
+	margin-bottom: 20px;
 }
 
-.checkbox-field__wrapper {
+.checkbox-field__description {
+	color: #049DEA;
+}
 
+.checkbox-field__content {
+	display: flex;
+	align-items: center;
+	margin: 7px 0px;
+}
+
+.checkbox-field__input-wrapper {
+	margin-right: 7px;
+}
+
+.checkbox-field__input {
+	width: 20px;
+	height: 20px;
+	box-shadow: 0 0 3px 0px #000;
+}
+
+.checkbox-field__label {
+	color: #90959B;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.checkbox-field__required-flag {
+	color: #DA3E41;
+	margin-left: 2px;
+}
+
+.checkbox-field__error-message-checkbox {
+	color: #DA3E41;
+	font-size: 12px;
 }

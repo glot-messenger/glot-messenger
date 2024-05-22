@@ -20,7 +20,8 @@ const SignUpPage: React.FC = () => {
 		userName: '',
 		password: '',
 		repeatPassword: '',
-		secretPhrase: ''
+		secretPhrase: '',
+		acceptanceOfTermsPoliciesAndRules: false
 	});
 
 	function submitFn(data: IDataFormSignUp): void {
@@ -38,7 +39,7 @@ const SignUpPage: React.FC = () => {
 						<TextField {...configChildrensForFormSignUpPage.password} />
 						<TextField {...configChildrensForFormSignUpPage.repeatPassword} />
 						<TextField {...configChildrensForFormSignUpPage.secretPhrase} />
-						<CheckboxField />
+						<CheckboxField {...configChildrensForFormSignUpPage.acceptanceOfTermsPoliciesAndRules} />
 						<ButtonComponent {...configChildrensForFormSignUpPage.button} />
 					</FormComponent>
 				</AuthBox>

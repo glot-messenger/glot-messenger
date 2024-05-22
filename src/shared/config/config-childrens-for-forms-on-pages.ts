@@ -110,6 +110,14 @@ const configChildrensForFormSignUpPage: IManuallyTransmittedDataForFieldsFormSig
 		alt: 'Щит символизирующий секретность, с галочкой по середине.',
 		description: 'В случае, если вы забудете пароль, это поле вам поможет. Пробелы учитываются! Пример: "Жмых затравил неподатливую змею!!!"'
 	},
+	acceptanceOfTermsPoliciesAndRules: {
+		titleHover: 'Нажмите, чтобы согласиться с условиями компании для нашего совместного взаимодействия с вами.',
+		typeElement: 'checkboxField',
+		isRequired: true,
+		label: 'Регистрируясь, вы соглашаетесь с Условиями Использования, Политикой Конфиденциальности и Правилами сайта.',
+		name: 'acceptanceOfTermsPoliciesAndRules',
+		description: 'Пользовательское соглашение'
+	},
 	button: {
 		typeElement: 'button',
 		textBtn: 'Зарегистрироваться',
