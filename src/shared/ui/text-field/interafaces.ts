@@ -1,7 +1,7 @@
 import type { IInstanceWithKeyAndValue } from '../../types';
 
 export interface ITextFieldProps {
-	placeholder: string;
+	placeholder?: string;
 	label: string;
 	type: string;
 	name: string;

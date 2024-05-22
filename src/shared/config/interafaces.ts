@@ -1,20 +1,12 @@
 interface IManuallyTransmittedDataForFieldsFull {
 	titleHover: string;
 	isRequired?: boolean;
-	placeholder: string;
+	placeholder?: string;
 	label: string;
 	type: string;
 	name: string;
 	nameIcon: string;
 	alt: string;
-	description: string;
-};
-
-interface IManuallyTransmittedDataForFieldsAverage {
-	titleHover: string;
-	isRequired?: boolean;
-	label: string;
-	name: string;
 	description: string;
 };
 
@@ -27,7 +19,7 @@ interface IManuallyTransmittedDataForButton {
 
 type IManuallyTransmittedDataForTextFields = IManuallyTransmittedDataForFieldsFull & { typeElement: 'textField' };
 
-type IManuallyTransmittedDataForCheckboxFields = IManuallyTransmittedDataForFieldsAverage & { typeElement: 'checkboxField' };
+type IManuallyTransmittedDataForCheckboxFields = IManuallyTransmittedDataForFieldsFull & { typeElement: 'checkboxField' };
 
 export interface IManuallyTransmittedDataForFieldsFormSignInPage {
 	login: IManuallyTransmittedDataForTextFields;

@@ -25,6 +25,11 @@
 	font-size: 12px;
 	font-weight: 700;
 	text-transform: uppercase;
+	transition: color 0.2s ease 0s;
+}
+
+.text-field__label-input:hover {
+	color: aliceblue;
 }
 
 .text-field__block-input {

@@ -116,7 +116,10 @@ const configChildrensForFormSignUpPage: IManuallyTransmittedDataForFieldsFormSig
 		isRequired: true,
 		label: 'Регистрируясь, вы соглашаетесь с Условиями Использования, Политикой Конфиденциальности и Правилами сайта.',
 		name: 'acceptanceOfTermsPoliciesAndRules',
-		description: 'Пользовательское соглашение'
+		description: 'Пользовательское соглашение',
+		nameIcon: 'check.svg',
+		alt: 'Иконка галочки',
+		type: 'checkbox'
 	},
 	button: {
 		typeElement: 'button',
