@@ -1,0 +1,8 @@
+.hr-element {
+	width: 100%;
+}
+
+.hr-element__line {
+	width: 100%;
+	border-top: 1px solid #049DEA;
+}

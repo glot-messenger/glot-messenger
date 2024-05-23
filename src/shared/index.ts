@@ -39,7 +39,9 @@ import {
 	FormComponent,
 	CheckboxField,
 	GroupLinks,
-	LinkElement
+	LinkElement,
+	HrElement,
+	Logo
 } from './ui';
 
 export {
@@ -61,6 +63,8 @@ export {
 	CheckboxField,
 	GroupLinks,
 	LinkElement,
+	HrElement,
+	Logo,
 	HOME,
 	AUTH,
 	RECOVERY_ACCOUNT_SEGMENT,
