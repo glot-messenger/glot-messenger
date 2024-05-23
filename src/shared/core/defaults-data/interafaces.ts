@@ -1,13 +1,14 @@
-interface IIcon {
+export interface IIcon {
 	name: string;
 	alt: string;
 	titleHover: string;
-	path: string;
+	path?: string;
 };
 
 interface ILink {
 	text: string;
 	path: string;
+	titleHover: string;
 };
 
 interface ITransferToPage  {
@@ -19,6 +20,7 @@ interface ILinksBlock {
 	title: string;
 	data: Array<ITransferToPage>;
 };
+
 
 export interface IAuthBoxData {
 	title: string;

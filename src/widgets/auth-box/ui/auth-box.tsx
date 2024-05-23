@@ -2,14 +2,11 @@ import React, { useContext } from 'react';
 import './auth-box-style.css';
 import type { IAuthBoxProps } from './interafaces';
 import { ConditionAuthBoxContext } from '../../../entities';
-import { Link } from 'react-router-dom';
+import { GroupLinks } from '../../../shared';
+import { AuthBoxInfo } from './auth-box-info';
 
 const AuthBox: React.FC<IAuthBoxProps> = ({ children }) => {
 	const { title, subTitle, titleHover, phrase, subPhrase, icon, links } = useContext(ConditionAuthBoxContext);
-
-	const { name, alt, path, titleHover: iconTitleHover } = icon;
-
-	// ОТРИСОВАТЬ БЛОК В ПРАВОЙ КОЛОНКЕ LINKS
 
 	return (
 		<div className='auth-box'>
@@ -23,13 +20,8 @@ const AuthBox: React.FC<IAuthBoxProps> = ({ children }) => {
 						{children}
 					</div>
 					<div className='box-auth__column'>
-						<div className='box-auth__info info-box-auth'>
-							<Link to={path} title={iconTitleHover} className='info-box-auth__link-icon'>
-								<img className='info-box-auth__icon' src={`/assets/icons/${name}`} alt={alt} />
-							</Link>
-							<h2 className='info-box-auth__title-phrase'>{phrase}</h2>
-							<p className='info-box-auth__sub-phrase'>{subPhrase}</p>
-						</div>
+						<AuthBoxInfo classesParent='box-auth' {...icon} title={phrase} subTitle={subPhrase} />
+						<GroupLinks linksGroup={links} />
 					</div>
 				</div>
 			</div>

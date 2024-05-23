@@ -1,0 +1,26 @@
+.group-links__title {
+   font-size: 18px;
+   line-height: 125%;
+   text-align: center;
+   margin-bottom: 10px;
+   color: #049DEA;
+}
+
+.group-links__txt {
+   color: #90959B;
+   font-size: 15px;
+   display: inline-block;
+   margin: 0px 5px 2px 0px;
+}
+
+.group-links__link {
+   font-size: 13px;
+}
+
+.group-links__element {
+   margin-bottom: 10px;
+}
+
+.group-links__element:last-child {
+   margin-bottom: 0px;
+}

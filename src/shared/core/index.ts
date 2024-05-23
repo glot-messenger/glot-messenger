@@ -3,6 +3,10 @@ import type {
 	IInstanceRules
 } from './schemes';
 
+import type { IAuthBoxData } from './defaults-data';
+
+import { defaultAuthBoxDataCondition } from './defaults-data';
+
 import {
 	schemeFormSignInPage,
 	schemeFormSignUpPage,
@@ -20,8 +24,8 @@ import {
 	IS_EMAIL
 } from './names-rules';
 
-import authBoxData  from './auth-box-data.json';
-import textFieldEyeData from './text-field-eye-data.json';
+import { authBoxData }  from './auth-box-data';
+import { textFieldEyeData } from './text-field-eye-data';
 
 import {
 	HOME,
@@ -52,10 +56,12 @@ export {
 	AUTH,
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
-	SIGN_UP_SEGMENT
+	SIGN_UP_SEGMENT,
+	defaultAuthBoxDataCondition
 };
 
 export type {
 	ISchemeForForm,
-	IInstanceRules
+	IInstanceRules,
+	IAuthBoxData
 };

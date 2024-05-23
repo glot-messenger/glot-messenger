@@ -23,6 +23,8 @@
 	flex: 0 1 30%;
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .box-auth__column {
@@ -31,6 +33,10 @@
 
 .box-auth__head {
 	margin-bottom: 25px;
+}
+
+.box-auth__info {
+	margin-bottom: 50px;
 }
 
 .head-box-auth {
@@ -50,45 +56,6 @@
 }
 
 .head-box-auth__sub-title {
-	font-size: 17px;
-	color: #90959B;
-}
-
-.info-box-auth {
-	line-height: 150%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-}
-
-.info-box-auth__link-icon {
-	position: relative;
-	flex: 0 0 130px;
-	width: 130px;
-	height: 130px;
-	margin-bottom: 15px;
-}
-
-.info-box-auth__icon {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	z-index: 10;
-}
-
-.info-box-auth__title-phrase {
-	font-size: 18px;
-	font-weight: 600;
-	color: aliceblue;
-	margin-bottom: 7px;
-}
-
-.info-box-auth__sub-phrase {
 	font-size: 17px;
 	color: #90959B;
 }

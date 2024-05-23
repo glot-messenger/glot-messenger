@@ -15,8 +15,11 @@ import {
 	AUTH,
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
-	SIGN_UP_SEGMENT
+	SIGN_UP_SEGMENT,
+	defaultAuthBoxDataCondition
 } from './core';
+
+import type { IAuthBoxData } from './core';
 // lib
 import {
 	validator,
@@ -34,7 +37,9 @@ import {
 	TextField,
 	ButtonComponent,
 	FormComponent,
-	CheckboxField
+	CheckboxField,
+	GroupLinks,
+	LinkElement
 } from './ui';
 
 export {
@@ -54,14 +59,18 @@ export {
 	ButtonComponent,
 	FormComponent,
 	CheckboxField,
+	GroupLinks,
+	LinkElement,
 	HOME,
 	AUTH,
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
-	SIGN_UP_SEGMENT
+	SIGN_UP_SEGMENT,
+	defaultAuthBoxDataCondition
 };
 
 export type {
 	MyChild,
-	IInstanceWithKeyAndValue
+	IInstanceWithKeyAndValue,
+	IAuthBoxData
 };

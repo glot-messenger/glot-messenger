@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import './sign-in-page-style.css';
-import { AuthBox } from '../../../widgets';
+
+import {
+	AuthBox,
+	Footer
+} from '../../../widgets';
 
 import {
 	TextField,
@@ -33,6 +37,7 @@ const SignInPage: React.FC = () => {
 					</FormComponent>
 				</AuthBox>
 			</div>
+			<Footer />
 		</div>
 	);
 };
