@@ -1,3 +1,5 @@
+import type { IIcon } from "../core";
+
 interface IManuallyTransmittedDataForFieldsFull {
 	titleHover: string;
 	isRequired?: boolean;
@@ -15,6 +17,11 @@ interface IManuallyTransmittedDataForButton {
 	type: 'submit' | 'reset' | 'button';
 	titleHover: string;
 	typeElement: 'button';
+};
+
+export interface IConfigForClassicBlock {
+	text: string;
+	icon: IIcon;
 };
 
 type IManuallyTransmittedDataForTextFields = IManuallyTransmittedDataForFieldsFull & { typeElement: 'textField' };

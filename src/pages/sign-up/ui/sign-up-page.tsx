@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import './sign-up-page-style.css';
-import { AuthBox } from '../../../widgets';
+
+import {
+	AuthBox,
+	Footer
+} from '../../../widgets';
 
 import {
 	FormComponent,
@@ -44,6 +48,7 @@ const SignUpPage: React.FC = () => {
 					</FormComponent>
 				</AuthBox>
 			</div>
+			<Footer />
 		</div>
 	);
 };

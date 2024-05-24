@@ -15,6 +15,7 @@
 
 .group-links__link {
    font-size: 13px;
+	 text-decoration: underline;
 }
 
 .group-links__element {

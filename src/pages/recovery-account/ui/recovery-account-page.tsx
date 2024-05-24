@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import './recovery-account-page-style.css';
 import type { IDataFormRecoveryAccount } from './interafaces';
-import { AuthBox } from '../../../widgets';
+
+import {
+	AuthBox,
+	Footer
+} from '../../../widgets';
 
 import {
 	FormComponent,
@@ -34,6 +38,7 @@ const RecoveryAccountPage: React.FC = () => {
 					</FormComponent>
 				</AuthBox>
 			</div>
+			<Footer />
 		</div>
    );
 };

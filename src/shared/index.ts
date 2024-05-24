@@ -2,7 +2,9 @@
 import {
 	configChildrensForFormSignInPage,
 	configChildrensForFormSignUpPage,
-	configChildrensForFormRecoveryAccountPage
+	configChildrensForFormRecoveryAccountPage,
+	configForLogoInFooter,
+	configForGratitudeBlockInFooter
 } from './config';
 // core
 import {
@@ -20,6 +22,7 @@ import {
 } from './core';
 
 import type { IAuthBoxData } from './core';
+
 // lib
 import {
 	validator,
@@ -48,6 +51,8 @@ export {
 	configChildrensForFormSignInPage,
 	configChildrensForFormSignUpPage,
 	configChildrensForFormRecoveryAccountPage,
+	configForLogoInFooter,
+	configForGratitudeBlockInFooter,
 	authBoxData,
 	textFieldEyeData,
 	schemeFormSignInPage,

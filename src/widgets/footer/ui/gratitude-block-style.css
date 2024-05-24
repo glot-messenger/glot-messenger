@@ -1,0 +1,17 @@
+.gratitude-block {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin-bottom: 20px;
+}
+
+.gratitude-block__text {
+	color: aliceblue;
+	font-size: 18px;
+}
+
+.gratitude-block__icon {
+	flex: 0 0 45px;
+	width: 45px;
+	height: 45px;
+}

@@ -3,7 +3,10 @@ import type {
 	IInstanceRules
 } from './schemes';
 
-import type { IAuthBoxData } from './defaults-data';
+import type {
+	IAuthBoxData,
+	IIcon
+} from './defaults-data';
 
 import { defaultAuthBoxDataCondition } from './defaults-data';
 
@@ -63,5 +66,6 @@ export {
 export type {
 	ISchemeForForm,
 	IInstanceRules,
-	IAuthBoxData
+	IAuthBoxData,
+	IIcon
 };

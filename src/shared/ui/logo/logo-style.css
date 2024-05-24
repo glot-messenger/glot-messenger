@@ -1,0 +1,29 @@
+.logo-block {
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.logo-block__link {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.logo-block__icon {
+	flex: 0 0 55px;
+	width: 55px;
+	height: 55px;
+	margin-right: 10px;
+}
+
+.logo-block__title {
+	font-size: 25px;
+	font-weight: 700;
+	color: aliceblue;
+	transition: color 0.4s ease 0s;
+}
+
+.logo-block__link:hover .logo-block__title {
+	color: #049DEA;
+}
