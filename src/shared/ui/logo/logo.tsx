@@ -15,7 +15,7 @@ const Logo: React.FC<ILogoProps> = ({ text, icon }) => {
 
 	return (
 		<div className='logo-block'>
-			<LinkElement to={correctPath} titleHover={titleHover} classesValue='logo-block__link'>
+			<LinkElement typeElement='Link' to={correctPath} titleHover={titleHover} classesValue='logo-block__link'>
 				<img className='logo-block__icon' src={`/assets/icons/${name}`} alt={alt} />
 				<span className='logo-block__title'>{text}</span>
 			</LinkElement>

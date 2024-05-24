@@ -3,17 +3,20 @@ import './link-element-style.css';
 import { Link } from 'react-router-dom';
 import type { ILinkElementProps } from './interafaces';
 
-const LinkElement: React.FC<ILinkElementProps> = ({ to, titleHover, classesValue, children, text }) => {
-   const classes: string = 'link' + (classesValue ? ` ${classesValue}` : '');
+const LinkElement: React.FC<ILinkElementProps> = ({ to, titleHover, classesValue, children, text, typeElement }) => {
+	const classes: string = 'link' + (classesValue ? ` ${classesValue}` : '');
 
-   return (
-      <Link to={to} title={titleHover} className={classes}>
-         {children ?
-            children :
-            text
-         }
-      </Link>
-   );
+	const contentChildren = children ? children : text;
+
+	return (
+		typeElement === 'Link' ?
+			<Link to={to} title={titleHover} className={classes}>
+				{contentChildren}
+			</Link> :
+			<a href={to} title={titleHover} className={classes}>
+				{contentChildren}
+			</a>
+	);
 };
 
 export { LinkElement };

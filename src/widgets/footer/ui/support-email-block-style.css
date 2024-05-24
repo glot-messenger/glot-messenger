@@ -1,0 +1,15 @@
+.support-block-email__container {
+	display: flex;
+	flex-direction: column;
+	text-align: right;
+}
+
+.support-block-email__message {
+	color: #90959B;
+	font-size: 15px;
+	line-height: 125%;
+}
+
+.support-block-email__email-target {
+	font-size: 18px;
+}

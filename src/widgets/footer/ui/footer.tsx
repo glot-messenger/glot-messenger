@@ -8,6 +8,8 @@ import {
 } from '../../../shared';
 
 import { GratitudeBlock } from './gratitude-block';
+import { SupportEmailBlock } from './support-email-block';
+import { Copyright } from './copyright';
 
 const Footer: React.FC = () => {
 	return (
@@ -15,9 +17,16 @@ const Footer: React.FC = () => {
 			<div className='footer__wrapper'>
 				<div className='footer__container'>
 					<Logo {...configForLogoInFooter} />
-					<GratitudeBlock />
+					<div className='footer__box-elements'>
+						<div className='footer__column'>
+							<GratitudeBlock />
+						</div>
+						<div className='footer__column'>
+							<SupportEmailBlock />
+							<Copyright />
+						</div>
+					</div>
 					<HrElement />
-					FOOTE APPLICATION
 				</div>
 			</div>
 		</footer>

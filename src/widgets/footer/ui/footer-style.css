@@ -9,3 +9,12 @@
    max-width: 1500px;
    margin: 0px auto;
 }
+
+.footer__box-elements {
+	display: flex;
+	align-items: center;
+}
+
+.footer__column {
+	flex: 0 1 50%;
+}

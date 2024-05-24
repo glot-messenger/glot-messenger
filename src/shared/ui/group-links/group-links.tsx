@@ -19,10 +19,10 @@ const GroupLinks: React.FC<IGroupLinksProps> = ({ linksGroup }) => {
                         <span className='group-links__txt'>
                            {el.text}
                         </span>
-                        <LinkElement classesValue='group-links__link' titleHover={titleHover} to={path} text={text} />
+                        <LinkElement typeElement='Link' classesValue='group-links__link' titleHover={titleHover} to={path} text={text} />
                      </div>
                   );
-               })};
+               })}
             </div>
          </div>
       </div>
