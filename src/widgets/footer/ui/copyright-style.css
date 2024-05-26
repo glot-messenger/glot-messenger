@@ -1,0 +1,9 @@
+.copyright {
+	margin-bottom: 15px;
+}
+
+.copyright__text {
+	text-align: right;
+	color: #8697a8;
+	line-height: 125%;
+}

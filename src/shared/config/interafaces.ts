@@ -1,4 +1,7 @@
-import type { IIcon } from "../core";
+import type {
+	IIcon,
+	ILink
+} from "../core";
 
 interface IManuallyTransmittedDataForFieldsFull {
 	titleHover: string;
@@ -22,6 +25,11 @@ interface IManuallyTransmittedDataForButton {
 export interface IConfigForClassicBlock {
 	text: string;
 	icon: IIcon;
+};
+
+export interface IConfigForLinkBlock {
+	text: string;
+	link: ILink;
 };
 
 type IManuallyTransmittedDataForTextFields = IManuallyTransmittedDataForFieldsFull & { typeElement: 'textField' };
@@ -50,4 +58,8 @@ export interface IManuallyTransmittedDataForFieldsFormRecoveryAccountPage {
 	login: IManuallyTransmittedDataForTextFields;
 	secretPhrase: IManuallyTransmittedDataForTextFields;
 	button: IManuallyTransmittedDataForButton;
+};
+
+export interface ILightLoad {
+	text: string;
 };

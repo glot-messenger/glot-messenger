@@ -5,7 +5,7 @@ export interface IIcon {
 	path?: string;
 };
 
-interface ILink {
+export interface ILink {
 	text: string;
 	path: string;
 	titleHover: string;

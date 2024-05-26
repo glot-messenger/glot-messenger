@@ -5,7 +5,8 @@ import type {
 
 import type {
 	IAuthBoxData,
-	IIcon
+	IIcon,
+	ILink
 } from './defaults-data';
 
 import { defaultAuthBoxDataCondition } from './defaults-data';
@@ -67,5 +68,6 @@ export type {
 	ISchemeForForm,
 	IInstanceRules,
 	IAuthBoxData,
-	IIcon
+	IIcon,
+	ILink
 };

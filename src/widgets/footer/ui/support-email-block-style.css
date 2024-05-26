@@ -1,3 +1,7 @@
+.support-block-email {
+	margin-bottom: 5px;
+}
+
 .support-block-email__container {
 	display: flex;
 	flex-direction: column;

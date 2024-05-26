@@ -4,7 +4,9 @@ import {
 	configChildrensForFormSignUpPage,
 	configChildrensForFormRecoveryAccountPage,
 	configForLogoInFooter,
-	configForGratitudeBlockInFooter
+	configForGratitudeBlockInFooter,
+	configForSupportEmailBlockInFooter,
+	configForCopyrightInFooter
 } from './config';
 // core
 import {
@@ -53,6 +55,8 @@ export {
 	configChildrensForFormRecoveryAccountPage,
 	configForLogoInFooter,
 	configForGratitudeBlockInFooter,
+	configForSupportEmailBlockInFooter,
+	configForCopyrightInFooter,
 	authBoxData,
 	textFieldEyeData,
 	schemeFormSignInPage,
