@@ -3,6 +3,7 @@
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	background-color: #2B303B;
 }
 
 .recovery-account__content {
