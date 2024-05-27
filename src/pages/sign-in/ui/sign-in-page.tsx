@@ -3,7 +3,8 @@ import './sign-in-page-style.css';
 
 import {
 	AuthBox,
-	Footer
+	Footer,
+	Header
 } from '../../../widgets';
 
 import {
@@ -28,6 +29,7 @@ const SignInPage: React.FC = () => {
 
 	return (
 		<div className='sign-in'>
+			<Header />
 			<div className='sign-in__content'>
 				<AuthBox>
 					<FormComponent onSubmit={submitFn} data={dataForm} schemeForValidator={schemeFormSignInPage}>

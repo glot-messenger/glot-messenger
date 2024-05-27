@@ -4,7 +4,8 @@ import type { IDataFormRecoveryAccount } from './interafaces';
 
 import {
 	AuthBox,
-	Footer
+	Footer,
+	Header
 } from '../../../widgets';
 
 import {
@@ -28,6 +29,7 @@ const RecoveryAccountPage: React.FC = () => {
 
    return (
       <div className='recovery-account'>
+			<Header />
 			<div className='recovery-account__content'>
 				<AuthBox>
 					<FormComponent onSubmit={submitFn} data={dataForm} schemeForValidator={schemeFormRecoveryAccountPage}>

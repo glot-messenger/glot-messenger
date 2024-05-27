@@ -3,7 +3,8 @@ import './sign-up-page-style.css';
 
 import {
 	AuthBox,
-	Footer
+	Footer,
+	Header
 } from '../../../widgets';
 
 import {
@@ -34,6 +35,7 @@ const SignUpPage: React.FC = () => {
 
 	return (
 		<div className='sign-up'>
+			<Header />
 			<div className='sign-up__content'>
 				<AuthBox>
 					<FormComponent onSubmit={submitFn} data={dataForm} schemeForValidator={schemeFormSignUpPage}>
