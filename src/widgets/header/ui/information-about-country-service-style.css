@@ -1,0 +1,25 @@
+.info-about-country-service {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.info-about-country-service__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.info-about-country-service__text {
+	margin-right: 10px;
+	font-size: 18px;
+	color: aliceblue;
+	line-height: 125%;
+}
+
+.info-about-country-service__icon {
+	flex: 0 0 35px;
+	width: 35px;
+	height: 35px;
+}
