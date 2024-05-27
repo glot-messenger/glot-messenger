@@ -4,7 +4,8 @@ import './footer-style.css';
 import {
 	HrElement,
 	Logo,
-	configForLogoInFooter
+	configForLogoInFooter,
+	JoinSocialNetwork
 } from '../../../shared';
 
 import { GratitudeBlock } from './gratitude-block';
@@ -14,7 +15,7 @@ import { Copyright } from './copyright';
 const Footer: React.FC = () => {
 	return (
 		<footer className='footer'>
-			<div className='footer__wrapper'>
+			<div className='footer__wrapper _container'>
 				<div className='footer__container'>
 					<Logo {...configForLogoInFooter} />
 					<div className='footer__box-elements'>
@@ -27,6 +28,7 @@ const Footer: React.FC = () => {
 						</div>
 					</div>
 					<HrElement />
+					<JoinSocialNetwork classesParent='footer' />
 				</div>
 			</div>
 		</footer>

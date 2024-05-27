@@ -1,0 +1,40 @@
+.join-social-network__container {
+	margin: 0px -10px;
+	display: flex;
+}
+
+.join-social-network__column {
+	padding: 0px 10px;
+	flex: 0 1 12%;
+}
+
+.join-social-network__column:last-child {
+	flex: 0 1 88%;
+}
+
+.join-social-network__text {
+	color: #90959B;
+	font-size: 20px;
+	line-height: 125%;
+}
+
+.join-social-network__list {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.join-social-network__element {
+	flex: 0 0 130px;
+	margin: 0px 15px 15px 0px;
+}
+
+.join-social-network__link {
+	width: 100%;
+	height: 100%;
+}
+
+.join-social-network__img {
+	width: 25px;
+	height: 25px;
+}

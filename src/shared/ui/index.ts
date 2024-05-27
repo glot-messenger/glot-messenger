@@ -6,6 +6,8 @@ import { GroupLinks } from './group-links';
 import { LinkElement } from './link-element';
 import { HrElement } from './hr-element';
 import { Logo } from './logo';
+import { JoinSocialNetwork } from './join-social-network';
+import { ButtonPretty } from './button-pretty';
 
 export {
 	ButtonComponent,
@@ -15,5 +17,7 @@ export {
 	GroupLinks,
 	LinkElement,
 	HrElement,
-	Logo
+	Logo,
+	JoinSocialNetwork,
+	ButtonPretty
 };

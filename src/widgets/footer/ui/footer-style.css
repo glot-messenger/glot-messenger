@@ -1,13 +1,8 @@
 .footer {
-   flex: 0 1 auto;
-   width: 100%;
-   background-color: #1C1F26;
-   padding: 20px;
-}
-
-.footer__wrapper {
-   max-width: 1500px;
-   margin: 0px auto;
+	flex: 0 1 auto;
+	width: 100%;
+	background-color: #1C1F26;
+	padding: 20px;
 }
 
 .footer__box-elements {
@@ -17,4 +12,8 @@
 
 .footer__column {
 	flex: 0 1 50%;
+}
+
+.footer__social-network-join {
+	margin-top: 20px;
 }

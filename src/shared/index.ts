@@ -46,7 +46,9 @@ import {
 	GroupLinks,
 	LinkElement,
 	HrElement,
-	Logo
+	Logo,
+	JoinSocialNetwork,
+	ButtonPretty
 } from './ui';
 
 export {
@@ -74,6 +76,8 @@ export {
 	LinkElement,
 	HrElement,
 	Logo,
+	JoinSocialNetwork,
+	ButtonPretty,
 	HOME,
 	AUTH,
 	RECOVERY_ACCOUNT_SEGMENT,

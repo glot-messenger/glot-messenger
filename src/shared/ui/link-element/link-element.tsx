@@ -13,7 +13,7 @@ const LinkElement: React.FC<ILinkElementProps> = ({ to, titleHover, classesValue
 			<Link to={to} title={titleHover} className={classes}>
 				{contentChildren}
 			</Link> :
-			<a href={to} title={titleHover} className={classes}>
+			<a href={to} target='_blank' rel='noreferrer' title={titleHover} className={classes}>
 				{contentChildren}
 			</a>
 	);

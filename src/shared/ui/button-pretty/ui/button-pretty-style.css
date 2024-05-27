@@ -1,0 +1,38 @@
+.pretty-button {
+	width: 100%;
+	height: 100%;
+}
+
+.pretty-button__container {
+	width: 100%;
+	height: 100%;
+	padding: 11px;
+	border-radius: 3px !important;
+  box-shadow: 0 0 3px 0px #000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	border: 1px solid #2EBFFF;
+}
+
+.pretty-button__container::before {
+	content: '';
+	position: absolute;
+	width: 200%;
+	height: 100%;
+	background: #2EBFFF;
+	z-index: -1;
+	top: 0;
+	bottom: 0;
+	transition: all 0.2s ease 0s;
+	transform: skewX(45deg) scale(0, 1);
+	padding: 0.85em 0.75em;
+}
+
+.pretty-button__container:hover:before {
+	transform: skewX(45deg) scale(1, 1);
+}

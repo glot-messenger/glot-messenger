@@ -1,5 +1,6 @@
 import React from 'react';
 import './zero.css';
+import './style.css';
 import ReactDOM from 'react-dom/client';
 import { App } from './app';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';

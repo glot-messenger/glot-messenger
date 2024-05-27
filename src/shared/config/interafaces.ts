@@ -63,3 +63,8 @@ export interface IManuallyTransmittedDataForFieldsFormRecoveryAccountPage {
 export interface ILightLoad {
 	text: string;
 };
+
+export interface IConfigJoinSocialNetwork {
+	text: string;
+	data: IIcon[];
+};
