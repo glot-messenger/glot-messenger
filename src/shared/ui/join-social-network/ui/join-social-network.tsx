@@ -1,6 +1,6 @@
 import React from 'react';
 import './join-social-network-style.css';
-import { configForJoinSocialNetwork } from '../../../config';
+import { configForJoinSocialNetworkDrawData } from '../config';
 import type { IJoinSocialNetworkProps } from './interafaces';
 
 import {
@@ -9,7 +9,7 @@ import {
 } from '../../';
 
 const JoinSocialNetwork: React.FC<IJoinSocialNetworkProps> = ({ classesParent }) => {
-	const { text, data } = configForJoinSocialNetwork;
+	const { text, data } = configForJoinSocialNetworkDrawData;
 
 	const classes: string = `${classesParent}__social-network-join join-social-network`;
 
@@ -27,7 +27,7 @@ const JoinSocialNetwork: React.FC<IJoinSocialNetworkProps> = ({ classesParent })
 							return (
 								<li className='join-social-network__element' key={index}>
 									<LinkElement to={correctPath} titleHover={titleHover} classesValue='join-social-network__link' typeElement='nativeLink'>
-										<ButtonPretty type='button' typeElement='button' titleHover={titleHover}>
+										<ButtonPretty classes='join-social-network__btn' type='button' typeElement='button' titleHover={titleHover}>
 											<img className='join-social-network__img' src={`/assets/icons/social-network-icons/${name}`} alt={alt} />
 										</ButtonPretty>
 									</LinkElement>

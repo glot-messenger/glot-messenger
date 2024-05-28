@@ -1,7 +1,9 @@
 export interface IButtonComponentProps {
-	textBtn: string;
+	textBtn?: string;
 	type: 'submit' | 'reset' | 'button';
 	titleHover: string;
 	typeElement: 'button';
-	isDisabled?: boolean; 
+	isDisabled?: boolean;
+	classes: string;
+	children?: React.ReactNode;
 };

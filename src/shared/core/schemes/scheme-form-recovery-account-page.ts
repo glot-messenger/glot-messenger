@@ -3,19 +3,10 @@ import type { ISchemeForForm } from './interafaces';
 import {
 	IS_REQUIRED,
 	MIN,
-	MAX,
-	IS_EMAIL
+	MAX
 } from '../names-rules';
 
 const schemeFormRecoveryAccountPage: ISchemeForForm = {
-	email: {
-		[IS_REQUIRED]: {
-			message: 'Поле почта является обязательным к заполнению'
-		},
-		[IS_EMAIL]: {
-			message: 'Поле почты, должно являться почтой, а не чем-то другим.'
-		}
-	},
 	login: {
 		[IS_REQUIRED]: {
 			message: 'Поле логин является обязательным к заполнению'
@@ -34,12 +25,12 @@ const schemeFormRecoveryAccountPage: ISchemeForForm = {
 			message: 'Поле для ввода секретной фразы является обязательным к заполнению'
 		},
 		[MIN]: {
-			message: 'Поле для ввода секретной фразы должно содержать не меньше 31 символа',
-			value: 31
+			message: 'Поле для ввода секретной фразы должно содержать не меньше 72 символов',
+			value: 72
 		},
 		[MAX]: {
-			message: 'Поле для ввода секретной фразы может содержать максимально 72 символа',
-			value: 72
+			message: 'Поле для ввода секретной фразы может содержать максимально 300 символов',
+			value: 300
 		}
 	}
 };

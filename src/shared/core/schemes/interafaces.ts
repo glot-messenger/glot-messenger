@@ -18,7 +18,6 @@ export interface IInstanceRules {
 	symbolRequired?: IMessageRule;
 	uppercaseElementRequired?: IMessageRule;
 	isIdentical?: IMessageRule & ITargetValue;
-	isEmail?: IMessageRule;
 };
 
 export interface ISchemeForForm {

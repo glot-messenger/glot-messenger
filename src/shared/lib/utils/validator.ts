@@ -7,8 +7,7 @@ import {
 	NUMBER_REQUIRED,
 	SYMBOL_REQUIRED,
 	UPPER_CASE_ELEMENT_REQUIRED,
-	IS_IDENTICAL,
-	IS_EMAIL
+	IS_IDENTICAL
 } from '../../core';
 
 import type {
@@ -35,7 +34,7 @@ class Validator implements IValidator {
 
 		switch(nameR) {
 			case IS_REQUIRED:
-				isError = !(new Boolean(value).valueOf());
+				isError = !value;
 			break;
 			case IS_IDENTICAL:
 				const z = rule[nameR];
@@ -65,11 +64,6 @@ class Validator implements IValidator {
 			case UPPER_CASE_ELEMENT_REQUIRED:
 				isError = !(
 					/[A-Z]/um.test(value)
-				);
-			break;
-			case IS_EMAIL:
-				isError = !(
-					/^(.)+@(.)+[.](.)+$/.test(value)
 				);
 			break;
 			default:

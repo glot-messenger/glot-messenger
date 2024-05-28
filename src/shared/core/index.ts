@@ -24,8 +24,7 @@ import {
 	NUMBER_REQUIRED,
 	SYMBOL_REQUIRED,
 	UPPER_CASE_ELEMENT_REQUIRED,
-	IS_IDENTICAL,
-	IS_EMAIL
+	IS_IDENTICAL
 } from './names-rules';
 
 import { authBoxData }  from './auth-box-data';
@@ -50,7 +49,6 @@ export {
 	SYMBOL_REQUIRED,
 	UPPER_CASE_ELEMENT_REQUIRED,
 	IS_IDENTICAL,
-	IS_EMAIL,
 	schemeFormSignInPage,
 	schemeFormSignUpPage,
 	schemeFormRecoveryAccountPage,

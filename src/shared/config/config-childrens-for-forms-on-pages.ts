@@ -33,23 +33,12 @@ const configChildrensForFormSignInPage: IManuallyTransmittedDataForFieldsFormSig
 		typeElement: 'button',
 		textBtn: 'Вход',
 		type: 'submit',
-		titleHover: 'Нажмите, чтобы отправить заполненные данные и войти в приложение.'
+		titleHover: 'Нажмите, чтобы отправить заполненные данные и войти в приложение.',
+		classes: 'sign-in__btn'
 	}
 };
 
 const configChildrensForFormSignUpPage: IManuallyTransmittedDataForFieldsFormSignUpPage = {
-	email: {
-		titleHover: 'Поле для заполнения почты',
-		typeElement: 'textField',
-		isRequired: true,
-		placeholder: 'Укажите свою почту',
-		label: 'Почта:',
-		type: 'text',
-		name: 'email',
-		nameIcon: 'email.svg',
-		alt: 'Иконка почтового конверта.',
-		description: 'Пример корректной почты: "test-test@yandex.ru". Почта также используется при восстановлении пароля.'
-	},
 	login: {
 		titleHover: 'Поле для заполнения логина',
 		typeElement: 'textField',
@@ -99,7 +88,7 @@ const configChildrensForFormSignUpPage: IManuallyTransmittedDataForFieldsFormSig
 		description: 'Это поле вы заполняете больше для своего самоконтроля'
 	},
 	secretPhrase: {
-		titleHover: 'Поле для ввода секретной фразы.',
+		titleHover: 'Поле для ввода секретной фразы. Очень важное поле: отнеситесь к его заполнению благоразумно. Придумайте что-то максимально неординарное и уникальное. Чем абсурднее фраза, тем лучше)',
 		typeElement: 'textField',
 		isRequired: true,
 		placeholder: 'Придумайте секретную фразу, которую не сможет разгадать даже AI',
@@ -108,7 +97,7 @@ const configChildrensForFormSignUpPage: IManuallyTransmittedDataForFieldsFormSig
 		name: 'secretPhrase',
 		nameIcon: 'secret-phrase.svg',
 		alt: 'Щит символизирующий секретность, с галочкой по середине.',
-		description: 'В случае, если вы забудете пароль, это поле вам поможет. Пробелы учитываются! Пример: "Жмых затравил неподатливую змею!!!"'
+		description: 'В случае, если вы забудете пароль, это поле вам поможет. Пробелы учитываются! Пример: "Жмых затравил неподатливую змею своим средневековым красным жмыхом и получил удовольствие!!!" Чем абсурднее фраза, тем лучше. ОЧЕНЬ ВАЖНОЕ ПОЛЕ'
 	},
 	acceptanceOfTermsPoliciesAndRules: {
 		titleHover: 'Нажмите, чтобы согласиться с условиями компании для нашего совместного взаимодействия с вами.',
@@ -125,23 +114,12 @@ const configChildrensForFormSignUpPage: IManuallyTransmittedDataForFieldsFormSig
 		typeElement: 'button',
 		textBtn: 'Зарегистрироваться',
 		type: 'submit',
-		titleHover: 'Нажмите, чтобы зарегистрироваться в сервисе.'
+		titleHover: 'Нажмите, чтобы зарегистрироваться в сервисе.',
+		classes: 'sign-up__btn'
 	}
 };
 
 const configChildrensForFormRecoveryAccountPage: IManuallyTransmittedDataForFieldsFormRecoveryAccountPage = {
-	email: {
-		titleHover: 'Поле для заполнения почты',
-		typeElement: 'textField',
-		isRequired: true,
-		placeholder: 'Укажите свою почту',
-		label: 'Почта:',
-		type: 'text',
-		name: 'email',
-		nameIcon: 'email.svg',
-		alt: 'Иконка почтового конверта.',
-		description: 'Используем эти данные для сверки. Пример корректной почты: "test-test@yandex.ru"'
-	},
 	login: {
 		titleHover: 'Поле для заполнения логина',
 		typeElement: 'textField',
@@ -170,7 +148,8 @@ const configChildrensForFormRecoveryAccountPage: IManuallyTransmittedDataForFiel
 		typeElement: 'button',
 		textBtn: 'Восстановить',
 		type: 'submit',
-		titleHover: 'Нажмите, чтобы восстановить пароль от своей учетной записи.'
+		titleHover: 'Нажмите, чтобы восстановить пароль от своей учетной записи.',
+		classes: 'recovery-account__btn'
 	}
 };
 

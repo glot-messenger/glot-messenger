@@ -20,7 +20,6 @@ import type { IDataFormSignUp } from './interafaces';
 
 const SignUpPage: React.FC = () => {
 	const [dataForm] = useState<IDataFormSignUp>({
-		email: '',
 		login: '',
 		userName: '',
 		password: '',
@@ -39,7 +38,6 @@ const SignUpPage: React.FC = () => {
 			<div className='sign-up__content'>
 				<AuthBox>
 					<FormComponent onSubmit={submitFn} data={dataForm} schemeForValidator={schemeFormSignUpPage}>
-						<TextField {...configChildrensForFormSignUpPage.email} />
 						<TextField {...configChildrensForFormSignUpPage.login} />
 						<TextField {...configChildrensForFormSignUpPage.userName} />
 						<TextField {...configChildrensForFormSignUpPage.password} />

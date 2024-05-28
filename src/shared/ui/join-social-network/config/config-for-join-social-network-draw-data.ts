@@ -1,6 +1,6 @@
 import type { IConfigJoinSocialNetwork } from './interafaces';
 
-const configForJoinSocialNetwork: IConfigJoinSocialNetwork = {
+const configForJoinSocialNetworkDrawData: IConfigJoinSocialNetwork = {
 	text: 'Присоединяйтесь:',
 	data: [
 		{
@@ -48,4 +48,4 @@ const configForJoinSocialNetwork: IConfigJoinSocialNetwork = {
 	]
 };
 
-export { configForJoinSocialNetwork };
+export { configForJoinSocialNetworkDrawData };

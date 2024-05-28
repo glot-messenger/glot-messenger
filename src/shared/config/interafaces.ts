@@ -20,6 +20,7 @@ interface IManuallyTransmittedDataForButton {
 	type: 'submit' | 'reset' | 'button';
 	titleHover: string;
 	typeElement: 'button';
+	classes: string;
 };
 
 export interface IConfigForClassicBlock {
@@ -43,7 +44,6 @@ export interface IManuallyTransmittedDataForFieldsFormSignInPage {
 };
 
 export interface IManuallyTransmittedDataForFieldsFormSignUpPage {
-	email: IManuallyTransmittedDataForTextFields;
 	login: IManuallyTransmittedDataForTextFields;
 	userName: IManuallyTransmittedDataForTextFields;
 	password: IManuallyTransmittedDataForTextFields;
@@ -54,7 +54,6 @@ export interface IManuallyTransmittedDataForFieldsFormSignUpPage {
 };
 
 export interface IManuallyTransmittedDataForFieldsFormRecoveryAccountPage {
-	email: IManuallyTransmittedDataForTextFields;
 	login: IManuallyTransmittedDataForTextFields;
 	secretPhrase: IManuallyTransmittedDataForTextFields;
 	button: IManuallyTransmittedDataForButton;
@@ -64,7 +63,4 @@ export interface ILightLoad {
 	text: string;
 };
 
-export interface IConfigJoinSocialNetwork {
-	text: string;
-	data: IIcon[];
-};
+
