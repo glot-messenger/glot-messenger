@@ -3,8 +3,11 @@
 	height: 100%;
 }
 
-.btn.disabled .btn__container {
+.btn.disabled {
 	pointer-events: none;
+}
+
+.btn.disabled .btn__container {
 	background-color: #1d2129;
 	border: 1px solid #000;
 }

@@ -10,6 +10,7 @@ import { AuthPage } from './auth';
 import { RecoveryAccountPage } from './recovery-account';
 import { SignInPage } from './sign-in';
 import { SignUpPage } from './sign-up';
+import { NotFoundPage } from './not-found';
 import { AuthBoxConditionProvider } from '../features';
 
 import {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
 				element: <SignUpPage />
 			}
 		]
+	},
+	{
+		path: '*',
+		element: <NotFoundPage />
 	}
 ]);
 
