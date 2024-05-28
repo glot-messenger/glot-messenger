@@ -1,5 +1,11 @@
 import type { IConfigForHomePageDrawData } from './interafaces';
 
+import {
+	AUTH,
+	SIGN_IN_SEGMENT,
+	SIGN_UP_SEGMENT
+} from '../../../shared';
+
 const configForHomePageDrawData: IConfigForHomePageDrawData = {
 	title: {
 		first: 'Пора перестать использовать Discord!',
@@ -10,7 +16,7 @@ const configForHomePageDrawData: IConfigForHomePageDrawData = {
 		{
 			link: {
 				titleHover: 'Нажмите, чтобы перейти на страницу регистрации и создать учетную запись в GLOT',
-				path: '/auth/sign-up'
+				path: `${AUTH}/${SIGN_UP_SEGMENT}`
 			},
 			btn: {
 				typeBtn: 'pretty',
@@ -24,7 +30,7 @@ const configForHomePageDrawData: IConfigForHomePageDrawData = {
 		{
 			link: {
 				titleHover: 'Нажмите, чтобы перейти на страницу входа в GLOT',
-				path: '/auth/sign-in'
+				path: `${AUTH}/${SIGN_IN_SEGMENT}`
 			},
 			btn: {
 				typeBtn: 'classic',
