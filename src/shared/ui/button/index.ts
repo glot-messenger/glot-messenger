@@ -1,3 +1,3 @@
-import { ButtonComponent } from './button-component';
+import { ButtonComponent } from './ui';
 
 export { ButtonComponent };

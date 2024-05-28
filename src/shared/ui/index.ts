@@ -1,4 +1,4 @@
-import { ButtonComponent } from './button';
+import { ButtonComponent } from './button/ui';
 import { FormComponent } from './form';
 import { TextField } from './text-field';
 import { CheckboxField } from './checkbox-field';
