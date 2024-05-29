@@ -1,4 +1,10 @@
-import { validator, isNullable, isNotPrimitive, isContainsPropertiesTypeAndPropsInChild } from './utils';
+import {
+	isNullable,
+	isNotPrimitive,
+	isContainsPropertiesTypeAndPropsInChild
+} from './utils';
+
+import { validator } from './validator';
 
 export {
 	validator,

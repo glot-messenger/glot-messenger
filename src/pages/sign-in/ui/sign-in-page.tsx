@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './sign-in-page-style.css';
+import { configChildrensForFormSignInPage } from '../config';
+import type { IDataFormSignIn } from './interafaces';
 
 import {
 	AuthBox,
@@ -11,11 +13,8 @@ import {
 	TextField,
 	ButtonComponent,
 	FormComponent,
-	configChildrensForFormSignInPage,
 	schemeFormSignInPage
 } from '../../../shared';
-
-import type { IDataFormSignIn } from './interafaces';
 
 const SignInPage: React.FC = () => {
 	const [dataForm] = useState<IDataFormSignIn>({

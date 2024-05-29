@@ -1,13 +1,3 @@
-// config
-import {
-	configChildrensForFormSignInPage,
-	configChildrensForFormSignUpPage,
-	configChildrensForFormRecoveryAccountPage,
-	configForLogoInFooter,
-	configForGratitudeBlockInFooter,
-	configForSupportEmailBlockInFooter,
-	configForCopyrightInFooter
-} from './config';
 // core
 import {
 	authBoxData,
@@ -52,13 +42,6 @@ import {
 } from './ui';
 
 export {
-	configChildrensForFormSignInPage,
-	configChildrensForFormSignUpPage,
-	configChildrensForFormRecoveryAccountPage,
-	configForLogoInFooter,
-	configForGratitudeBlockInFooter,
-	configForSupportEmailBlockInFooter,
-	configForCopyrightInFooter,
 	authBoxData,
 	textFieldEyeData,
 	schemeFormSignInPage,

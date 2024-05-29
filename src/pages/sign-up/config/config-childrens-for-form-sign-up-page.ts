@@ -1,42 +1,4 @@
-import type {
-	IManuallyTransmittedDataForFieldsFormSignInPage,
-	IManuallyTransmittedDataForFieldsFormSignUpPage,
-	IManuallyTransmittedDataForFieldsFormRecoveryAccountPage
-} from './interafaces';
-
-const configChildrensForFormSignInPage: IManuallyTransmittedDataForFieldsFormSignInPage = {
-	login: {
-		titleHover: 'Поле ввода логина',
-		typeElement: 'textField',
-		isRequired: true,
-		placeholder: 'Введите логин',
-		label: 'Логин:',
-		type: 'text',
-		name: 'login',
-		nameIcon: 'login.svg',
-		alt: 'Иконка пользователя с ключиком.',
-		description: 'Ваш уникальный и оригинальный логин'
-	},
-	password: {
-		titleHover: 'Поле ввода пароля',
-		typeElement: 'textField',
-		isRequired: true,
-		placeholder: 'Введите пароль',
-		label: 'Пароль:',
-		type: 'password',
-		name: 'password',
-		nameIcon: 'password-key.svg',
-		alt: 'Иконка ключа.',
-		description: 'Ваш суперсложный пароль'
-	},
-	button: {
-		typeElement: 'button',
-		textBtn: 'Вход',
-		type: 'submit',
-		titleHover: 'Нажмите, чтобы отправить заполненные данные и войти в приложение.',
-		classes: 'sign-in__btn'
-	}
-};
+import type { IManuallyTransmittedDataForFieldsFormSignUpPage } from './interafaces';
 
 const configChildrensForFormSignUpPage: IManuallyTransmittedDataForFieldsFormSignUpPage = {
 	login: {
@@ -119,42 +81,4 @@ const configChildrensForFormSignUpPage: IManuallyTransmittedDataForFieldsFormSig
 	}
 };
 
-const configChildrensForFormRecoveryAccountPage: IManuallyTransmittedDataForFieldsFormRecoveryAccountPage = {
-	login: {
-		titleHover: 'Поле для заполнения логина',
-		typeElement: 'textField',
-		isRequired: true,
-		placeholder: 'Укажите свой логин',
-		label: 'Логин:',
-		type: 'text',
-		name: 'login',
-		nameIcon: 'login.svg',
-		alt: 'Иконка пользователя с ключиком.',
-		description: 'Используем эти данные для сверки, что вы - это вы'
-	},
-	secretPhrase: {
-		titleHover: 'Поле для ввода вашей секретной фразы.',
-		typeElement: 'textField',
-		isRequired: true,
-		placeholder: 'Укажите секретную фразу',
-		label: 'Секретная фраза:',
-		type: 'text',
-		name: 'secretPhrase',
-		nameIcon: 'secret-phrase.svg',
-		alt: 'Щит символизирующий секретность, с галочкой по середине.',
-		description: 'Как мы и говорили, эти данные нужны для восстановления пароля'
-	},
-	button: {
-		typeElement: 'button',
-		textBtn: 'Восстановить',
-		type: 'submit',
-		titleHover: 'Нажмите, чтобы восстановить пароль от своей учетной записи.',
-		classes: 'recovery-account__btn'
-	}
-};
-
-export {
-	configChildrensForFormSignInPage,
-	configChildrensForFormSignUpPage,
-	configChildrensForFormRecoveryAccountPage
-};
+export { configChildrensForFormSignUpPage };

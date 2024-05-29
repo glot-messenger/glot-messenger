@@ -32,43 +32,43 @@ class Validator implements IValidator {
 			return isError;
 		}
 
-		switch(nameR) {
+		switch (nameR) {
 			case IS_REQUIRED:
 				isError = !value;
-			break;
+				break;
 			case IS_IDENTICAL:
 				const z = rule[nameR];
 
 				isError = !(z && value === data[z.targetValue]);
-			break;
+				break;
 			case MIN:
 				const m = rule[nameR];
 
 				isError = !(m && value.length >= m.value);
-			break;
+				break;
 			case MAX:
 				const x = rule[nameR];
 
 				isError = !(x && value.length <= x.value);
-			break;
+				break;
 			case NUMBER_REQUIRED:
 				isError = !(
 					/[1234567890]/m.test(value)
 				);
-			break;
+				break;
 			case SYMBOL_REQUIRED:
 				isError = !(
 					/[!?@#$%^&*]/m.test(value)
 				);
-			break;
+				break;
 			case UPPER_CASE_ELEMENT_REQUIRED:
 				isError = !(
 					/[A-Z]/um.test(value)
 				);
-			break;
+				break;
 			default:
 				console.log(`Something went wrong. ${nameR} (rule) is not correct value!!! The developers are already working on restoring the correct operation of the application.`);
-			break;
+				break;
 		}
 
 		return isError;

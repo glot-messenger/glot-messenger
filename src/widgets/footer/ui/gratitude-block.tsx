@@ -1,6 +1,6 @@
 import React from 'react';
 import './gratitude-block-style.css';
-import { configForGratitudeBlockInFooter } from '../../../shared';
+import { configForGratitudeBlockInFooter } from '../config';
 
 const GratitudeBlock: React.FC = () => {
 	const { text, icon } = configForGratitudeBlockInFooter;

@@ -1,6 +1,6 @@
 import React from 'react';
 import './copyright-style.css';
-import { configForCopyrightInFooter } from '../../../shared';
+import { configForCopyrightInFooter } from '../config';
 
 const Copyright: React.FC = () => {
 	const date: Date = new Date();

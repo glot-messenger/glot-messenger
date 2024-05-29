@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './recovery-account-page-style.css';
 import type { IDataFormRecoveryAccount } from './interafaces';
+import { configChildrensForFormRecoveryAccountPage } from '../config';
 
 import {
 	AuthBox,
@@ -12,7 +13,6 @@ import {
 	FormComponent,
 	TextField,
 	ButtonComponent,
-	configChildrensForFormRecoveryAccountPage,
 	schemeFormRecoveryAccountPage
 } from '../../../shared';
 

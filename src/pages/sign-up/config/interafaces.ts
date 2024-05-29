@@ -1,0 +1,9 @@
+export interface IManuallyTransmittedDataForFieldsFormSignUpPage {
+	login: IManuallyTransmittedDataForTextFields;
+	userName: IManuallyTransmittedDataForTextFields;
+	password: IManuallyTransmittedDataForTextFields;
+	repeatPassword: IManuallyTransmittedDataForTextFields;
+	secretPhrase: IManuallyTransmittedDataForTextFields;
+	acceptanceOfTermsPoliciesAndRules: IManuallyTransmittedDataForCheckboxFields;
+	button: IManuallyTransmittedDataForButton;
+};

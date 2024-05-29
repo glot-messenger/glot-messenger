@@ -1,4 +1,4 @@
-import { HOME } from "../core";
+import { HOME } from "../../../shared";
 import type { IConfigForClassicBlock } from './interafaces';
 
 const configForLogoInFooter: IConfigForClassicBlock = {

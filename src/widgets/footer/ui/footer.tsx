@@ -1,16 +1,15 @@
 import React from 'react';
 import './footer-style.css';
+import { configForLogoInFooter } from '../config';
+import { GratitudeBlock } from './gratitude-block';
+import { SupportEmailBlock } from './support-email-block';
+import { Copyright } from './copyright';
 
 import {
 	HrElement,
 	Logo,
-	configForLogoInFooter,
 	JoinSocialNetwork
 } from '../../../shared';
-
-import { GratitudeBlock } from './gratitude-block';
-import { SupportEmailBlock } from './support-email-block';
-import { Copyright } from './copyright';
 
 const Footer: React.FC = () => {
 	return (

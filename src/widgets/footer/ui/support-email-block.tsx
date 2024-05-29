@@ -1,10 +1,7 @@
 import React from 'react';
 import './support-email-block-style.css';
-
-import {
-	LinkElement,
-	configForSupportEmailBlockInFooter
-} from '../../../shared';
+import { configForSupportEmailBlockInFooter } from '../config';
+import { LinkElement } from '../../../shared';
 
 const SupportEmailBlock: React.FC = () => {
 	const { text, link } = configForSupportEmailBlockInFooter;

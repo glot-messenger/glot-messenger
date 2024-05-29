@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './sign-up-page-style.css';
+import { configChildrensForFormSignUpPage } from '../config';
 
 import {
 	AuthBox,
@@ -12,7 +13,6 @@ import {
 	ButtonComponent,
 	TextField,
 	CheckboxField,
-	configChildrensForFormSignUpPage,
 	schemeFormSignUpPage
 } from '../../../shared';
 
