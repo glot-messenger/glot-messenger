@@ -1,3 +1,3 @@
-import { GroupLinks } from './group-links';
+import { GroupLinks } from './ui';
 
 export { GroupLinks };

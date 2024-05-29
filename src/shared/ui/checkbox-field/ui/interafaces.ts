@@ -1,16 +1,16 @@
-import type { IInstanceWithKeyAndValue } from '../../types';
+import type { IInstanceWithKeyAndValue } from '../../../types';
 
-export interface ITextFieldProps {
+export interface ICheckboxFieldProps {
 	placeholder?: string;
 	label: string;
-	type: string;
+	type?: string;
 	name: string;
 	titleHover: string;
-	typeElement: 'textField';
+	typeElement: 'checkboxField',
 	nameIcon: string;
 	alt: string;
 	description: string;
-	value?: string;
+	value?: boolean;
 	error?: string;
 	isRequired?: boolean;
 	onChange?: (data: IInstanceWithKeyAndValue) => void;

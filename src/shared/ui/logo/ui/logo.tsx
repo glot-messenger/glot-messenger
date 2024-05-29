@@ -4,7 +4,7 @@ import './logo-style.css';
 import {
 	LinkElement,
 	HOME
-} from '../..';
+} from '../../..';
 
 import type { ILogoProps } from './interafaces';
 

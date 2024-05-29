@@ -1,4 +1,4 @@
-import type { IIcon } from '../../core';
+import type { IIcon } from '../../../core';
 
 export interface ILogoProps {
 	text: string;

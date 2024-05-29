@@ -1,7 +1,7 @@
 import React from 'react';
 import './group-links-style.css';
 import type { IGroupLinksProps, IElement } from './interafaces';
-import { LinkElement } from '../link-element';
+import { LinkElement } from '../../link-element';
 
 const GroupLinks: React.FC<IGroupLinksProps> = ({ linksGroup }) => {
    const { title, data } = linksGroup;

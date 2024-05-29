@@ -1,3 +1,3 @@
-import { LinkElement } from './link-element';
+import { LinkElement } from './ui';
 
 export { LinkElement };

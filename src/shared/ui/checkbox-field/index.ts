@@ -1,3 +1,3 @@
-import { CheckboxField } from './checkbox-field';
+import { CheckboxField } from './ui';
 
 export { CheckboxField };

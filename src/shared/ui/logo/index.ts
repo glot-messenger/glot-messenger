@@ -1,3 +1,3 @@
-import { Logo } from './logo';
+import { Logo } from './ui';
 
 export { Logo };

@@ -2,16 +2,16 @@ import React, { useState, cloneElement, useEffect } from 'react';
 import './form-component-style.css';
 import type { FormEvent } from 'react';
 import type { IFormComponentProps } from './interafaces';
-import type { IInstanceWithKeyAndValue } from '../../types';
+import type { IInstanceWithKeyAndValue } from '../../../types';
 
 import {
 	isNotPrimitive,
 	isNullable,
 	validator,
 	isContainsPropertiesTypeAndPropsInChild
-} from '../../lib';
+} from '../../../lib';
 
-import type { ISchemeForForm } from '../../core';
+import type { ISchemeForForm } from '../../../core';
 
 function FormComponent<S extends ISchemeForForm, D extends Record<string, string | boolean>>({ children, data, onSubmit, schemeForValidator }: IFormComponentProps<S, D>) {
 	const [dataForm, setDataForm] = useState<D>(data);

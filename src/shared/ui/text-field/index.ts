@@ -1,3 +1,3 @@
-import { TextField } from './text-field';
+import { TextField } from './ui';
 
 export { TextField };

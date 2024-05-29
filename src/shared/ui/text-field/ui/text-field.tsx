@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './text-field-style.css';
 import type { ChangeEvent } from 'react';
 import type { ITextFieldProps } from './interafaces';
-import type { IStylePadding, IStyleBorder } from '../../types';
-import { textFieldEyeData } from '../../core';
+import type { IStylePadding, IStyleBorder } from '../../../types';
+import { textFieldEyeData } from '../../../core';
 
 const TextField: React.FC<ITextFieldProps> = ({ placeholder, label, type, name, error, isRequired, titleHover, onChange, value, nameIcon, alt, description }) => {
 	const [typeInput, setTypeInput] = useState<string>(type);

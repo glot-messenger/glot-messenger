@@ -1,3 +1,3 @@
-import { FormComponent } from './form-component';
+import { FormComponent } from './ui';
 
 export { FormComponent };

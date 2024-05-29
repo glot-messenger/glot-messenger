@@ -1,3 +1,3 @@
-import { HrElement } from './hr-element';
+import { HrElement } from './ui';
 
 export { HrElement };
