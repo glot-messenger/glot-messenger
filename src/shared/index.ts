@@ -17,7 +17,7 @@ import type { IAuthBoxData } from './core';
 
 // lib
 import {
-	validator,
+	factoryValidator,
 	isNullable,
 	isNotPrimitive,
 	isContainsPropertiesTypeAndPropsInChild
@@ -47,7 +47,7 @@ export {
 	schemeFormSignInPage,
 	schemeFormSignUpPage,
 	schemeFormRecoveryAccountPage,
-	validator,
+	factoryValidator,
 	isNullable,
 	isNotPrimitive,
 	isContainsPropertiesTypeAndPropsInChild,

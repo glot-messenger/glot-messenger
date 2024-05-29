@@ -4,10 +4,10 @@ import {
 	isContainsPropertiesTypeAndPropsInChild
 } from './utils';
 
-import { validator } from './validator';
+import { factoryValidator } from './validator';
 
 export {
-	validator,
+	factoryValidator,
 	isNullable,
 	isNotPrimitive,
 	isContainsPropertiesTypeAndPropsInChild

@@ -7,7 +7,7 @@ import type { IInstanceWithKeyAndValue } from '../../../types';
 import {
 	isNotPrimitive,
 	isNullable,
-	validator,
+	factoryValidator,
 	isContainsPropertiesTypeAndPropsInChild
 } from '../../../lib';
 
@@ -23,7 +23,7 @@ function FormComponent<S extends ISchemeForForm, D extends Record<string, string
 	}, []);
 
 	function validation(): void {
-		const errorsResult = validator.validate<S, D>(dataForm, schemeForValidator);
+		const errorsResult = factoryValidator().validate<S, D>(dataForm, schemeForValidator);
 
 		setErrorState(errorsResult);
 	};

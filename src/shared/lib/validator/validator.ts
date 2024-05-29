@@ -15,7 +15,18 @@ import type {
 	IInstanceRules
 } from '../../core';
 
+// Singleton
+let staticValidator: null | Validator = null;
+
 class Validator implements IValidator {
+	constructor() {
+		if (staticValidator !== null) {
+			return staticValidator;
+		}
+
+		staticValidator = this;
+	};
+
 	_applyRulesToData(keyD: string, nameR: keyof IInstanceRules, rule: IInstanceRules, data: Record<string, string | boolean>): boolean {
 		let isError: boolean = false;
 
@@ -107,6 +118,4 @@ class Validator implements IValidator {
 	};
 };
 
-const validator = new Validator();
-
-export { validator };
+export { Validator };

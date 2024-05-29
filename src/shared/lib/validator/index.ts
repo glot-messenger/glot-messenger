@@ -1,3 +1,3 @@
-import { validator } from './validator';
+import { factoryValidator } from './factory-validator';
 
-export { validator };
+export { factoryValidator };
