@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import './text-field-style.css';
 import type { ChangeEvent } from 'react';
 import type { ITextFieldProps } from './interafaces';
-import type { IStylePadding, IStyleBorder } from '../../../types';
+
+import type {
+	IStylePadding,
+	IStyleBorder
+} from '../../../types';
+
 import { textFieldEyeData } from '../../../core';
 
-const TextField: React.FC<ITextFieldProps> = ({ placeholder, label, type, name, error, isRequired, titleHover, onChange, value, nameIcon, alt, description }) => {
+const TextField: React.FC<ITextFieldProps> = memo(({ placeholder, label, type, name, error, isRequired, titleHover, onChange, value, nameIcon, alt, description }) => {
 	const [typeInput, setTypeInput] = useState<string>(type);
 
 	const [isFocusInput, setFocusInput] = useState<boolean>(false);
@@ -63,6 +68,6 @@ const TextField: React.FC<ITextFieldProps> = ({ placeholder, label, type, name, 
 			</div>
 		</div>
 	);
-};
+});
 
 export { TextField };

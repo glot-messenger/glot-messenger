@@ -1,4 +1,4 @@
-import React, { useState, cloneElement, useEffect } from 'react';
+import React, { useState, cloneElement, useEffect, useCallback } from 'react';
 import './form-component-style.css';
 import type { FormEvent } from 'react';
 import type { IFormComponentProps } from './interafaces';
@@ -18,12 +18,9 @@ function FormComponent<S extends ISchemeForForm, D extends Record<string, string
 
 	const [errorState, setErrorState] = useState<Record<PropertyKey, string>>({});
 
-	const onChange = ({ key, value }: IInstanceWithKeyAndValue): void => {
-		setDataForm({
-			...dataForm,
-			[key]: value
-		});
-	};
+	const onChange = useCallback(({ key, value }: IInstanceWithKeyAndValue): void => {
+		setDataForm((prevState: D) => ({ ...prevState, [key]: value }));
+	}, []);
 
 	function validation(): void {
 		const errorsResult = validator.validate<S, D>(dataForm, schemeForValidator);

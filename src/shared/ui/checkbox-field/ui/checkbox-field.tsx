@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './checkbox-field-style.css';
 import type { ICheckboxFieldProps } from './interafaces';
 
-const CheckboxField: React.FC<ICheckboxFieldProps> = ({ label, name, error, isRequired, titleHover, onChange, description, nameIcon, alt, value }) => {
+const CheckboxField: React.FC<ICheckboxFieldProps> = memo(({ label, name, error, isRequired, titleHover, onChange, description, nameIcon, alt, value }) => {
 	function checkboxClick(): void {
 		if (onChange !== undefined) {
 			onChange({ key: name, value: !value });
@@ -37,6 +37,6 @@ const CheckboxField: React.FC<ICheckboxFieldProps> = ({ label, name, error, isRe
 			</div>
 		</div>
 	);
-};
+});
 
 export { CheckboxField };
