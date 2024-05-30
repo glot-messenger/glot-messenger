@@ -1,3 +1,3 @@
-import { factoryValidator } from './factory-validator';
+import { KEY_FOR_MULTITON_VALIDATOR } from './core';
 
-export { factoryValidator };
+export { KEY_FOR_MULTITON_VALIDATOR };

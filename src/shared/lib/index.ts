@@ -4,11 +4,13 @@ import {
 	isContainsPropertiesTypeAndPropsInChild
 } from './utils';
 
-import { factoryValidator } from './validator';
+import { KEY_FOR_MULTITON_VALIDATOR } from './validator';
+import { factoryMultiton } from './multiton';
 
 export {
-	factoryValidator,
+	KEY_FOR_MULTITON_VALIDATOR,
 	isNullable,
 	isNotPrimitive,
-	isContainsPropertiesTypeAndPropsInChild
+	isContainsPropertiesTypeAndPropsInChild,
+	factoryMultiton
 };

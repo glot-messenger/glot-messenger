@@ -7,8 +7,9 @@ import type { IInstanceWithKeyAndValue } from '../../../types';
 import {
 	isNotPrimitive,
 	isNullable,
-	factoryValidator,
-	isContainsPropertiesTypeAndPropsInChild
+	KEY_FOR_MULTITON_VALIDATOR,
+	isContainsPropertiesTypeAndPropsInChild,
+	factoryMultiton
 } from '../../../lib';
 
 import type { ISchemeForForm } from '../../../core';
@@ -23,9 +24,13 @@ function FormComponent<S extends ISchemeForForm, D extends Record<string, string
 	}, []);
 
 	function validation(): void {
-		const errorsResult = factoryValidator().validate<S, D>(dataForm, schemeForValidator);
+		const validator = factoryMultiton().get(KEY_FOR_MULTITON_VALIDATOR);
 
-		setErrorState(errorsResult);
+		if (validator !== undefined) {
+			const errorsResult = validator.validate<S, D>(dataForm, schemeForValidator);
+
+			setErrorState(errorsResult);
+		}
 	};
 
 	function submitForm(event: FormEvent<HTMLFormElement>): void {

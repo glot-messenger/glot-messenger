@@ -1,0 +1,3 @@
+const KEY_FOR_MULTITON_VALIDATOR = 'validator';
+
+export { KEY_FOR_MULTITON_VALIDATOR };
