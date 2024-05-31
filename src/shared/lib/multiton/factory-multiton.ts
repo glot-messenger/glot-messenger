@@ -1,7 +1,7 @@
 import { Multiton } from './multiton';
 
-function factoryMultiton<T>(): Multiton<T> {
-   return new Multiton<T>();
+function factoryMultiton(): Multiton {
+   return new Multiton();
 };
 
 export { factoryMultiton };

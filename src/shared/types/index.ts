@@ -1,4 +1,9 @@
-import type { IStylePadding, IStyleBorder, MyChild, IInstanceWithKeyAndValue } from './auxiliary';
+import type {
+	IStylePadding,
+	IStyleBorder,
+	MyChild,
+	IInstanceWithKeyAndValue
+} from './auxiliary';
 
 export type {
 	IStylePadding,

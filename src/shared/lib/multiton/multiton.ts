@@ -1,9 +1,15 @@
-import type { IMultiton } from './interafaces';
+import type {
+	IStoreSingletons,
+	KeysForMultiton,
+	InstancesForMultiton,
+	IMultiton
+} from './interafaces';
 
-let staticMultiton: null | IMultiton = null;
+// Multiton сам является Singleton, но для своих инстансов он Multiton
+let staticMultiton: null | Multiton = null;
 
-class Multiton {
-	storeSingletons: Map<string, unknown> = new Map();
+class Multiton implements IMultiton {
+	storeSingletons: IStoreSingletons = {};
 
 	constructor() {
 		if (staticMultiton !== null) {
@@ -13,16 +19,26 @@ class Multiton {
 		staticMultiton = this;
 	};
 
-	set<T>(key: string, instance: T): void {
-		const isSave: boolean = this.storeSingletons.has(key);
+	set(key: KeysForMultiton, singleton: InstancesForMultiton): void {
+		const isSave = this.storeSingletons[key];
 
 		if (!isSave) {
-			this.storeSingletons.set(key, instance);
+			this.storeSingletons[key] = singleton;
 		}
 	};
 
-	get(key: string) {
-		return this.storeSingletons.get(key);
+	get(key: KeysForMultiton): undefined | InstancesForMultiton {
+		const singleton = this.storeSingletons[key];
+
+		if (!singleton) {
+			return undefined;
+		}
+
+		return singleton;
+	};
+
+	delete(key: KeysForMultiton): void {
+		delete this.storeSingletons[key];
 	};
 };
 

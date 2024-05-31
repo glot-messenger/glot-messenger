@@ -8,7 +8,7 @@ import type {
 	IStyleBorder
 } from '../../../types';
 
-import { textFieldEyeData } from '../../../core';
+import { textFieldEyeData } from '../config';
 
 const TextField: React.FC<ITextFieldProps> = memo(({ placeholder, label, type, name, error, isRequired, titleHover, onChange, value, nameIcon, alt, description }) => {
 	const [typeInput, setTypeInput] = useState<string>(type);

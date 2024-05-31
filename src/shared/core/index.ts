@@ -28,7 +28,6 @@ import {
 } from './names-rules';
 
 import { authBoxData }  from './auth-box-data';
-import { textFieldEyeData } from './text-field-eye-data';
 
 import {
 	HOME,
@@ -53,7 +52,6 @@ export {
 	schemeFormSignUpPage,
 	schemeFormRecoveryAccountPage,
 	authBoxData,
-	textFieldEyeData,
 	HOME,
 	AUTH,
 	RECOVERY_ACCOUNT_SEGMENT,

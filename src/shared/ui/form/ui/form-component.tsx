@@ -3,16 +3,16 @@ import './form-component-style.css';
 import type { FormEvent } from 'react';
 import type { IFormComponentProps } from './interafaces';
 import type { IInstanceWithKeyAndValue } from '../../../types';
+import type { ISchemeForForm } from '../../../core';
 
 import {
 	isNotPrimitive,
 	isNullable,
 	KEY_FOR_MULTITON_VALIDATOR,
 	isContainsPropertiesTypeAndPropsInChild,
-	factoryMultiton
+	factoryMultiton,
+	factoryValidator
 } from '../../../lib';
-
-import type { ISchemeForForm } from '../../../core';
 
 function FormComponent<S extends ISchemeForForm, D extends Record<string, string | boolean>>({ children, data, onSubmit, schemeForValidator }: IFormComponentProps<S, D>) {
 	const [dataForm, setDataForm] = useState<D>(data);
@@ -26,7 +26,7 @@ function FormComponent<S extends ISchemeForForm, D extends Record<string, string
 	function validation(): void {
 		const validator = factoryMultiton().get(KEY_FOR_MULTITON_VALIDATOR);
 
-		if (validator !== undefined) {
+		if (validator) {
 			const errorsResult = validator.validate<S, D>(dataForm, schemeForValidator);
 
 			setErrorState(errorsResult);
@@ -90,8 +90,22 @@ function FormComponent<S extends ISchemeForForm, D extends Record<string, string
 	});
 
 	useEffect((): void => {
+		const multiton = factoryMultiton();
+
+		// Регистрируем в Multiton инстанс валидатора, если его там нет
+		if (!multiton.get(KEY_FOR_MULTITON_VALIDATOR)) {
+			multiton.set(KEY_FOR_MULTITON_VALIDATOR, factoryValidator())
+		}
+
 		validation();
 	}, [dataForm]);
+
+	useEffect(() => {
+		return () => {
+			// Освобождаем память, удаляем из Multiton инстанс Validator
+			factoryMultiton().delete(KEY_FOR_MULTITON_VALIDATOR);
+		};
+	}, []);
 
 	return (
 		<form className='form' onSubmit={submitForm}>

@@ -1,7 +1,6 @@
 // core
 import {
 	authBoxData,
-	textFieldEyeData,
 	schemeFormSignInPage,
 	schemeFormSignUpPage,
 	schemeFormRecoveryAccountPage,
@@ -17,7 +16,6 @@ import type { IAuthBoxData } from './core';
 
 // lib
 import {
-	factoryValidator,
 	isNullable,
 	isNotPrimitive,
 	isContainsPropertiesTypeAndPropsInChild
@@ -43,11 +41,9 @@ import {
 
 export {
 	authBoxData,
-	textFieldEyeData,
 	schemeFormSignInPage,
 	schemeFormSignUpPage,
 	schemeFormRecoveryAccountPage,
-	factoryValidator,
 	isNullable,
 	isNotPrimitive,
 	isContainsPropertiesTypeAndPropsInChild,
