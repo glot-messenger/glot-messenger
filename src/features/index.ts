@@ -1,3 +1,9 @@
-import { AuthBoxConditionProvider } from './providers';
+import {
+	AuthBoxConditionProvider,
+	EventEmitterProvider
+} from './providers';
 
-export { AuthBoxConditionProvider };
+export {
+	AuthBoxConditionProvider,
+	EventEmitterProvider
+};

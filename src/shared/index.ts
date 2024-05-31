@@ -18,7 +18,11 @@ import type { IAuthBoxData } from './core';
 import {
 	isNullable,
 	isNotPrimitive,
-	isContainsPropertiesTypeAndPropsInChild
+	isContainsPropertiesTypeAndPropsInChild,
+	factoryEventEmitter,
+	KEY_FOR_MULTITON_EVENT_EMITTER,
+	factoryMultiton,
+	EventEmitter
 } from './lib';
 // types
 import type {
@@ -62,7 +66,11 @@ export {
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
 	SIGN_UP_SEGMENT,
-	defaultAuthBoxDataCondition
+	defaultAuthBoxDataCondition,
+	factoryEventEmitter,
+	KEY_FOR_MULTITON_EVENT_EMITTER,
+	factoryMultiton,
+	EventEmitter
 };
 
 export type {

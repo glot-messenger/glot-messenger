@@ -27,7 +27,7 @@ class Multiton implements IMultiton {
 		}
 	};
 
-	get(key: KeysForMultiton): undefined | InstancesForMultiton {
+	get(key: KeysForMultiton): any {
 		const singleton = this.storeSingletons[key];
 
 		if (!singleton) {
