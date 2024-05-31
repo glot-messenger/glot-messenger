@@ -8,7 +8,7 @@ const ButtonPretty: React.FC<IPrettyButtonProps> = ({ children, titleHover, type
 	const classesValue: string = `pretty-button ${classes}`;
 
 	const handlerClick = (): void => {
-		console.log('click prettyButton');
+		
 	};
 
 	return (

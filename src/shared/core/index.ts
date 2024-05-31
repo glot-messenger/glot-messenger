@@ -31,7 +31,8 @@ import { authBoxData }  from './auth-box-data';
 
 import {
 	HOME,
-	AUTH
+	AUTH,
+	ALL
 } from './router-paths';
 
 import {
@@ -54,6 +55,7 @@ export {
 	authBoxData,
 	HOME,
 	AUTH,
+	ALL,
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
 	SIGN_UP_SEGMENT,

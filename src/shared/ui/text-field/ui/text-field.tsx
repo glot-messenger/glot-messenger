@@ -1,6 +1,5 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useContext } from 'react';
 import './text-field-style.css';
-import type { ChangeEvent } from 'react';
 import type { ITextFieldProps } from './interafaces';
 
 import type {
@@ -9,23 +8,40 @@ import type {
 } from '../../../types';
 
 import { textFieldEyeData } from '../config';
+import { EventEmitterContext } from '../../../../entities';
 
 const TextField: React.FC<ITextFieldProps> = memo(({ placeholder, label, type, name, error, isRequired, titleHover, onChange, value, nameIcon, alt, description }) => {
+	// Получение контекста
+	const eventEmitter = useContext(EventEmitterContext);
+
+	// Для манипуляции с показом и сокрытием набираемого текста, а также любая сопутствующая динамическая стилистика
 	const [typeInput, setTypeInput] = useState<string>(type);
-
-	const [isFocusInput, setFocusInput] = useState<boolean>(false);
-
-	const isPasswordTextField: boolean = (name === 'password' || name === 'repeatPassword') && type === 'password';
-
-	const paddingStyleForPasswordInput: IStylePadding = isPasswordTextField ? { padding: '10px 60px 10px 45px' } : { padding: '10px 10px 10px 45px' };
-
-	const borderStyleForBlockInput: IStyleBorder = isFocusInput ? { border: '2px solid #049DEA' } : { border: '2px solid #2B303B' };
 
 	const isTextType: boolean = typeInput === 'text';
 
 	const dataEye = isTextType ? textFieldEyeData['eye-hide'] : textFieldEyeData['eye-view'];
 
-	function inputChange(event: ChangeEvent<HTMLInputElement>): void {
+	const isPasswordTextField: boolean = (name === 'password' || name === 'repeatPassword') && type === 'password';
+
+	const paddingStyleForPasswordInput: IStylePadding = isPasswordTextField ? { padding: '10px 60px 10px 45px' } : { padding: '10px 10px 10px 45px' };
+
+	// Для манипуляции с фокусом и потерей фокуса на поле ввода, а также любая сопутствующая стилистика
+	const [isFocusInput, setFocusInput] = useState<boolean>(false);
+
+	const borderStyleForBlockInput: IStyleBorder = isFocusInput ? { border: '2px solid #049DEA' } : { border: '2px solid #2B303B' };
+
+	function handlerClickTextField(event: React.MouseEvent<HTMLElement>): void {
+		eventEmitter.on('app.click', (payload) => {
+			if (event.target === payload) {
+				setFocusInput(true);
+
+			} else {
+				setFocusInput(false);
+			}
+		});
+	};
+
+	function inputChange(event: React.ChangeEvent<HTMLInputElement>): void {
 		if (onChange !== undefined) {
 			onChange({ key: name, value: event.target.value });
 		}
@@ -55,7 +71,7 @@ const TextField: React.FC<ITextFieldProps> = memo(({ placeholder, label, type, n
 				</div>
 				<div className='text-field__block-input' style={borderStyleForBlockInput}>
 					<img className='text-field__icon-input' src={`/assets/icons/${nameIcon}`} alt={alt} />
-					<input className='text-field__input' style={paddingStyleForPasswordInput} value={value} onChange={inputChange} title={titleHover} name={name} id={name} type={typeInput} placeholder={placeholder} />
+					<input onClick={handlerClickTextField} className='text-field__input' style={paddingStyleForPasswordInput} value={value} onChange={inputChange} title={titleHover} name={name} id={name} type={typeInput} placeholder={placeholder} />
 					{isPasswordTextField &&
 						<button className='text-field__display-controller' title={dataEye.icon.titleHover} onClick={updateTypeInput} type='button'>
 							<img className='text-field__flag-eye' src={`/assets/icons/${dataEye.icon.name}`} alt={dataEye.icon.alt} />

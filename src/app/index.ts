@@ -1,3 +1,3 @@
-import { App } from './ui';
+import { AppSuperstructure } from './ui';
 
-export { App };
+export { AppSuperstructure };

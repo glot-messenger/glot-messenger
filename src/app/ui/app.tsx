@@ -1,27 +1,14 @@
-import React, { useEffect, type MouseEventHandler } from 'react';
+import React, { useContext } from 'react';
 import './app-style.css';
 import { Router } from '../../pages';
-
-import {
-	factoryMultiton,
-	KEY_FOR_MULTITON_EVENT_EMITTER,
-	factoryEventEmitter
-} from '../../shared';
+import { EventEmitterContext } from '../../entities';
 
 const App: React.FC = () => {
-	const handlerClickApp = (event: MouseEventHandler<HTMLDivElement>) => {
+	const eventEmitter = useContext(EventEmitterContext);
 
+	const handlerClickApp = (event: React.MouseEvent<HTMLElement>): void => {
+		eventEmitter.emit('app.click', event.target);
 	};
-
-	useEffect(() => {
-		if (!factoryMultiton().get(KEY_FOR_MULTITON_EVENT_EMITTER)) {
-			const eventEmitter = factoryEventEmitter();
-
-			factoryMultiton().set(KEY_FOR_MULTITON_EVENT_EMITTER, eventEmitter);
-
-			eventEmitter.emit('app.click')
-		}
-	}, []);
 
 	return (
 		<div onClick={handlerClickApp} className='wrapper'>

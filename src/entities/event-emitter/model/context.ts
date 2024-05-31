@@ -11,7 +11,7 @@ const defaultEventEmitter = {
 			return '';
 		}
 
-		const store = new Set();
+		const store = new Set<typeof cb>();
 
 		store.add(cb);
 

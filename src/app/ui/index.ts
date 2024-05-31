@@ -1,3 +1,3 @@
-import { App } from './app';
+import { AppSuperstructure } from './app-superstructure';
 
-export { App };
+export { AppSuperstructure };

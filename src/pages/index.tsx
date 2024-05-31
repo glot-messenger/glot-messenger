@@ -16,6 +16,7 @@ import { AuthBoxConditionProvider } from '../features';
 import {
 	HOME,
 	AUTH,
+	ALL,
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
 	SIGN_UP_SEGMENT
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
 		]
 	},
 	{
-		path: '*',
+		path: ALL,
 		element: <NotFoundPage />
 	}
 ]);
