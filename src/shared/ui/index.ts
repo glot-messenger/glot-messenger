@@ -8,6 +8,7 @@ import { HrElement } from './hr-element';
 import { Logo } from './logo';
 import { JoinSocialNetwork } from './join-social-network';
 import { ButtonPretty } from './button-pretty';
+import { ToggleBlock } from './toggle-block';
 
 export {
 	ButtonComponent,
@@ -19,5 +20,6 @@ export {
 	HrElement,
 	Logo,
 	JoinSocialNetwork,
-	ButtonPretty
+	ButtonPretty,
+	ToggleBlock
 };

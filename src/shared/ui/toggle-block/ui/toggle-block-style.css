@@ -1,0 +1,12 @@
+.toggle-block {
+
+}
+
+.toggle-block.no-active {
+	overflow: hidden;
+	height: 0px;
+}
+
+.toggle-block.no-active .toggle-block__container {
+	opacity: 0;
+}

@@ -9,6 +9,7 @@ import type {
 
 import { textFieldEyeData } from '../config';
 import { EventEmitterContext } from '../../../../entities';
+import { ToggleBlock } from '../../toggle-block';
 
 const TextField: React.FC<ITextFieldProps> = memo(({ placeholder, label, type, name, error, isRequired, titleHover, onChange, value, nameIcon, alt, description }) => {
 	// Получение контекста
@@ -67,7 +68,7 @@ const TextField: React.FC<ITextFieldProps> = memo(({ placeholder, label, type, n
 						}
 						<label className='text-field__label-input' htmlFor={name}>{label}</label>
 					</div>
-					<p className='text-field__label-description'>{description}</p>
+					<ToggleBlock classes='text-field__label-description' text={description} isShown={isFocusInput} />
 				</div>
 				<div className='text-field__block-input' style={borderStyleForBlockInput}>
 					<img className='text-field__icon-input' src={`/assets/icons/${nameIcon}`} alt={alt} />
