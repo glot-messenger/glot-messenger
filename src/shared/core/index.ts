@@ -27,6 +27,8 @@ import {
 	IS_IDENTICAL
 } from './names-rules';
 
+import { APP_EVENT_CLICK } from './event-emitter-events';
+
 import { authBoxData }  from './auth-box-data';
 
 import {
@@ -59,7 +61,8 @@ export {
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
 	SIGN_UP_SEGMENT,
-	defaultAuthBoxDataCondition
+	defaultAuthBoxDataCondition,
+	APP_EVENT_CLICK
 };
 
 export type {

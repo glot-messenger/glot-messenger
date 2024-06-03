@@ -34,6 +34,7 @@
 
 .text-field__block-input {
 	position: relative;
+	z-index: 5;
 	box-shadow: 0 0 3px 0px #000;
 	border-radius: 3px !important;
 	overflow: hidden;

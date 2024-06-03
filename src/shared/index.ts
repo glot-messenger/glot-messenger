@@ -10,7 +10,8 @@ import {
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
 	SIGN_UP_SEGMENT,
-	defaultAuthBoxDataCondition
+	defaultAuthBoxDataCondition,
+	APP_EVENT_CLICK
 } from './core';
 
 import type { IAuthBoxData } from './core';
@@ -72,7 +73,8 @@ export {
 	factoryEventEmitter,
 	KEY_FOR_MULTITON_EVENT_EMITTER,
 	factoryMultiton,
-	EventEmitter
+	EventEmitter,
+	APP_EVENT_CLICK
 };
 
 export type {

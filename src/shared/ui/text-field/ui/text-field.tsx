@@ -10,6 +10,7 @@ import type {
 import { textFieldEyeData } from '../config';
 import { EventEmitterContext } from '../../../../entities';
 import { ToggleBlock } from '../../toggle-block';
+import { APP_EVENT_CLICK } from '../../../core';
 
 const TextField: React.FC<ITextFieldProps> = memo(({ placeholder, label, type, name, error, isRequired, titleHover, onChange, value, nameIcon, alt, description }) => {
 	// Получение контекста
@@ -32,7 +33,7 @@ const TextField: React.FC<ITextFieldProps> = memo(({ placeholder, label, type, n
 	const borderStyleForBlockInput: IStyleBorder = isFocusInput ? { border: '2px solid #049DEA' } : { border: '2px solid #2B303B' };
 
 	function handlerClickTextField(event: React.MouseEvent<HTMLElement>): void {
-		eventEmitter.on('app.click', (payload) => {
+		eventEmitter.on(APP_EVENT_CLICK, (payload) => {
 			if (event.target === payload) {
 				setFocusInput(true);
 
@@ -79,8 +80,8 @@ const TextField: React.FC<ITextFieldProps> = memo(({ placeholder, label, type, n
 						</button>
 					}
 				</div>
-				{error && 
-					<p className='text-field__error-message-input'>{error}</p>
+				{error &&
+					<ToggleBlock classes='text-field__error-message-input' text={error} isShown={isFocusInput} />
 				}
 			</div>
 		</div>

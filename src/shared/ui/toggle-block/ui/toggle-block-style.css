@@ -1,12 +1,16 @@
 .toggle-block {
-
+	overflow: hidden;
+	transition: height 0.6s ease 0s;
 }
 
-.toggle-block.no-active {
-	overflow: hidden;
-	height: 0px;
+.toggle-block__container {
+	transition: opacity 0.6s ease 0s;
 }
 
 .toggle-block.no-active .toggle-block__container {
 	opacity: 0;
+}
+
+.toggle-block.active .toggle-block__container {
+	opacity: 1;
 }
