@@ -1,11 +1,11 @@
-export interface IIcon {
+interface IIcon {
 	name: string;
 	alt: string;
 	titleHover: string;
 	path?: string;
 };
 
-export interface ILink {
+interface ILink {
 	text: string;
 	path: string;
 	titleHover: string;

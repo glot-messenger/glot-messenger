@@ -11,10 +11,9 @@ import {
 	Navigate
 } from 'react-router-dom';
 
-import {
-	authBoxData,
-	HOME
-} from '../../../../shared';
+import { HOME } from '../../../../shared';
+
+import { authBoxData } from '../../../../widgets';
 
 const AuthBoxConditionProvider: React.FC<IAuthBoxProviderProps> = ({ children }): React.ReactElement<any, any> | null => {
 	const { pathname } = useLocation();

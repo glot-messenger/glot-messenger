@@ -1,6 +1,5 @@
 // core
 import {
-	authBoxData,
 	schemeFormSignInPage,
 	schemeFormSignUpPage,
 	schemeFormRecoveryAccountPage,
@@ -10,11 +9,8 @@ import {
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
 	SIGN_UP_SEGMENT,
-	defaultAuthBoxDataCondition,
 	APP_EVENT_CLICK
 } from './core';
-
-import type { IAuthBoxData } from './core';
 
 // lib
 import {
@@ -24,13 +20,16 @@ import {
 	factoryEventEmitter,
 	KEY_FOR_MULTITON_EVENT_EMITTER,
 	factoryMultiton,
-	EventEmitter
+	EventEmitter,
+	defaultEventEmitter
 } from './lib';
+
 // types
 import type {
 	MyChild,
 	IInstanceWithKeyAndValue
 } from './types';
+
 // ui
 import {
 	TextField,
@@ -46,7 +45,6 @@ import {
 } from './ui';
 
 export {
-	authBoxData,
 	schemeFormSignInPage,
 	schemeFormSignUpPage,
 	schemeFormRecoveryAccountPage,
@@ -69,16 +67,15 @@ export {
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
 	SIGN_UP_SEGMENT,
-	defaultAuthBoxDataCondition,
 	factoryEventEmitter,
 	KEY_FOR_MULTITON_EVENT_EMITTER,
 	factoryMultiton,
 	EventEmitter,
-	APP_EVENT_CLICK
+	APP_EVENT_CLICK,
+	defaultEventEmitter
 };
 
 export type {
 	MyChild,
-	IInstanceWithKeyAndValue,
-	IAuthBoxData
+	IInstanceWithKeyAndValue
 };

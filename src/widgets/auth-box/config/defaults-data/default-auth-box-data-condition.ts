@@ -1,10 +1,10 @@
-import {
-   HOME,
-   AUTH
-} from '../router-paths';
-
-import { SIGN_IN_SEGMENT } from '../router-paths-segments';
 import type { IAuthBoxData } from './interafaces';
+
+import {
+	HOME,
+	AUTH,
+	SIGN_IN_SEGMENT
+} from "../../../../shared";
 
 const defaultAuthBoxDataCondition: IAuthBoxData = {
 	title: 'Ууупс... Что-то пошло не так...',

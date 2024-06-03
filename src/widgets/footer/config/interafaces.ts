@@ -1,7 +1,15 @@
-import type {
-	ILink,
-	IIcon
-} from '../../../shared/core';
+interface IIcon {
+	name: string;
+	alt: string;
+	titleHover: string;
+	path?: string;
+};
+
+interface ILink {
+	text: string;
+	path: string;
+	titleHover: string;
+};
 
 export interface IConfigForLinkBlock {
 	text: string;

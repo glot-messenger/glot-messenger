@@ -1,10 +1,13 @@
-export type FN = (args: any) => void;
+import type {
+	FN,
+	IEventEmitter
+} from './interafaces';
 
 // Singleton
 let staticEventEmitter: null | EventEmitter = null;
 
-class EventEmitter<T = unknown> {
-	_hashTable = new Map();
+class EventEmitter<T = unknown> implements IEventEmitter<T> {
+	_hashTable = new Map<string, Set<FN>>();
 
 	constructor() {
 		if (staticEventEmitter !== null) {
@@ -42,7 +45,7 @@ class EventEmitter<T = unknown> {
 		store.add(handler);
 	};
 
-	once() {
+	once(): void {
 		// ЛОГИКА ОДНОРАЗОВОГО ВЫЗОВА
 	};
 

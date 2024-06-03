@@ -3,14 +3,6 @@ import type {
 	IInstanceRules
 } from './schemes';
 
-import type {
-	IAuthBoxData,
-	IIcon,
-	ILink
-} from './defaults-data';
-
-import { defaultAuthBoxDataCondition } from './defaults-data';
-
 import {
 	schemeFormSignInPage,
 	schemeFormSignUpPage,
@@ -28,8 +20,6 @@ import {
 } from './names-rules';
 
 import { APP_EVENT_CLICK } from './event-emitter-events';
-
-import { authBoxData }  from './auth-box-data';
 
 import {
 	HOME,
@@ -54,21 +44,16 @@ export {
 	schemeFormSignInPage,
 	schemeFormSignUpPage,
 	schemeFormRecoveryAccountPage,
-	authBoxData,
 	HOME,
 	AUTH,
 	ALL,
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
 	SIGN_UP_SEGMENT,
-	defaultAuthBoxDataCondition,
 	APP_EVENT_CLICK
 };
 
 export type {
 	ISchemeForForm,
-	IInstanceRules,
-	IAuthBoxData,
-	IIcon,
-	ILink
+	IInstanceRules
 };

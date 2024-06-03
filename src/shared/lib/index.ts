@@ -14,7 +14,8 @@ import { factoryMultiton } from './multiton';
 import {
 	factoryEventEmitter,
 	KEY_FOR_MULTITON_EVENT_EMITTER,
-	EventEmitter
+	EventEmitter,
+	defaultEventEmitter
 } from './event-emitter';
 
 export {
@@ -26,5 +27,6 @@ export {
 	factoryValidator,
 	factoryEventEmitter,
 	KEY_FOR_MULTITON_EVENT_EMITTER,
-	EventEmitter
+	EventEmitter,
+	defaultEventEmitter
 };
