@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './sign-up-page-style.css';
 import { configChildrensForFormSignUpPage } from '../config';
+import { useNavigate } from 'react-router-dom';
 
 import {
 	AuthBox,
@@ -13,7 +14,8 @@ import {
 	ButtonComponent,
 	TextField,
 	CheckboxField,
-	schemeFormSignUpPage
+	schemeFormSignUpPage,
+	SPACE
 } from '../../../shared';
 
 import type { IDataFormSignUp } from './interafaces';
@@ -28,8 +30,12 @@ const SignUpPage: React.FC = () => {
 		acceptanceOfTermsPoliciesAndRules: false
 	});
 
+	const navigate = useNavigate();
+
 	function submitFn(data: IDataFormSignUp): void {
 		console.log('Отправляю данные формы для регистрации!', data);
+
+		navigate(SPACE);
 	};
 
 	return (

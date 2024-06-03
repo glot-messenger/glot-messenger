@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './sign-in-page-style.css';
 import { configChildrensForFormSignInPage } from '../config';
 import type { IDataFormSignIn } from './interafaces';
+import { useNavigate } from 'react-router-dom';
 
 import {
 	AuthBox,
@@ -13,7 +14,8 @@ import {
 	TextField,
 	ButtonComponent,
 	FormComponent,
-	schemeFormSignInPage
+	schemeFormSignInPage,
+	SPACE
 } from '../../../shared';
 
 const SignInPage: React.FC = () => {
@@ -22,8 +24,12 @@ const SignInPage: React.FC = () => {
 		password: ''
 	});
 
+	const navigate = useNavigate();
+
 	function submitFn(data: IDataFormSignIn): void {
 		console.log('Отправляю данные формы для входа!', data);
+
+		navigate(SPACE);
 	};
 
 	return (

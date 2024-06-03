@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './recovery-account-page-style.css';
 import type { IDataFormRecoveryAccount } from './interafaces';
 import { configChildrensForFormRecoveryAccountPage } from '../config';
+import { useNavigate } from 'react-router-dom';
 
 import {
 	AuthBox,
@@ -13,7 +14,8 @@ import {
 	FormComponent,
 	TextField,
 	ButtonComponent,
-	schemeFormRecoveryAccountPage
+	schemeFormRecoveryAccountPage,
+	SPACE
 } from '../../../shared';
 
 const RecoveryAccountPage: React.FC = () => {
@@ -22,8 +24,12 @@ const RecoveryAccountPage: React.FC = () => {
 		secretPhrase: ''
 	});
 
+	const navigate = useNavigate();
+
 	function submitFn(data: IDataFormRecoveryAccount) {
 		console.log('Отправляю данные для восстановления пароля', data);
+
+		navigate(SPACE);
 	};
 
    return (

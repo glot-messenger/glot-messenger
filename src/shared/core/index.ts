@@ -24,7 +24,8 @@ import { APP_EVENT_CLICK } from './event-emitter-events';
 import {
 	HOME,
 	AUTH,
-	ALL
+	ALL,
+	SPACE
 } from './router-paths';
 
 import {
@@ -47,6 +48,7 @@ export {
 	HOME,
 	AUTH,
 	ALL,
+	SPACE,
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
 	SIGN_UP_SEGMENT,

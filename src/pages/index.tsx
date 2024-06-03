@@ -11,12 +11,14 @@ import { RecoveryAccountPage } from './recovery-account';
 import { SignInPage } from './sign-in';
 import { SignUpPage } from './sign-up';
 import { NotFoundPage } from './not-found';
+import { SpacePage } from './space';
 import { AuthBoxConditionProvider } from '../features';
 
 import {
 	HOME,
 	AUTH,
 	ALL,
+	SPACE,
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
 	SIGN_UP_SEGMENT
@@ -48,6 +50,10 @@ const router = createBrowserRouter([
 				element: <SignUpPage />
 			}
 		]
+	},
+	{
+		path: SPACE,
+		element: <SpacePage />
 	},
 	{
 		path: ALL,
