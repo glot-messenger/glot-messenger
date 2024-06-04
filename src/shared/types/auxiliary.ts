@@ -12,3 +12,7 @@ export interface IInstanceWithKeyAndValue {
 	key: string;
 	value: string | boolean;
 };
+
+export interface IDataProvider {
+
+};

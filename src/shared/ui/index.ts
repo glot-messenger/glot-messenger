@@ -9,6 +9,7 @@ import { Logo } from './logo';
 import { JoinSocialNetwork } from './join-social-network';
 import { ButtonPretty } from './button-pretty';
 import { ToggleBlock } from './toggle-block';
+import { Loader } from './loader';
 
 export {
 	ButtonComponent,
@@ -21,5 +22,6 @@ export {
 	Logo,
 	JoinSocialNetwork,
 	ButtonPretty,
-	ToggleBlock
+	ToggleBlock,
+	Loader
 };

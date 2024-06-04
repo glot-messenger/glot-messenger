@@ -2,12 +2,14 @@ import type {
 	IStylePadding,
 	IStyleBorder,
 	MyChild,
-	IInstanceWithKeyAndValue
+	IInstanceWithKeyAndValue,
+	IDataProvider
 } from './auxiliary';
 
 export type {
 	IStylePadding,
 	IStyleBorder,
 	MyChild,
-	IInstanceWithKeyAndValue
+	IInstanceWithKeyAndValue,
+	IDataProvider
 };

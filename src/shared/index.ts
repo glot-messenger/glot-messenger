@@ -42,7 +42,8 @@ import {
 	HrElement,
 	Logo,
 	JoinSocialNetwork,
-	ButtonPretty
+	ButtonPretty,
+	Loader
 } from './ui';
 
 export {
@@ -62,6 +63,7 @@ export {
 	Logo,
 	JoinSocialNetwork,
 	ButtonPretty,
+	Loader,
 	HOME,
 	AUTH,
 	ALL,
