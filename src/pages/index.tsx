@@ -1,4 +1,6 @@
 import React from 'react';
+import './index-style.css';
+import type { ILoyoutProps } from './interafaces';
 
 import {
 	createBrowserRouter,
@@ -24,10 +26,32 @@ import {
 	SIGN_UP_SEGMENT
 } from '../shared';
 
+import {
+	Header,
+	Footer
+} from '../widgets';
+
+// Шаблон для всех страниц, кроме самого редактора мессенджера
+const Layout: React.FC<ILoyoutProps> = ({ children }) => {
+	return (
+		<div className='page'>
+			<Header />
+			<div className='page__content'>
+				{children}
+			</div>
+			<Footer />
+		</div>
+	);
+};
+
 const router = createBrowserRouter([
 	{
 		path: HOME,
-		element: <HomePage />
+		element: (
+			<Layout>
+				<HomePage />
+			</Layout>
+		)
 	},
 	{
 		path: AUTH,
@@ -39,15 +63,27 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: RECOVERY_ACCOUNT_SEGMENT,
-				element: <RecoveryAccountPage />
+				element: (
+					<Layout>
+						<RecoveryAccountPage />
+					</Layout>
+				)
 			},
 			{
 				path: SIGN_IN_SEGMENT,
-				element: <SignInPage />
+				element: (
+					<Layout>
+						<SignInPage />
+					</Layout>
+				)
 			},
 			{
 				path: SIGN_UP_SEGMENT,
-				element: <SignUpPage />
+				element: (
+					<Layout>
+						<SignUpPage />
+					</Layout>
+				)
 			}
 		]
 	},
@@ -57,7 +93,11 @@ const router = createBrowserRouter([
 	},
 	{
 		path: ALL,
-		element: <NotFoundPage />
+		element: (
+			<Layout>
+				<NotFoundPage />
+			</Layout>
+		)
 	}
 ]);
 

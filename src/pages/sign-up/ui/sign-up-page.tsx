@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import './sign-up-page-style.css';
 import { configChildrensForFormSignUpPage } from '../config';
 import { useNavigate } from 'react-router-dom';
-
-import {
-	AuthBox,
-	Footer,
-	Header
-} from '../../../widgets';
+import { AuthBox } from '../../../widgets';
 
 import {
 	FormComponent,
@@ -39,23 +34,17 @@ const SignUpPage: React.FC = () => {
 	};
 
 	return (
-		<div className='sign-up'>
-			<Header />
-			<div className='sign-up__content'>
-				<AuthBox>
-					<FormComponent onSubmit={submitFn} data={dataForm} schemeForValidator={schemeFormSignUpPage}>
-						<TextField {...configChildrensForFormSignUpPage.login} />
-						<TextField {...configChildrensForFormSignUpPage.userName} />
-						<TextField {...configChildrensForFormSignUpPage.password} />
-						<TextField {...configChildrensForFormSignUpPage.repeatPassword} />
-						<TextField {...configChildrensForFormSignUpPage.secretPhrase} />
-						<CheckboxField {...configChildrensForFormSignUpPage.acceptanceOfTermsPoliciesAndRules} />
-						<ButtonComponent {...configChildrensForFormSignUpPage.button} />
-					</FormComponent>
-				</AuthBox>
-			</div>
-			<Footer />
-		</div>
+		<AuthBox>
+			<FormComponent onSubmit={submitFn} data={dataForm} schemeForValidator={schemeFormSignUpPage}>
+				<TextField {...configChildrensForFormSignUpPage.login} />
+				<TextField {...configChildrensForFormSignUpPage.userName} />
+				<TextField {...configChildrensForFormSignUpPage.password} />
+				<TextField {...configChildrensForFormSignUpPage.repeatPassword} />
+				<TextField {...configChildrensForFormSignUpPage.secretPhrase} />
+				<CheckboxField {...configChildrensForFormSignUpPage.acceptanceOfTermsPoliciesAndRules} />
+				<ButtonComponent {...configChildrensForFormSignUpPage.button} />
+			</FormComponent>
+		</AuthBox>
 	);
 };
 

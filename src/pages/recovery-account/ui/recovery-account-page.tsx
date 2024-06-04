@@ -3,12 +3,7 @@ import './recovery-account-page-style.css';
 import type { IDataFormRecoveryAccount } from './interafaces';
 import { configChildrensForFormRecoveryAccountPage } from '../config';
 import { useNavigate } from 'react-router-dom';
-
-import {
-	AuthBox,
-	Footer,
-	Header
-} from '../../../widgets';
+import { AuthBox } from '../../../widgets';
 
 import {
 	FormComponent,
@@ -33,19 +28,13 @@ const RecoveryAccountPage: React.FC = () => {
 	};
 
    return (
-      <div className='recovery-account'>
-			<Header />
-			<div className='recovery-account__content'>
-				<AuthBox>
-					<FormComponent onSubmit={submitFn} data={dataForm} schemeForValidator={schemeFormRecoveryAccountPage}>
-						<TextField {...configChildrensForFormRecoveryAccountPage.login} />
-						<TextField {...configChildrensForFormRecoveryAccountPage.secretPhrase} />
-						<ButtonComponent {...configChildrensForFormRecoveryAccountPage.button} />
-					</FormComponent>
-				</AuthBox>
-			</div>
-			<Footer />
-		</div>
+		<AuthBox>
+			<FormComponent onSubmit={submitFn} data={dataForm} schemeForValidator={schemeFormRecoveryAccountPage}>
+				<TextField {...configChildrensForFormRecoveryAccountPage.login} />
+				<TextField {...configChildrensForFormRecoveryAccountPage.secretPhrase} />
+				<ButtonComponent {...configChildrensForFormRecoveryAccountPage.button} />
+			</FormComponent>
+		</AuthBox>
    );
 };
 

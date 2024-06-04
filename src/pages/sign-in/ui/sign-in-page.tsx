@@ -3,12 +3,7 @@ import './sign-in-page-style.css';
 import { configChildrensForFormSignInPage } from '../config';
 import type { IDataFormSignIn } from './interafaces';
 import { useNavigate } from 'react-router-dom';
-
-import {
-	AuthBox,
-	Footer,
-	Header
-} from '../../../widgets';
+import { AuthBox } from '../../../widgets';
 
 import {
 	TextField,
@@ -33,19 +28,13 @@ const SignInPage: React.FC = () => {
 	};
 
 	return (
-		<div className='sign-in'>
-			<Header />
-			<div className='sign-in__content'>
-				<AuthBox>
-					<FormComponent onSubmit={submitFn} data={dataForm} schemeForValidator={schemeFormSignInPage}>
-						<TextField {...configChildrensForFormSignInPage.login} />
-						<TextField {...configChildrensForFormSignInPage.password} />
-						<ButtonComponent {...configChildrensForFormSignInPage.button} />
-					</FormComponent>
-				</AuthBox>
-			</div>
-			<Footer />
-		</div>
+		<AuthBox>
+			<FormComponent onSubmit={submitFn} data={dataForm} schemeForValidator={schemeFormSignInPage}>
+				<TextField {...configChildrensForFormSignInPage.login} />
+				<TextField {...configChildrensForFormSignInPage.password} />
+				<ButtonComponent {...configChildrensForFormSignInPage.button} />
+			</FormComponent>
+		</AuthBox>
 	);
 };
 
