@@ -19,8 +19,14 @@ import {
 	defaultEventEmitter
 } from './event-emitter';
 
+import {
+	factoryEditor,
+	KEY_FOR_MULTITON_EDITOR
+} from './editor';
+
 export {
 	KEY_FOR_MULTITON_VALIDATOR,
+	KEY_FOR_MULTITON_EDITOR,
 	isNullable,
 	isNotPrimitive,
 	isContainsPropertiesTypeAndPropsInChild,
@@ -30,5 +36,6 @@ export {
 	KEY_FOR_MULTITON_EVENT_EMITTER,
 	EventEmitter,
 	defaultEventEmitter,
-	Validator
+	Validator,
+	factoryEditor
 };

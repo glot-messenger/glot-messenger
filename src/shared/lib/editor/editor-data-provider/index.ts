@@ -1,3 +1,3 @@
-import { EditorDataProvider } from './editor-data-provider';
+import { factoryEditorDataProvider } from './factory-editor-data-provider';
 
-export { EditorDataProvider };
+export { factoryEditorDataProvider };

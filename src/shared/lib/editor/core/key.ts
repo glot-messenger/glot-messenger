@@ -1,0 +1,3 @@
+const KEY_FOR_MULTITON_EDITOR = 'editor';
+
+export { KEY_FOR_MULTITON_EDITOR };

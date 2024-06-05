@@ -3,7 +3,7 @@ import type {
 	IEventEmitter
 } from './interafaces';
 
-// Singleton
+// Singleton =======================================================================================================
 let staticEventEmitter: null | EventEmitter = null;
 
 class EventEmitter<T = unknown> implements IEventEmitter<T> {

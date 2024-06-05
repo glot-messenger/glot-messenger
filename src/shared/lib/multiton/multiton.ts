@@ -5,7 +5,7 @@ import type {
 	IMultiton
 } from './interafaces';
 
-// Multiton сам является Singleton, но для своих инстансов он Multiton
+// Multiton сам является Singleton, но для своих инстансов он Multiton ====================================================
 let staticMultiton: null | Multiton = null;
 
 class Multiton implements IMultiton {

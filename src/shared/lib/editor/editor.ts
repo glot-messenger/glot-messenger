@@ -1,12 +1,12 @@
-import { EditorDataProvider } from './editor-data-provider';
+import { factoryEditorDataProvider } from './editor-data-provider';
 
-// Singleton
+// Singleton =======================================================================
 let staticEditor: null | Editor = null;
 
 class Editor {
    storeColumns = new Map();
 
-   dataProvider = new EditorDataProvider();
+   dataProvider = factoryEditorDataProvider();
 
    constructor() {
       if (staticEditor !== null) {

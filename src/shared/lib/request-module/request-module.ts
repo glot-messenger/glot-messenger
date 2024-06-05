@@ -73,6 +73,9 @@ class RequestModule {
 			case 'json':
 				result = JSON.stringify(payload);
 			break;
+			case 'native':
+				result = payload;
+			break;
 		}
 
 		return result;

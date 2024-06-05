@@ -20,9 +20,11 @@ import {
 	isContainsPropertiesTypeAndPropsInChild,
 	factoryEventEmitter,
 	KEY_FOR_MULTITON_EVENT_EMITTER,
+	KEY_FOR_MULTITON_EDITOR,
 	factoryMultiton,
 	EventEmitter,
-	defaultEventEmitter
+	defaultEventEmitter,
+	factoryEditor
 } from './lib';
 
 // types
@@ -78,10 +80,12 @@ export {
 	SIGN_UP_SEGMENT,
 	factoryEventEmitter,
 	KEY_FOR_MULTITON_EVENT_EMITTER,
+	KEY_FOR_MULTITON_EDITOR,
 	factoryMultiton,
 	EventEmitter,
 	APP_EVENT_CLICK,
-	defaultEventEmitter
+	defaultEventEmitter,
+	factoryEditor
 };
 
 export type {

@@ -15,7 +15,7 @@ import type {
 	IInstanceRules
 } from '../../core';
 
-// Singleton
+// Singleton ==================================================================
 let staticValidator: null | Validator = null;
 
 class Validator implements IValidator {

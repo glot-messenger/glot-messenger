@@ -1,9 +1,11 @@
 import {
 	AuthBoxConditionProvider,
-	EventEmitterProvider
+	EventEmitterProvider,
+	EditorProvider
 } from './providers';
 
 export {
 	AuthBoxConditionProvider,
-	EventEmitterProvider
+	EventEmitterProvider,
+	EditorProvider
 };

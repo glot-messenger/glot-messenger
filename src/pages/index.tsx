@@ -14,7 +14,11 @@ import { SignInPage } from './sign-in';
 import { SignUpPage } from './sign-up';
 import { NotFoundPage } from './not-found';
 import { SpacePage } from './space';
-import { AuthBoxConditionProvider } from '../features';
+
+import {
+	AuthBoxConditionProvider,
+	EditorProvider
+} from '../features';
 
 import {
 	HOME,
@@ -87,9 +91,13 @@ const router = createBrowserRouter([
 			}
 		]
 	},
-	{
+	{// Route уже самого редактора мессенджера 
 		path: SPACE,
-		element: <SpacePage />
+		element: (
+			<EditorProvider>
+				<SpacePage />
+			</EditorProvider>
+		)
 	},
 	{
 		path: ALL,
