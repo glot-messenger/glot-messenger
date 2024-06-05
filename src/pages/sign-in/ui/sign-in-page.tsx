@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { configChildrensForFormSignInPage } from '../config';
-import type { IDataFormSignIn } from './interafaces';
 import { useNavigate } from 'react-router-dom';
 import { AuthBox } from '../../../widgets';
 
@@ -12,18 +11,25 @@ import {
 	SPACE
 } from '../../../shared';
 
+import type {
+	IDataFormInOnSubmit,
+	IDataFormComponent
+} from '../../../shared';
+
 const SignInPage: React.FC = () => {
-	const [dataForm] = useState<IDataFormSignIn>({
+	const [dataForm] = useState<IDataFormComponent>({
 		login: '',
 		password: ''
 	});
 
 	const navigate = useNavigate();
 
-	function submitFn(data: IDataFormSignIn): void {
-		console.log('Отправляю данные формы для входа!', data);
+	function submitFn({ data, isErrors }: IDataFormInOnSubmit): void {
+		if (!isErrors) {
+			console.log('Отправляю данные формы для входа!', data);
 
-		navigate(SPACE);
+			navigate(SPACE);
+		}
 	};
 
 	return (

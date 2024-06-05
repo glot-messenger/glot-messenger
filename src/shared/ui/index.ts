@@ -11,6 +11,11 @@ import { ButtonPretty } from './button-pretty';
 import { ToggleBlock } from './toggle-block';
 import { Loader } from './loader';
 
+import type {
+	IDataFormInOnSubmit,
+	IDataFormComponent
+} from './form';
+
 export {
 	ButtonComponent,
 	FormComponent,
@@ -24,4 +29,9 @@ export {
 	ButtonPretty,
 	ToggleBlock,
 	Loader
+};
+
+export type {
+	IDataFormInOnSubmit,
+	IDataFormComponent
 };

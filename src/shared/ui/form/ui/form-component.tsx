@@ -19,6 +19,8 @@ function FormComponent<S extends ISchemeForForm, D extends Record<string, string
 
 	const [errorState, setErrorState] = useState<Record<PropertyKey, string>>({});
 
+	const isErrorsValidator: boolean = Object.keys(errorState).length > 0;
+
 	const onChange = useCallback(({ key, value }: IInstanceWithKeyAndValue): void => {
 		setDataForm((prevState: D) => ({ ...prevState, [key]: value }));
 	}, []);
@@ -36,10 +38,11 @@ function FormComponent<S extends ISchemeForForm, D extends Record<string, string
 	function submitForm(event: FormEvent<HTMLFormElement>): void {
 		event.preventDefault();
 
-		onSubmit(dataForm);
+		onSubmit({
+			data: dataForm,
+			isErrors: isErrorsValidator
+		});
 	};
-
-	const isDisabledSubmitBtn: boolean = Object.keys(errorState).length > 0;
 
 	const newChildrens = React.Children.map(children, (child) => {
 		if (isNullable(child)) {
@@ -80,7 +83,7 @@ function FormComponent<S extends ISchemeForForm, D extends Record<string, string
 		if (typeEl === 'button' && child.props.type === 'submit') {
 			newProps = {
 				...child.props,
-				isDisabled: isDisabledSubmitBtn
+				isDisabled: isErrorsValidator
 			};
 
 			return cloneElement(child, newProps);

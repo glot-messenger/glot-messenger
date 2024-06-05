@@ -46,6 +46,11 @@ import {
 	Loader
 } from './ui';
 
+import type {
+	IDataFormInOnSubmit,
+	IDataFormComponent
+} from './ui';
+
 export {
 	schemeFormSignInPage,
 	schemeFormSignUpPage,
@@ -81,5 +86,7 @@ export {
 
 export type {
 	MyChild,
-	IInstanceWithKeyAndValue
+	IInstanceWithKeyAndValue,
+	IDataFormInOnSubmit,
+	IDataFormComponent
 };

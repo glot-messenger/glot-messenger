@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import type { IDataFormRecoveryAccount } from './interafaces';
 import { configChildrensForFormRecoveryAccountPage } from '../config';
 import { useNavigate } from 'react-router-dom';
 import { AuthBox } from '../../../widgets';
@@ -12,18 +11,25 @@ import {
 	SPACE
 } from '../../../shared';
 
+import type {
+	IDataFormInOnSubmit,
+	IDataFormComponent
+} from '../../../shared';
+
 const RecoveryAccountPage: React.FC = () => {
-	const [dataForm] = useState({
+	const [dataForm] = useState<IDataFormComponent>({
 		login: '',
 		secretPhrase: ''
 	});
 
 	const navigate = useNavigate();
 
-	function submitFn(data: IDataFormRecoveryAccount) {
-		console.log('Отправляю данные для восстановления пароля', data);
+	function submitFn({ data, isErrors }: IDataFormInOnSubmit) {
+		if (!isErrors) {
+			console.log('Отправляю данные для восстановления пароля', data);
 
-		navigate(SPACE);
+			navigate(SPACE);
+		}
 	};
 
    return (

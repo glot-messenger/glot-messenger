@@ -12,10 +12,13 @@ import {
 	SPACE
 } from '../../../shared';
 
-import type { IDataFormSignUp } from './interafaces';
+import type {
+	IDataFormInOnSubmit,
+	IDataFormComponent
+} from '../../../shared';
 
 const SignUpPage: React.FC = () => {
-	const [dataForm] = useState<IDataFormSignUp>({
+	const [dataForm] = useState<IDataFormComponent>({
 		login: '',
 		userName: '',
 		password: '',
@@ -26,10 +29,12 @@ const SignUpPage: React.FC = () => {
 
 	const navigate = useNavigate();
 
-	function submitFn(data: IDataFormSignUp): void {
-		console.log('Отправляю данные формы для регистрации!', data);
+	function submitFn({ data, isErrors }: IDataFormInOnSubmit): void {
+		if (!isErrors) {
+			console.log('Отправляю данные формы для регистрации!', data);
 
-		navigate(SPACE);
+			navigate(SPACE);
+		}
 	};
 
 	return (

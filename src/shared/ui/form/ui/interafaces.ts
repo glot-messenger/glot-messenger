@@ -1,6 +1,15 @@
+export interface IDataFormComponent {
+	[key: string]: string | boolean;
+};
+
+export interface IDataFormInOnSubmit {
+	data: IDataFormComponent,
+	isErrors: boolean;
+};
+
 export interface IFormComponentProps<S = unknown, D = unknown> {
 	children: React.ReactNode;
 	data: D;
-	onSubmit: (data: D) => void;
+	onSubmit: (payload: IDataFormInOnSubmit) => void;
 	schemeForValidator: S;
 };
