@@ -3,8 +3,7 @@ export interface IDataFormComponent {
 };
 
 export interface IDataFormInOnSubmit {
-	data: IDataFormComponent,
-	isErrors: boolean;
+	data: IDataFormComponent;
 };
 
 export interface IFormComponentProps<S = unknown, D = unknown> {

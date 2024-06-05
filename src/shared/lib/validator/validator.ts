@@ -85,7 +85,7 @@ class Validator implements IValidator {
 		return isError;
 	};
 
-	validate<S extends ISchemeForForm, D extends Record<string, string | boolean>>(data: D, scheme: S): Record<PropertyKey, string> {
+	validate<D extends Record<string, string | boolean>, S extends ISchemeForForm>(data: D, scheme: S): Record<PropertyKey, string> {
 		const error: Record<PropertyKey, string> = {};
 
 		const arrKeysData: string[] = Object.keys(scheme);

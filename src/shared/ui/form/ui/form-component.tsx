@@ -11,7 +11,8 @@ import {
 	KEY_FOR_MULTITON_VALIDATOR,
 	isContainsPropertiesTypeAndPropsInChild,
 	factoryMultiton,
-	factoryValidator
+	factoryValidator,
+	Validator
 } from '../../../lib';
 
 function FormComponent<S extends ISchemeForForm, D extends Record<string, string | boolean>>({ children, data, onSubmit, schemeForValidator }: IFormComponentProps<S, D>) {
@@ -25,22 +26,33 @@ function FormComponent<S extends ISchemeForForm, D extends Record<string, string
 		setDataForm((prevState: D) => ({ ...prevState, [key]: value }));
 	}, []);
 
-	function validation(): void {
-		const validator = factoryMultiton().get(KEY_FOR_MULTITON_VALIDATOR);
+	const validation = useCallback((dataFormValue: D): boolean => {
+		const validator: Validator = factoryMultiton().get(KEY_FOR_MULTITON_VALIDATOR);
 
 		if (validator) {
-			const errorsResult = validator.validate<S, D>(dataForm, schemeForValidator);
+			const errorsResult = validator.validate<D, S>(dataFormValue, schemeForValidator);
 
 			setErrorState(errorsResult);
+
+			return Object.keys(errorsResult).length === 0;
 		}
-	};
+
+		return false;
+	}, [schemeForValidator, setErrorState]);
 
 	function submitForm(event: FormEvent<HTMLFormElement>): void {
 		event.preventDefault();
 
+		// Уже перед самым сабмитом еще раз проверяются данные, на случай, если защита от верстки будет нивелирована клиентом
+		const isValidData = validation(dataForm);
+
+		if (!isValidData) {
+
+			return;
+		}
+
 		onSubmit({
 			data: dataForm,
-			isErrors: isErrorsValidator
 		});
 	};
 
@@ -100,8 +112,8 @@ function FormComponent<S extends ISchemeForForm, D extends Record<string, string
 			multiton.set(KEY_FOR_MULTITON_VALIDATOR, factoryValidator())
 		}
 
-		validation();
-	}, [dataForm]);
+		validation(dataForm);
+	}, [dataForm, validation]);
 
 	useEffect(() => {
 		return () => {

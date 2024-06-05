@@ -6,7 +6,8 @@ import {
 
 import {
 	KEY_FOR_MULTITON_VALIDATOR,
-	factoryValidator
+	factoryValidator,
+	Validator
 } from './validator';
 
 import { factoryMultiton } from './multiton';
@@ -28,5 +29,6 @@ export {
 	factoryEventEmitter,
 	KEY_FOR_MULTITON_EVENT_EMITTER,
 	EventEmitter,
-	defaultEventEmitter
+	defaultEventEmitter,
+	Validator
 };

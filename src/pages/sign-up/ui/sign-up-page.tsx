@@ -29,12 +29,10 @@ const SignUpPage: React.FC = () => {
 
 	const navigate = useNavigate();
 
-	function submitFn({ data, isErrors }: IDataFormInOnSubmit): void {
-		if (!isErrors) {
-			console.log('Отправляю данные формы для регистрации!', data);
+	function submitFn({ data }: IDataFormInOnSubmit): void {
+		console.log('Отправляю данные формы для регистрации!', data);
 
-			navigate(SPACE);
-		}
+		navigate(SPACE);
 	};
 
 	return (

@@ -24,12 +24,10 @@ const RecoveryAccountPage: React.FC = () => {
 
 	const navigate = useNavigate();
 
-	function submitFn({ data, isErrors }: IDataFormInOnSubmit) {
-		if (!isErrors) {
-			console.log('Отправляю данные для восстановления пароля', data);
+	function submitFn({ data }: IDataFormInOnSubmit) {
+		console.log('Отправляю данные для восстановления пароля', data);
 
-			navigate(SPACE);
-		}
+		navigate(SPACE);
 	};
 
    return (
