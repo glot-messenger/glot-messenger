@@ -30,7 +30,7 @@ const configChildrensForFormRecoveryAccountPage: IManuallyTransmittedDataForFiel
 		textBtn: 'Восстановить',
 		type: 'submit',
 		titleHover: 'Нажмите, чтобы восстановить пароль от своей учетной записи.',
-		classes: 'recovery-account__btn'
+		classes: 'page__btn'
 	}
 };
 

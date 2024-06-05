@@ -77,7 +77,7 @@ const configChildrensForFormSignUpPage: IManuallyTransmittedDataForFieldsFormSig
 		textBtn: 'Зарегистрироваться',
 		type: 'submit',
 		titleHover: 'Нажмите, чтобы зарегистрироваться в сервисе.',
-		classes: 'sign-up__btn'
+		classes: 'page__btn'
 	}
 };
 

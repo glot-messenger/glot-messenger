@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './sign-up-page-style.css';
 import { configChildrensForFormSignUpPage } from '../config';
 import { useNavigate } from 'react-router-dom';
 import { AuthBox } from '../../../widgets';

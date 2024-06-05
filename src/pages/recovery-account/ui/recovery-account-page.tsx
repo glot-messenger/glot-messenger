@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './recovery-account-page-style.css';
 import type { IDataFormRecoveryAccount } from './interafaces';
 import { configChildrensForFormRecoveryAccountPage } from '../config';
 import { useNavigate } from 'react-router-dom';

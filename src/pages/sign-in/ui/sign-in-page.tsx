@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './sign-in-page-style.css';
 import { configChildrensForFormSignInPage } from '../config';
 import type { IDataFormSignIn } from './interafaces';
 import { useNavigate } from 'react-router-dom';

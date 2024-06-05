@@ -30,7 +30,7 @@ const configChildrensForFormSignInPage: IManuallyTransmittedDataForFieldsFormSig
 		textBtn: 'Вход',
 		type: 'submit',
 		titleHover: 'Нажмите, чтобы отправить заполненные данные и войти в приложение.',
-		classes: 'sign-in__btn'
+		classes: 'page__btn'
 	}
 };
 
