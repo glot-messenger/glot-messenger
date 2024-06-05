@@ -41,9 +41,30 @@ class RequestModule {
 		};
 	};
 
+	static get nativeFormat(): typeof RequestModule {
+		return class extends this {
+			static override dataType = 'native';
+		};
+	};
+
    static setUrl(urlString: string): typeof RequestModule {
 		return class extends this {
 			static override url = urlString;
+		};
+	};
+
+	static concatUrl(segment: string): typeof RequestModule {
+		const urlValue: string = (typeof RequestModule.url === 'string') ?
+			RequestModule.url + `${segment}/` :
+			`${segment}/`;
+
+		console.log(typeof RequestModule.url);
+		console.log('segment', segment);
+		console.log('urlValue', urlValue);
+		
+
+		return class extends this {
+			static override url = urlValue;
 		};
 	};
 

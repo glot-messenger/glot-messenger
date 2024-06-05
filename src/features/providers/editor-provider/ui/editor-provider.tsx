@@ -21,7 +21,7 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 	const [settingsEditor, setSettingsEditor] = useState<any>(null);
 
 	const fetchSettingsEditor = async () => {
-		
+		const settings = editor.getSettings();
 	};
 
 	useEffect(() => {

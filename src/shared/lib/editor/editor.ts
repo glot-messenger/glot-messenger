@@ -6,7 +6,7 @@ let staticEditor: null | Editor = null;
 class Editor {
    storeColumns = new Map();
 
-   dataProvider = factoryEditorDataProvider();
+   #dataProvider = factoryEditorDataProvider();
 
    constructor() {
       if (staticEditor !== null) {
@@ -16,7 +16,11 @@ class Editor {
       staticEditor = this;
    };
 
+	async getSettings() {
+		const data = await this.#dataProvider.get();
 
+		// console.log(data, 'EDITOR');
+	};
 };
 
 export { Editor };
