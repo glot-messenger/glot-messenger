@@ -58,10 +58,7 @@ class RequestModule {
 			RequestModule.url + `${segment}/` :
 			`${segment}/`;
 
-		console.log(typeof RequestModule.url);
-		console.log('segment', segment);
-		console.log('urlValue', urlValue);
-		
+		console.log('RequestModule.url', RequestModule.url);
 
 		return class extends this {
 			static override url = urlValue;
