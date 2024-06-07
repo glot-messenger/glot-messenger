@@ -24,4 +24,7 @@ class BaseProvider implements IDataProvider {
 	};
 };
 
+console.log(BaseProvider.request.url, 'BASE');
+
+
 export { BaseProvider };

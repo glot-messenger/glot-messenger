@@ -18,7 +18,7 @@ class EditorDataProvider extends BaseProvider {
 
 	override async get() {
 		// id авторизованного пользователя, для которого тащится его настройка интерфейса
-		console.dir('EditorDataProvider', BaseProvider.request.url);
+		//console.dir('EditorDataProvider', EditorDataProvider.request.url);
 
 		// const requestModule = EditorDataProvider.request.get.concatUrl('17176177027211717617807573').nativeFormat;
 
