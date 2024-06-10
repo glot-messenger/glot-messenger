@@ -17,24 +17,18 @@ class EditorDataProvider extends BaseProvider {
 	static override request = BaseProvider.request.concatUrl('editor');
 
 	override async get() {
-		// id авторизованного пользователя, для которого тащится его настройка интерфейса
-		//console.dir('EditorDataProvider', EditorDataProvider.request.url);
+		const request = EditorDataProvider.request.post.nativeFormat.concatUrl('fetchSettingsEditorForUserById').body({
+			userId: '1718025993466'
+		});
 
-		// const requestModule = EditorDataProvider.request.get.concatUrl('17176177027211717617807573').nativeFormat;
+		const valueSetting = await request.create();
 
-		// const result = await requestModule.create();
-
-		// console.log(result, 'EditorDataProvider');
-
-		//return result;
+		return valueSetting!.data;
 	};
 
 	override async update() {
 
 	};
 };
-
-//console.log('URL', BaseProvider.request.url);
-
 
 export { EditorDataProvider };

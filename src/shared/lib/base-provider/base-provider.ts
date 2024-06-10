@@ -15,16 +15,21 @@ class BaseProvider implements IDataProvider {
       staticBaseProvider = this;
    };
 
-	async get() {
+	async get(): Promise<any> {
 		console.log('Implement the get() method in your specified provider. Now it is taken from the Base Provider.');
+
+		return ({
+			message: 'Implement the get() method in your specified provider. Now it is taken from the Base Provider.'
+		});
 	};
 
-	async update() {
+	async update(): Promise<any> {
 		console.log('Implement the update() method in your specified provider. Now it is taken from the Base Provider.');
+
+		return ({
+			message: 'Implement the update() method in your specified provider. Now it is taken from the Base Provider.'
+		});
 	};
 };
-
-console.log(BaseProvider.request.url, 'BASE');
-
 
 export { BaseProvider };

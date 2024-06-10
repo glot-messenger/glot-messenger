@@ -54,11 +54,9 @@ class RequestModule {
 	};
 
 	static concatUrl(segment: string): typeof RequestModule {
-		const urlValue: string = (typeof RequestModule.url === 'string') ?
-			RequestModule.url + `${segment}/` :
+		const urlValue: string = (typeof this.url === 'string') ?
+			this.url + `${segment}/` :
 			`${segment}/`;
-
-		//console.log('RequestModule.url', RequestModule.url);
 
 		return class extends this {
 			static override url = urlValue;

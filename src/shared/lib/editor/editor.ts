@@ -19,7 +19,7 @@ class Editor {
 	async getSettings() {
 		const data = await this.#dataProvider.get();
 
-		// console.log(data, 'EDITOR');
+      return data;
 	};
 };
 
