@@ -97,7 +97,7 @@ class RequestModule {
 		return result;
 	};
 
-   static async create(): Promise<IResponseEngine | unknown> {
+   static async create(): Promise<IResponseEngine> {
 		// if (this.keyCache !== null) {
 		// 	const dataCache = this.instanceCache.get(this.keyCache);
 
@@ -139,6 +139,7 @@ class RequestModule {
 		// }
 
 		if (this.strategyResponse) {
+			// ДОБАВИТЬ ПРОСЛОЙКУ ПАКУЮЩУЮ В РЕСПОНС КАК ПРИ FETCH
 			return new this.strategyResponse(data);
 		}
 

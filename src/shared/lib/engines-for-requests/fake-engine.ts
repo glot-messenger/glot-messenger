@@ -1,6 +1,11 @@
 import { fakeApiBackend } from '../../../fake-api-backend';
 
-function fakeEngine(url: string, params: RequestInit): Promise<any> {
+import {
+	factoryContainerForResultsEngines,
+	ContainerForResultsEngines
+} from '../container-for-results-engines';
+
+function fakeEngine(url: string, params: RequestInit): Promise<ContainerForResultsEngines> {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const urlCorrectValue = url !== '/' && url[url.length - 1] === '/' ?
@@ -11,11 +16,19 @@ function fakeEngine(url: string, params: RequestInit): Promise<any> {
 
 			const result = await fakeApiBackend[segmentsPath[0]][segmentsPath[1]](params);
 
-			resolve({
-				data: result
-			});
-		} catch(err) {
-			reject(err);
+			resolve(factoryContainerForResultsEngines({
+				data: result,
+				url,
+				status: 200,
+				error: null
+			}));
+		} catch(err: unknown) {
+			reject(factoryContainerForResultsEngines({
+				data: null,
+				url,
+				status: 400,
+				error: err
+			}));
 		}
 	});
 };

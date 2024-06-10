@@ -1,4 +1,9 @@
-function fetchEngine(url: string, params: RequestInit): Promise<Response> {
+import {
+	factoryContainerForResultsEngines,
+	ContainerForResultsEngines
+} from '../container-for-results-engines';
+
+function fetchEngine(url: string, params: RequestInit): Promise<ContainerForResultsEngines> {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const responce: Response = await fetch(url, params);
@@ -6,7 +11,14 @@ function fetchEngine(url: string, params: RequestInit): Promise<Response> {
 			resolve(responce);
 
 		} catch(err) {
-			reject(err);
+			console.log('ERROR: fetchEngine', err);
+
+			reject(factoryContainerForResultsEngines({
+				data: null,
+				url,
+				status: 400,
+				error: err
+			}));
 		}
 	});
 };

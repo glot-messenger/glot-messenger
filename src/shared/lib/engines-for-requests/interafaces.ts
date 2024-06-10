@@ -1,1 +1,3 @@
-export type EngineRequestFNType = (url: string, params: RequestInit) => Promise<Response>;
+import { ContainerForResultsEngines } from '../container-for-results-engines';
+
+export type EngineRequestFNType = (url: string, params: RequestInit) => Promise<ContainerForResultsEngines>;

@@ -1,7 +1,8 @@
 import type { IResponseEngine } from './interafaces';
+import { ContainerForResultsEngines } from '../container-for-results-engines';
 
 class BaseResponseEngine implements IResponseEngine {
-	response: Response;
+	response: ContainerForResultsEngines;
 
 	constructor(response: Response) {
 		this.response = response;
