@@ -45,7 +45,8 @@ import {
 	Logo,
 	JoinSocialNetwork,
 	ButtonPretty,
-	Loader
+	Loader,
+	MessageLite
 } from './ui';
 
 import type {
@@ -71,6 +72,7 @@ export {
 	JoinSocialNetwork,
 	ButtonPretty,
 	Loader,
+	MessageLite,
 	HOME,
 	AUTH,
 	ALL,

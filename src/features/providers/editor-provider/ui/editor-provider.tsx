@@ -6,7 +6,8 @@ import {
 	factoryMultiton,
 	factoryEditor,
 	KEY_FOR_MULTITON_EDITOR,
-	Loader
+	Loader,
+	MessageLite
 } from '../../../../shared';
 
 const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
@@ -18,12 +19,27 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 
 	const [isLoadingEditorSettings, setLoadingEditorSettings] = useState<boolean>(true);
 
-	const [settingsEditor, setSettingsEditor] = useState<any>(null);
+	const [isErrorSettingsFetch, setErrorSettingsFetch] = useState<boolean>(false);
+
+	const [messageError, setMessageError] = useState<string>('');
 
 	const fetchSettingsEditor = async () => {
-		const settings = await editor.getSettings();
+		const settingsContainer = await editor.getSettings();
 
-		console.log(settings, 'SETTINGS result');
+		const { isError, message } = settingsContainer;
+
+		if (isError) {
+			setErrorSettingsFetch(true);
+
+			setMessageError(message + ' При получении настроек вашего мессенджера возникли проблемы...');
+
+		} else {
+			setErrorSettingsFetch(false);
+
+			setMessageError('');
+		}
+
+		setLoadingEditorSettings(false);
 	};
 
 	useEffect(() => {
@@ -33,10 +49,13 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 	}, [isLoadingEditorSettings]);
 
 	return (
-		<EditorContext.Provider value={null}>
-			{isLoadingEditorSettings ? 
-				<Loader /> :
-				children
+		<EditorContext.Provider value={editor}>
+			{
+				isLoadingEditorSettings ? 
+					<Loader /> :
+					isErrorSettingsFetch ?
+						<MessageLite text={messageError} /> :
+							children
 			}
 		</EditorContext.Provider>
 	);

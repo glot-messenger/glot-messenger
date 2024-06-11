@@ -4,7 +4,7 @@ import { factoryEditorDataProvider } from './editor-data-provider';
 let staticEditor: null | Editor = null;
 
 class Editor {
-   storeColumns = new Map();
+   storeColumns = [];
 
    #dataProvider = factoryEditorDataProvider();
 
@@ -17,9 +17,11 @@ class Editor {
    };
 
 	async getSettings() {
-		const data = await this.#dataProvider.get();
+		const containerData = await this.#dataProvider.get();
 
-      return data;
+		this.storeColumns = containerData.data.columns;
+
+    return containerData;
 	};
 };
 

@@ -23,7 +23,7 @@ class EditorDataProvider extends BaseProvider {
 
 		const valueSetting = await request.create();
 
-		return valueSetting!.data;
+		return valueSetting.nativeUnpacking();
 	};
 
 	override async update() {

@@ -10,6 +10,7 @@ import { JoinSocialNetwork } from './join-social-network';
 import { ButtonPretty } from './button-pretty';
 import { ToggleBlock } from './toggle-block';
 import { Loader } from './loader';
+import { MessageLite } from './message-lite';
 
 import type {
 	IDataFormInOnSubmit,
@@ -28,7 +29,8 @@ export {
 	JoinSocialNetwork,
 	ButtonPretty,
 	ToggleBlock,
-	Loader
+	Loader,
+	MessageLite
 };
 
 export type {

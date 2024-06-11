@@ -1,7 +1,7 @@
 import type { IParamsContainerForResultsEngines } from './interafaces';
 import { ContainerForResultsEngines } from './container-for-results-engines';
 
-function factoryContainerForResultsEngines(params: IParamsContainerForResultsEngines): ContainerForResultsEngines {
+function factoryContainerForResultsEngines<T>(params: IParamsContainerForResultsEngines<T>): ContainerForResultsEngines<T> {
 	return new ContainerForResultsEngines(params);
 };
 

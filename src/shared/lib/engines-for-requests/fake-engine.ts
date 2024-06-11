@@ -5,7 +5,7 @@ import {
 	ContainerForResultsEngines
 } from '../container-for-results-engines';
 
-function fakeEngine(url: string, params: RequestInit): Promise<ContainerForResultsEngines> {
+function fakeEngine(url: string, params: RequestInit): Promise<ContainerForResultsEngines<any>> {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const urlCorrectValue = url !== '/' && url[url.length - 1] === '/' ?
@@ -16,14 +16,17 @@ function fakeEngine(url: string, params: RequestInit): Promise<ContainerForResul
 
 			const result = await fakeApiBackend[segmentsPath[0]][segmentsPath[1]](params);
 
-			resolve(factoryContainerForResultsEngines({
+			resolve(factoryContainerForResultsEngines<any>({
 				data: result,
 				url,
 				status: 200,
 				error: null
 			}));
+
 		} catch(err: unknown) {
-			reject(factoryContainerForResultsEngines({
+			console.log('ERROR: fakeEngine', err);
+
+			reject(factoryContainerForResultsEngines<null>({
 				data: null,
 				url,
 				status: 400,

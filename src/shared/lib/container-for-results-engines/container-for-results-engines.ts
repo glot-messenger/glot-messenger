@@ -3,8 +3,8 @@ import type {
 	IContainerForResultsEngines
 } from './interafaces';
 
-class ContainerForResultsEngines implements IContainerForResultsEngines {
-	data: null | any;
+class ContainerForResultsEngines<T> implements IContainerForResultsEngines<T> {
+	data: null | T;
 
 	message: string;
 
@@ -16,7 +16,7 @@ class ContainerForResultsEngines implements IContainerForResultsEngines {
 
 	error: null | unknown;
 
-	constructor({ data, url, status, error }: IParamsContainerForResultsEngines) {
+	constructor({ data, url, status, error }: IParamsContainerForResultsEngines<T>) {
 		this.data = data;
 		if (error !== null) {
 			this.message = 'The request did not take place, an error occurred.';

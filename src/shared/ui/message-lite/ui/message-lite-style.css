@@ -1,0 +1,27 @@
+.message-lite {
+	width: 100%;
+	height: 100%;
+}
+
+.message-lite__container {
+	width: 100%;
+	height: 100%;
+	padding: 25px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.message-lite__icon {
+	flex: 0 0 60px;
+	width: 70px;
+	height: 70px;
+	margin-bottom: 10px;
+}
+
+.message-lite__text {
+	color: aliceblue;
+	font-size: 16px;
+	line-height: 125%;
+}

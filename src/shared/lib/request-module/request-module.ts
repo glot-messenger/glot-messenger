@@ -1,9 +1,12 @@
 import { ParamsRequest } from '../params-request';
 import type { EngineRequestFNType } from '../engines-for-requests';
+import { NativeResponseEngine } from '../engines-for-response';
 
 import type {
-   BaseResponseEngineClass,
-   IResponseEngine
+	BaseResponseEngineFetchClass,
+	NativeResponseEngineClass,
+  IResponseEngineFetch,
+	IResponseEngineNative
 } from '../engines-for-response';
 
 class RequestModule {
@@ -15,9 +18,9 @@ class RequestModule {
 
    static savePayload: null | any = null;
 
-   static strategyRequestFN: null | EngineRequestFNType = null;
+   static strategyRequestFN: null | EngineRequestFNType<any | Response> = null;
 
-   static strategyResponse: null | BaseResponseEngineClass = null;
+   static strategyResponse: null | BaseResponseEngineFetchClass | NativeResponseEngineClass = null;
 
 	// static instanceCache: null | ICache & ICacheConcrate = null;
 
@@ -69,13 +72,13 @@ class RequestModule {
 		};
 	};
 
-   static using(strategy: EngineRequestFNType): typeof RequestModule {
+   static using(strategy: EngineRequestFNType<unknown>): typeof RequestModule {
 		return class extends this {
 			static override strategyRequestFN = strategy;
 		};
 	};
 
-   static usingForResponse(strategy: BaseResponseEngineClass): typeof RequestModule {
+   static usingForResponse(strategy: BaseResponseEngineFetchClass): typeof RequestModule {
 		return class extends this {
 			static override strategyResponse = strategy;
 		};
@@ -97,7 +100,7 @@ class RequestModule {
 		return result;
 	};
 
-   static async create(): Promise<IResponseEngine> {
+   static async create(): Promise<IResponseEngineFetch | IResponseEngineNative> {
 		// if (this.keyCache !== null) {
 		// 	const dataCache = this.instanceCache.get(this.keyCache);
 
@@ -126,24 +129,23 @@ class RequestModule {
 			throw new Error('Strategy request is not defined...');
 		}
 
-      // Собирает все в кучу: method запроса, данные запроса
+    // Собирает все в кучу: method запроса, данные запроса (его body)
 		const params = new ParamsRequest(
 			this.method,
 			this.leadFormat(this.savePayload)
 		);
 
-		let data = await this.strategyRequestFN(this.url, params);
+		const data = await this.strategyRequestFN(this.url, params);
 
 		// if (this.instanceCache) {
 		// 	this.instanceCache.set(0, data);
 		// }
 
 		if (this.strategyResponse) {
-			// ДОБАВИТЬ ПРОСЛОЙКУ ПАКУЮЩУЮ В РЕСПОНС КАК ПРИ FETCH
 			return new this.strategyResponse(data);
 		}
 
-		return data;
+		return new NativeResponseEngine(data);
 	};
 };
 
