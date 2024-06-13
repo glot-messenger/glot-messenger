@@ -45,12 +45,6 @@ function fetchSettingsEditorForUserById({ body }: any) {
          return null;
       });
 
-      if (!settingForUser) {
-         resolve(defaultSetting);
-
-         return;
-      }
-
       resolve(settingForUser);
    });
 };

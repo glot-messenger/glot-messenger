@@ -3,9 +3,7 @@ import './space-page-style.css';
 import { EditorContext } from '../../../entities';
 
 const SpacePage: React.FC = () => {
-	const editorSettings = useContext(EditorContext);
-
-	console.log(editorSettings.storeColumns);
+	const editor = useContext(EditorContext);
 
 	return (
 		<div className='space'>

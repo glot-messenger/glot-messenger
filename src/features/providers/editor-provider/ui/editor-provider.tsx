@@ -23,23 +23,49 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 
 	const [messageError, setMessageError] = useState<string>('');
 
+	const [settingsEditor, setSettingsEditor] = useState<any>({});
+
+	const createDefaultSettingsEditor = async () => {
+		const settingsDefaultEditor = editor.createDefaultSettings();
+
+		console.log(settingsDefaultEditor);
+		
+
+		//settingsDefaultEditor.addDefaultColumn();
+
+		// Тут надо записать эти настройки в базу асинхронно и снять лоадер
+	};
+
 	const fetchSettingsEditor = async () => {
 		const settingsContainer = await editor.getSettings();
 
-		const { isError, message } = settingsContainer;
+		const { isError, message, data } = settingsContainer;
 
 		if (isError) {
 			setErrorSettingsFetch(true);
 
 			setMessageError(message + ' При получении настроек вашего мессенджера возникли проблемы...');
 
-		} else {
+			setLoadingEditorSettings(false);
+
+			return;
+		}
+
+		if (!isError) {
 			setErrorSettingsFetch(false);
 
 			setMessageError('');
 		}
 
-		setLoadingEditorSettings(false);
+		if (data) {
+			setSettingsEditor(data);
+
+			setLoadingEditorSettings(false);
+
+			return;
+		}
+
+		createDefaultSettingsEditor();
 	};
 
 	useEffect(() => {
