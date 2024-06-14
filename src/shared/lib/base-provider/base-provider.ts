@@ -23,6 +23,15 @@ class BaseProvider implements IDataProvider {
 		});
 	};
 
+	async set(data: any): Promise<any> {
+		console.log('Implement the set() method in your specified provider. Now it is taken from the Base Provider.');
+
+		return ({
+			message: 'Implement the set() method in your specified provider. Now it is taken from the Base Provider.',
+			value: data
+		});
+	};
+
 	async update(): Promise<any> {
 		console.log('Implement the update() method in your specified provider. Now it is taken from the Base Provider.');
 

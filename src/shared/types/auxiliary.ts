@@ -15,5 +15,6 @@ export interface IInstanceWithKeyAndValue {
 
 export interface IDataProvider {
 	get: () => Promise<any>;
+	set: (data: any) => Promise<any>;
 	update: () => Promise<any>;
 };

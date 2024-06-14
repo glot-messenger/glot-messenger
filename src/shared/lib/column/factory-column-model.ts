@@ -1,6 +1,6 @@
 import { ColumnModel } from './column-model';
 
-function factoryColumnModel(config) {
+function factoryColumnModel(config: any) {
 	return new ColumnModel(config);
 };
 

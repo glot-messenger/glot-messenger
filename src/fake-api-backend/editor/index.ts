@@ -1,3 +1,9 @@
-import { fetchSettingsEditorForUserById } from './settings';
+import {
+   fetchSettingsEditorForUserById,
+   createSettingsEditorForUser
+} from './settings';
 
-export { fetchSettingsEditorForUserById };
+export {
+   fetchSettingsEditorForUserById,
+   createSettingsEditorForUser
+};

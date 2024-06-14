@@ -1,8 +1,8 @@
 const settingsAll: any = [
-   
+   // массив всех сохраненных настроек редактора мессенджера
 ];
 
-const defaultSetting = {
+const defaultSettingExampleFullStructure = {
    _id: 'default-setting-id-1718025020096',
    userId: 'default-user-id-1718025037816',
    columns: [
@@ -25,7 +25,7 @@ const defaultSetting = {
    ]
 };
 
-function fetchSettingsEditorForUserById({ body }: any) {
+export function fetchSettingsEditorForUserById({ body }: any) {
    const userId = body.userId;
 
    return new Promise((resolve, reject) => {
@@ -49,4 +49,22 @@ function fetchSettingsEditorForUserById({ body }: any) {
    });
 };
 
-export { fetchSettingsEditorForUserById };
+export function createSettingsEditorForUser({ body }: any) {
+   const instanceEditor = body.data;
+
+   return new Promise((resolve, reject) => {
+      if (instanceEditor === null || instanceEditor === undefined || (typeof instanceEditor !== 'object')) {
+         reject({
+            message: 'The instanceEditor for the /createSettingsEditorForUser/ method must be passed!!!'
+         });
+
+         return;
+      }
+
+      settingsAll.push(instanceEditor);
+
+      console.log(settingsAll, "ARRAY SETTINGS EDITORS");
+
+      resolve(instanceEditor);
+   });
+};

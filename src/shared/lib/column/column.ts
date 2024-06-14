@@ -1,9 +1,12 @@
 import { factoryColumnModel } from './factory-column-model';
+import { factoryColumnDataProvider } from './column-data-provider';
 
 // Singleton =======================================================================
 let staticColumn: null | Column = null;
 
 class Column {
+	#dataProvider = factoryColumnDataProvider();
+
 	constructor() {
 		if (staticColumn !== null) {
 			return staticColumn;
@@ -12,14 +15,18 @@ class Column {
 	 staticColumn = this;
 	};
 
-	createDefaultColumn(config) {
-		const column = factoryColumnModel(config);
+	async createDefaultColumn(config: any) {
+		const instanceColumn = factoryColumnModel(config);
 
-		console.log(column, "COLUMN", config);
+		console.log(instanceColumn, "COLUMN", config);
 		// Требуется добавить в колонку два слота, их id и асинхронно сохранить
 		// API
 
-		return column;
+		console.log(this, 'THIS');
+
+		const containerDataSavedInstanceColumn = await this.#dataProvider.set(instanceColumn);
+
+		return containerDataSavedInstanceColumn;
 	};
 };
 

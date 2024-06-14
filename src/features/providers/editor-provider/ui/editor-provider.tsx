@@ -26,14 +26,18 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 	const [settingsEditor, setSettingsEditor] = useState<any>({});
 
 	const createDefaultSettingsEditor = async () => {
-		const settingsDefaultEditor = editor.createDefaultSettings();
+		const { isError, message, data } = await editor.createDefaultSettings();
 
-		console.log(settingsDefaultEditor);
-		
+		if (isError) {
+			setErrorSettingsFetch(true);
 
-		//settingsDefaultEditor.addDefaultColumn();
+			setMessageError(message + ' В процессе конструирования и создания вашего дефолтного вида для мессенджера возникла проблема...');
 
-		// Тут надо записать эти настройки в базу асинхронно и снять лоадер
+		} else {
+			setSettingsEditor(data);
+		}
+
+		setLoadingEditorSettings(false);
 	};
 
 	const fetchSettingsEditor = async () => {
@@ -75,7 +79,7 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 	}, [isLoadingEditorSettings]);
 
 	return (
-		<EditorContext.Provider value={editor}>
+		<EditorContext.Provider value={settingsEditor}>
 			{
 				isLoadingEditorSettings ? 
 					<Loader /> :

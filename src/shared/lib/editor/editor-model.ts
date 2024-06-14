@@ -1,21 +1,15 @@
-import { factoryColumn } from '../column';
-
 class EditorModel {
 	userId: string;
 
 	_id: string;
 
-	storeColumns: Array<any>;
+	columns: Array<any>;
 
-	constructor({ userId }) {
+	constructor({ userId }: any) {
 		this.userId = userId;
 		this._id = `${Date.now()}-id-editor`;
-		this.storeColumns = [];
+		this.columns = [];
 	};
-
-	//async addDefaultColumn() {
-	//	await factoryColumn().createDefaultColumn({ settingId: this._id });
-	//};
 };
 
 export { EditorModel };

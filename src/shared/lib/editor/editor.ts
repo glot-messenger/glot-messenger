@@ -19,19 +19,24 @@ class Editor {
 	async getSettings() {
 		const containerData = await this.#dataProvider.get();
 
-    return containerData;
+		return containerData;
 	};
 
-	async createDefaultSettings() { // Тут должно быть обращение в сервис пользователя для получения его id
-		const instancelEditor = factoryEditorModel({ userId: `${Date.now()}-user-id` });
+	async createDefaultSettings() { // Тут должно быть обращение в сервис пользователя (USER) для получения его id
+		const instanceEditor = factoryEditorModel({ userId: `${Date.now()}-user-id` });
 
-		console.log(instancelEditor, "MODEL EDITOR");
-		const instanceColumn = factoryColumn().createDefaultColumn({ settingId: instancelEditor._id });
+		const column = factoryColumn();
 
-		// После того как создастся колонка и ее id запишется в настройки редактора можно будет асинхронно сохранять в базу
-		// API
+		console.log(column, 'column');
+		
 
-		return instancelEditor;
+		//const containerDataColumn = factoryColumn().createDefaultColumn({ settingId: instanceEditor._id });
+
+		// instanceEditor.columns.push(containerDataColumn.data._id);
+
+		// const containerDataSavedInstanceEditor = await this.#dataProvider.set(instanceEditor);
+
+		// return containerDataSavedInstanceEditor;
 	};
 };
 

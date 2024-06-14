@@ -1,8 +1,17 @@
-import { fetchSettingsEditorForUserById } from './editor';
+import {
+   fetchSettingsEditorForUserById,
+   createSettingsEditorForUser
+} from './editor';
+
+import { createColumnByIdEditor } from './column';
 
 const fakeApiBackend: any = {
    editor: {
-      fetchSettingsEditorForUserById
+      fetchSettingsEditorForUserById,
+      createSettingsEditorForUser
+   },
+   column: {
+      createColumnByIdEditor
    }
 };
 

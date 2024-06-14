@@ -1,7 +1,10 @@
 import { Column } from './column';
 
 function factoryColumn() {
-	return new Column();
+	const v = new Column();
+
+	console.log(v);
+	
 };
 
 export { factoryColumn };

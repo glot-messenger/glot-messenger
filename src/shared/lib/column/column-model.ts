@@ -5,7 +5,7 @@ class ColumnModel {
 
 	slots: Array<any>;
 
-	constructor({ settingId }) {
+	constructor({ settingId }: any) {
 		this._id = `${Date.now()}-column-id`;
 		this.settingId = settingId;
 		this.slots = [];
