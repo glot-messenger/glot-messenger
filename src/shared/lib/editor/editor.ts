@@ -23,20 +23,15 @@ class Editor {
 	};
 
 	async createDefaultSettings() { // Тут должно быть обращение в сервис пользователя (USER) для получения его id
-		const instanceEditor = factoryEditorModel({ userId: `${Date.now()}-user-id` });
+		const instanceEditorModel = factoryEditorModel({ userId: `${Date.now()}-user-id` });
 
-		const column = factoryColumn();
+		const containerDataColumn = await factoryColumn().createDefaultColumn({ settingId: instanceEditorModel._id });
 
-		console.log(column, 'column');
-		
+		instanceEditorModel.columns.push(containerDataColumn.data._id);
 
-		//const containerDataColumn = factoryColumn().createDefaultColumn({ settingId: instanceEditor._id });
+		const containerDataSavedInstanceEditor = await this.#dataProvider.set(instanceEditorModel);
 
-		// instanceEditor.columns.push(containerDataColumn.data._id);
-
-		// const containerDataSavedInstanceEditor = await this.#dataProvider.set(instanceEditor);
-
-		// return containerDataSavedInstanceEditor;
+		return containerDataSavedInstanceEditor;
 	};
 };
 

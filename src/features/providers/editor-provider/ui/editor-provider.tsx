@@ -28,6 +28,8 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 	const createDefaultSettingsEditor = async () => {
 		const { isError, message, data } = await editor.createDefaultSettings();
 
+		console.log('data editor provider', data); // ПОДУМАТЬ НАД ТЕМ, что при дефолтной генерации все есть на клиенте, а если из бд берется, то по частям уже
+
 		if (isError) {
 			setErrorSettingsFetch(true);
 

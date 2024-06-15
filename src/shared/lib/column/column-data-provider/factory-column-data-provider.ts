@@ -1,12 +1,7 @@
 import { ColumnDataProvider } from './column-data-provider';
 
-function factoryColumnDataProvider() {
-   console.log(ColumnDataProvider, '++++');
-   
-
-   const v = new ColumnDataProvider();
-
-   console.log(v, 'factoryColumnDataProvider');
+function factoryColumnDataProvider(): ColumnDataProvider {
+   return new ColumnDataProvider();
 };
 
 export { factoryColumnDataProvider };

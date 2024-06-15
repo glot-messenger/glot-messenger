@@ -14,9 +14,6 @@ class ColumnDataProvider extends BaseProvider {
 
       super();
 
-      console.log(this, 'THIS COLUMN DATA PROVIDER CLASS', 'попадает EDITOR PROVIDER');
-      
-
       staticColumnDataProvider = this;
    };
 
@@ -24,17 +21,14 @@ class ColumnDataProvider extends BaseProvider {
       console.log('async get ColumnDataProvider');
    };
 
-   override async set(instanceColumn: any) {
-      console.log(instanceColumn, 'Внутри ColumnDataProvider');
-      
+   override async set(instanceColumnModel: any) {
+      const request = ColumnDataProvider.request.post.nativeFormat.concatUrl('createColumnByIdEditor').body({
+			data: instanceColumnModel
+		});
 
-      // const request = ColumnDataProvider.request.post.nativeFormat.concatUrl('createColumnByIdEditor').body({
-		// 	data: instanceColumn
-		// });
+      const valueColumn = await request.create();
 
-      // const valueColumn = await request.create();
-
-      // return valueColumn.nativeUnpacking();
+      return valueColumn.nativeUnpacking();
    };
 };
 

@@ -1,19 +1,11 @@
 import type { IDataProvider } from '../../types';
 import { baseRequestModule } from './request-base-provider';
 
-// Singleton =============================================================================
-let staticBaseProvider: null | BaseProvider = null;
+// Не может быть Singleton, т.к. его метод constructor() используется для инициализации разных Providers
+// В случае единой точки, если мы его сделаем Singleton, специфичные провайдеры перестанут быть уникальными, они проинициализируются одним провайдером и везде его будут подсовывать
 
 class BaseProvider implements IDataProvider {
 	static request = baseRequestModule;
-
-   constructor() {
-      if (staticBaseProvider !== null) {
-         return staticBaseProvider;
-      }
-
-      staticBaseProvider = this;
-   };
 
 	async get(): Promise<any> {
 		console.log('Implement the get() method in your specified provider. Now it is taken from the Base Provider.');

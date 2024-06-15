@@ -1,5 +1,6 @@
 import { factoryColumnModel } from './factory-column-model';
 import { factoryColumnDataProvider } from './column-data-provider';
+import { factorySlot } from '../slot';
 
 // Singleton =======================================================================
 let staticColumn: null | Column = null;
@@ -10,21 +11,21 @@ class Column {
 	constructor() {
 		if (staticColumn !== null) {
 			return staticColumn;
-	 }
+		}
 
-	 staticColumn = this;
+		staticColumn = this;
 	};
 
 	async createDefaultColumn(config: any) {
-		const instanceColumn = factoryColumnModel(config);
+		const instanceColumnModel = factoryColumnModel(config);
 
-		console.log(instanceColumn, "COLUMN", config);
-		// Требуется добавить в колонку два слота, их id и асинхронно сохранить
-		// API
+		const arrayContainersDataSlots = await factorySlot().createDefaultSlots({ columnId: instanceColumnModel._id, quantityNewElements: 3 });
 
-		console.log(this, 'THIS');
+		arrayContainersDataSlots.forEach((container) => {
+			instanceColumnModel.slots.push(container.data._id);
+		});
 
-		const containerDataSavedInstanceColumn = await this.#dataProvider.set(instanceColumn);
+		const containerDataSavedInstanceColumn = await this.#dataProvider.set(instanceColumnModel);
 
 		return containerDataSavedInstanceColumn;
 	};

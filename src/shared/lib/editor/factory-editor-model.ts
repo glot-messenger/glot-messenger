@@ -1,7 +1,7 @@
 import { EditorModel } from './editor-model';
 
-function factoryEditorModel(configEditor) {
-	return new EditorModel(configEditor);
+function factoryEditorModel(config: any): EditorModel {
+	return new EditorModel(config);
 };
 
 export { factoryEditorModel };

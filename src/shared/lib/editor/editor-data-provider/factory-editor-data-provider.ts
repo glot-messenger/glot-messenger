@@ -1,6 +1,6 @@
 import { EditorDataProvider } from './editor-data-provider';
 
-function factoryEditorDataProvider() {
+function factoryEditorDataProvider(): EditorDataProvider {
 	return new EditorDataProvider();
 };
 
