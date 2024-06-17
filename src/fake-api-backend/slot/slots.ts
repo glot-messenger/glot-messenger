@@ -21,7 +21,7 @@ export function createSlotByIdColumn({ body }: any) {
 
       slotsAll[dataSave.columnId].push(dataSave);
 
-      console.log('Store slots after save data slot!', slotsAll);
+      console.log('Backend: Store slots after save data slot!', slotsAll);
 
       resolve(dataSave);
    });

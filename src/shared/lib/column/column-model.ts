@@ -1,3 +1,5 @@
+import { getUniqueId } from '../utils';
+
 class ColumnModel {
 	settingId: string;
 
@@ -6,7 +8,7 @@ class ColumnModel {
 	slots: Array<any>;
 
 	constructor({ settingId }: any) {
-		this._id = `${Date.now()}-column-id`;
+		this._id = getUniqueId('column');
 		this.settingId = settingId;
 		this.slots = [];
 	};

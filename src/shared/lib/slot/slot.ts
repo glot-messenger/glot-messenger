@@ -26,6 +26,9 @@ class Slot {
          arrayPromisesModelsSlots.push(containerDataSavedInstanceSlot);
       }
 
+			console.log(arrayPromisesModelsSlots, "createDefaultSlots");
+			
+
       return Promise.all(arrayPromisesModelsSlots);
    };
 };

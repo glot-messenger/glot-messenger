@@ -63,7 +63,7 @@ export function createSettingsEditorForUser({ body }: any) {
 
       settingsAll.push(instanceEditor);
 
-      console.log('Store settings editors after save data settings editor!', settingsAll);
+      console.log('Backend: Store settings editors after save data settings editor!', settingsAll);
 
       resolve(instanceEditor);
    });

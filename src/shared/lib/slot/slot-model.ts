@@ -1,3 +1,5 @@
+import { getUniqueId } from '../utils';
+
 class SlotModel {
    _id: string;
 
@@ -6,7 +8,7 @@ class SlotModel {
    isEmpty: boolean;
 
    constructor({ columnId }: any) {
-      this._id = `${Date.now()}-id-slot`;
+      this._id = getUniqueId('slot');
       this.columnId = columnId;
       this.isEmpty = true;
    };

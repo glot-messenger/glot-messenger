@@ -1,7 +1,8 @@
 import {
 	isNullable,
 	isNotPrimitive,
-	isContainsPropertiesTypeAndPropsInChild
+	isContainsPropertiesTypeAndPropsInChild,
+	getUniqueId
 } from './utils';
 
 import {
@@ -37,5 +38,6 @@ export {
 	EventEmitter,
 	defaultEventEmitter,
 	Validator,
-	factoryEditor
+	factoryEditor,
+	getUniqueId
 };

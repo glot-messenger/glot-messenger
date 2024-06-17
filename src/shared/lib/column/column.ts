@@ -19,7 +19,10 @@ class Column {
 	async createDefaultColumn(config: any) {
 		const instanceColumnModel = factoryColumnModel(config);
 
+		// Написать проверку контейнера на isError
 		const arrayContainersDataSlots = await factorySlot().createDefaultSlots({ columnId: instanceColumnModel._id, quantityNewElements: 3 });
+
+		console.log('SLOTS', arrayContainersDataSlots);
 
 		arrayContainersDataSlots.forEach((container) => {
 			instanceColumnModel.slots.push(container.data._id);

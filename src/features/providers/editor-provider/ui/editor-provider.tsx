@@ -25,6 +25,10 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 
 	const [settingsEditor, setSettingsEditor] = useState<any>({});
 
+	const [columnsEditor, setColumnsEditor] = useState<any>([]);
+
+	const [slotsEditor, setSlotsEditor] = useState<any>([]);
+
 	const createDefaultSettingsEditor = async () => {
 		const { isError, message, data } = await editor.createDefaultSettings();
 

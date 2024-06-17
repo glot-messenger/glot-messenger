@@ -135,17 +135,22 @@ class RequestModule {
 			this.leadFormat(this.savePayload)
 		);
 
-		const data = await this.strategyRequestFN(this.url, params);
+		try {
+			const data = await this.strategyRequestFN(this.url, params);
 
-		// if (this.instanceCache) {
-		// 	this.instanceCache.set(0, data);
-		// }
+			// if (this.instanceCache) {
+			// 	this.instanceCache.set(0, data);
+			// }
 
-		if (this.strategyResponse) {
-			return new this.strategyResponse(data);
+			if (this.strategyResponse) {
+				return new this.strategyResponse(data);
+			}
+
+			return new NativeResponseEngine(data);
+
+		} catch(err: any) {
+			return new NativeResponseEngine(err);
 		}
-
-		return new NativeResponseEngine(data);
 	};
 };
 

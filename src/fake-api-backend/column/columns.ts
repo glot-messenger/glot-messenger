@@ -21,7 +21,7 @@ export function createColumnByIdEditor({ body }: any) {
 
       columnsAll[dataSave.settingId].push(dataSave);
 
-      console.log('Store columns after save data settings!', columnsAll);
+      console.log('Backend: Store columns after save data settings!', columnsAll);
 
       resolve(dataSave);
    });

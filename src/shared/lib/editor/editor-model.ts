@@ -1,3 +1,5 @@
+import { getUniqueId } from '../utils';
+
 class EditorModel {
 	userId: string;
 
@@ -7,7 +9,7 @@ class EditorModel {
 
 	constructor({ userId }: any) {
 		this.userId = userId;
-		this._id = `${Date.now()}-id-editor`;
+		this._id = getUniqueId('editor');
 		this.columns = [];
 	};
 };
