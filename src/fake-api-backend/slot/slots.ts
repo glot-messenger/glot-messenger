@@ -23,10 +23,6 @@ export function createSlotByIdColumn({ body }: any) {
 
       console.log('Backend: Store slots after save data slot!', slotsAll);
 
-      //resolve(dataSave);
-
-      reject({
-         message: 'Error request slots'
-      })
+      resolve(dataSave);
    });
 };

@@ -20,7 +20,19 @@ class Editor {
 	async getSettings() {
 		const containerData = await this.#dataProvider.get();
 
-		return containerData;
+		if (containerData.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: 'Failure editor settings... Having problems getting your personal editor settings.',
+				data: null
+			});
+		}
+
+		return factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: 'Success editor settings! The request was processed without errors when receiving the editor settings.',
+			data: containerData.data
+		});
 	};
 
 	async createDefaultSettings() { // Тут должно быть обращение в сервис пользователя (USER) для получения его id

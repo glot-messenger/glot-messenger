@@ -25,14 +25,12 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 
 	const [settingsEditor, setSettingsEditor] = useState<any>({});
 
-	const [columnsEditor, setColumnsEditor] = useState<any>([]);
+	const [columnsEditor, setColumnsEditor] = useState<null | Array<any>>(null);
 
-	const [slotsEditor, setSlotsEditor] = useState<any>([]);
+	const [slotsEditor, setSlotsEditor] = useState<null | Array<any>>(null);
 
 	const createDefaultSettingsEditor = async () => {
 		const { isError, message, data } = await editor.createDefaultSettings();
-
-		console.log('data editor provider', data); // ПОДУМАТЬ НАД ТЕМ, что при дефолтной генерации все есть на клиенте, а если из бд берется, то по частям уже
 
 		if (isError) {
 			setErrorSettingsFetch(true);
@@ -40,7 +38,13 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 			setMessageError(message + ' В процессе конструирования и создания вашего дефолтного вида для мессенджера возникла проблема...');
 
 		} else {
-			setSettingsEditor(data);
+			const { slots, columns, editor } = data;
+
+			setSlotsEditor(slots);
+
+			setColumnsEditor(columns);
+
+			setSettingsEditor(editor);
 		}
 
 		setLoadingEditorSettings(false);
@@ -70,6 +74,10 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 		if (data) {
 			setSettingsEditor(data);
 
+			setColumnsEditor(null);
+
+			setSlotsEditor(null);
+
 			setLoadingEditorSettings(false);
 
 			return;
@@ -85,7 +93,7 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 	}, [isLoadingEditorSettings]);
 
 	return (
-		<EditorContext.Provider value={settingsEditor}>
+		<EditorContext.Provider value={{ editor: settingsEditor, columns: columnsEditor, slots: slotsEditor }}>
 			{
 				isLoadingEditorSettings ? 
 					<Loader /> :
