@@ -3,7 +3,9 @@ export function getUniqueId(namespace?: string): string {
 
 	const random2: string = Math.random().toString(16);
 
-	let value: string = `${Date.now().toString(36)}.${random1}.${random2}`;
+	const dateValue: string = Date.now().toString(36);
+
+	let value: string = `${dateValue}.${random1}.${random2}`;
 
 	if (namespace) {
 		value += `-${namespace}`;
