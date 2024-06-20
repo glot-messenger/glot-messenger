@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import './space-box-style.css';
+import { EditorContext } from '../../../entities';
+import { Column } from './column';
 
 const SpaceBox: React.FC = () => {
-	return (// С ним по соседству будут и column и slot, рядом файлы будут лежать. Они будут составляющими композера spaceBox
-		<div></div>
+	const { columns } = useContext(EditorContext);
+	// проверять, есть или нету данных по колонкам и либо сразу рисовать, либо запрашивать
+	return (
+		<div className='space-box'>
+			<div className='space-box__container'>
+				{/*{editor.columns.map((idColumn: string) => {
+					return (
+						<Column key={idColumn} idColumn={idColumn} />
+					);
+				})}*/}
+			</div>
+		</div>
 	);
 };
 
