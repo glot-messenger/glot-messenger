@@ -66,8 +66,8 @@ class Editor {
 			isError: false,
 			message: 'Success editor settings with columns! The messenger settings were received along with the speakers.',
 			data: {
-				editor: containerResultSettingsEditor.data,
-				columns: containerResultColumns.data,
+				...containerResultSettingsEditor.data,
+				...containerResultColumns.data,
 				slots: null
 			}
 		});

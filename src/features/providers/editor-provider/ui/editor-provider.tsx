@@ -53,8 +53,6 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 	const fetchSettingsEditor = async () => {
 		const settingsContainer = await editor.getSettingsWithColumns();
 
-		console.log('settingsContainer', settingsContainer);
-
 		const { isError, message, data } = settingsContainer;
 
 		if (isError) {
@@ -73,14 +71,14 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 			setMessageError('');
 		}
 
-		const { slots, columns, editor: settingsEditor } = data;
+		const { slots, columns, editor: settingsEditorData } = data;
 
 		if (editor) {
-			setSettingsEditor(settingsEditor);
+			setSettingsEditor(settingsEditorData);
 
 			setColumnsEditor(columns);
 
-			setSlotsEditor(null);
+			setSlotsEditor(slots);
 
 			setLoadingEditorSettings(false);
 

@@ -25,7 +25,6 @@ class Column {
 				isError: true,
 				message: containerData.message + ' Failure columns... Problems occurred when receiving columns by messenger id.',
 				data: {
-					...containerData.data,
 					columns: null
 				}
 			});

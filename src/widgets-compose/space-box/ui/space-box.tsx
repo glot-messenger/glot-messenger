@@ -4,10 +4,7 @@ import { EditorContext } from '../../../entities';
 import { Column } from './column';
 
 const SpaceBox: React.FC = () => {
-	const { columns, editor, slots } = useContext(EditorContext);
-	// проверять, есть или нету данных по колонкам и либо сразу рисовать, либо запрашивать
-
-	console.log('EDITOR', editor);
+	const { columns, slots } = useContext(EditorContext);
 
 	console.log('COLUMNS', columns);
 
