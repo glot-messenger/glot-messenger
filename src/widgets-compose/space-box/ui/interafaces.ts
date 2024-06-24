@@ -1,3 +1,3 @@
 export interface IColumnProps {
-	idColumn: string;
+	data: any;
 };

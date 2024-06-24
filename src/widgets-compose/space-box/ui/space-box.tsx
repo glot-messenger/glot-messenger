@@ -4,16 +4,24 @@ import { EditorContext } from '../../../entities';
 import { Column } from './column';
 
 const SpaceBox: React.FC = () => {
-	const { columns } = useContext(EditorContext);
+	const { columns, editor, slots } = useContext(EditorContext);
 	// проверять, есть или нету данных по колонкам и либо сразу рисовать, либо запрашивать
+
+	console.log('EDITOR', editor);
+
+	console.log('COLUMNS', columns);
+
+	console.log('SLOTS', slots);
+
 	return (
 		<div className='space-box'>
 			<div className='space-box__container'>
-				{/*{editor.columns.map((idColumn: string) => {
+				{columns.map((columnData: any) => {
+
 					return (
-						<Column key={idColumn} idColumn={idColumn} />
+						<Column key={columnData._id} data={columnData} />
 					);
-				})}*/}
+				})}
 			</div>
 		</div>
 	);

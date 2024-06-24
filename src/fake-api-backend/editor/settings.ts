@@ -1,5 +1,10 @@
 const settingsAll: any = [
    // массив всех сохраненных настроек редактора мессенджера
+	{
+		_id: 'lxsx2xw3.0.6ee63ba756ca3.0.5461dfa3d3929-editor0d56afd1-b6c3-496e-a4e4-11ca8603cf3a',
+		userId: '1719229880595-user-id',
+		columns: ['lxsx2xw4.0.0e613a69cd867.0.9eba5789753e8-columnad793a11-27e5-438f-bce9-dee40ec7eec7']
+	}
 ];
 
 // const defaultSettingExampleFullStructure = {

@@ -7,10 +7,17 @@ class ColumnModel {
 
 	slots: Array<any>;
 
+	styles: any;
+
 	constructor({ settingId }: any) {
 		this._id = getUniqueId('column');
 		this.settingId = settingId;
 		this.slots = [];
+		this.styles = {
+			width: '10%',
+			top: '0%',
+			left: '0%'
+		}
 	};
 };
 

@@ -19,7 +19,7 @@ class EditorDataProvider extends BaseProvider {
 
 	override async get() {
 		const request = EditorDataProvider.request.post.nativeFormat.concatUrl('fetchSettingsEditorForUserById').body({
-			userId: '1718025993466'
+			userId: '1719229880595-user-id'
 		});
 
 		const valueSetting = await request.create();
