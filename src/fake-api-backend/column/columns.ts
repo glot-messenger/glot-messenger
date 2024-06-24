@@ -42,3 +42,27 @@ export function createColumnByIdEditor({ body }: any) {
       resolve(dataSave);
    });
 };
+
+export function fetchColumnsByIdEditor({ body }: any) {
+	const { settingId } = body;
+
+	return new Promise((resolve, reject) => {
+		if (settingId === undefined || settingId === null) {
+			reject({
+				message: 'The settingId for the /fetchColumnsByIdEditor/ method must be passed!!!'
+			});
+
+			return;
+		}
+
+		const columns = columnsAll[settingId];
+
+		if (Array.isArray(columns) && (columns.length !== 0)) {
+			resolve(columns);
+
+			return;
+		}
+
+		resolve([]);
+	});
+};

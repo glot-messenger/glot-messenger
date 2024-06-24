@@ -17,8 +17,12 @@ class ColumnDataProvider extends BaseProvider {
       staticColumnDataProvider = this;
    };
 
-   override async get() {
-      console.log('async get ColumnDataProvider');
+   override async get(config: any) {
+		const request = ColumnDataProvider.request.post.nativeFormat.concatUrl('fetchColumnsByIdEditor').body(config);
+
+		const valueColumns = await request.create();
+
+		return valueColumns.nativeUnpacking();
    };
 
    override async set(instanceColumnModel: any) {

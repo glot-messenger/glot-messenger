@@ -7,7 +7,7 @@ import { baseRequestModule } from './request-base-provider';
 class BaseProvider implements IDataProvider {
 	static request = baseRequestModule;
 
-	async get(): Promise<any> {
+	async get(config?: any): Promise<any> {
 		console.log('Implement the get() method in your specified provider. Now it is taken from the Base Provider.');
 
 		return ({

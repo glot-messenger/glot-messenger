@@ -24,14 +24,52 @@ class Editor {
 			return factoryContainerForResultsSomeAsyncMethods({
 				isError: true,
 				message: 'Failure editor settings... Having problems getting your personal editor settings.',
-				data: null
+				data: {
+					slots: null,
+					columns: null,
+					editor: null
+				}
 			});
 		}
 
 		return factoryContainerForResultsSomeAsyncMethods({
 			isError: false,
 			message: 'Success editor settings! The request was processed without errors when receiving the editor settings.',
-			data: containerData.data
+			data: {
+				editor: containerData.data,
+				columns: null,
+				slots: null
+			}
+		});
+	};
+
+	async getSettingsWithColumns() {
+		const containerResultSettingsEditor = await this.getSettings();
+
+		if (containerResultSettingsEditor.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				...containerResultSettingsEditor,
+				message: 'Failure editor settings... There was a problem when getting the editor settings data along with the columns.',
+			});
+		}
+
+		const containerResultColumns = await factoryColumn().getColumnsByIdEditorSettings({ settingId: containerResultSettingsEditor.data.editor._id });
+
+		if (containerResultColumns.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				...containerResultColumns,
+				message: containerResultColumns.message + ' Failure editor settings... There were problems getting the columns.',
+			});
+		}
+
+		return factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: 'Success editor settings with columns! The messenger settings were received along with the speakers.',
+			data: {
+				editor: containerResultSettingsEditor.data,
+				columns: containerResultColumns.data,
+				slots: null
+			}
 		});
 	};
 

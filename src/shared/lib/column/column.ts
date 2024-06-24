@@ -17,6 +17,29 @@ class Column {
 		staticColumn = this;
 	};
 
+	async getColumnsByIdEditorSettings(config: any) {
+		const containerData = await this.#dataProvider.get(config);
+
+		if (containerData.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: containerData.message + ' Failure columns... Problems occurred when receiving columns by messenger id.',
+				data: {
+					...containerData.data,
+					columns: null
+				}
+			});
+		}
+
+		return factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: containerData.message + ' Success columns! Columns by editor id have been received.',
+			data: {
+				columns: containerData.data
+			}
+		});
+	};
+
 	async createDefaultColumn(config: any) {
 		const instanceColumnModel = factoryColumnModel(config);
 

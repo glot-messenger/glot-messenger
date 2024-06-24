@@ -1,3 +1,9 @@
-import { createColumnByIdEditor } from './columns';
+import {
+	createColumnByIdEditor,
+	fetchColumnsByIdEditor
+} from './columns';
 
-export { createColumnByIdEditor };
+export {
+	createColumnByIdEditor,
+	fetchColumnsByIdEditor
+};

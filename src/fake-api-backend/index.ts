@@ -3,7 +3,10 @@ import {
    createSettingsEditorForUser
 } from './editor';
 
-import { createColumnByIdEditor } from './column';
+import {
+	createColumnByIdEditor,
+	fetchColumnsByIdEditor
+} from './column';
 
 import { createSlotByIdColumn } from './slot';
 
@@ -13,7 +16,8 @@ const fakeApiBackend: any = {
       createSettingsEditorForUser
    },
    column: {
-      createColumnByIdEditor
+      createColumnByIdEditor,
+		fetchColumnsByIdEditor
    },
    slot: {
       createSlotByIdColumn
