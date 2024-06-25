@@ -21,10 +21,14 @@ import {
 	factoryEventEmitter,
 	KEY_FOR_MULTITON_EVENT_EMITTER,
 	KEY_FOR_MULTITON_EDITOR,
+	KEY_FOR_MULTITON_COLUMN,
+	KEY_FOR_MULTITON_SLOT,
 	factoryMultiton,
 	EventEmitter,
 	defaultEventEmitter,
-	factoryEditor
+	factoryEditor,
+	factoryColumn,
+	factorySlot
 } from './lib';
 
 // types
@@ -46,6 +50,7 @@ import {
 	JoinSocialNetwork,
 	ButtonPretty,
 	Loader,
+	Loader2,
 	MessageLite
 } from './ui';
 
@@ -72,6 +77,7 @@ export {
 	JoinSocialNetwork,
 	ButtonPretty,
 	Loader,
+	Loader2,
 	MessageLite,
 	HOME,
 	AUTH,
@@ -83,11 +89,15 @@ export {
 	factoryEventEmitter,
 	KEY_FOR_MULTITON_EVENT_EMITTER,
 	KEY_FOR_MULTITON_EDITOR,
+	KEY_FOR_MULTITON_COLUMN,
+	KEY_FOR_MULTITON_SLOT,
 	factoryMultiton,
 	EventEmitter,
 	APP_EVENT_CLICK,
 	defaultEventEmitter,
-	factoryEditor
+	factoryEditor,
+	factoryColumn,
+	factorySlot
 };
 
 export type {

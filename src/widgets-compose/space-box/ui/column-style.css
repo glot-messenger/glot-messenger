@@ -1,5 +1,6 @@
 .column {
 	height: 100%;
+	padding: 10px;
 	background: #1C1F26;
 	position: absolute;
 	z-index: 1000;

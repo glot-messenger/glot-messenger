@@ -13,9 +13,19 @@ import {
 	Editor
 } from '../editor';
 
-export type KeysForMultiton = (typeof KEY_FOR_MULTITON_VALIDATOR) | (typeof KEY_FOR_MULTITON_EVENT_EMITTER) | (typeof KEY_FOR_MULTITON_EDITOR);
+import {
+	KEY_FOR_MULTITON_COLUMN,
+	Column
+} from '../column';
 
-export type InstancesForMultiton = Validator | EventEmitter | Editor;
+import {
+	KEY_FOR_MULTITON_SLOT,
+	Slot
+} from '../slot';
+
+export type KeysForMultiton = (typeof KEY_FOR_MULTITON_VALIDATOR) | (typeof KEY_FOR_MULTITON_EVENT_EMITTER) | (typeof KEY_FOR_MULTITON_EDITOR) | (typeof KEY_FOR_MULTITON_COLUMN) | (typeof KEY_FOR_MULTITON_SLOT);
+
+export type InstancesForMultiton = Validator | EventEmitter | Editor | Column | Slot;
 
 export type IStoreSingletons = {
 	[K in KeysForMultiton]?: any;

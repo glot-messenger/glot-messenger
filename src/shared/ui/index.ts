@@ -10,6 +10,7 @@ import { JoinSocialNetwork } from './join-social-network';
 import { ButtonPretty } from './button-pretty';
 import { ToggleBlock } from './toggle-block';
 import { Loader } from './loader';
+import { Loader2 } from './loader2';
 import { MessageLite } from './message-lite';
 
 import type {
@@ -30,6 +31,7 @@ export {
 	ButtonPretty,
 	ToggleBlock,
 	Loader,
+	Loader2,
 	MessageLite
 };
 

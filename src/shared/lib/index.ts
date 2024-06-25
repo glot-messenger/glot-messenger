@@ -25,6 +25,16 @@ import {
 	KEY_FOR_MULTITON_EDITOR
 } from './editor';
 
+import {
+	factoryColumn,
+	KEY_FOR_MULTITON_COLUMN
+} from './column';
+
+import {
+	factorySlot,
+	KEY_FOR_MULTITON_SLOT
+} from './slot';
+
 export {
 	KEY_FOR_MULTITON_VALIDATOR,
 	KEY_FOR_MULTITON_EDITOR,
@@ -35,9 +45,13 @@ export {
 	factoryValidator,
 	factoryEventEmitter,
 	KEY_FOR_MULTITON_EVENT_EMITTER,
+	KEY_FOR_MULTITON_COLUMN,
+	KEY_FOR_MULTITON_SLOT,
 	EventEmitter,
 	defaultEventEmitter,
 	Validator,
 	factoryEditor,
+	factoryColumn,
+	factorySlot,
 	getUniqueId
 };

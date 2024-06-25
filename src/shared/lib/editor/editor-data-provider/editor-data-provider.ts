@@ -36,10 +36,6 @@ class EditorDataProvider extends BaseProvider {
 
 		return valueSetting.nativeUnpacking();
 	};
-
-	override async update() {
-
-	};
 };
 
 export { EditorDataProvider };

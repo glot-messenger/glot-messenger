@@ -1,0 +1,3 @@
+const KEY_FOR_MULTITON_COLUMN = 'column';
+
+export { KEY_FOR_MULTITON_COLUMN };

@@ -53,6 +53,20 @@ class Editor {
 			});
 		}
 
+		const { editor } = containerResultSettingsEditor.data;
+
+		if (editor === null) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: false,
+				message: 'Success editor settings! No data was received.',
+				data: {
+					slots: null,
+					columns: null,
+					editor: null
+				}
+			});
+		}
+
 		const containerResultColumns = await factoryColumn().getColumnsByIdEditorSettings({ settingId: containerResultSettingsEditor.data.editor._id });
 
 		if (containerResultColumns.isError) {
@@ -71,6 +85,10 @@ class Editor {
 				slots: null
 			}
 		});
+	};
+
+	async getSettingsWithColumnsAndSlots() {
+
 	};
 
 	async createDefaultSettings() { // Тут должно быть обращение в сервис пользователя (USER) для получения его id
