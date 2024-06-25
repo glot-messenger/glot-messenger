@@ -1,6 +1,7 @@
 import { factoryEditorDataProvider } from './editor-data-provider';
 import { factoryEditorModel } from './factory-editor-model';
 import { factoryColumn } from '../column';
+import { factorySlot } from '../slot';
 import { factoryContainerForResultsSomeAsyncMethods } from '../container-for-results-some-async-methods';
 
 // Singleton =======================================================================
@@ -67,12 +68,28 @@ class Editor {
 			});
 		}
 
-		const containerResultColumns = await factoryColumn().getColumnsByIdEditorSettings({ settingId: containerResultSettingsEditor.data.editor._id });
+		if (editor.columns.length <= 0) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: false,
+				message: 'Success editor settings! No data columns.',
+				data: {
+					...containerResultSettingsEditor.data,
+					columns: [],
+					slots: []
+				}
+			});
+		}
+
+		const containerResultColumns = await factoryColumn().getColumnsByIdEditorSettings({ settingId: editor._id });
 
 		if (containerResultColumns.isError) {
 			return factoryContainerForResultsSomeAsyncMethods({
-				...containerResultColumns,
+				isError: true,
 				message: containerResultColumns.message + ' Failure editor settings... There were problems getting the columns.',
+				data: {
+					...containerResultSettingsEditor.data,
+					...containerResultColumns.data
+				}
 			});
 		}
 
@@ -88,7 +105,31 @@ class Editor {
 	};
 
 	async getSettingsWithColumnsAndSlots() {
+		const containerResultSettingsEditorWithColumns = await this.getSettingsWithColumns();
 
+		if (containerResultSettingsEditorWithColumns.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: containerResultSettingsEditorWithColumns.message + ' Failure editor settings... The request to get the editor settings along with the columns failed.',
+				data: {
+					slots: null,
+					columns: null,
+					editor: null
+				}
+			});
+		}
+
+		const { columns, editor } = containerResultSettingsEditorWithColumns.data;
+
+		if (columns.length <= 0) {
+			return containerResultSettingsEditorWithColumns;
+		}
+
+		
+		const containerResultSlots = await factorySlot().getSlotsByIdsColumns({columnsIds: editor.columns });
+
+		// ПОФИКСИТЬ ВЕЗДЕ, что слоты это объект-пачка а не массив
+		console.log('containerResultSlots', containerResultSlots);
 	};
 
 	async createDefaultSettings() { // Тут должно быть обращение в сервис пользователя (USER) для получения его id

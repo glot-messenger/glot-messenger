@@ -1,3 +1,9 @@
-import { createSlotByIdColumn } from './slots';
+import {
+	createSlotByIdColumn,
+	fetchSlotsByIdsColumns
+} from './slots';
 
-export { createSlotByIdColumn };
+export {
+	createSlotByIdColumn,
+	fetchSlotsByIdsColumns
+};

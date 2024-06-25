@@ -20,6 +20,37 @@ const slotsAll = {
 	]
 };
 
+export function fetchSlotsByIdsColumns({ body }: any) {
+	const { columnsIds } = body;
+
+	const result = {};
+
+	return new Promise((resolve, reject) => {
+		if (!columnsIds || !Array.isArray(columnsIds)) {
+			reject({
+				message: 'The columnsIds for the /fetchSlotsByIdsColumns/ method must be passed!!! columnsIds has been Array!'
+			});
+
+			return;
+		}
+
+		for (let m = 0; m < columnsIds.length; m++) {
+			const columnId = columnsIds[m];
+
+			const value = slotsAll[columnId];
+
+			if (value) {
+				result[columnId] = value;
+
+			} else {
+				result[columnId] = [];
+			}
+		}
+
+		resolve(result);
+	});
+};
+
 export function createSlotByIdColumn({ body }: any) {
    const dataSave = body.data;
 

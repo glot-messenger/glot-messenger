@@ -16,6 +16,28 @@ class Slot {
 		staticSlot = this;
    };
 
+	async getSlotsByIdsColumns(config: any) {
+		const constainerData = await this.#dataProvider.get(config);
+
+		if (constainerData.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: constainerData.message + ' Failure slots... An error occurred while receiving slots.',
+				data: {
+					slots: null
+				}
+			});
+		}
+
+		return factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: 'Success slots! Successful receipt of slots.',
+			data: {
+				slots: constainerData.data
+			}
+		});
+	};
+
    async createDefaultSlots({ columnId, quantityNewElements }: any) {
       const arrayContainersModelsSlots = [];
 
