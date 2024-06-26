@@ -9,12 +9,15 @@ class ColumnModel {
 
 	styles: any;
 
+	accessStatusForChanges: boolean;
+
 	constructor({ settingId }: any) {
 		this._id = getUniqueId('column');
 		this.settingId = settingId;
+		this.accessStatusForChanges = true;
 		this.slots = [];
 		this.styles = {
-			width: '10%',
+			width: '15%',
 			top: '0%',
 			left: '0%'
 		}

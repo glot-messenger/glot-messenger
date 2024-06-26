@@ -5,11 +5,12 @@ const columnsAll = {
 		{
 			_id: 'lxsx2xw4.0.0e613a69cd867.0.9eba5789753e8-columnad793a11-27e5-438f-bce9-dee40ec7eec7',
 			styles: {
-				width: '10%',
+				width: '15%',
 				top: '0%',
 				left: '0%'
 			},
 			settingId: 'lxsx2xw3.0.6ee63ba756ca3.0.5461dfa3d3929-editor0d56afd1-b6c3-496e-a4e4-11ca8603cf3a',
+			accessStatusForChanges: true,
 			slots: [
 				'lxsx2xw4.0.500c9981af785.0.b10c88ff74437-slota96bb62d-8104-45a0-9b81-da4df340c560',
 				'lxsx2xw4.0.1b5459f4a8704.0.c3ad9ed3ea35e-slot13acfca6-d563-4c02-9e8c-bfaa1ed2526f',
@@ -37,7 +38,8 @@ export function createColumnByIdEditor({ body }: any) {
 
       columnsAll[dataSave.settingId].push(dataSave);
 
-      console.log('Backend: Store columns after save data settings!', columnsAll);
+		// РАСКОММЕНТИРУЙ ДЛЯ ПОКАЗА ХРАНИЛИЩА БАЗЫ ДАННЫХ
+      // console.log('Backend: Store columns after save data settings!', columnsAll);
 
       resolve(dataSave);
    });

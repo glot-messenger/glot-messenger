@@ -51,7 +51,11 @@ import {
 	ButtonPretty,
 	Loader,
 	Loader2,
-	MessageLite
+	MessageLite,
+	SlotEmpty,
+	ButtonDots,
+	ButtonLock,
+	ButtonPlus
 } from './ui';
 
 import type {
@@ -97,7 +101,11 @@ export {
 	defaultEventEmitter,
 	factoryEditor,
 	factoryColumn,
-	factorySlot
+	factorySlot,
+	SlotEmpty,
+	ButtonDots,
+	ButtonLock,
+	ButtonPlus
 };
 
 export type {

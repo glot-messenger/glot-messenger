@@ -3,8 +3,8 @@ const settingsAll: any = [
 	{
 		_id: 'lxsx2xw3.0.6ee63ba756ca3.0.5461dfa3d3929-editor0d56afd1-b6c3-496e-a4e4-11ca8603cf3a',
 		userId: '1719229880595-user-id',
-		//userId: '123',
-		columns: ['lxsx2xw4.0.0e613a69cd867.0.9eba5789753e8-columnad793a11-27e5-438f-bce9-dee40ec7eec7']
+		// userId: '123',
+		columns: ['lxsx2xw4.0.0e613a69cd867.0.9eba5789753e8-columnad793a11-27e5-438f-bce9-dee40ec7eec7', 'lxvvxus8.0.ddeb35a9f114e.0.1d251c8ce140c-column0f8187cb-ac2b-435c-9ff9-cfe4bf9803fe']
 	}
 ];
 
@@ -75,7 +75,8 @@ export function createSettingsEditorForUser({ body }: any) {
 
       settingsAll.push(instanceEditor);
 
-      console.log('Backend: Store settings editors after save data settings editor!', settingsAll);
+      // РАСКОММЕНТИРУЙ ДЛЯ ПОКАЗА ХРАНИЛИЩА БАЗЫ ДАННЫХ
+      //console.log('Backend: Store settings editors after save data settings editor!', settingsAll);
 
       resolve(instanceEditor);
    });

@@ -58,7 +58,7 @@ class Slot {
       });
 
       if (isNotErrorsContainers) {
-         return factoryContainerForResultsSomeAsyncMethods({ isError: false, message: 'Success slots! Successful creation of default column slots.', data: { slots: arrayModelsSlots } });
+         return factoryContainerForResultsSomeAsyncMethods({ isError: false, message: 'Success slots! Successful creation of default column slots.', data: { slots: { [columnId]: arrayModelsSlots } } });
       }
 
       //! Error

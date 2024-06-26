@@ -55,7 +55,7 @@ class Column {
 			});
 		}
 
-		containerResultSlots.data.slots.forEach((slotModel: any) => {
+		containerResultSlots.data.slots[instanceColumnModel._id].forEach((slotModel: any) => {
 			instanceColumnModel.slots.push(slotModel._id);
 		});
 

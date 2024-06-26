@@ -1,0 +1,13 @@
+.button-dots {
+   display: flex;
+}
+
+.button-dots__dot {
+   font-size: 18px;
+   color: aliceblue;
+   transition: color 0.3s ease 0s;
+}
+
+.button-dots:hover .button-dots__dot {
+   color: #049DEA;
+}

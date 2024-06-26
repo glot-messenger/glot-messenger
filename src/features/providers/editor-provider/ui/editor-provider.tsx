@@ -40,7 +40,7 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 
 	const [columnsEditor, setColumnsEditor] = useState<null | Array<any>>(null);
 
-	const [slotsEditor, setSlotsEditor] = useState<null | Array<any>>(null);
+	const [slotsEditor, setSlotsEditor] = useState<null | Record<string, Array<any>>>(null);
 	// </Данные для отрисовки пространства>
 
 	// <Данные по загрузке настроек мессенджера>

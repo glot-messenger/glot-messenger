@@ -121,15 +121,31 @@ class Editor {
 
 		const { columns, editor } = containerResultSettingsEditorWithColumns.data;
 
-		if (columns.length <= 0) {
+		if (columns === null || columns.length <= 0) {
 			return containerResultSettingsEditorWithColumns;
 		}
 
-		
-		const containerResultSlots = await factorySlot().getSlotsByIdsColumns({columnsIds: editor.columns });
+		const containerResultSlots = await factorySlot().getSlotsByIdsColumns({ columnsIds: editor.columns });
 
-		// ПОФИКСИТЬ ВЕЗДЕ, что слоты это объект-пачка а не массив
-		console.log('containerResultSlots', containerResultSlots);
+		if (containerResultSlots.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: containerResultSlots.message,
+				data: {
+					...containerResultSettingsEditorWithColumns.data,
+					slots: null
+				}
+			});
+		}
+
+		return factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: 'Success editor settings! All data has been successfully received.',
+			data: {
+				...containerResultSettingsEditorWithColumns.data,
+				...containerResultSlots.data
+			}
+		});
 	};
 
 	async createDefaultSettings() { // Тут должно быть обращение в сервис пользователя (USER) для получения его id

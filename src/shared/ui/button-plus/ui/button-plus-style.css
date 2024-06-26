@@ -1,0 +1,21 @@
+.button-plus {
+   width: 100%;
+   border: 1px solid aliceblue;
+   border-radius: 14px !important;
+   padding: 15px 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   box-shadow: 0 0 3px 0px #000;
+   transition: border 0.3s ease 0s;
+}
+
+.button-plus__icon {
+   flex: 0 0 55px;
+   width: 55px;
+   height: 55px;
+}
+
+.button-plus:hover {
+   border: 1px solid #049DEA;
+}

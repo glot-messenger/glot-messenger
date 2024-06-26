@@ -69,7 +69,8 @@ export function createSlotByIdColumn({ body }: any) {
 
       slotsAll[dataSave.columnId].push(dataSave);
 
-      console.log('Backend: Store slots after save data slot!', slotsAll);
+		// РАСКОММЕНТИРУЙ ДЛЯ ПОКАЗА ХРАНИЛИЩА БАЗЫ ДАННЫХ
+      //console.log('Backend: Store slots after save data slot!', slotsAll);
 
       resolve(dataSave);
    });

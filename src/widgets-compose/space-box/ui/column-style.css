@@ -7,3 +7,10 @@
 	border-left: 1px solid #8891A2;
 	border-right: 1px solid #8891A2;
 }
+
+.column__head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 35px;
+}
