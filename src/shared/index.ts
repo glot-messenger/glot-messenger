@@ -10,7 +10,9 @@ import {
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
 	SIGN_UP_SEGMENT,
-	APP_EVENT_CLICK
+	APP_EVENT_CLICK,
+	COLUMN_EVENT_SEGMENT,
+	BUTTON_LOCK_EVENT_CLICK
 } from './core';
 
 // lib
@@ -105,7 +107,9 @@ export {
 	SlotEmpty,
 	ButtonDots,
 	ButtonLock,
-	ButtonPlus
+	ButtonPlus,
+	COLUMN_EVENT_SEGMENT,
+	BUTTON_LOCK_EVENT_CLICK
 };
 
 export type {

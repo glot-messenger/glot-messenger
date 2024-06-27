@@ -39,6 +39,24 @@ class Column {
 		});
 	};
 
+	async updateColumnByIdEditorAndColumn(config: any) {
+		const containerData = await this.#dataProvider.update(config);
+
+		if (containerData.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: containerData.message + ' Failure column... Column update failed...',
+				data: null
+			});
+		}
+
+		return factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: 'Success column! Update column success...',
+			data: containerData.data
+		});
+	};
+
 	async createDefaultColumn(config: any) {
 		const instanceColumnModel = factoryColumnModel(config);
 

@@ -34,6 +34,14 @@ class ColumnDataProvider extends BaseProvider {
 
       return valueColumn.nativeUnpacking();
    };
+
+	override async update(config: any) {
+		const request = ColumnDataProvider.request.post.nativeFormat.concatUrl('updateColumnByIdEditorAndColumn').body(config);
+
+		const valueColumn = await request.create();
+
+      return valueColumn.nativeUnpacking();
+	};
 };
 
 export { ColumnDataProvider };

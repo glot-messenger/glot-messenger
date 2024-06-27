@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import type { IEditorProviderProps } from './interafaces';
-import { EditorContext } from '../../../../entities';
+
+import {
+	EditorContext,
+	EventEmitterContext
+} from '../../../../entities';
 
 import {
 	factoryMultiton,
@@ -11,10 +15,14 @@ import {
 	KEY_FOR_MULTITON_COLUMN,
 	KEY_FOR_MULTITON_SLOT,
 	Loader,
-	MessageLite
+	MessageLite,
+	BUTTON_LOCK_EVENT_CLICK,
+	COLUMN_EVENT_SEGMENT
 } from '../../../../shared';
 
 const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
+	const eventEmitter = useContext(EventEmitterContext);
+
 	// <Модули и их подключение>
 	const editor = factoryEditor();
 
@@ -72,7 +80,7 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 		setLoadingEditorSettings(false);
 	};
 
-	const fetchSettingsEditor = async () => { // ДОПИСАТЬ ЗАПРОС, чтобы полностью собирать данные
+	const fetchSettingsEditor = async () => {
 		const settingsContainer = await editor.getSettingsWithColumnsAndSlots();
 
 		const { isError, message, data } = settingsContainer;
@@ -110,11 +118,44 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 		createDefaultSettingsEditor();
 	};
 
+	const updateColumnStore = (data: any) => {
+		console.log('DATA', data, columnsEditor);
+
+		if (columnsEditor) {
+			const newColumnsStore = columnsEditor?.map((columnDb) => {
+				if (columnDb._id === data._id) {
+					return data;
+				}
+
+				return columnDb;
+			});
+
+			setColumnsEditor(newColumnsStore);
+		}
+	};
+
 	useEffect(() => {
 		if (isLoadingEditorSettings) {
 			fetchSettingsEditor();
 		}
 	}, [isLoadingEditorSettings]);
+
+	useEffect(() => {
+		if (columnsEditor) {// РАЗОБРАТЬСЯ С ОБНОВЛЕНИЕМ КОЛОНКИ НА КЛЮЧЕ
+			eventEmitter.on(BUTTON_LOCK_EVENT_CLICK + COLUMN_EVENT_SEGMENT, (payload) => {
+				column.updateColumnByIdEditorAndColumn(payload)
+					.then((dataUpdateColumn) => {
+						if (dataUpdateColumn.isError) {
+							console.log('ВЫВОДИТЬ В ИНТЕРФЕЙС ОШИБКУ, ОБНОВЛЕНИЕ КОЛОНКИ НЕ ПРОИЗОШЛО. Придумать общий механизм обработки ошибок');
+	
+							return;
+						}
+	
+						updateColumnStore(dataUpdateColumn.data);
+					})
+			});
+		}
+	}, []);
 
 	return (
 		<EditorContext.Provider value={{

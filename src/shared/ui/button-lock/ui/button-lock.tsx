@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './button-lock-style.css';
 import type { IButtonLockProps } from './interafaces';
 import { configForButtonLock } from '../config';
+import { EventEmitterContext } from '../../../../entities';
+import { BUTTON_LOCK_EVENT_CLICK } from '../../../core';
 
-const ButtonLock: React.FC<IButtonLockProps> = ({ flagStatus, data }) => {
-   const handlerClickBtnLock = () => {
-      console.log('Испускаю дата', data);
+const ButtonLock: React.FC<IButtonLockProps> = ({ flagStatus, data, segmentEvent }) => {
+	const eventEmitter = useContext(EventEmitterContext);
+
+   const handlerClickBtnLock = (): void => {
+      eventEmitter.emit(BUTTON_LOCK_EVENT_CLICK + segmentEvent, { data })
    };
 
    const dataConfig = flagStatus ? configForButtonLock['lock-open'] : configForButtonLock['lock-block'];

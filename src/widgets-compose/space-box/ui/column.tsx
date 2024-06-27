@@ -3,6 +3,7 @@ import './column-style.css';
 import type { IColumnProps } from './interafaces';
 import { EditorContext } from '../../../entities';
 import { Slot } from './slot';
+import { COLUMN_EVENT_SEGMENT } from '../../../shared';
 
 import {
 	ButtonDots,
@@ -19,7 +20,7 @@ const Column: React.FC<IColumnProps> = ({ data }) => {
 	return (
 		<div className='column' style={styles}>
 			<div className='column__head'>
-				<ButtonLock flagStatus={accessStatusForChanges} data={_id} />
+				<ButtonLock flagStatus={accessStatusForChanges} data={{ settingId, columnId: _id, value: { accessStatusForChanges: !accessStatusForChanges } }} segmentEvent={COLUMN_EVENT_SEGMENT} />
 				<ButtonDots />
 			</div>
 			<div className='column__container-slots'>

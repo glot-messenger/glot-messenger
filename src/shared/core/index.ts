@@ -19,7 +19,12 @@ import {
 	IS_IDENTICAL
 } from './names-rules';
 
-import { APP_EVENT_CLICK } from './event-emitter-events';
+import {
+	APP_EVENT_CLICK,
+	BUTTON_LOCK_EVENT_CLICK,
+} from './event-emitter-events';
+
+import { COLUMN_EVENT_SEGMENT } from './event-emitter-segments-events';
 
 import {
 	HOME,
@@ -52,7 +57,9 @@ export {
 	RECOVERY_ACCOUNT_SEGMENT,
 	SIGN_IN_SEGMENT,
 	SIGN_UP_SEGMENT,
-	APP_EVENT_CLICK
+	APP_EVENT_CLICK,
+	BUTTON_LOCK_EVENT_CLICK,
+	COLUMN_EVENT_SEGMENT
 };
 
 export type {

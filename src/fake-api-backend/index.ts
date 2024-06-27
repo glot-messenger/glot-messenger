@@ -5,7 +5,8 @@ import {
 
 import {
 	createColumnByIdEditor,
-	fetchColumnsByIdEditor
+	fetchColumnsByIdEditor,
+	updateColumnByIdEditorAndColumn
 } from './column';
 
 import {
@@ -20,7 +21,8 @@ const fakeApiBackend: any = {
    },
    column: {
       createColumnByIdEditor,
-		fetchColumnsByIdEditor
+		fetchColumnsByIdEditor,
+		updateColumnByIdEditorAndColumn
    },
    slot: {
       createSlotByIdColumn,

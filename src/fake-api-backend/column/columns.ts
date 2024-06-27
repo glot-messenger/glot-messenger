@@ -20,6 +20,51 @@ const columnsAll = {
 	]
 };
 
+export function updateColumnByIdEditorAndColumn({ body }: any) {
+	const { data } = body;
+
+	return new Promise((resolve, reject) => {
+		if (typeof data !== 'object' || !(data?.settingId) || !(data?.columnId)) {
+			reject({
+				message: 'The data for the /updateColumnByIdEditorAndColumn/ method must be passed!!! Data must have the settingId and columnId properties!!!'
+			});
+
+			return;
+		}
+
+		const columns = columnsAll[data.settingId];
+
+		if (!Array.isArray(columns)) {
+			reject({
+				message: 'There are no columns for such an editor id'
+			});
+
+			return;
+		}
+
+		const columnByIdIndex = columns.findIndex((columnDataDb) => {
+			return (columnDataDb._id === data.columnId);
+		});
+
+		if (columnByIdIndex === -1) {
+			reject({
+				message: 'The column for this id was not found!'
+			});
+
+			return;
+		}
+
+		const newColumn = {
+			...columns[columnByIdIndex],
+			...data.value
+		};
+
+		columns[columnByIdIndex] = newColumn;
+
+		resolve(newColumn);
+	});
+};
+
 export function createColumnByIdEditor({ body }: any) {
    const dataSave = body.data;
 
