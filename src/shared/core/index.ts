@@ -22,9 +22,13 @@ import {
 import {
 	APP_EVENT_CLICK,
 	BUTTON_LOCK_EVENT_CLICK,
+	BUTTON_DOTS_EVENT_CLICK
 } from './event-emitter-events';
 
-import { COLUMN_EVENT_SEGMENT } from './event-emitter-segments-events';
+import {
+	COLUMN_EVENT_SEGMENT,
+	SLOT_EVENT_SEGMENT
+} from './event-emitter-segments-events';
 
 import {
 	HOME,
@@ -59,7 +63,9 @@ export {
 	SIGN_UP_SEGMENT,
 	APP_EVENT_CLICK,
 	BUTTON_LOCK_EVENT_CLICK,
-	COLUMN_EVENT_SEGMENT
+	COLUMN_EVENT_SEGMENT,
+	BUTTON_DOTS_EVENT_CLICK,
+	SLOT_EVENT_SEGMENT
 };
 
 export type {

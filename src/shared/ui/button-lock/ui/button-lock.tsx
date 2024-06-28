@@ -9,7 +9,7 @@ const ButtonLock: React.FC<IButtonLockProps> = ({ flagStatus, data, segmentEvent
 	const eventEmitter = useContext(EventEmitterContext);
 
    const handlerClickBtnLock = (): void => {
-      eventEmitter.emit(BUTTON_LOCK_EVENT_CLICK + segmentEvent, { data })
+      eventEmitter.emit(BUTTON_LOCK_EVENT_CLICK + segmentEvent, { data });
    };
 
    const dataConfig = flagStatus ? configForButtonLock['lock-open'] : configForButtonLock['lock-block'];

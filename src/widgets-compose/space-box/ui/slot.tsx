@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ISlotProps } from './interafaces';
 import './slot-style.css';
-import { SlotEmpty } from '../../../shared';
+import { SlotEmpty } from '../../../widgets';
 
 const Slot: React.FC<ISlotProps> = ({ data }) => {
 	const { isEmpty, columnId, _id } = data;

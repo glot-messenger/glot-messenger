@@ -12,7 +12,6 @@ import { ToggleBlock } from './toggle-block';
 import { Loader } from './loader';
 import { Loader2 } from './loader2';
 import { MessageLite } from './message-lite';
-import { SlotEmpty } from './slot-empty';
 import { ButtonDots } from './button-dots';
 import { ButtonLock } from './button-lock';
 import { ButtonPlus } from './button-plus';
@@ -37,7 +36,6 @@ export {
 	Loader,
 	Loader2,
 	MessageLite,
-	SlotEmpty,
 	ButtonDots,
 	ButtonLock,
 	ButtonPlus

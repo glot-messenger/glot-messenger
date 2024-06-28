@@ -5,7 +5,7 @@ const columnsAll = {
 		{
 			_id: 'lxsx2xw4.0.0e613a69cd867.0.9eba5789753e8-columnad793a11-27e5-438f-bce9-dee40ec7eec7',
 			styles: {
-				width: '15%',
+				width: '10%',
 				top: '0%',
 				left: '0%'
 			},

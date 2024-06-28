@@ -118,16 +118,14 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 		createDefaultSettingsEditor();
 	};
 
-	const updateColumnStore = (data: any) => {
-		console.log('DATA', data, columnsEditor);
-
+	const updateColumnInStore = (data: any): void => {
 		if (columnsEditor) {
-			const newColumnsStore = columnsEditor?.map((columnDb) => {
-				if (columnDb._id === data._id) {
+			const newColumnsStore = columnsEditor.map((columnStore) => {
+				if (columnStore._id === data._id) {
 					return data;
 				}
 
-				return columnDb;
+				return columnStore;
 			});
 
 			setColumnsEditor(newColumnsStore);
@@ -137,25 +135,22 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 	useEffect(() => {
 		if (isLoadingEditorSettings) {
 			fetchSettingsEditor();
-		}
-	}, [isLoadingEditorSettings]);
 
-	useEffect(() => {
-		if (columnsEditor) {// РАЗОБРАТЬСЯ С ОБНОВЛЕНИЕМ КОЛОНКИ НА КЛЮЧЕ
+		} else {
 			eventEmitter.on(BUTTON_LOCK_EVENT_CLICK + COLUMN_EVENT_SEGMENT, (payload) => {
 				column.updateColumnByIdEditorAndColumn(payload)
-					.then((dataUpdateColumn) => {
-						if (dataUpdateColumn.isError) {
+					.then(({ isError, data }) => {
+						if (isError) {
 							console.log('ВЫВОДИТЬ В ИНТЕРФЕЙС ОШИБКУ, ОБНОВЛЕНИЕ КОЛОНКИ НЕ ПРОИЗОШЛО. Придумать общий механизм обработки ошибок');
-	
+
 							return;
 						}
-	
-						updateColumnStore(dataUpdateColumn.data);
+
+						updateColumnInStore(data);
 					})
 			});
 		}
-	}, []);
+	}, [isLoadingEditorSettings]);
 
 	return (
 		<EditorContext.Provider value={{

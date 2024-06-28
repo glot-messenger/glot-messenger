@@ -12,7 +12,9 @@ import {
 	SIGN_UP_SEGMENT,
 	APP_EVENT_CLICK,
 	COLUMN_EVENT_SEGMENT,
-	BUTTON_LOCK_EVENT_CLICK
+	BUTTON_LOCK_EVENT_CLICK,
+	BUTTON_DOTS_EVENT_CLICK,
+	SLOT_EVENT_SEGMENT
 } from './core';
 
 // lib
@@ -54,7 +56,6 @@ import {
 	Loader,
 	Loader2,
 	MessageLite,
-	SlotEmpty,
 	ButtonDots,
 	ButtonLock,
 	ButtonPlus
@@ -104,12 +105,13 @@ export {
 	factoryEditor,
 	factoryColumn,
 	factorySlot,
-	SlotEmpty,
 	ButtonDots,
 	ButtonLock,
 	ButtonPlus,
 	COLUMN_EVENT_SEGMENT,
-	BUTTON_LOCK_EVENT_CLICK
+	BUTTON_LOCK_EVENT_CLICK,
+	BUTTON_DOTS_EVENT_CLICK,
+	SLOT_EVENT_SEGMENT
 };
 
 export type {

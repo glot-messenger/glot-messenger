@@ -21,7 +21,7 @@ const Column: React.FC<IColumnProps> = ({ data }) => {
 		<div className='column' style={styles}>
 			<div className='column__head'>
 				<ButtonLock flagStatus={accessStatusForChanges} data={{ settingId, columnId: _id, value: { accessStatusForChanges: !accessStatusForChanges } }} segmentEvent={COLUMN_EVENT_SEGMENT} />
-				<ButtonDots />
+				<ButtonDots segmentEvent={COLUMN_EVENT_SEGMENT} data={{ columnId: _id }} />
 			</div>
 			<div className='column__container-slots'>
 				{arraySlots.map((slotData) => {
