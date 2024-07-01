@@ -15,7 +15,10 @@ import {
 	BUTTON_LOCK_EVENT_CLICK,
 	BUTTON_DOTS_EVENT_CLICK,
 	SLOT_EVENT_SEGMENT,
-	MODAL_EMPTY_SPACE_EVENT_CLICK
+	MODAL_EMPTY_SPACE_EVENT_CLICK,
+	MODAL_EVENT_SEGMENT,
+	BUTTON_CLOSE_EVENT_CLICK,
+	BUTTON_RED_EVENT_CLICK
 } from './core';
 
 // lib
@@ -60,7 +63,9 @@ import {
 	ButtonDots,
 	ButtonLock,
 	ButtonPlus,
-	Modal
+	Modal,
+	ButtonClose,
+	ButtonRed
 } from './ui';
 
 import type {
@@ -115,7 +120,12 @@ export {
 	BUTTON_DOTS_EVENT_CLICK,
 	SLOT_EVENT_SEGMENT,
 	Modal,
-	MODAL_EMPTY_SPACE_EVENT_CLICK
+	MODAL_EMPTY_SPACE_EVENT_CLICK,
+	ButtonClose,
+	MODAL_EVENT_SEGMENT,
+	BUTTON_CLOSE_EVENT_CLICK,
+	ButtonRed,
+	BUTTON_RED_EVENT_CLICK
 };
 
 export type {

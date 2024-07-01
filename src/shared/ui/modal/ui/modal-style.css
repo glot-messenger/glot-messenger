@@ -18,8 +18,24 @@
 }
 
 .modal__container {
+	min-width: 500px;
 	background-color: #313338;
 	padding: 15px;
 	border-radius: 3px !important;
 	box-shadow: 0 0 3px 0px #000;
+	border: 1px solid #8891A2;
+}
+
+.modal__header {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.modal__content {
+	margin: 15px 0px;
+}
+
+.modal__footer {
+	padding-top: 15px;
+	border-top: 1px solid #8891A2;
 }

@@ -16,6 +16,8 @@ import { ButtonDots } from './button-dots';
 import { ButtonLock } from './button-lock';
 import { ButtonPlus } from './button-plus';
 import { Modal } from './modal';
+import { ButtonClose } from './button-close';
+import { ButtonRed } from './button-red';
 
 import type {
 	IDataFormInOnSubmit,
@@ -40,7 +42,9 @@ export {
 	ButtonDots,
 	ButtonLock,
 	ButtonPlus,
-	Modal
+	Modal,
+	ButtonClose,
+	ButtonRed
 };
 
 export type {

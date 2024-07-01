@@ -1,27 +1,36 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import type { IModalProps } from './interafaces';
 import './modal-style.css';
 import { EventEmitterContext } from '../../../../entities';
-import { MODAL_EMPTY_SPACE_EVENT_CLICK } from '../../../core';
+import { configForModal } from '../config';
+
+import {
+	MODAL_EMPTY_SPACE_EVENT_CLICK,
+	MODAL_EVENT_SEGMENT
+} from '../../../core';
+
+import { ButtonClose } from '../../button-close';
+import { ButtonRed } from '../../button-red';
 
 const Modal: React.FC<IModalProps> = ({ isModal, children }) => {
 	const eventEmitter = useContext(EventEmitterContext);
 
-	const handlerClick = (): void => {
+	const handlerClickOnModalEmptySpace = (): void => {
 		eventEmitter.emit(MODAL_EMPTY_SPACE_EVENT_CLICK);
-		// ОТКЛЮЧИТЬ ПРОПАГАНДУ СОБЫТИЯ ТАК КАК РАБОТАЕТ И НА КОНТЕЙНЕР
 	};
 
-	useEffect(() => {
-		if (isModal) {
-			
-		}
-	}, []);
-
 	return (
-		<div className={'modal' + (isModal ? ' active' : '')} onClick={handlerClick}>
-			<div className='modal__container'>
-				{children}
+		<div className={'modal' + (isModal ? ' active' : '')} onClick={handlerClickOnModalEmptySpace}>
+			<div onClick={(event) => event.stopPropagation()} className='modal__container'>
+				<div className='modal__header'>
+					<ButtonClose segmentEvent={MODAL_EVENT_SEGMENT} />
+				</div>
+				<div className='modal__content'>
+					{children}
+				</div>
+				<div className='modal__footer'>
+					<ButtonRed segmentEvent={MODAL_EVENT_SEGMENT} {...configForModal.button} />
+				</div>
 			</div>
 		</div>
 	);

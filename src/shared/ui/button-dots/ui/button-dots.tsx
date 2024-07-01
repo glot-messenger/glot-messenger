@@ -13,7 +13,7 @@ const ButtonDots: React.FC<IButtonDotsProps> = ({ classes, segmentEvent, data })
 		eventEmitter.emit(BUTTON_DOTS_EVENT_CLICK + segmentEvent, { data });
    };
 
-	 const classesValue: string = `button-dots ${classes}`;
+	const classesValue: string = `button-dots ${classes}`;
 
    return (
       <button onClick={handlerClickBtn} type='button' className={classesValue}>
