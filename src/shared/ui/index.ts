@@ -15,6 +15,7 @@ import { MessageLite } from './message-lite';
 import { ButtonDots } from './button-dots';
 import { ButtonLock } from './button-lock';
 import { ButtonPlus } from './button-plus';
+import { Modal } from './modal';
 
 import type {
 	IDataFormInOnSubmit,
@@ -38,7 +39,8 @@ export {
 	MessageLite,
 	ButtonDots,
 	ButtonLock,
-	ButtonPlus
+	ButtonPlus,
+	Modal
 };
 
 export type {

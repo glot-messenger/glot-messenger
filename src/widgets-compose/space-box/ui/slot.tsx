@@ -10,7 +10,7 @@ const Slot: React.FC<ISlotProps> = ({ data }) => {
 	return (
 		<div className='slot'>
 			<div className='slot__container'>
-				<SlotEmpty />
+				<SlotEmpty {...data} />
 			</div>
 		</div>
 	);

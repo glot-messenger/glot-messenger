@@ -3,11 +3,11 @@ import './column-style.css';
 import type { IColumnProps } from './interafaces';
 import { EditorContext } from '../../../entities';
 import { Slot } from './slot';
-import { COLUMN_EVENT_SEGMENT } from '../../../shared';
 
 import {
 	ButtonDots,
-	ButtonLock
+	ButtonLock,
+	COLUMN_EVENT_SEGMENT
 } from '../../../shared';
 
 const Column: React.FC<IColumnProps> = ({ data }) => {

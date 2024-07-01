@@ -14,7 +14,8 @@ import {
 	COLUMN_EVENT_SEGMENT,
 	BUTTON_LOCK_EVENT_CLICK,
 	BUTTON_DOTS_EVENT_CLICK,
-	SLOT_EVENT_SEGMENT
+	SLOT_EVENT_SEGMENT,
+	MODAL_EMPTY_SPACE_EVENT_CLICK
 } from './core';
 
 // lib
@@ -58,7 +59,8 @@ import {
 	MessageLite,
 	ButtonDots,
 	ButtonLock,
-	ButtonPlus
+	ButtonPlus,
+	Modal
 } from './ui';
 
 import type {
@@ -111,7 +113,9 @@ export {
 	COLUMN_EVENT_SEGMENT,
 	BUTTON_LOCK_EVENT_CLICK,
 	BUTTON_DOTS_EVENT_CLICK,
-	SLOT_EVENT_SEGMENT
+	SLOT_EVENT_SEGMENT,
+	Modal,
+	MODAL_EMPTY_SPACE_EVENT_CLICK
 };
 
 export type {
