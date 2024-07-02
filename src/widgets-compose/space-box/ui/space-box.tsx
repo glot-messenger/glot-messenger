@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './space-box-style.css';
+import './context-menu-style.css';
 
 import {
 	EditorContext,
@@ -7,6 +8,7 @@ import {
 } from '../../../entities';
 
 import { Column } from './column';
+import { ContextMenuColumn } from './context-menu-column';
 
 import {
 	Modal,
@@ -15,7 +17,8 @@ import {
 	MODAL_EMPTY_SPACE_EVENT_CLICK,
 	BUTTON_CLOSE_EVENT_CLICK,
 	MODAL_EVENT_SEGMENT,
-	BUTTON_RED_EVENT_CLICK
+	BUTTON_RED_EVENT_CLICK,
+	SLOT_EVENT_SEGMENT
 } from '../../../shared';
 
 const SpaceBox: React.FC = () => {
@@ -24,6 +27,8 @@ const SpaceBox: React.FC = () => {
 	const { columns } = useContext(EditorContext);
 
 	const [columnModalStatus, setColumnModalStatus] = useState<boolean>(false);
+
+	const [slotModalStatus, setSlotModalStatus] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (columns) {
@@ -35,14 +40,26 @@ const SpaceBox: React.FC = () => {
 
 			eventEmitter.on(MODAL_EMPTY_SPACE_EVENT_CLICK, () => {
 				setColumnModalStatus(false);
+
+				setSlotModalStatus(false);
 			});
 
 			eventEmitter.on(BUTTON_CLOSE_EVENT_CLICK + MODAL_EVENT_SEGMENT, () => {
 				setColumnModalStatus(false);
+
+				setSlotModalStatus(false);
 			});
 
 			eventEmitter.on(BUTTON_RED_EVENT_CLICK + MODAL_EVENT_SEGMENT, () => {
 				setColumnModalStatus(false);
+
+				setSlotModalStatus(false);
+			});
+
+			eventEmitter.on(BUTTON_DOTS_EVENT_CLICK + SLOT_EVENT_SEGMENT, (payload) => {
+				console.log('Данные по кликнутому слоту. Тут можно поймать событие уже самого компонента модалки и сделать работу.', payload);
+
+				setSlotModalStatus(true);
 			});
 		}
 	}, []);
@@ -56,9 +73,11 @@ const SpaceBox: React.FC = () => {
 					);
 				})}
 			</div>
-			{/* МЕНЮ КОЛОНКИ СДЕЛАТЬ */}
 			<Modal isModal={columnModalStatus}>
-				<div>CONTENT MODAL COMPONENT</div>
+				<ContextMenuColumn />
+			</Modal>
+			<Modal isModal={slotModalStatus}>
+				<div>CONTENT SLOT DATA!!!!!!!!!!!!!!</div>
 			</Modal>
 		</div>
 	);

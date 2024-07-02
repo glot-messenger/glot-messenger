@@ -1,0 +1,43 @@
+.btn-with-dynamic-background {
+	width: 100%;
+	border-radius: 3px !important;
+	font-weight: 600;
+	transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+}
+
+.btn-with-dynamic-background__container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 7px;
+}
+
+.btn-with-dynamic-background.gray-blue {
+	color: #90959B;
+}
+
+.btn-with-dynamic-background.gray-blue:hover {
+	background-color: #049DEA;
+	color: aliceblue;
+	box-shadow: 0 0 3px 0px #000;
+}
+
+.btn-with-dynamic-background.blue-blue {
+	color: #049DEA;
+}
+
+.btn-with-dynamic-background.blue-blue:hover {
+	box-shadow: 0 0 3px 0px #000;
+	color: aliceblue;
+	background-color: #049DEA;
+}
+
+.btn-with-dynamic-background.red-red {
+	color: #9b191e;
+}
+
+.btn-with-dynamic-background.red-red:hover {
+	box-shadow: 0 0 3px 0px #000;
+	color: aliceblue;
+	background-color: #9b191e;
+}

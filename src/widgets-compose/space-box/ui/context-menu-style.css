@@ -1,0 +1,27 @@
+.context-menu {
+	background-color: #111214;
+	border-radius: 3px !important;
+	box-shadow: 0 0 3px 0px #000;
+}
+
+.context-menu__container {
+	padding: 7px;
+}
+
+.context-menu__icon {
+	width: 20px;
+	height: 20px;
+	flex: 0 0 20px;
+}
+
+.context-menu__element {
+	margin-bottom: 7px;
+	padding-bottom: 7px;
+	border-bottom: 1px solid #90959B;
+}
+
+.context-menu__element:last-child {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	border-bottom: none;
+}

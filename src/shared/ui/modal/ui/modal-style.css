@@ -10,6 +10,7 @@
 	align-items: center;
 	background: rgba(0, 0, 0, 0.699);
 	opacity: 0;
+	transition: opacity 0.2s ease 0s;
 }
 
 .modal.active {

@@ -18,6 +18,7 @@ import { ButtonPlus } from './button-plus';
 import { Modal } from './modal';
 import { ButtonClose } from './button-close';
 import { ButtonRed } from './button-red';
+import { ButtonWithDynamicBackground } from './button-with-dynamic-background';
 
 import type {
 	IDataFormInOnSubmit,
@@ -44,7 +45,8 @@ export {
 	ButtonPlus,
 	Modal,
 	ButtonClose,
-	ButtonRed
+	ButtonRed,
+	ButtonWithDynamicBackground
 };
 
 export type {
