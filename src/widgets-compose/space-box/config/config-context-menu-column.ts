@@ -107,6 +107,20 @@ const configContextMenuColumn: IConfigContextMenuColumn = [
 			alt: 'Флаг',
 			titleHover: 'Флаг - символизирует начальную отметку.'
 		}
+	},
+	{
+		button: {
+			typeElement: 'button',
+			textBtn: 'Отправить колонку в конец',
+			type: 'button',
+			titleHover: 'Нажмите, чтобы отправить колонку в конец.',
+			classes: 'context-menu__btn gray-blue'
+		},
+		icon: {
+			name: 'end.svg',
+			alt: 'Стрелочка указывает в конец',
+			titleHover: 'Стрелка - символизирует конец построения колонок.'
+		}
 	}
 ];
 

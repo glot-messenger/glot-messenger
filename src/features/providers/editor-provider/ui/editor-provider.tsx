@@ -147,7 +147,7 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 						}
 
 						updateColumnInStore(data);
-					})
+					});
 			});
 		}
 	}, [isLoadingEditorSettings]);

@@ -32,8 +32,10 @@ const SpaceBox: React.FC = () => {
 
 	useEffect(() => {
 		if (columns) {
-			eventEmitter.on(BUTTON_DOTS_EVENT_CLICK + COLUMN_EVENT_SEGMENT, (payload) => {
-				console.log('Данные по кликнутой колонке. Тут можно поймать событие уже самого компонента модалки и сделать работу.', payload);
+			eventEmitter.on(BUTTON_DOTS_EVENT_CLICK + COLUMN_EVENT_SEGMENT, ({ data }) => {
+				console.log('Данные по кликнутой колонке. Тут можно поймать событие уже самого компонента модалки и сделать работу.', data);
+
+				// Тут нужно слущать все события контекстного меню колонки
 
 				setColumnModalStatus(true);
 			});
@@ -58,6 +60,8 @@ const SpaceBox: React.FC = () => {
 
 			eventEmitter.on(BUTTON_DOTS_EVENT_CLICK + SLOT_EVENT_SEGMENT, (payload) => {
 				console.log('Данные по кликнутому слоту. Тут можно поймать событие уже самого компонента модалки и сделать работу.', payload);
+
+				// тут нужно слушать все события контекстного меню слотов
 
 				setSlotModalStatus(true);
 			});

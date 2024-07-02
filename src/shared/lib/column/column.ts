@@ -17,6 +17,10 @@ class Column {
 		staticColumn = this;
 	};
 
+	async addSlotInColumn(config: any) {
+		
+	};
+
 	async getColumnsByIdEditorSettings(config: any) {
 		const containerData = await this.#dataProvider.get(config);
 

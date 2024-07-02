@@ -8,6 +8,10 @@
 	padding: 7px;
 }
 
+.context-menu__text {
+	margin-right: 15px;
+}
+
 .context-menu__icon {
 	width: 20px;
 	height: 20px;
