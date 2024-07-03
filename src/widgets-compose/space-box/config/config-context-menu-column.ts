@@ -118,7 +118,7 @@ const configContextMenuColumn: IConfigContextMenuColumn = [
 			classes: 'context-menu__btn gray-blue'
 		},
 		icon: {
-			name: 'end.svg',
+			name: 'end-horizon.svg',
 			alt: 'Стрелочка указывает в конец',
 			titleHover: 'Стрелка - символизирует конец построения колонок.'
 		}
