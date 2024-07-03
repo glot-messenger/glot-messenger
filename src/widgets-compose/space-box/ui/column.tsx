@@ -37,11 +37,10 @@ const Column: React.FC<IColumnProps> = ({ data }) => {
 
 	useEffect(() => {
 		eventEmitter.on(BUTTON_DOTS_EVENT_CLICK + COLUMN_EVENT_SEGMENT, ({ data }) => {
-			console.log('Данные по кликнутой колонке. Тут можно поймать событие уже самого компонента модалки и сделать работу.', data);
-
 			// Тут нужно слущать все события контекстного меню колонки
-
-			setColumnModalStatus(true);
+			if (data.columnId === _id) {
+				setColumnModalStatus(true);
+			}
 		});
 
 		eventEmitter.on(MODAL_EMPTY_SPACE_EVENT_CLICK, () => { setColumnModalStatus(false); });

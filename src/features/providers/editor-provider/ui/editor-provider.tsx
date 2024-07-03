@@ -152,6 +152,10 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 		}
 	}, [isLoadingEditorSettings]);
 
+	console.log('EDITOR', settingsEditor);
+	console.log('COLUMNS', columnsEditor);
+	console.log('SLOTS', slotsEditor);
+
 	return (
 		<EditorContext.Provider value={{
 			editor: settingsEditor,

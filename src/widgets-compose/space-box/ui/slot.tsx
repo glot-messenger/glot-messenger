@@ -29,12 +29,12 @@ const Slot: React.FC<ISlotProps> = ({ data }) => {
 	const [slotModalStatus, setSlotModalStatus] = useState<boolean>(false);
 
 	useEffect(() => {
-		eventEmitter.on(BUTTON_DOTS_EVENT_CLICK + SLOT_EVENT_SEGMENT, (payload) => {
-			console.log('Данные по кликнутому слоту. Тут можно поймать событие уже самого компонента модалки и сделать работу.', payload);
-
+		eventEmitter.on(BUTTON_DOTS_EVENT_CLICK + SLOT_EVENT_SEGMENT, ({ data }) => {
 			// тут нужно слушать все события контекстного меню слотов
 
-			setSlotModalStatus(true);
+			if (data.slotId === _id) {
+				setSlotModalStatus(true);
+			}
 		});
 
 		eventEmitter.on(MODAL_EMPTY_SPACE_EVENT_CLICK, () => { setSlotModalStatus(false); });
@@ -50,7 +50,7 @@ const Slot: React.FC<ISlotProps> = ({ data }) => {
 			</div>
 			<Modal isModal={slotModalStatus}>
 				<ContextMenu data={configContextMenuSlot} renderElementFN={({ button, icon }: IElementContextMenu) => (
-					<ButtonWithDynamicBackground {...button}>
+					<ButtonWithDynamicBackground {...button} payload={{ columnId, slotId: _id  }}>
 						<span className='context-menu__text'>{button.textBtn}</span>
 						<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
 					</ButtonWithDynamicBackground>

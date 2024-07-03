@@ -4,13 +4,17 @@ import type { IButtonWithDynamicBackgroundProps } from './interafaces';
 import { EventEmitterContext } from '../../../../entities';
 import { BUTTON_WITH_DYNAMIC_BACKGROUND } from '../../../core';
 
-const ButtonWithDynamicBackground: React.FC<IButtonWithDynamicBackgroundProps> = ({ textBtn, type, titleHover, typeElement, classes, children, segmentEvent }) => {
+const ButtonWithDynamicBackground: React.FC<IButtonWithDynamicBackgroundProps> = ({ textBtn, type, titleHover, typeElement, classes, children, segmentEvent, payload }) => {
 	const eventEmitter = useContext(EventEmitterContext);
 
 	const childrenContent = children ? children : textBtn;
 
 	const handlerClick = (): void => {
-		eventEmitter.emit(BUTTON_WITH_DYNAMIC_BACKGROUND + segmentEvent);
+		console.log('Сработало событие у ButtonWithDynamicBackground');
+		console.log(`Event full name: ${BUTTON_WITH_DYNAMIC_BACKGROUND + segmentEvent}`);
+		console.log('Передаваемая нагрузка в кнопке', payload);
+
+		eventEmitter.emit(BUTTON_WITH_DYNAMIC_BACKGROUND + segmentEvent, payload);
 	};
 
 	return (

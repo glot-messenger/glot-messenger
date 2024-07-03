@@ -8,8 +8,6 @@ const ButtonDots: React.FC<IButtonDotsProps> = ({ classes, segmentEvent, data })
 	const eventEmitter = useContext(EventEmitterContext);
 
    const handlerClickBtn = (): void => {
-		console.log('BUTTON_DOTS_DATA', data);
-
 		eventEmitter.emit(BUTTON_DOTS_EVENT_CLICK + segmentEvent, { data });
    };
 

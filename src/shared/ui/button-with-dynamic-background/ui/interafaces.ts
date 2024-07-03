@@ -6,4 +6,5 @@ export interface IButtonWithDynamicBackgroundProps {
 	typeElement: string;
 	classes: string;
 	segmentEvent: string;
+	payload: any;
 };

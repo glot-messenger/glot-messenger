@@ -5,17 +5,20 @@ const slotsAll = {
 		{
 			_id: 'lxsx2xw4.0.500c9981af785.0.b10c88ff74437-slota96bb62d-8104-45a0-9b81-da4df340c560',
 			columnId: 'lxsx2xw4.0.0e613a69cd867.0.9eba5789753e8-columnad793a11-27e5-438f-bce9-dee40ec7eec7',
-			isEmpty: true
+			isEmpty: false,
+			nameWidget: 'logo-glot'
 		},
 		{
 			_id: 'lxsx2xw4.0.1b5459f4a8704.0.c3ad9ed3ea35e-slot13acfca6-d563-4c02-9e8c-bfaa1ed2526f',
 			columnId: 'lxsx2xw4.0.0e613a69cd867.0.9eba5789753e8-columnad793a11-27e5-438f-bce9-dee40ec7eec7',
-			isEmpty: true
+			isEmpty: true,
+			nameWidget: ''
 		},
 		{
 			_id: 'lxsx2xw4.0.85bb60ba8597a.0.105e30ac91dbd-slot93ba5418-5a75-4374-8027-1b0f32b7a290',
 			columnId: 'lxsx2xw4.0.0e613a69cd867.0.9eba5789753e8-columnad793a11-27e5-438f-bce9-dee40ec7eec7',
-			isEmpty: true
+			isEmpty: true,
+			nameWidget: ''
 		}
 	]
 };
