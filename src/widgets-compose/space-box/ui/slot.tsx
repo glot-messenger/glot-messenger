@@ -7,7 +7,8 @@ import { configContextMenuSlot } from '../config';
 
 import {
 	SlotEmpty,
-	Modal
+	Modal,
+	LogoGlot
 } from '../../../widgets';
 
 import {
@@ -24,7 +25,7 @@ import {
 const Slot: React.FC<ISlotProps> = ({ data }) => {
 	const eventEmitter = useContext(EventEmitterContext);
 
-	const { isEmpty, columnId, _id } = data;
+	const { isEmpty, columnId, _id, nameWidget } = data;
 
 	const [slotModalStatus, setSlotModalStatus] = useState<boolean>(false);
 
@@ -46,7 +47,11 @@ const Slot: React.FC<ISlotProps> = ({ data }) => {
 	return (
 		<div className='slot'>
 			<div className='slot__container'>
-				<SlotEmpty {...data} />
+				{
+					nameWidget === 'logo-glot' ?
+						<LogoGlot /> :
+						<SlotEmpty {...data} />
+				}
 			</div>
 			<Modal isModal={slotModalStatus}>
 				<ContextMenu data={configContextMenuSlot} renderElementFN={({ button, icon }: IElementContextMenu) => (

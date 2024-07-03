@@ -4,6 +4,11 @@
 	background: #1C1F26;
 	border-left: 1px solid #8891A2;
 	border-right: 1px solid #8891A2;
+	margin-right: 2px;
+}
+
+.column:last-child {
+	margin-right: 0px;
 }
 
 .column__head {

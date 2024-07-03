@@ -9,6 +9,7 @@ import { Footer } from './footer';
 import { Header } from './header';
 import { SlotEmpty } from './slot-empty';
 import { Modal } from './modal';
+import { LogoGlot } from './logo-glot';
 
 export {
    AuthBox,
@@ -17,7 +18,8 @@ export {
 	defaultAuthBoxDataCondition,
 	authBoxData,
 	SlotEmpty,
-	Modal
+	Modal,
+	LogoGlot
 };
 
 export type { IAuthBoxData };
