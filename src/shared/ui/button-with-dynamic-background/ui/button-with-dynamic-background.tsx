@@ -7,7 +7,7 @@ import { BUTTON_WITH_DYNAMIC_BACKGROUND } from '../../../core';
 const ButtonWithDynamicBackground: React.FC<IButtonWithDynamicBackgroundProps> = ({ textBtn, type, titleHover, typeElement, classes, children, segmentEvent }) => {
 	const eventEmitter = useContext(EventEmitterContext);
 
-	const childrenContent = textBtn ? textBtn : children;
+	const childrenContent = children ? children : textBtn;
 
 	const handlerClick = (): void => {
 		eventEmitter.emit(BUTTON_WITH_DYNAMIC_BACKGROUND + segmentEvent);

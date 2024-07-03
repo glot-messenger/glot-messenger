@@ -2,8 +2,6 @@
 	height: 100%;
 	padding: 10px;
 	background: #1C1F26;
-	position: absolute;
-	z-index: 1000;
 	border-left: 1px solid #8891A2;
 	border-right: 1px solid #8891A2;
 }

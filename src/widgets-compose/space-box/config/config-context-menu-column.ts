@@ -1,4 +1,5 @@
-import type { IConfigContextMenuColumn } from './interafaces';
+import type { IConfigContextMenuColumn } from '../../../shared';
+
 import {
 	ADD_SLOT_EVENT_SEGMENT,
 	DELETE_COLUMN_EVENT_SEGMENT,

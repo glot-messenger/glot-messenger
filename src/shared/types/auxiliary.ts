@@ -18,3 +18,21 @@ export interface IDataProvider {
 	set: (data: any) => Promise<any>;
 	update: (config: any) => Promise<any>;
 };
+
+export interface IElementContextMenu {
+	button: {
+		typeElement: string;
+		textBtn: string;
+		type: 'submit' | 'reset' | 'button';
+		titleHover: string;
+		classes: string;
+		segmentEvent: string;
+	};
+	icon: {
+		name: string;
+		alt: string;
+		titleHover: string;
+	};
+};
+
+export type IConfigContextMenuColumn = Array<IElementContextMenu>;

@@ -15,10 +15,10 @@ import { MessageLite } from './message-lite';
 import { ButtonDots } from './button-dots';
 import { ButtonLock } from './button-lock';
 import { ButtonPlus } from './button-plus';
-import { Modal } from './modal';
 import { ButtonClose } from './button-close';
 import { ButtonRed } from './button-red';
 import { ButtonWithDynamicBackground } from './button-with-dynamic-background';
+import { ContextMenu } from './context-menu';
 
 import type {
 	IDataFormInOnSubmit,
@@ -43,10 +43,10 @@ export {
 	ButtonDots,
 	ButtonLock,
 	ButtonPlus,
-	Modal,
 	ButtonClose,
 	ButtonRed,
-	ButtonWithDynamicBackground
+	ButtonWithDynamicBackground,
+	ContextMenu
 };
 
 export type {

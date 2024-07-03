@@ -46,7 +46,9 @@ import {
 // types
 import type {
 	MyChild,
-	IInstanceWithKeyAndValue
+	IInstanceWithKeyAndValue,
+	IElementContextMenu,
+	IConfigContextMenuColumn
 } from './types';
 
 // ui
@@ -67,10 +69,10 @@ import {
 	ButtonDots,
 	ButtonLock,
 	ButtonPlus,
-	Modal,
 	ButtonClose,
 	ButtonRed,
-	ButtonWithDynamicBackground
+	ButtonWithDynamicBackground,
+	ContextMenu
 } from './ui';
 
 import type {
@@ -124,7 +126,6 @@ export {
 	BUTTON_LOCK_EVENT_CLICK,
 	BUTTON_DOTS_EVENT_CLICK,
 	SLOT_EVENT_SEGMENT,
-	Modal,
 	MODAL_EMPTY_SPACE_EVENT_CLICK,
 	ButtonClose,
 	MODAL_EVENT_SEGMENT,
@@ -135,12 +136,15 @@ export {
 	BUTTON_WITH_DYNAMIC_BACKGROUND,
 	ADD_SLOT_EVENT_SEGMENT,
 	DELETE_COLUMN_EVENT_SEGMENT,
-	UPDATE_COLUMN_EVENT_SEGMENT
+	UPDATE_COLUMN_EVENT_SEGMENT,
+	ContextMenu
 };
 
 export type {
 	MyChild,
 	IInstanceWithKeyAndValue,
 	IDataFormInOnSubmit,
-	IDataFormComponent
+	IDataFormComponent,
+	IElementContextMenu,
+	IConfigContextMenuColumn
 };

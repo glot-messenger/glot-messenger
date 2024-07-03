@@ -17,7 +17,7 @@ class ColumnModel {
 		this.accessStatusForChanges = true;
 		this.slots = [];
 		this.styles = {
-			width: '7%',
+			width: '10%',
 			top: '0%',
 			left: '0%'
 		}

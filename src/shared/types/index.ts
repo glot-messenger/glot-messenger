@@ -3,7 +3,9 @@ import type {
 	IStyleBorder,
 	MyChild,
 	IInstanceWithKeyAndValue,
-	IDataProvider
+	IDataProvider,
+	IElementContextMenu,
+	IConfigContextMenuColumn
 } from './auxiliary';
 
 export type {
@@ -11,5 +13,7 @@ export type {
 	IStyleBorder,
 	MyChild,
 	IInstanceWithKeyAndValue,
-	IDataProvider
+	IDataProvider,
+	IElementContextMenu,
+	IConfigContextMenuColumn
 };
