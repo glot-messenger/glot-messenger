@@ -5,7 +5,7 @@ import type {
 	IInstanceWithKeyAndValue,
 	IDataProvider,
 	IElementContextMenu,
-	IConfigContextMenuColumn
+	IConfigContextMenu
 } from './auxiliary';
 
 export type {
@@ -15,5 +15,5 @@ export type {
 	IInstanceWithKeyAndValue,
 	IDataProvider,
 	IElementContextMenu,
-	IConfigContextMenuColumn
+	IConfigContextMenu
 };

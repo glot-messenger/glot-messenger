@@ -50,7 +50,7 @@ import type {
 	MyChild,
 	IInstanceWithKeyAndValue,
 	IElementContextMenu,
-	IConfigContextMenuColumn
+	IConfigContextMenu
 } from './types';
 
 // ui
@@ -150,5 +150,5 @@ export type {
 	IDataFormInOnSubmit,
 	IDataFormComponent,
 	IElementContextMenu,
-	IConfigContextMenuColumn
+	IConfigContextMenu
 };

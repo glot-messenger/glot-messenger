@@ -3,7 +3,7 @@
 }
 
 .button-dots__dot {
-   font-size: 16px;
+   font-size: 14px;
    color: aliceblue;
    transition: color 0.3s ease 0s;
 }

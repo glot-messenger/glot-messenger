@@ -1,8 +1,12 @@
-import type { IConfigContextMenuColumn } from '../../../shared';
+import type { IConfigContextMenu } from '../../../shared';
 
-const configContextMenuLogoGlot: IConfigContextMenuColumn = {
+const configContextMenuLogoGlot: IConfigContextMenu = {
 	title: 'Управление пространством',
 	subTitle: 'Ознакомьтесь с GLOTом, настройте пространство под себя',
+	icon: {
+		name: 'geometric.svg',
+		alt: 'Геометрические фигуры'
+	},
 	data: [
 		{
 			button: {

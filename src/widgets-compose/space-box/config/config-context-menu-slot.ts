@@ -1,13 +1,17 @@
-import type { IConfigContextMenuColumn } from '../../../shared';
+import type { IConfigContextMenu } from '../../../shared';
 
 import {
 	DELETE_SLOT_EVENT_SEGMENT,
 	CLEAR_SLOT_EVENT_SEGMENT
 } from '../../../shared';
 
-const configContextMenuSlot: IConfigContextMenuColumn = {
+const configContextMenuSlot: IConfigContextMenu = {
 	title: 'Настройки слота',
 	subTitle: 'Слот - минимальная составляющая интерфейса, в которую уже помещаются ваши виджеты. В этом месте вы можете настроить слот.',
+	icon: {
+		name: 'settings.svg',
+		alt: 'Иконка шестеренки'
+	},
 	data: [
 		{
 		 button: {

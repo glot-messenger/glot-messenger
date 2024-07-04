@@ -1,4 +1,4 @@
-import type { IConfigContextMenuColumn } from '../../../shared';
+import type { IConfigContextMenu } from '../../../shared';
 
 import {
 	ADD_SLOT_EVENT_SEGMENT,
@@ -6,7 +6,7 @@ import {
 	UPDATE_COLUMN_EVENT_SEGMENT
 } from '../../../shared';
 
-const configContextMenuColumn: IConfigContextMenuColumn = {
+const configContextMenuColumn: IConfigContextMenu = {
 	title: 'Настройки колонки',
 	subTitle: 'В этом месте вы можете очень гибко отстроить колонку',
 	icon: {

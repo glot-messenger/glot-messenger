@@ -35,6 +35,7 @@ const LogoGlot: React.FC = () => {
 		eventEmitter.on(BUTTON_RED_EVENT_CLICK + MODAL_EVENT_SEGMENT, () => { setLogoGlotModalStatus(false); });
 	}, []);
 
+	// ВСТАВИТЬ ИКОНКУ КОНТЕКСТНОГО МЕНЮ СЛОТА СЮДА - icon box
 	return (
 		<div className='logo-glot'>
 			<div className='logo-glot__container'>

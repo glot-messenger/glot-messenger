@@ -27,6 +27,19 @@ const columnsAll = {
 				'ly69am41.0.9c13a9ffcb08f.0.c2a56d59cf665-slotafa8a8f5-a506-4ac3-8f7b-2f3354580a51',
 				'ly69am41.0.7d2382472ad31.0.f4746a97e5b4a-slot11d140f6-484d-499b-b6aa-4ff07fe7dd1a'
 			]
+		},
+		{
+			_id: 'ly7o6xqr.0.cbafd245052c1.0.cfb605130471c-column785359e4-6683-4bd6-94c0-9191fdef10bc',
+			styles: {
+				width: '15%'
+			},
+			settingId: 'lxsx2xw3.0.6ee63ba756ca3.0.5461dfa3d3929-editor0d56afd1-b6c3-496e-a4e4-11ca8603cf3a',
+			accessStatusForChanges: false,
+			slots: [
+				'ly7o6xqr.0.b47b2160c5e81.0.cece5f6a068da-slote85c23ad-e786-4880-80a8-fddc37da013e',
+				'ly7o6xqs.0.2a1ea2a157c38.0.a042d68924b24-slot6dc5bde2-9f6d-4603-8b55-dc99827ba789',
+				'ly7o6xqs.0.cb801883b8535.0.69e3fe04420bb-slot1ae5e017-c286-4e2b-b5ca-3dcbb742a20b'
+			]
 		}
 	]
 };
