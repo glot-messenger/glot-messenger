@@ -12,7 +12,8 @@
 	padding: 7px;
 }
 
-.btn-with-dynamic-background.gray-blue {
+.btn-with-dynamic-background.gray-blue,
+.btn-with-dynamic-background.gray-gray {
 	color: #90959B;
 }
 
@@ -40,4 +41,30 @@
 	box-shadow: 0 0 3px 0px #000;
 	color: aliceblue;
 	background-color: #9b191e;
+}
+
+.btn-with-dynamic-background.gray-gray:hover {
+	box-shadow: 0 0 3px 0px #000;
+	color: aliceblue;
+	background-color: #35373C;
+}
+
+.btn-with-dynamic-background.yellow-yellow {
+	color: #FAA61A;
+}
+
+.btn-with-dynamic-background.yellow-yellow:hover {
+	box-shadow: 0 0 3px 0px #000;
+	color: aliceblue;
+	background-color: #FAA61A;
+}
+
+.btn-with-dynamic-background.green-green {
+	color: #3BA55C;
+}
+
+.btn-with-dynamic-background.green-green:hover {
+	box-shadow: 0 0 3px 0px #000;
+	color: aliceblue;
+	background-color: #3BA55C;
 }

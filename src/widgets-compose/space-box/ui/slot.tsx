@@ -54,7 +54,7 @@ const Slot: React.FC<ISlotProps> = ({ data }) => {
 				}
 			</div>
 			<Modal isModal={slotModalStatus}>
-				<ContextMenu data={configContextMenuSlot} renderElementFN={({ button, icon }: IElementContextMenu) => (
+				<ContextMenu {...configContextMenuSlot} renderElementFN={({ button, icon }: IElementContextMenu) => (
 					<ButtonWithDynamicBackground {...button} payload={{ columnId, slotId: _id  }}>
 						<span className='context-menu__text'>{button.textBtn}</span>
 						<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />

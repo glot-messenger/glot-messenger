@@ -35,4 +35,12 @@ export interface IElementContextMenu {
 	};
 };
 
-export type IConfigContextMenuColumn = Array<IElementContextMenu>;
+export type IConfigContextMenuColumn = {
+	title: string;
+	subTitle: string;
+	data: Array<IElementContextMenu>;
+	icon: {
+		name: string;
+		alt: string;
+	};
+};

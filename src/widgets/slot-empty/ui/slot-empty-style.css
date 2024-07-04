@@ -9,6 +9,6 @@
 .slot-empty__btn-dots {
 	position: absolute;
 	z-index: 100;
-	right: 15px;
-	top: 5px;
+	right: 8px;
+	top: -1px;
 }

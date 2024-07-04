@@ -14,20 +14,35 @@
 	margin-bottom: 15px;
 }
 
+.logo-glot__wrapper-btn {
+	flex: 0 0 80px;
+	height: 80px;
+	width: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .logo-glot__btn {
 	background-color: #262a33;
+	box-shadow: 0 0 3px 0px #000;
 	border-radius: 50%;
 	flex: 0 0 70px;
 	height: 70px;
 	width: 70px;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	transition: background-color 0.2s ease 0s;
+	transition: background-color 0.3s ease 0s, border-radius 0.3s ease 0s;
 }
 
 .logo-glot__btn:hover {
 	background-color: #049DEA;
+	border-radius: 15px !important;
+	flex: 0 0 72px;
+	height: 72px;
+	width: 72px;
 }
 
 .logo-glot__icon {
@@ -37,7 +52,26 @@
 }
 
 .logo-glot__element {
+	position: relative;
+	top: 27px;
 	height: 2px;
-	width: 40px;
+	width: 45px;
 	background-color: #2B303B;
+	transition: background-color 0.3s ease 0s;
+}
+
+.logo-glot__btn:hover .logo-glot__element {
+	background-color: #049DEA;
+}
+
+.logo-glot__btn.target {
+	background-color: #049DEA;
+	border-radius: 15px !important;
+	flex: 0 0 72px;
+	height: 72px;
+	width: 72px;
+}
+
+.logo-glot__btn.target .logo-glot__element {
+	background-color: #049DEA;
 }

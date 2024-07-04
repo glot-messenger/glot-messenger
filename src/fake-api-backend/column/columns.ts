@@ -5,7 +5,7 @@ const columnsAll = {
 		{
 			_id: 'lxsx2xw4.0.0e613a69cd867.0.9eba5789753e8-columnad793a11-27e5-438f-bce9-dee40ec7eec7',
 			styles: {
-				width: '7%'
+				width: '4%'
 			},
 			settingId: 'lxsx2xw3.0.6ee63ba756ca3.0.5461dfa3d3929-editor0d56afd1-b6c3-496e-a4e4-11ca8603cf3a',
 			accessStatusForChanges: true,
@@ -18,7 +18,7 @@ const columnsAll = {
 		{
 			_id: 'lxvvxus8.0.ddeb35a9f114e.0.1d251c8ce140c-column0f8187cb-ac2b-435c-9ff9-cfe4bf9803fe',
 			styles: {
-				width: '7%'
+				width: '12%'
 			},
 			settingId: 'lxsx2xw3.0.6ee63ba756ca3.0.5461dfa3d3929-editor0d56afd1-b6c3-496e-a4e4-11ca8603cf3a',
 			accessStatusForChanges: true,

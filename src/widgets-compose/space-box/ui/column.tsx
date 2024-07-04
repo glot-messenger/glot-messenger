@@ -62,7 +62,7 @@ const Column: React.FC<IColumnProps> = ({ data }) => {
 				})}
 			</div>
 			<Modal isModal={columnModalStatus}>
-				<ContextMenu data={configContextMenuColumn} renderElementFN={({ button, icon }: IElementContextMenu) => (
+				<ContextMenu {...configContextMenuColumn} renderElementFN={({ button, icon }: IElementContextMenu) => (
 					<ButtonWithDynamicBackground {...button}>
 						<span className='context-menu__text'>{button.textBtn}</span>
 						<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
