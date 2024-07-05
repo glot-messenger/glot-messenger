@@ -10,7 +10,8 @@ import {
 	BUTTON_CLOSE_EVENT_CLICK,
 	BUTTON_RED_EVENT_CLICK,
 	MODAL_EVENT_SEGMENT,
-	ButtonWithDynamicBackground
+	ButtonWithDynamicBackground,
+	ButtonArrows
 } from '../../../shared';
 
 import {
@@ -35,9 +36,9 @@ const LogoGlot: React.FC = () => {
 		eventEmitter.on(BUTTON_RED_EVENT_CLICK + MODAL_EVENT_SEGMENT, () => { setLogoGlotModalStatus(false); });
 	}, []);
 
-	// ВСТАВИТЬ ИКОНКУ КОНТЕКСТНОГО МЕНЮ СЛОТА СЮДА - icon box
 	return (
 		<div className='logo-glot'>
+			<ButtonArrows classes='logo-glot__btn-slot' />
 			<div className='logo-glot__container'>
 				<div className='logo-glot__wrapper-btn'>
 					<button onClick={handlerClick} title={button.titleHover} type={button.type} className={`logo-glot__btn${logoGlotModalStatus ? ' target' : ''}`}>

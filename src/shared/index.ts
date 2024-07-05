@@ -24,7 +24,8 @@ import {
 	DELETE_COLUMN_EVENT_SEGMENT,
 	UPDATE_COLUMN_EVENT_SEGMENT,
 	DELETE_SLOT_EVENT_SEGMENT,
-	CLEAR_SLOT_EVENT_SEGMENT
+	CLEAR_SLOT_EVENT_SEGMENT,
+	BUTTON_ARROWS_EVENT_CLICK
 } from './core';
 
 // lib
@@ -74,7 +75,8 @@ import {
 	ButtonClose,
 	ButtonRed,
 	ButtonWithDynamicBackground,
-	ContextMenu
+	ContextMenu,
+	ButtonArrows
 } from './ui';
 
 import type {
@@ -141,7 +143,9 @@ export {
 	UPDATE_COLUMN_EVENT_SEGMENT,
 	ContextMenu,
 	DELETE_SLOT_EVENT_SEGMENT,
-	CLEAR_SLOT_EVENT_SEGMENT
+	CLEAR_SLOT_EVENT_SEGMENT,
+	ButtonArrows,
+	BUTTON_ARROWS_EVENT_CLICK
 };
 
 export type {

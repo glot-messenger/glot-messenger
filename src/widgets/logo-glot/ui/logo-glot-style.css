@@ -75,3 +75,7 @@
 .logo-glot__btn.target .logo-glot__element {
 	background-color: #049DEA;
 }
+
+.logo-glot__btn-slot {
+	align-self: flex-end;
+}

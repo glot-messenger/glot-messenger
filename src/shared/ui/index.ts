@@ -19,6 +19,7 @@ import { ButtonClose } from './button-close';
 import { ButtonRed } from './button-red';
 import { ButtonWithDynamicBackground } from './button-with-dynamic-background';
 import { ContextMenu } from './context-menu';
+import { ButtonArrows } from './button-arrows';
 
 import type {
 	IDataFormInOnSubmit,
@@ -46,7 +47,8 @@ export {
 	ButtonClose,
 	ButtonRed,
 	ButtonWithDynamicBackground,
-	ContextMenu
+	ContextMenu,
+	ButtonArrows
 };
 
 export type {
