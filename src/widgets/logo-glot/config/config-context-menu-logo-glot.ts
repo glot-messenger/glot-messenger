@@ -1,4 +1,5 @@
 import type { IConfigContextMenu } from '../../../shared';
+import { ADD_COLUMN_EVENT_SEGMENT } from '../../../shared';
 
 const configContextMenuLogoGlot: IConfigContextMenu = {
 	title: 'Управление пространством',
@@ -42,7 +43,8 @@ const configContextMenuLogoGlot: IConfigContextMenu = {
 				textBtn: 'Добавить колонку',
 				type: 'button',
 				titleHover: 'Нажмите, чтобы добавить колонку в интерфейс.',
-				classes: 'context-menu__btn blue-blue'
+				classes: 'context-menu__btn blue-blue',
+				segmentEvent: ADD_COLUMN_EVENT_SEGMENT
 			},
 			icon: {
 				name: 'add.svg',

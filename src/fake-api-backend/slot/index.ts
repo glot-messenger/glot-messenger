@@ -1,9 +1,11 @@
 import {
 	createSlotByIdColumn,
-	fetchSlotsByIdsColumns
+	fetchSlotsByIdsColumns,
+	addColumn
 } from './slots';
 
 export {
 	createSlotByIdColumn,
-	fetchSlotsByIdsColumns
+	fetchSlotsByIdsColumns,
+	addColumn
 };

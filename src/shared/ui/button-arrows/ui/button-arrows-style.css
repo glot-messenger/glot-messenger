@@ -1,9 +1,10 @@
 .button-arrows {
-	flex: 0 0 20px;
-	width: 20px;
-	height: 20px;
-	background-color: red;
+	flex: 0 0 28px;
+	width: 28px;
+	height: 28px;
 	position: relative;
+	background-color: #2B303B;
+	border-radius: 3px !important;
 }
 
 .button-arrows__arrow {
@@ -14,28 +15,54 @@
 
 }
 
-.button-arrows__arrow_left:after {
+.button-arrows__arrow_left:after,
+.button-arrows__arrow_left:before,
+.button-arrows__arrow_right:after,
+.button-arrows__arrow_right:before {
 	content: '';
 	position: absolute;
-	top: 7px;
-	left: 0;
-	width: 10px;
-	height: 2px;
 	background-color: aliceblue;
-	transform: rotate(45deg);
+	width: 7px;
+	height: 2px;
+	transition: background-color 0.3s ease 0s;
+}
+
+.button-arrows__arrow_left:after {
+	top: 13px;
+	left: 14px;
+	transform: rotate(40deg);
 }
 
 .button-arrows__arrow_left:before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 10px;
-	height: 2px;
-	background-color: aliceblue;
-	transform: rotate(-45deg);
+	top: 9px;
+	left: 14px;
+	transform: rotate(-40deg);
 }
 
-.button-arrows__arrow_right {
+.button-arrows__arrow_right:after {
+	bottom: 14px;
+	right: 13px;
+	transform: rotate(40deg);
+}
 
+.button-arrows__arrow_right:before {
+	transform: rotate(-40deg);
+	right: 13px;
+	bottom: 10px;
+}
+
+.button-arrows:hover .button-arrows__arrow_left:after {
+	background-color: #049DEA;
+}
+
+.button-arrows:hover .button-arrows__arrow_left:before {
+	background-color: #049DEA;
+}
+
+.button-arrows:hover .button-arrows__arrow_right:after {
+	background-color: #049DEA;
+}
+
+.button-arrows:hover .button-arrows__arrow_right:before {
+	background-color: #049DEA;
 }

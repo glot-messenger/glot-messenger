@@ -1,4 +1,10 @@
-// core
+// config ===============================================================================
+import {
+	configContextMenuSlot,
+	configContextMenuColumn
+} from './config';
+
+// core =================================================================================
 import {
 	schemeFormSignInPage,
 	schemeFormSignUpPage,
@@ -25,10 +31,13 @@ import {
 	UPDATE_COLUMN_EVENT_SEGMENT,
 	DELETE_SLOT_EVENT_SEGMENT,
 	CLEAR_SLOT_EVENT_SEGMENT,
-	BUTTON_ARROWS_EVENT_CLICK
+	BUTTON_ARROWS_EVENT_CLICK,
+	ADD_COLUMN_EVENT_SEGMENT,
+	COLUMN_MODULE_EVENT_METHOD,
+	MOVING_DOWN_SLOT_EVENT_SEGMENT
 } from './core';
 
-// lib
+// lib ====================================================================================
 import {
 	isNullable,
 	isNotPrimitive,
@@ -46,7 +55,7 @@ import {
 	factorySlot
 } from './lib';
 
-// types
+// types ==================================================================================
 import type {
 	MyChild,
 	IInstanceWithKeyAndValue,
@@ -54,7 +63,7 @@ import type {
 	IConfigContextMenu
 } from './types';
 
-// ui
+// ui =====================================================================================
 import {
 	TextField,
 	ButtonComponent,
@@ -145,7 +154,12 @@ export {
 	DELETE_SLOT_EVENT_SEGMENT,
 	CLEAR_SLOT_EVENT_SEGMENT,
 	ButtonArrows,
-	BUTTON_ARROWS_EVENT_CLICK
+	BUTTON_ARROWS_EVENT_CLICK,
+	configContextMenuSlot,
+	configContextMenuColumn,
+	ADD_COLUMN_EVENT_SEGMENT,
+	COLUMN_MODULE_EVENT_METHOD,
+	MOVING_DOWN_SLOT_EVENT_SEGMENT
 };
 
 export type {

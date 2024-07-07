@@ -4,12 +4,10 @@ import type { IButtonArrowsProps } from './interafaces';
 import { EventEmitterContext } from '../../../../entities';
 import { BUTTON_ARROWS_EVENT_CLICK } from '../../../../shared';
 
-const ButtonArrows: React.FC<IButtonArrowsProps> = ({ classes, type, titleHover, segmentEvent }) => {
+const ButtonArrows: React.FC<IButtonArrowsProps> = ({ classes, type, titleHover, segmentEvent, typeElement }) => {
 	const eventEmitter = useContext(EventEmitterContext);
 
 	const handlerClick = (): void => {
-		console.log('CLICK ARROWS BUTTON');
-
 		eventEmitter.emit(BUTTON_ARROWS_EVENT_CLICK + segmentEvent);
 	};
 

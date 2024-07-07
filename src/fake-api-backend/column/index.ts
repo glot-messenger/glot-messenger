@@ -1,11 +1,13 @@
 import {
 	createColumnByIdEditor,
 	fetchColumnsByIdEditor,
-	updateColumnByIdEditorAndColumn
+	updateColumnByIdEditorAndColumn,
+	addColumnByIdEditor
 } from './columns';
 
 export {
 	createColumnByIdEditor,
 	fetchColumnsByIdEditor,
-	updateColumnByIdEditorAndColumn
+	updateColumnByIdEditorAndColumn,
+	addColumnByIdEditor
 };

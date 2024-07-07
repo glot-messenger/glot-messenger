@@ -19,6 +19,10 @@ export interface IDataProvider {
 	update: (config: any) => Promise<any>;
 };
 
+interface IPayloadContextMenu {
+	position?: 'index + 1';
+};
+
 export interface IElementContextMenu {
 	button: {
 		typeElement: string;
@@ -27,6 +31,7 @@ export interface IElementContextMenu {
 		titleHover: string;
 		classes: string;
 		segmentEvent: string;
+		payload: IPayloadContextMenu;
 	};
 	icon: {
 		name: string;

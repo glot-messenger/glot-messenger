@@ -25,9 +25,11 @@ class ColumnDataProvider extends BaseProvider {
 		return valueColumns.nativeUnpacking();
    };
 
-   override async set(instanceColumnModel: any) {
-      const request = ColumnDataProvider.request.post.nativeFormat.concatUrl('createColumnByIdEditor').body({
-			data: instanceColumnModel
+   override async set({ data, config }: any) {
+		const { method } = config;
+
+      const request = ColumnDataProvider.request.post.nativeFormat.concatUrl(method ? method : 'createColumnByIdEditor').body({
+			data
 		});
 
       const valueColumn = await request.create();

@@ -1,10 +1,10 @@
-import type { IConfigContextMenu } from '../../../shared';
+import type { IConfigContextMenu } from '../../types';
 
 import {
 	ADD_SLOT_EVENT_SEGMENT,
 	DELETE_COLUMN_EVENT_SEGMENT,
 	UPDATE_COLUMN_EVENT_SEGMENT
-} from '../../../shared';
+} from '../../core';
 
 const configContextMenuColumn: IConfigContextMenu = {
 	title: 'Настройки колонки',

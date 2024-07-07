@@ -1,9 +1,13 @@
 import {
    fetchSettingsEditorForUserById,
-   createSettingsEditorForUser
+   createSettingsEditorForUser,
+	overwritingSettings,
+	settingsAll
 } from './settings';
 
 export {
    fetchSettingsEditorForUserById,
-   createSettingsEditorForUser
+   createSettingsEditorForUser,
+	overwritingSettings,
+	settingsAll
 };

@@ -1,4 +1,7 @@
-const columnsAll = {
+import { overwritingSettings, settingsAll } from '../editor';
+import { addColumn } from '../slot';
+
+let columnsAll = {
    // по ID редактора мессенджера сохраняется массив из его колонок
    // settingId: [{column}, {column}, {column}]
 	'lxsx2xw3.0.6ee63ba756ca3.0.5461dfa3d3929-editor0d56afd1-b6c3-496e-a4e4-11ca8603cf3a': [
@@ -112,6 +115,48 @@ export function createColumnByIdEditor({ body }: any) {
 
       resolve(dataSave);
    });
+};
+
+export function addColumnByIdEditor({ body }: any) {
+	const dataSave = body.data;
+
+	return new Promise((resolve, reject) => {
+		if (dataSave === undefined || dataSave === null || (typeof dataSave !== 'object')) {
+         reject({
+            message: 'The dataSave for the /createColumnByIdEditor/ method must be passed!!!'
+         });
+
+         return;
+      }
+
+		if (!columnsAll[dataSave.settingId] || !(Array.isArray(columnsAll[dataSave.settingId]))) {
+         columnsAll[dataSave.settingId] = [];
+      }
+
+		columnsAll[dataSave.settingId] = [
+			...columnsAll[dataSave.settingId],
+			dataSave
+		];
+
+		// ТАКЖЕ ДОБАВЛЯЕМ ID колонки в настройки редактора, чтобы одним методом сразу в двух местах обновить, а не в разных запросах
+		const newSetting = {
+			...settingsAll[0],
+			columns: [
+				...settingsAll[0].columns,
+				dataSave._id
+			]
+		};
+
+		overwritingSettings([newSetting]);
+
+		// добавляем колонку в хранилище слотов
+		addColumn(dataSave._id, []);
+
+		// РАСКОММЕНТИРУЙ ДЛЯ ПОКАЗА ХРАНИЛИЩА БАЗЫ ДАННЫХ
+      console.log('Backend: Store columns after save data settings. Add column!', columnsAll, settingsAll);
+
+		resolve(dataSave);
+	});
 };
 
 export function fetchColumnsByIdEditor({ body }: any) {

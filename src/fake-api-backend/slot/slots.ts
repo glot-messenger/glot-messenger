@@ -1,4 +1,4 @@
-const slotsAll = {
+let slotsAll = {
    // по ID колонки мессенджера сохраняется массив из его слотов
    // columnId: [{slot}, {slot}, {slot}]
 	'lxsx2xw4.0.0e613a69cd867.0.9eba5789753e8-columnad793a11-27e5-438f-bce9-dee40ec7eec7': [
@@ -117,4 +117,9 @@ export function createSlotByIdColumn({ body }: any) {
 
       resolve(dataSave);
    });
+};
+
+// ВЗАИМОДЕЙСТВИЕ С ДРУГИМИ СТОРАМИ
+export function addColumn(columnId, slots) {
+	slotsAll[columnId] = slots;
 };

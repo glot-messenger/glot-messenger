@@ -8,3 +8,13 @@ export interface IConfigLogoGlot {
 		alt: string;
 	};
 };
+
+export interface IConfigLogoGlotBtnArrows {
+	button: {
+		typeElement: 'button';
+		type: 'submit' | 'reset' | 'button';
+		titleHover: string;
+		classes: string;
+		segmentEvent: string;
+	};
+};

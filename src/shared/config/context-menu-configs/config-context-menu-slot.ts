@@ -1,9 +1,10 @@
-import type { IConfigContextMenu } from '../../../shared';
+import type { IConfigContextMenu } from '../../types';
 
 import {
 	DELETE_SLOT_EVENT_SEGMENT,
-	CLEAR_SLOT_EVENT_SEGMENT
-} from '../../../shared';
+	CLEAR_SLOT_EVENT_SEGMENT,
+	MOVING_DOWN_SLOT_EVENT_SEGMENT
+} from '../../core';
 
 const configContextMenuSlot: IConfigContextMenu = {
 	title: 'Настройки слота',
@@ -63,7 +64,9 @@ const configContextMenuSlot: IConfigContextMenu = {
 			 textBtn: 'Переместить слот вниз',
 			 type: 'button',
 			 titleHover: 'Нажмите, чтобы переместить слот вниз.',
-			 classes: 'context-menu__btn gray-blue'
+			 classes: 'context-menu__btn gray-blue',
+			 segmentEvent: MOVING_DOWN_SLOT_EVENT_SEGMENT,
+			 payload: { position: 'index + 1' }
 		 },
 		 icon: {
 			 name: 'arrow-down.svg',

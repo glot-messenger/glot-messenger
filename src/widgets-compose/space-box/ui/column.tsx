@@ -3,7 +3,6 @@ import './column-style.css';
 import type { IColumnProps } from './interafaces';
 import { Slot } from './slot';
 import { Modal } from '../../../widgets';
-import { configContextMenuColumn } from '../config';
 import type { IElementContextMenu } from '../../../shared';
 
 import {
@@ -21,7 +20,8 @@ import {
 	MODAL_EVENT_SEGMENT,
 	BUTTON_RED_EVENT_CLICK,
 	ContextMenu,
-	ButtonWithDynamicBackground
+	ButtonWithDynamicBackground,
+	configContextMenuColumn
 } from '../../../shared';
 
 const Column: React.FC<IColumnProps> = ({ data }) => {

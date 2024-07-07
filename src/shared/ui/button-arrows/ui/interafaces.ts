@@ -3,4 +3,5 @@ export interface IButtonArrowsProps {
 	type: 'submit' | 'reset' | 'button';
 	titleHover: string;
 	segmentEvent: string;
+	typeElement: string;
 };

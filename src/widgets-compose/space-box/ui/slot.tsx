@@ -3,7 +3,6 @@ import type { ISlotProps } from './interafaces';
 import './slot-style.css';
 import { EventEmitterContext } from '../../../entities';
 import type { IElementContextMenu } from '../../../shared';
-import { configContextMenuSlot } from '../config';
 
 import {
 	SlotEmpty,
@@ -19,7 +18,8 @@ import {
 	MODAL_EVENT_SEGMENT,
 	BUTTON_RED_EVENT_CLICK,
 	ContextMenu,
-	ButtonWithDynamicBackground
+	ButtonWithDynamicBackground,
+	configContextMenuSlot
 } from '../../../shared';
 
 const Slot: React.FC<ISlotProps> = ({ data }) => {
@@ -49,17 +49,19 @@ const Slot: React.FC<ISlotProps> = ({ data }) => {
 			<div className='slot__container'>
 				{
 					nameWidget === 'logo-glot' ?
-						<LogoGlot /> :
+						<LogoGlot {...data} /> :
 						<SlotEmpty {...data} />
 				}
 			</div>
 			<Modal isModal={slotModalStatus}>
-				<ContextMenu {...configContextMenuSlot} renderElementFN={({ button, icon }: IElementContextMenu) => (
-					<ButtonWithDynamicBackground {...button} payload={{ columnId, slotId: _id  }}>
-						<span className='context-menu__text'>{button.textBtn}</span>
-						<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
-					</ButtonWithDynamicBackground>
-				)} />
+				<ContextMenu {...configContextMenuSlot} renderElementFN={({ button, icon }: IElementContextMenu) => {
+					return (
+						<ButtonWithDynamicBackground {...button} payload={{ columnId, slotId: _id, ...button.payload  }}>
+							<span className='context-menu__text'>{button.textBtn}</span>
+							<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
+						</ButtonWithDynamicBackground>
+					);
+				}} />
 			</Modal>
 		</div>
 	);

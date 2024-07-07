@@ -17,7 +17,9 @@ import {
 	Loader,
 	MessageLite,
 	BUTTON_LOCK_EVENT_CLICK,
-	COLUMN_EVENT_SEGMENT
+	COLUMN_EVENT_SEGMENT,
+	COLUMN_MODULE_EVENT_METHOD,
+	ADD_COLUMN_EVENT_SEGMENT
 } from '../../../../shared';
 
 const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
@@ -137,7 +139,10 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 			fetchSettingsEditor();
 
 		} else {
+			// ТУТ ПРОИСХОДИТ ПЕРЕХВАТ СОБЫТИЙ ИЗ ЛЮБЫХ МЕСТ ПРИЛОЖЕНИЯ: UI или классов LIB
 			eventEmitter.on(BUTTON_LOCK_EVENT_CLICK + COLUMN_EVENT_SEGMENT, (payload) => {
+				console.log(payload);
+
 				column.updateColumnByIdEditorAndColumn(payload)
 					.then(({ isError, data }) => {
 						if (isError) {
@@ -149,12 +154,44 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 						updateColumnInStore(data);
 					});
 			});
+
+			eventEmitter.on(COLUMN_MODULE_EVENT_METHOD + ADD_COLUMN_EVENT_SEGMENT, ({ isError, message, data }) => {
+				if (isError) {
+					console.log('ВЫВОДИТЬ В ИНТЕРФЕЙС ОШИБКУ, добавление колонки не произошло. Придумать общий механизм обработки ошибок');
+
+					return;
+				}
+
+				setColumnsEditor((prevState) => {
+					if (prevState) {
+						return [
+							...prevState,
+							data.columns[0]
+						]
+					}
+
+					return [ data.columns[0] ];
+				});
+
+				setSettingsEditor((prevState: any) => {
+					return {
+						...prevState,
+						columns: [
+							...prevState.columns,
+							data.columns[0]._id
+						]
+					}
+				});
+
+				setSlotsEditor((prevState: any) => {
+					return {
+						...prevState,
+						[data.columns[0]._id]: []
+					}
+				});
+			});
 		}
 	}, [isLoadingEditorSettings]);
-
-	console.log('EDITOR', settingsEditor);
-	console.log('COLUMNS', columnsEditor);
-	console.log('SLOTS', slotsEditor);
 
 	return (
 		<EditorContext.Provider value={{

@@ -2,12 +2,20 @@ import { factoryColumnModel } from './factory-column-model';
 import { factoryColumnDataProvider } from './column-data-provider';
 import { factorySlot } from '../slot';
 import { factoryContainerForResultsSomeAsyncMethods } from '../container-for-results-some-async-methods';
+import { factoryEventEmitter } from '../event-emitter';
+
+import {
+	COLUMN_MODULE_EVENT_METHOD,
+	ADD_COLUMN_EVENT_SEGMENT
+} from '../../core';
 
 // Singleton =======================================================================
 let staticColumn: null | Column = null;
 
 class Column {
 	#dataProvider = factoryColumnDataProvider();
+
+	#eventEmitter = factoryEventEmitter();
 
 	constructor() {
 		if (staticColumn !== null) {
@@ -17,8 +25,29 @@ class Column {
 		staticColumn = this;
 	};
 
-	async addSlotInColumn(config: any) {
-		
+	async addColumn(config: any) {
+		// ТУТ ДОЛЖНА БЫТЬ ПРОВЕРКА МОЕГО СПЕЦИАЛЬНОГО РАЗРУЛИВАЮЩЕГО ИНТЕРФЕЙС КЛАССА, есть или нет возможности добавить колонку, т.к. колонке требуется 20% ширины пространства редактора
+		const instanceColumnModel = factoryColumnModel(config);
+
+		const containerData = await this.#dataProvider.set({ data: instanceColumnModel, config: { method: 'addColumnByIdEditor' } });
+
+		if (containerData.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: containerData.message + ' Failure columns... Аn error occurred while adding a new column.',
+				data: {
+					columns: null
+				}
+			});
+		}
+
+		this.#eventEmitter.emit(COLUMN_MODULE_EVENT_METHOD + ADD_COLUMN_EVENT_SEGMENT, factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: 'Success columns! The new column has been successfully added to the interface.',
+			data: {
+				columns: [ instanceColumnModel ]
+			}
+		}));
 	};
 
 	async getColumnsByIdEditorSettings(config: any) {
@@ -81,7 +110,7 @@ class Column {
 			instanceColumnModel.slots.push(slotModel._id);
 		});
 
-		const containerDataSavedInstanceColumn = await this.#dataProvider.set(instanceColumnModel);
+		const containerDataSavedInstanceColumn = await this.#dataProvider.set({ data: instanceColumnModel, config: { method: 'createColumnByIdEditor' } });
 
 		if (containerDataSavedInstanceColumn.isError) {
 			//! Error
