@@ -2,8 +2,8 @@ import React from 'react';
 import './button-plus-style.css';
 
 const ButtonPlus: React.FC = () => {
-   const handlerClickBtnPlus = () => {
-
+   const handlerClickBtnPlus = (): void => {
+		console.log('click button plus');
    };
 
    return (

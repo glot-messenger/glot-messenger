@@ -1,5 +1,5 @@
 import type { IConfigJoinSocialNetwork } from './interafaces';
-import { arraySocialNetworkLinks } from '../../../config';
+import { arraySocialNetworkLinks } from '../../../shared';
 
 const configForJoinSocialNetworkDrawData: IConfigJoinSocialNetwork = {
 	text: 'Присоединяйтесь:',

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './auth-box-style.css';
 import type { IAuthBoxProps } from './interafaces';
 import { ConditionAuthBoxContext } from '../../../entities';
-import { GroupLinks } from '../../../shared';
+import { GroupLinks } from '../../../bricks';
 import { AuthBoxInfo } from './auth-box-info';
 
 const AuthBox: React.FC<IAuthBoxProps> = ({ children }) => {

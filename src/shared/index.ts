@@ -62,7 +62,9 @@ import type {
 	MyChild,
 	IInstanceWithKeyAndValue,
 	IElementContextMenu,
-	IConfigContextMenu
+	IConfigContextMenu,
+	ISocialNetworkLinks,
+	IIcon
 } from './types';
 
 // ui =====================================================================================
@@ -71,11 +73,8 @@ import {
 	ButtonComponent,
 	FormComponent,
 	CheckboxField,
-	GroupLinks,
 	LinkElement,
 	HrElement,
-	Logo,
-	JoinSocialNetwork,
 	ButtonPretty,
 	Loader,
 	Loader2,
@@ -106,11 +105,8 @@ export {
 	ButtonComponent,
 	FormComponent,
 	CheckboxField,
-	GroupLinks,
 	LinkElement,
 	HrElement,
-	Logo,
-	JoinSocialNetwork,
 	ButtonPretty,
 	Loader,
 	Loader2,
@@ -172,5 +168,7 @@ export type {
 	IDataFormInOnSubmit,
 	IDataFormComponent,
 	IElementContextMenu,
-	IConfigContextMenu
+	IConfigContextMenu,
+	ISocialNetworkLinks,
+	IIcon
 };

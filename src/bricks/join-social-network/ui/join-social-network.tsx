@@ -6,7 +6,7 @@ import type { IJoinSocialNetworkProps } from './interafaces';
 import {
 	LinkElement,
 	ButtonPretty
-} from '../../';
+} from '../../../shared';
 
 const JoinSocialNetwork: React.FC<IJoinSocialNetworkProps> = ({ classesParent }) => {
 	const { text, data } = configForJoinSocialNetworkDrawData;

@@ -1,7 +1,7 @@
 .button-arrows {
-	flex: 0 0 28px;
-	width: 28px;
-	height: 28px;
+	flex: 0 0 27px;
+	width: 27px;
+	height: 27px;
 	position: relative;
 	background-color: #2B303B;
 	border-radius: 3px !important;
@@ -28,27 +28,27 @@
 }
 
 .button-arrows__arrow_left:after {
-	top: 13px;
-	left: 14px;
+	top: 12px;
+	left: 13px;
 	transform: rotate(40deg);
 }
 
 .button-arrows__arrow_left:before {
-	top: 9px;
-	left: 14px;
+	top: 8px;
+	left: 13px;
 	transform: rotate(-40deg);
 }
 
 .button-arrows__arrow_right:after {
-	bottom: 14px;
-	right: 13px;
+	bottom: 13px;
+	right: 12px;
 	transform: rotate(40deg);
 }
 
 .button-arrows__arrow_right:before {
 	transform: rotate(-40deg);
-	right: 13px;
-	bottom: 10px;
+	right: 12px;
+	bottom: 9px;
 }
 
 .button-arrows:hover .button-arrows__arrow_left:after {

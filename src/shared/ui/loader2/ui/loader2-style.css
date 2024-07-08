@@ -16,7 +16,7 @@
   position: relative;
   border-radius: 4px;
   color: #FFF;
-  background: currentColor;
+  background-color: currentColor;
   box-sizing: border-box;
   animation: animloader 0.3s 0.3s linear infinite alternate;
 }
@@ -27,7 +27,7 @@
   width: 4.8px;
   height: 4.8px;
   border-radius: 4px;
-  background: currentColor;
+  background-color: currentColor;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

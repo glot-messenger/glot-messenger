@@ -4,12 +4,12 @@ import { configForLogoInFooter } from '../config';
 import { GratitudeBlock } from './gratitude-block';
 import { SupportEmailBlock } from './support-email-block';
 import { Copyright } from './copyright';
+import { HrElement } from '../../../shared';
 
 import {
-	HrElement,
-	Logo,
-	JoinSocialNetwork
-} from '../../../shared';
+	JoinSocialNetwork,
+	Logo
+} from '../../../bricks';
 
 const Footer: React.FC = () => {
 	return (

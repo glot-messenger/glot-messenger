@@ -1,4 +1,4 @@
-import type { ISocialNetworkLinks } from '../../../types';
+import type { ISocialNetworkLinks } from '../../../shared';
 
 export interface IConfigJoinSocialNetwork {
 	text: string;
