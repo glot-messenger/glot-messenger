@@ -49,3 +49,12 @@ export type IConfigContextMenu = {
 		alt: string;
 	};
 };
+
+export interface IIcon {
+	name: string;
+	alt: string;
+	titleHover: string;
+	path?: string;
+};
+
+export type ISocialNetworkLinks = Array<IIcon>;

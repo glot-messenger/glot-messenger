@@ -1,7 +1,8 @@
 // config ===============================================================================
 import {
 	configContextMenuSlot,
-	configContextMenuColumn
+	configContextMenuColumn,
+	arraySocialNetworkLinks
 } from './config';
 
 // core =================================================================================
@@ -34,7 +35,8 @@ import {
 	BUTTON_ARROWS_EVENT_CLICK,
 	ADD_COLUMN_EVENT_SEGMENT,
 	COLUMN_MODULE_EVENT_METHOD,
-	MOVING_DOWN_SLOT_EVENT_SEGMENT
+	MOVING_DOWN_SLOT_EVENT_SEGMENT,
+	SHOW_SOCIAL_NETWORK_EVENT_SEGMENT
 } from './core';
 
 // lib ====================================================================================
@@ -159,7 +161,9 @@ export {
 	configContextMenuColumn,
 	ADD_COLUMN_EVENT_SEGMENT,
 	COLUMN_MODULE_EVENT_METHOD,
-	MOVING_DOWN_SLOT_EVENT_SEGMENT
+	MOVING_DOWN_SLOT_EVENT_SEGMENT,
+	arraySocialNetworkLinks,
+	SHOW_SOCIAL_NETWORK_EVENT_SEGMENT
 };
 
 export type {

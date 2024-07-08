@@ -5,7 +5,9 @@ import type {
 	IInstanceWithKeyAndValue,
 	IDataProvider,
 	IElementContextMenu,
-	IConfigContextMenu
+	IConfigContextMenu,
+	IIcon,
+	ISocialNetworkLinks
 } from './auxiliary';
 
 export type {
@@ -15,5 +17,7 @@ export type {
 	IInstanceWithKeyAndValue,
 	IDataProvider,
 	IElementContextMenu,
-	IConfigContextMenu
+	IConfigContextMenu,
+	IIcon,
+	ISocialNetworkLinks
 };

@@ -18,3 +18,13 @@ export interface IConfigLogoGlotBtnArrows {
 		segmentEvent: string;
 	};
 };
+
+export interface IConfigSocialNetworkBlock {
+	title: string;
+	subTitle: string;
+	text: string;
+	icon: {
+		name: string;
+		alt: string;
+	}
+};

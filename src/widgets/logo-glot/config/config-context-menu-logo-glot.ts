@@ -1,5 +1,9 @@
 import type { IConfigContextMenu } from '../../../shared';
-import { ADD_COLUMN_EVENT_SEGMENT } from '../../../shared';
+
+import {
+	ADD_COLUMN_EVENT_SEGMENT,
+	SHOW_SOCIAL_NETWORK_EVENT_SEGMENT
+} from '../../../shared';
 
 const configContextMenuLogoGlot: IConfigContextMenu = {
 	title: 'Управление пространством',
@@ -29,7 +33,9 @@ const configContextMenuLogoGlot: IConfigContextMenu = {
 				textBtn: 'Социальные сети GLOTа',
 				type: 'button',
 				titleHover: 'Нажмите, чтобы посмотреть все социальные сети GLOTа.',
-				classes: 'context-menu__btn yellow-yellow'
+				classes: 'context-menu__btn yellow-yellow',
+				segmentEvent: SHOW_SOCIAL_NETWORK_EVENT_SEGMENT,
+				payload: {}
 			},
 			icon: {
 				name: 'social-network.svg',

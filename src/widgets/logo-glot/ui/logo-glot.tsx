@@ -3,6 +3,7 @@ import './logo-glot-style.css';
 import { Modal } from '../../modal';
 import type { IElementContextMenu } from '../../../shared';
 import type { ILogoGlotProps } from './interafaces';
+import { SocialNetworkBlock } from './social-network-block';
 
 import {
 	EventEmitterContext,
@@ -21,7 +22,8 @@ import {
 	BUTTON_ARROWS_EVENT_CLICK,
 	configContextMenuSlot,
 	BUTTON_WITH_DYNAMIC_BACKGROUND,
-	ADD_COLUMN_EVENT_SEGMENT
+	ADD_COLUMN_EVENT_SEGMENT,
+	SHOW_SOCIAL_NETWORK_EVENT_SEGMENT
 } from '../../../shared';
 
 import {
@@ -41,6 +43,8 @@ const LogoGlot: React.FC<ILogoGlotProps> = ({ columnId, _id }) => {
 
 	const [slotModalStatus, setSlotModalStatus] = useState<boolean>(false);
 
+	const [socialNetworkModalStatus, setSocialNetworkModalStatus] = useState<boolean>(false);
+
 	const handlerClick = (): void => {
 		setLogoGlotModalStatus(true);
 	};
@@ -54,17 +58,26 @@ const LogoGlot: React.FC<ILogoGlotProps> = ({ columnId, _id }) => {
 			modules.column.addColumn({ settingId: editor._id });
 		});
 
+		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + SHOW_SOCIAL_NETWORK_EVENT_SEGMENT, (payload) => {
+			setLogoGlotModalStatus(false);
+			setSlotModalStatus(false);
+			setSocialNetworkModalStatus(true);
+		});
+
 		eventEmitter.on(MODAL_EMPTY_SPACE_EVENT_CLICK, () => {
 			setLogoGlotModalStatus(false);
 			setSlotModalStatus(false);
+			setSocialNetworkModalStatus(false);
 		});
 		eventEmitter.on(BUTTON_CLOSE_EVENT_CLICK + MODAL_EVENT_SEGMENT, () => {
 			setLogoGlotModalStatus(false);
 			setSlotModalStatus(false);
+			setSocialNetworkModalStatus(false);
 		});
 		eventEmitter.on(BUTTON_RED_EVENT_CLICK + MODAL_EVENT_SEGMENT, () => {
 			setLogoGlotModalStatus(false);
 			setSlotModalStatus(false);
+			setSocialNetworkModalStatus(false);
 		});
 	}, []);
 
@@ -81,7 +94,7 @@ const LogoGlot: React.FC<ILogoGlotProps> = ({ columnId, _id }) => {
 			</div>
 			<Modal isModal={logoGlotModalStatus}>
 				<ContextMenu {...configContextMenuLogoGlot} renderElementFN={({ button, icon }: IElementContextMenu) => (
-					<ButtonWithDynamicBackground {...button} payload={{}}>
+					<ButtonWithDynamicBackground {...button} payload={{ columnId, slotId: _id, ...button.payload }}>
 						<span className='context-menu__text'>{button.textBtn}</span>
 						<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
 					</ButtonWithDynamicBackground>
@@ -94,6 +107,9 @@ const LogoGlot: React.FC<ILogoGlotProps> = ({ columnId, _id }) => {
 						<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
 					</ButtonWithDynamicBackground>
 				)} />
+			</Modal>
+			<Modal isModal={socialNetworkModalStatus}>
+				<SocialNetworkBlock />
 			</Modal>
 		</div>
 	);

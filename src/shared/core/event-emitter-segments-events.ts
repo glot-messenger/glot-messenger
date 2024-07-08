@@ -2,6 +2,7 @@
 export const COLUMN_EVENT_SEGMENT = '.column';
 export const SLOT_EVENT_SEGMENT = '.slot';
 export const MODAL_EVENT_SEGMENT = '.modal';
+export const SOCIAL_NETWORK_EVENT_SEGMENT = '.social-network';
 
 // Actions ==============================================================================
 export const ADD_EVENT_SEGMENT = '.add';
@@ -9,6 +10,7 @@ export const DELETE_EVENT_SEGMENT = '.delete';
 export const UPDATE_EVENT_SEGMENT = '.update';
 export const CLEAR_EVENT_SEGMENT = '.clear';
 export const MOVING_EVENT_SEGMENT = '.moving';
+export const SHOW_EVENT_SEGMENT = '.show';
 
 // Directions ===========================================================================
 export const DOWN_EVENT_SEGMENT = '.down';
@@ -23,3 +25,5 @@ export const MOVING_DOWN_SLOT_EVENT_SEGMENT = SLOT_EVENT_SEGMENT + MOVING_EVENT_
 export const DELETE_COLUMN_EVENT_SEGMENT = COLUMN_EVENT_SEGMENT + DELETE_EVENT_SEGMENT;
 export const UPDATE_COLUMN_EVENT_SEGMENT = COLUMN_EVENT_SEGMENT + UPDATE_EVENT_SEGMENT;
 export const ADD_COLUMN_EVENT_SEGMENT = COLUMN_EVENT_SEGMENT + ADD_EVENT_SEGMENT;
+// SOCIAL NETWORK
+export const SHOW_SOCIAL_NETWORK_EVENT_SEGMENT = SOCIAL_NETWORK_EVENT_SEGMENT + SHOW_EVENT_SEGMENT;
