@@ -3,10 +3,10 @@ import type { ISlotProps } from './interafaces';
 import './slot-style.css';
 import { EventEmitterContext } from '../../../entities';
 import type { IElementContextMenu } from '../../../shared';
+import { Modal } from '../../../bricks';
 
 import {
 	SlotEmpty,
-	Modal,
 	LogoGlot
 } from '../../../widgets';
 

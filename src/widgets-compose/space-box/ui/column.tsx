@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import './column-style.css';
 import type { IColumnProps } from './interafaces';
 import { Slot } from './slot';
-import { Modal } from '../../../widgets';
+import { Modal } from '../../../bricks';
 import type { IElementContextMenu } from '../../../shared';
 
 import {

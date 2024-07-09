@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './logo-glot-style.css';
-import { Modal } from '../../modal';
+import { Modal } from '../../../bricks';
 import type { IElementContextMenu } from '../../../shared';
 import type { ILogoGlotProps } from './interafaces';
 import { SocialNetworkBlock } from './social-network-block';
