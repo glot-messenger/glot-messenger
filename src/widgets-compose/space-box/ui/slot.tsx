@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import type { ISlotProps } from './interafaces';
 import './slot-style.css';
-import { EventEmitterContext } from '../../../entities';
 import type { IElementContextMenu } from '../../../shared';
 import { Modal } from '../../../bricks';
 
@@ -19,11 +18,20 @@ import {
 	BUTTON_RED_EVENT_CLICK,
 	ContextMenu,
 	ButtonWithDynamicBackground,
-	configContextMenuSlot
+	configContextMenuSlot,
+	BUTTON_WITH_DYNAMIC_BACKGROUND,
+	MOVING_DOWN_SLOT_EVENT_SEGMENT
 } from '../../../shared';
+
+import {
+	EventEmitterContext,
+	EditorContext
+} from '../../../entities';
 
 const Slot: React.FC<ISlotProps> = ({ data }) => {
 	const eventEmitter = useContext(EventEmitterContext);
+
+	const { modules } = useContext(EditorContext);
 
 	const { isEmpty, columnId, _id, nameWidget } = data;
 
@@ -35,6 +43,13 @@ const Slot: React.FC<ISlotProps> = ({ data }) => {
 
 			if (data.slotId === _id) {
 				setSlotModalStatus(true);
+			}
+		});
+
+		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + MOVING_DOWN_SLOT_EVENT_SEGMENT, (payload) => {
+			if (_id === payload.slotId) {
+				console.log('click show down');
+				modules.slot. // ПОДУМАТЬ НАД МЕТОДОМ ПЕРЕМЕЩЕНИЯ
 			}
 		});
 
