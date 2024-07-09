@@ -28,3 +28,17 @@ export interface IConfigSocialNetworkBlock {
 		alt: string;
 	}
 };
+
+export interface IConfigFeaturesBlock {
+	title: string;
+	data: Array<{ _id: string; text: string; classes: 'blue' | 'green' | 'yellow' | 'violet' | 'gray' | 'red' }>
+};
+
+export interface IConfigSignatureBlock {
+	text: string;
+	infoAuthor: string;
+	icon: {
+		name: string;
+		alt: string;
+	};
+};

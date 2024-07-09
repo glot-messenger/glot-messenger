@@ -1,3 +1,14 @@
+.social-network-block {
+	background-color: #111214;
+	box-shadow: 0 0 3px 0px #000;
+	border-radius: 3px !important;
+	border: 1px solid #8891A2;
+}
+
+.social-network-block__container {
+	padding: 15px;
+}
+
 .social-network-block__header {
 	display: flex;
 	flex-direction: column;
@@ -63,4 +74,8 @@
 .social-network-block__img-icon {
 	width: 50px;
 	height: 50px;
+}
+
+.social-network-block__container-links {
+	margin-bottom: 10px;
 }
