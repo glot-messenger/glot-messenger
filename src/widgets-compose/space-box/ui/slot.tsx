@@ -31,7 +31,7 @@ import {
 const Slot: React.FC<ISlotProps> = ({ data }) => {
 	const eventEmitter = useContext(EventEmitterContext);
 
-	const { modules } = useContext(EditorContext);
+	const { modules, slots } = useContext(EditorContext);
 
 	const { isEmpty, columnId, _id, nameWidget } = data;
 
@@ -48,8 +48,7 @@ const Slot: React.FC<ISlotProps> = ({ data }) => {
 
 		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + MOVING_DOWN_SLOT_EVENT_SEGMENT, (payload) => {
 			if (_id === payload.slotId) {
-				console.log('click show down');
-				modules.slot. // ПОДУМАТЬ НАД МЕТОДОМ ПЕРЕМЕЩЕНИЯ
+				modules.slot.movingDownSlot(payload, slots);
 			}
 		});
 

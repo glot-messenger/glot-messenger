@@ -29,7 +29,8 @@ class ColumnDataProvider extends BaseProvider {
 		const { method } = config;
 
       const request = ColumnDataProvider.request.post.nativeFormat.concatUrl(method ? method : 'createColumnByIdEditor').body({
-			data
+			data,
+			payload: config.payload
 		});
 
       const valueColumn = await request.create();

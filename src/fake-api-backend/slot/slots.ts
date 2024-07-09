@@ -119,6 +119,16 @@ export function createSlotByIdColumn({ body }: any) {
    });
 };
 
+export function movingDownSlotByIdColumnAndIdSlot({ body }: any) {
+	const payload = body.payload;
+
+	console.log('movingDownSlotByIdColumnAndIdSlot', payload); // ДОПИСАТЬ ВСЕ ОБНОВЛЕНИЯ
+
+	return new Promise((resolve, reject) => {
+
+	});
+};
+
 // ВЗАИМОДЕЙСТВИЕ С ДРУГИМИ СТОРАМИ
 export function addColumn(columnId, slots) {
 	slotsAll[columnId] = slots;

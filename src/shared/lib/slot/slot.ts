@@ -16,6 +16,22 @@ class Slot {
 		staticSlot = this;
    };
 
+	async movingDownSlot(config: any, slots: any) {
+		const packOfSlotsForCurrentColumn = slots[config.columnId];
+
+		const index = packOfSlotsForCurrentColumn.findIndex((slot) => {
+			return slot._id === config.slotId;
+		});
+
+		const configMethods = {
+			'index + 1': 'movingDownSlotByIdColumnAndIdSlot'
+		};
+
+		if ((index !== -1) && (index !== packOfSlotsForCurrentColumn.length - 1)) {
+			const containerColumnModel = await this.#dataProvider.set({ data: null, config: { method: configMethods[config.position], payload: config } });
+		}
+	};
+
 	async getSlotsByIdsColumns(config: any) {
 		const constainerData = await this.#dataProvider.get(config);
 
@@ -46,7 +62,7 @@ class Slot {
       for (let m = 0; m < quantityNewElements; m++) {
          const instanceSlotModel = factorySlotModel({ columnId });
 
-         const containerDataSavedInstanceSlot = await this.#dataProvider.set(instanceSlotModel);
+         const containerDataSavedInstanceSlot = await this.#dataProvider.set({ data: instanceSlotModel, config: { method: 'createSlotByIdColumn' } });
 
          arrayContainersModelsSlots.push(containerDataSavedInstanceSlot);
 

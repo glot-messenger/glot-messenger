@@ -25,9 +25,12 @@ class SlotDataProvider extends BaseProvider {
       return valueSlot.nativeUnpacking();
 	};
 
-   override async set(instanceSlot: any) {
-      const request = SlotDataProvider.request.post.nativeFormat.concatUrl('createSlotByIdColumn').body({
-         data: instanceSlot
+   override async set({ data, config }: any) {
+		const { method } = config;
+
+      const request = SlotDataProvider.request.post.nativeFormat.concatUrl(method ? method : 'createSlotByIdColumn').body({
+         data,
+			payload: config.payload
       });
 
       const valueSlot = await request.create();

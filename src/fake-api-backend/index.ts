@@ -12,7 +12,8 @@ import {
 
 import {
 	createSlotByIdColumn,
-	fetchSlotsByIdsColumns
+	fetchSlotsByIdsColumns,
+	movingDownSlotByIdColumnAndIdSlot
 } from './slot';
 
 const fakeApiBackend: any = {
@@ -28,7 +29,8 @@ const fakeApiBackend: any = {
    },
    slot: {
       createSlotByIdColumn,
-		fetchSlotsByIdsColumns
+		fetchSlotsByIdsColumns,
+		movingDownSlotByIdColumnAndIdSlot
    }
 };
 
