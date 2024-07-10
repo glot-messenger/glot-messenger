@@ -1,3 +1,5 @@
+import { updateColumnsKeyForColumn } from '../column';
+
 let slotsAll = {
    // по ID колонки мессенджера сохраняется массив из его слотов
    // columnId: [{slot}, {slot}, {slot}]
@@ -122,14 +124,58 @@ export function createSlotByIdColumn({ body }: any) {
 export function movingDownSlotByIdColumnAndIdSlot({ body }: any) {
 	const payload = body.payload;
 
-	console.log('movingDownSlotByIdColumnAndIdSlot', payload); // ДОПИСАТЬ ВСЕ ОБНОВЛЕНИЯ
+	const { columnId, slotId, settingsEditorId } = payload;
 
 	return new Promise((resolve, reject) => {
+		if ((columnId === undefined || columnId === null) && (slotId === null || slotId === undefined) && (settingsEditorId === null || settingsEditorId === undefined)) {
+			reject({
+				 message: 'The columnId and slotId and settingsEditorId for the /movingDownSlotByIdColumnAndIdSlot/ method must be passed!!!'
+			});
 
+			return;
+	 }
+
+	 const packSlotsFor = slotsAll[columnId];
+
+	 const arrayIdsForColumn = [];
+
+	 const arrayResult = [];
+
+	 let trigger = false;
+
+	 for (let m = 0; m < packSlotsFor.length; m++) {
+		const slot = packSlotsFor[m];
+
+		if (slot._id === slotId) {
+			trigger = true;
+
+			continue;
+		}
+
+		arrayIdsForColumn.push(slot._id);
+
+		arrayResult.push(slot);
+
+		if (trigger === true) {
+			const prevSlot = packSlotsFor[m - 1];
+
+			arrayResult.push(prevSlot);
+
+			arrayIdsForColumn.push(prevSlot._id);
+
+			trigger = false;
+		}
+	 }
+
+	 slotsAll[columnId] = arrayResult;
+
+	const column = updateColumnsKeyForColumn(arrayIdsForColumn, payload);
+
+	 resolve({ slots: arrayResult, newColumn: column });
 	});
 };
 
-// ВЗАИМОДЕЙСТВИЕ С ДРУГИМИ СТОРАМИ
+// ВЗАИМОДЕЙСТВИЕ С ДРУГИМИ СТОРАМИ =============================================================================================
 export function addColumn(columnId, slots) {
 	slotsAll[columnId] = slots;
 };

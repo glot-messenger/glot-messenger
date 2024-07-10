@@ -2,12 +2,16 @@ import {
 	createColumnByIdEditor,
 	fetchColumnsByIdEditor,
 	updateColumnByIdEditorAndColumn,
-	addColumnByIdEditor
+	addColumnByIdEditor,
+
+	updateColumnsKeyForColumn
 } from './columns';
 
 export {
 	createColumnByIdEditor,
 	fetchColumnsByIdEditor,
 	updateColumnByIdEditorAndColumn,
-	addColumnByIdEditor
+	addColumnByIdEditor,
+
+	updateColumnsKeyForColumn
 };

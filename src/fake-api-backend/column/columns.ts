@@ -182,3 +182,29 @@ export function fetchColumnsByIdEditor({ body }: any) {
 		resolve([]);
 	});
 };
+
+// ДЛЯ ВЗАИМОДЕЙСТВИЯ С ДРУГИМИ СТОРАМИ ==================================================================================
+export function updateColumnsKeyForColumn(newValue, config) {
+	const packColumns = columnsAll[config.settingsEditorId];
+
+	let newColumn = {};
+
+	const newColumns = packColumns.map((column) => {
+		if (column._id === config.columnId) {
+			const value = {
+				...column,
+				slots: newValue
+			};
+
+			newColumn = value;
+
+			return value;
+		}
+
+		return column;
+	});
+
+	columnsAll[config.settingsEditorId] = newColumns;
+
+	return newColumn;
+};

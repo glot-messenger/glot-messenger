@@ -1,12 +1,20 @@
 import { factorySlotDataProvider } from './slot-data-provider';
 import { factorySlotModel } from './factory-slot-model';
 import { factoryContainerForResultsSomeAsyncMethods } from '../container-for-results-some-async-methods';
+import { factoryEventEmitter } from '../event-emitter';
+
+import {
+	SLOT_MODULE_EVENT_METHOD,
+	MOVING_DOWN_SLOT_EVENT_SEGMENT
+} from '../../core';
 
 // Singleton =======================================================================
 let staticSlot: null | Slot = null;
 
 class Slot {
    #dataProvider = factorySlotDataProvider();
+
+	 #eventEmitter = factoryEventEmitter();
 
    constructor() {
       if (staticSlot !== null) {
@@ -28,7 +36,26 @@ class Slot {
 		};
 
 		if ((index !== -1) && (index !== packOfSlotsForCurrentColumn.length - 1)) {
-			const containerColumnModel = await this.#dataProvider.set({ data: null, config: { method: configMethods[config.position], payload: config } });
+			const containerSlot = await this.#dataProvider.set({ data: null, config: { method: configMethods[config.position], payload: config } });
+
+			if (containerSlot.isError) {
+				return factoryContainerForResultsSomeAsyncMethods({
+					isError: true,
+					message: containerSlot.message + ' Failure slots... An error occurred when changing the order of the slot elements.',
+					data: {
+						slots: null,
+						newColumn: null
+					}
+				});
+			}
+
+			this.#eventEmitter.emit(SLOT_MODULE_EVENT_METHOD + MOVING_DOWN_SLOT_EVENT_SEGMENT, factoryContainerForResultsSomeAsyncMethods({
+				isError: false,
+				message: 'Success slot! The slot was successfully transferred.',
+				data: {
+					...containerSlot.data
+				}
+			}));
 		}
 	};
 

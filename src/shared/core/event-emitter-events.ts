@@ -11,3 +11,5 @@ export const BUTTON_WITH_DYNAMIC_BACKGROUND = 'button-with-dynamic-background.cl
 export const MODAL_EMPTY_SPACE_EVENT_CLICK = 'modal-empty-space.click';
 // COLUMN MODULE =====================================================================================
 export const COLUMN_MODULE_EVENT_METHOD = 'column-module.method';
+// SLOT MODULE ========================================================================================
+export const SLOT_MODULE_EVENT_METHOD = 'slot-module.method';

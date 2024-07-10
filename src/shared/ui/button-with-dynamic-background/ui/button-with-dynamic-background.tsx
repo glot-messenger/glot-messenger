@@ -10,7 +10,6 @@ const ButtonWithDynamicBackground: React.FC<IButtonWithDynamicBackgroundProps> =
 	const childrenContent = children ? children : textBtn;
 
 	const handlerClick = (): void => {
-		console.log('Сработало событие у ButtonWithDynamicBackground');
 		console.log(`Event full name: ${BUTTON_WITH_DYNAMIC_BACKGROUND + segmentEvent}`);
 		console.log('Передаваемая нагрузка в кнопке', payload);
 

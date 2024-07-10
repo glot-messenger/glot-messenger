@@ -19,7 +19,9 @@ import {
 	BUTTON_LOCK_EVENT_CLICK,
 	COLUMN_EVENT_SEGMENT,
 	COLUMN_MODULE_EVENT_METHOD,
-	ADD_COLUMN_EVENT_SEGMENT
+	SLOT_MODULE_EVENT_METHOD,
+	ADD_COLUMN_EVENT_SEGMENT,
+	MOVING_DOWN_SLOT_EVENT_SEGMENT
 } from '../../../../shared';
 
 const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
@@ -189,6 +191,18 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 						[data.columns[0]._id]: []
 					}
 				});
+			});
+
+			// Отлавливаем событие перемещения колонки
+			eventEmitter.on(SLOT_MODULE_EVENT_METHOD + MOVING_DOWN_SLOT_EVENT_SEGMENT, ({ isError, message, data }) => {
+				console.log('Поймал на провайдере');
+				if (isError) {
+					console.log('ВЫВОДИТЬ В ИНТЕРФЕЙС ОШИБКУ, Перемещение не произошло. Придумать общий механизм обработки ошибок');
+
+					return;
+				}
+
+				console.log('PAYLOAD', data); // ОТРАБОТАТЬ ДАННЫЕ
 			});
 		}
 	}, [isLoadingEditorSettings]);
