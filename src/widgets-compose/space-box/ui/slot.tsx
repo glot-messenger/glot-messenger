@@ -49,6 +49,8 @@ const Slot: React.FC<ISlotProps> = ({ data }) => {
 
 		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + MOVING_DOWN_SLOT_EVENT_SEGMENT, (payload) => {
 			if (_id === payload.slotId) {
+				console.log(payload, slots, 'MIX');
+
 				modules.slot.movingDownSlot(payload, slots);
 			}
 		});
@@ -62,7 +64,7 @@ const Slot: React.FC<ISlotProps> = ({ data }) => {
 		eventEmitter.on(MODAL_EMPTY_SPACE_EVENT_CLICK, () => { setSlotModalStatus(false); });
 		eventEmitter.on(BUTTON_CLOSE_EVENT_CLICK + MODAL_EVENT_SEGMENT, () => { setSlotModalStatus(false); });
 		eventEmitter.on(BUTTON_RED_EVENT_CLICK + MODAL_EVENT_SEGMENT, () => { setSlotModalStatus(false); });
-	}, []);
+	}, [slots]);
 
 	return (
 		<div className='slot'>
