@@ -20,7 +20,8 @@ import {
 	ButtonWithDynamicBackground,
 	configContextMenuSlot,
 	BUTTON_WITH_DYNAMIC_BACKGROUND,
-	MOVING_DOWN_SLOT_EVENT_SEGMENT
+	MOVING_DOWN_SLOT_EVENT_SEGMENT,
+	CLEAR_SLOT_EVENT_SEGMENT
 } from '../../../shared';
 
 import {
@@ -52,12 +53,17 @@ const Slot: React.FC<ISlotProps> = ({ data }) => {
 			}
 		});
 
+		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + CLEAR_SLOT_EVENT_SEGMENT, (payload) => {
+			if (_id === payload.slotId && !isEmpty) {
+				modules.slot.clearSlot(payload, { isEmpty: true, nameWidget: '' });
+			}
+		});
+
 		eventEmitter.on(MODAL_EMPTY_SPACE_EVENT_CLICK, () => { setSlotModalStatus(false); });
 		eventEmitter.on(BUTTON_CLOSE_EVENT_CLICK + MODAL_EVENT_SEGMENT, () => { setSlotModalStatus(false); });
 		eventEmitter.on(BUTTON_RED_EVENT_CLICK + MODAL_EVENT_SEGMENT, () => { setSlotModalStatus(false); });
 	}, []);
 
-	// Тут буду разводить виджеты if else, если пустой слот, то SLotEmpty иначе в зависимости от названия виджета
 	return (
 		<div className='slot'>
 			<div className='slot__container'>

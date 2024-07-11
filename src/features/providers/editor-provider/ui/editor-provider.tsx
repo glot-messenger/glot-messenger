@@ -193,6 +193,10 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 				});
 			});
 
+			eventEmitter.on(SLOT_MODULE_EVENT_METHOD + CLEAR_SLOT_EVENT_SEGMENT, () => {
+				
+			});
+
 			// Отлавливаем событие перемещения колонки
 			eventEmitter.on(SLOT_MODULE_EVENT_METHOD + MOVING_DOWN_SLOT_EVENT_SEGMENT, ({ isError, message, data }) => {
 				console.log('Поймал на провайдере');
@@ -202,7 +206,28 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 					return;
 				}
 
-				console.log('PAYLOAD', data); // ОТРАБОТАТЬ ДАННЫЕ
+				const { slots, newColumn } = data;
+
+				if (slotsEditor) {
+					setSlotsEditor((prevState) => {
+						return {
+							...prevState,
+							[newColumn._id]: slots
+						};
+					});
+				}
+
+				if (columnsEditor) {
+					const newColumnsEditor = columnsEditor.map((column) => {
+						if (column._id === newColumn._id) {
+							return newColumn;
+						}
+
+						return column;
+					});
+
+					setColumnsEditor(newColumnsEditor);
+				}
 			});
 		}
 	}, [isLoadingEditorSettings]);

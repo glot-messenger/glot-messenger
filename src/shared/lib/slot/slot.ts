@@ -5,7 +5,8 @@ import { factoryEventEmitter } from '../event-emitter';
 
 import {
 	SLOT_MODULE_EVENT_METHOD,
-	MOVING_DOWN_SLOT_EVENT_SEGMENT
+	MOVING_DOWN_SLOT_EVENT_SEGMENT,
+	CLEAR_SLOT_EVENT_SEGMENT
 } from '../../core';
 
 // Singleton =======================================================================
@@ -23,6 +24,35 @@ class Slot {
 
 		staticSlot = this;
    };
+
+	 async clearSlot(config: any, updating: any) {
+		console.log(config, 'CONFIG');
+		console.log(updating, 'UPDATING');
+
+		if (typeof updating === 'object' && (config !== undefined || config !== null)) {
+			const containerSlot = await this.#dataProvider.update({ data: updating, config: { method: 'simpleSlotUpgrade', payload: config } });
+
+			console.log(containerSlot, 'containerSlot');
+
+			if (containerSlot.isError) {
+				return factoryContainerForResultsSomeAsyncMethods({
+					isError: true,
+					message: containerSlot.message + ' Failure slots... Clearing the slot failed.',
+					data: {
+						newSlot: null
+					}
+				});
+			}
+
+			this.#eventEmitter.emit(SLOT_MODULE_EVENT_METHOD + CLEAR_SLOT_EVENT_SEGMENT, factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: 'Success slot! The slot was successfully updating clear',
+				data: {
+					newSlot: containerSlot.data
+				}
+			}));
+		}
+	 };
 
 	async movingDownSlot(config: any, slots: any) {
 		const packOfSlotsForCurrentColumn = slots[config.columnId];

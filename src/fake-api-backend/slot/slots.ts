@@ -175,6 +175,47 @@ export function movingDownSlotByIdColumnAndIdSlot({ body }: any) {
 	});
 };
 
+export function simpleSlotUpgrade({ body }: any) {
+	const { data, payload } = body;
+
+	return new Promise((resolve, reject) => {
+		if (typeof payload !== 'object' || (typeof payload === 'object' && !payload.hasOwnProperty('columnId')) || (typeof payload === 'object' && !payload.hasOwnProperty('slotId'))) {
+			reject({
+				message: 'The columnId and slotId for the /simpleSlotUpgrade/ method must be passed!!! Type payload must be object.'
+		 });
+
+		 return;
+		}
+
+		if (typeof data !== 'object') {
+			reject({
+				message: 'Type data updating must be object'
+			});
+
+			return;
+		}
+
+		let updateSlot = {};
+
+		const newSlots = slotsAll[payload.columnId].map((slot) => {
+			if (slot._id === payload.slotId) {
+				updateSlot = {
+					...slot,
+					...data
+				};
+
+				return updateSlot;
+			}
+
+			return slot;
+		});
+
+		slotsAll[payload.columnId] = newSlots;
+
+		resolve({ newSlot: updateSlot });
+	});
+};
+
 // ВЗАИМОДЕЙСТВИЕ С ДРУГИМИ СТОРАМИ =============================================================================================
 export function addColumn(columnId, slots) {
 	slotsAll[columnId] = slots;
