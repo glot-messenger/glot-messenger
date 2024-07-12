@@ -9,11 +9,11 @@ const SpaceBox: React.FC = () => {
 	return (
 		<div className='space-box'>
 			<div className='space-box__container'>
-				{columns.map((columnData: any) => {
+				{/*{columns.map((columnData: any) => {
 					return (
 						<Column key={columnData._id} data={columnData} />
 					);
-				})}
+				})}*/}
 			</div>
 		</div>
 	);

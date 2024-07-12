@@ -21,7 +21,8 @@ import {
 	COLUMN_MODULE_EVENT_METHOD,
 	SLOT_MODULE_EVENT_METHOD,
 	ADD_COLUMN_EVENT_SEGMENT,
-	MOVING_DOWN_SLOT_EVENT_SEGMENT
+	MOVING_DOWN_SLOT_EVENT_SEGMENT,
+	CLEAR_SLOT_EVENT_SEGMENT
 } from '../../../../shared';
 
 const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
