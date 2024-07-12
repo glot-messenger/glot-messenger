@@ -26,13 +26,8 @@ class Slot {
    };
 
 	 async clearSlot(config: any, updating: any) {
-		console.log(config, 'CONFIG');
-		console.log(updating, 'UPDATING');
-
 		if (typeof updating === 'object' && (config !== undefined || config !== null)) {
 			const containerSlot = await this.#dataProvider.update({ data: updating, config: { method: 'simpleSlotUpgrade', payload: config } });
-
-			console.log(containerSlot, 'containerSlot');
 
 			if (containerSlot.isError) {
 				return factoryContainerForResultsSomeAsyncMethods({
@@ -45,11 +40,9 @@ class Slot {
 			}
 
 			this.#eventEmitter.emit(SLOT_MODULE_EVENT_METHOD + CLEAR_SLOT_EVENT_SEGMENT, factoryContainerForResultsSomeAsyncMethods({
-				isError: true,
+				isError: false,
 				message: 'Success slot! The slot was successfully updating clear',
-				data: {
-					newSlot: containerSlot.data
-				}
+				data: containerSlot.data
 			}));
 		}
 	 };

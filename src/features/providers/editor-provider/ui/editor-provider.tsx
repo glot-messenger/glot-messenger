@@ -194,13 +194,33 @@ const EditorProvider: React.FC<IEditorProviderProps> = ({ children }) => {
 				});
 			});
 
-			eventEmitter.on(SLOT_MODULE_EVENT_METHOD + CLEAR_SLOT_EVENT_SEGMENT, () => {
-				
+			eventEmitter.on(SLOT_MODULE_EVENT_METHOD + CLEAR_SLOT_EVENT_SEGMENT, ({ isError, message, data }) => {
+				if (isError) {
+					console.log('ВЫВОДИМ В ИНТЕРФЕЙС ОШИБКУ, ОЧИСТКА НЕ ПРОИЗОШЛА. ПРИДУМАТЬ ОБЩИЙ МЕХАНИЗМ ОШИБОК.');
+
+					return;
+				}
+
+				const { newSlot } = data;
+
+				setSlotsEditor((prevState) => {
+					const newSlotsArrayForColumn = prevState[newSlot.columnId].map((slot) => {
+						if (slot._id === newSlot._id) {
+							return newSlot;
+						}
+
+						return slot;
+					});
+
+					return {
+						...prevState,
+						[newSlot.columnId]: newSlotsArrayForColumn
+					};
+				});
 			});
 
 			// Отлавливаем событие перемещения колонки
 			eventEmitter.on(SLOT_MODULE_EVENT_METHOD + MOVING_DOWN_SLOT_EVENT_SEGMENT, ({ isError, message, data }) => {
-				console.log('Поймал на провайдере');
 				if (isError) {
 					console.log('ВЫВОДИТЬ В ИНТЕРФЕЙС ОШИБКУ, Перемещение не произошло. Придумать общий механизм обработки ошибок');
 
