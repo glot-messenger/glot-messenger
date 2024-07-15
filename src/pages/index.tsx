@@ -94,9 +94,9 @@ const router = createBrowserRouter([
 	{// Route уже самого редактора мессенджера 
 		path: SPACE,
 		element: (
-			<EditorProvider>
-				<SpacePage />
-			</EditorProvider>
+			// <EditorProvider>
+			// </EditorProvider>
+			<SpacePage />
 		)
 	},
 	{

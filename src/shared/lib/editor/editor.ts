@@ -18,181 +18,183 @@ class Editor {
       staticEditor = this;
    };
 
-	async getSettings() {
-		const containerData = await this.#dataProvider.get();
+	async getSettings(config: any) {
+		const containerData = await this.#dataProvider.get(config);
 
-		if (containerData.isError) {
-			return factoryContainerForResultsSomeAsyncMethods({
-				isError: true,
-				message: 'Failure editor settings... Having problems getting your personal editor settings.',
-				data: {
-					slots: null,
-					columns: null,
-					editor: null
-				}
-			});
-		}
+		console.log(containerData, 'CONTAINER DATA SERVICE');
 
-		return factoryContainerForResultsSomeAsyncMethods({
-			isError: false,
-			message: 'Success editor settings! The request was processed without errors when receiving the editor settings.',
-			data: {
-				editor: containerData.data,
-				columns: null,
-				slots: null
-			}
-		});
+		// if (containerData.isError) {
+		// 	return factoryContainerForResultsSomeAsyncMethods({
+		// 		isError: true,
+		// 		message: 'Failure editor settings... Having problems getting your personal editor settings.',
+		// 		data: {
+		// 			slots: null,
+		// 			columns: null,
+		// 			editor: null
+		// 		}
+		// 	});
+		// }
+
+		// return factoryContainerForResultsSomeAsyncMethods({
+		// 	isError: false,
+		// 	message: 'Success editor settings! The request was processed without errors when receiving the editor settings.',
+		// 	data: {
+		// 		editor: containerData.data,
+		// 		columns: null,
+		// 		slots: null
+		// 	}
+		// });
 	};
 
-	async getSettingsWithColumns() {
-		const containerResultSettingsEditor = await this.getSettings();
+	// async getSettingsWithColumns() {
+	// 	const containerResultSettingsEditor = await this.getSettings();
 
-		if (containerResultSettingsEditor.isError) {
-			return factoryContainerForResultsSomeAsyncMethods({
-				...containerResultSettingsEditor,
-				message: 'Failure editor settings... There was a problem when getting the editor settings data along with the columns.',
-			});
-		}
+	// 	if (containerResultSettingsEditor.isError) {
+	// 		return factoryContainerForResultsSomeAsyncMethods({
+	// 			...containerResultSettingsEditor,
+	// 			message: 'Failure editor settings... There was a problem when getting the editor settings data along with the columns.',
+	// 		});
+	// 	}
 
-		const { editor } = containerResultSettingsEditor.data;
+	// 	const { editor } = containerResultSettingsEditor.data;
 
-		if (editor === null) {
-			return factoryContainerForResultsSomeAsyncMethods({
-				isError: false,
-				message: 'Success editor settings! No data was received.',
-				data: {
-					slots: null,
-					columns: null,
-					editor: null
-				}
-			});
-		}
+	// 	if (editor === null) {
+	// 		return factoryContainerForResultsSomeAsyncMethods({
+	// 			isError: false,
+	// 			message: 'Success editor settings! No data was received.',
+	// 			data: {
+	// 				slots: null,
+	// 				columns: null,
+	// 				editor: null
+	// 			}
+	// 		});
+	// 	}
 
-		if (editor.columns.length <= 0) {
-			return factoryContainerForResultsSomeAsyncMethods({
-				isError: false,
-				message: 'Success editor settings! No data columns.',
-				data: {
-					...containerResultSettingsEditor.data,
-					columns: [],
-					slots: []
-				}
-			});
-		}
+	// 	if (editor.columns.length <= 0) {
+	// 		return factoryContainerForResultsSomeAsyncMethods({
+	// 			isError: false,
+	// 			message: 'Success editor settings! No data columns.',
+	// 			data: {
+	// 				...containerResultSettingsEditor.data,
+	// 				columns: [],
+	// 				slots: []
+	// 			}
+	// 		});
+	// 	}
 
-		const containerResultColumns = await factoryColumn().getColumnsByIdEditorSettings({ settingId: editor._id });
+	// 	const containerResultColumns = await factoryColumn().getColumnsByIdEditorSettings({ settingId: editor._id });
 
-		if (containerResultColumns.isError) {
-			return factoryContainerForResultsSomeAsyncMethods({
-				isError: true,
-				message: containerResultColumns.message + ' Failure editor settings... There were problems getting the columns.',
-				data: {
-					...containerResultSettingsEditor.data,
-					...containerResultColumns.data
-				}
-			});
-		}
+	// 	if (containerResultColumns.isError) {
+	// 		return factoryContainerForResultsSomeAsyncMethods({
+	// 			isError: true,
+	// 			message: containerResultColumns.message + ' Failure editor settings... There were problems getting the columns.',
+	// 			data: {
+	// 				...containerResultSettingsEditor.data,
+	// 				...containerResultColumns.data
+	// 			}
+	// 		});
+	// 	}
 
-		return factoryContainerForResultsSomeAsyncMethods({
-			isError: false,
-			message: 'Success editor settings with columns! The messenger settings were received along with the speakers.',
-			data: {
-				...containerResultSettingsEditor.data,
-				...containerResultColumns.data,
-				slots: null
-			}
-		});
-	};
+	// 	return factoryContainerForResultsSomeAsyncMethods({
+	// 		isError: false,
+	// 		message: 'Success editor settings with columns! The messenger settings were received along with the speakers.',
+	// 		data: {
+	// 			...containerResultSettingsEditor.data,
+	// 			...containerResultColumns.data,
+	// 			slots: null
+	// 		}
+	// 	});
+	// };
 
-	async getSettingsWithColumnsAndSlots() {
-		const containerResultSettingsEditorWithColumns = await this.getSettingsWithColumns();
+	// async getSettingsWithColumnsAndSlots() {
+	// 	const containerResultSettingsEditorWithColumns = await this.getSettingsWithColumns();
 
-		if (containerResultSettingsEditorWithColumns.isError) {
-			return factoryContainerForResultsSomeAsyncMethods({
-				isError: true,
-				message: containerResultSettingsEditorWithColumns.message + ' Failure editor settings... The request to get the editor settings along with the columns failed.',
-				data: {
-					slots: null,
-					columns: null,
-					editor: null
-				}
-			});
-		}
+	// 	if (containerResultSettingsEditorWithColumns.isError) {
+	// 		return factoryContainerForResultsSomeAsyncMethods({
+	// 			isError: true,
+	// 			message: containerResultSettingsEditorWithColumns.message + ' Failure editor settings... The request to get the editor settings along with the columns failed.',
+	// 			data: {
+	// 				slots: null,
+	// 				columns: null,
+	// 				editor: null
+	// 			}
+	// 		});
+	// 	}
 
-		const { columns, editor } = containerResultSettingsEditorWithColumns.data;
+	// 	const { columns, editor } = containerResultSettingsEditorWithColumns.data;
 
-		if (columns === null || columns.length <= 0) {
-			return containerResultSettingsEditorWithColumns;
-		}
+	// 	if (columns === null || columns.length <= 0) {
+	// 		return containerResultSettingsEditorWithColumns;
+	// 	}
 
-		const containerResultSlots = await factorySlot().getSlotsByIdsColumns({ columnsIds: editor.columns });
+	// 	const containerResultSlots = await factorySlot().getSlotsByIdsColumns({ columnsIds: editor.columns });
 
-		if (containerResultSlots.isError) {
-			return factoryContainerForResultsSomeAsyncMethods({
-				isError: true,
-				message: containerResultSlots.message,
-				data: {
-					...containerResultSettingsEditorWithColumns.data,
-					slots: null
-				}
-			});
-		}
+	// 	if (containerResultSlots.isError) {
+	// 		return factoryContainerForResultsSomeAsyncMethods({
+	// 			isError: true,
+	// 			message: containerResultSlots.message,
+	// 			data: {
+	// 				...containerResultSettingsEditorWithColumns.data,
+	// 				slots: null
+	// 			}
+	// 		});
+	// 	}
 
-		return factoryContainerForResultsSomeAsyncMethods({
-			isError: false,
-			message: 'Success editor settings! All data has been successfully received.',
-			data: {
-				...containerResultSettingsEditorWithColumns.data,
-				...containerResultSlots.data
-			}
-		});
-	};
+	// 	return factoryContainerForResultsSomeAsyncMethods({
+	// 		isError: false,
+	// 		message: 'Success editor settings! All data has been successfully received.',
+	// 		data: {
+	// 			...containerResultSettingsEditorWithColumns.data,
+	// 			...containerResultSlots.data
+	// 		}
+	// 	});
+	// };
 
-	async createDefaultSettings() { // Тут должно быть обращение в сервис пользователя (USER) для получения его id
-		const instanceEditorModel = factoryEditorModel({ userId: `${Date.now()}-user-id` });
+	// async createDefaultSettings() { // Тут должно быть обращение в сервис пользователя (USER) для получения его id
+	// 	const instanceEditorModel = factoryEditorModel({ userId: `${Date.now()}-user-id` });
 
-		const containerResultColumn = await factoryColumn().createDefaultColumn({ settingId: instanceEditorModel._id });
+	// 	const containerResultColumn = await factoryColumn().createDefaultColumn({ settingId: instanceEditorModel._id });
 
-		if (containerResultColumn.isError) {
-			return factoryContainerForResultsSomeAsyncMethods({
-				isError: true,
-				message: containerResultColumn.message + ' Failure editor settings... Due to problems encountered when creating the column, default editor settings cannot be created.',
-				data: {
-					...containerResultColumn.data,
-					editor: null
-				}
-			});
-		}
+	// 	if (containerResultColumn.isError) {
+	// 		return factoryContainerForResultsSomeAsyncMethods({
+	// 			isError: true,
+	// 			message: containerResultColumn.message + ' Failure editor settings... Due to problems encountered when creating the column, default editor settings cannot be created.',
+	// 			data: {
+	// 				...containerResultColumn.data,
+	// 				editor: null
+	// 			}
+	// 		});
+	// 	}
 
-		instanceEditorModel.columns.push(containerResultColumn.data.columns[0]._id);
+	// 	instanceEditorModel.columns.push(containerResultColumn.data.columns[0]._id);
 
-		const containerDataSavedInstanceEditor = await this.#dataProvider.set(instanceEditorModel);
+	// 	const containerDataSavedInstanceEditor = await this.#dataProvider.set(instanceEditorModel);
 
-		if (containerDataSavedInstanceEditor.isError) {
-			//! Error
-			// Тут нужно подумать над откатом слотов и колонок, если настройки редактора не смогли создасться или заново отправить запрос, пока он не станет успешным
-			// Просто на этом этапе получается, что в бд висят успешно сорзданные слоты, висит успешно созданная колонка, а редактор не может закончить свое сохранение
-			// А нам нет смысла хранить слоты, колонку без успешно созданных настроек редактора
-			return factoryContainerForResultsSomeAsyncMethods({
-				isError: true,
-				message: containerResultColumn.message + ' Failure editor settings... There was a problem when creating default editor settings.',
-				data: {
-					slots: null,
-					columns: null,
-					editor: null
-				}
-			});
-		}
+	// 	if (containerDataSavedInstanceEditor.isError) {
+	// 		//! Error
+	// 		// Тут нужно подумать над откатом слотов и колонок, если настройки редактора не смогли создасться или заново отправить запрос, пока он не станет успешным
+	// 		// Просто на этом этапе получается, что в бд висят успешно сорзданные слоты, висит успешно созданная колонка, а редактор не может закончить свое сохранение
+	// 		// А нам нет смысла хранить слоты, колонку без успешно созданных настроек редактора
+	// 		return factoryContainerForResultsSomeAsyncMethods({
+	// 			isError: true,
+	// 			message: containerResultColumn.message + ' Failure editor settings... There was a problem when creating default editor settings.',
+	// 			data: {
+	// 				slots: null,
+	// 				columns: null,
+	// 				editor: null
+	// 			}
+	// 		});
+	// 	}
 
-		return factoryContainerForResultsSomeAsyncMethods({
-			isError: false,
-			message: containerResultColumn.message + 'Success editor settings! The default editor settings have been successfully created.',
-			data: {
-				...containerResultColumn.data,
-				editor: instanceEditorModel
-			}
-		});
-	};
+	// 	return factoryContainerForResultsSomeAsyncMethods({
+	// 		isError: false,
+	// 		message: containerResultColumn.message + 'Success editor settings! The default editor settings have been successfully created.',
+	// 		data: {
+	// 			...containerResultColumn.data,
+	// 			editor: instanceEditorModel
+	// 		}
+	// 	});
+	// };
 };
 
 export { Editor };

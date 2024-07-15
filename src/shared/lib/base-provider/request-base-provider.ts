@@ -1,4 +1,4 @@
 import { RequestModule } from '../request-module';
-import { fakeEngine } from '../engines-for-requests';
+import { fetchEngine } from '../engines-for-requests';
 
-export const baseRequestModule = RequestModule.using(fakeEngine).setUrl('/');
+export const baseRequestModule = RequestModule.using(fetchEngine);

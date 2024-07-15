@@ -17,10 +17,8 @@ class EditorDataProvider extends BaseProvider {
 		staticEditorDataProvider = this;
 	};
 
-	override async get() {
-		const request = EditorDataProvider.request.post.nativeFormat.concatUrl('fetchSettingsEditorForUserById').body({
-			userId: '1719229880595-user-id'
-		});
+	override async get(config: any) {
+		const request = EditorDataProvider.request.get.jsonFormat.body(config);
 
 		const valueSetting = await request.create();
 

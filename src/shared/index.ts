@@ -2,7 +2,8 @@
 import {
 	configContextMenuSlot,
 	configContextMenuColumn,
-	arraySocialNetworkLinks
+	arraySocialNetworkLinks,
+	config
 } from './config';
 
 // core =================================================================================
@@ -161,7 +162,8 @@ export {
 	MOVING_DOWN_SLOT_EVENT_SEGMENT,
 	arraySocialNetworkLinks,
 	SHOW_SOCIAL_NETWORK_EVENT_SEGMENT,
-	SLOT_MODULE_EVENT_METHOD
+	SLOT_MODULE_EVENT_METHOD,
+	config
 };
 
 export type {
