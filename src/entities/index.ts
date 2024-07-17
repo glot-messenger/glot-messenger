@@ -2,12 +2,14 @@ import { ConditionAuthBoxContext } from './auth-box';
 import { EventEmitterContext } from './event-emitter';
 import { EditorContext } from './editor';
 
-import { settingsEditor } from './settings-editor';
+import { $settingsEditorStore } from './settings-editor-store';
+import { $columnsEditorStore } from './columns-store';
 
 export {
 	ConditionAuthBoxContext,
 	EventEmitterContext,
 	EditorContext,
 
-	settingsEditor
+	$settingsEditorStore,
+	$columnsEditorStore
 };

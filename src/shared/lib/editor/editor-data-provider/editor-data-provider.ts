@@ -18,11 +18,11 @@ class EditorDataProvider extends BaseProvider {
 	};
 
 	override async get(config: any) {
-		const request = EditorDataProvider.request.get.jsonFormat.body(config);
+		const request = EditorDataProvider.request.post.jsonFormat.body(config);
 
 		const valueSetting = await request.create();
 
-		return valueSetting.nativeUnpacking();
+		return valueSetting.jsonUnpacking();
 	};
 
 	override async set(instanceEditor: any) {

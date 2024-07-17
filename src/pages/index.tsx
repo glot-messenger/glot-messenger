@@ -17,7 +17,8 @@ import { SpacePage } from './space';
 
 import {
 	AuthBoxConditionProvider,
-	EditorProvider
+	EditorProvider,
+	GlobalEditorSettings
 } from '../features';
 
 import {
@@ -96,7 +97,9 @@ const router = createBrowserRouter([
 		element: (
 			// <EditorProvider>
 			// </EditorProvider>
-			<SpacePage />
+			<GlobalEditorSettings>
+				<SpacePage />
+			</GlobalEditorSettings>
 		)
 	},
 	{

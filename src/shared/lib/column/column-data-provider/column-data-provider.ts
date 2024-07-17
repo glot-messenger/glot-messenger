@@ -18,7 +18,7 @@ class ColumnDataProvider extends BaseProvider {
    };
 
    override async get(config: any) {
-		const request = ColumnDataProvider.request.post.nativeFormat.concatUrl('fetchColumnsByIdEditor').body(config);
+		const request = ColumnDataProvider.request.post.jsonFormat.body(config);
 
 		const valueColumns = await request.create();
 

@@ -21,29 +21,21 @@ class Editor {
 	async getSettings(config: any) {
 		const containerData = await this.#dataProvider.get(config);
 
-		console.log(containerData, 'CONTAINER DATA SERVICE');
+		if (containerData.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: 'Failure editor settings... Having problems getting your personal editor settings...',
+				data: {
+					settingsEditor: null
+				}
+			});
+		}
 
-		// if (containerData.isError) {
-		// 	return factoryContainerForResultsSomeAsyncMethods({
-		// 		isError: true,
-		// 		message: 'Failure editor settings... Having problems getting your personal editor settings.',
-		// 		data: {
-		// 			slots: null,
-		// 			columns: null,
-		// 			editor: null
-		// 		}
-		// 	});
-		// }
-
-		// return factoryContainerForResultsSomeAsyncMethods({
-		// 	isError: false,
-		// 	message: 'Success editor settings! The request was processed without errors when receiving the editor settings.',
-		// 	data: {
-		// 		editor: containerData.data,
-		// 		columns: null,
-		// 		slots: null
-		// 	}
-		// });
+		return factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: 'Success editor settings! The request was processed without errors when receiving the editor settings.',
+			data: containerData.data
+		});
 	};
 
 	// async getSettingsWithColumns() {

@@ -22,6 +22,8 @@ class RequestModule {
 
    static strategyResponse: null | BaseResponseEngineFetchClass | NativeResponseEngineClass = null;
 
+	 static headers = {};
+
 	// static instanceCache: null | ICache & ICacheConcrate = null;
 
 	// static keyCache: null | string = null;
@@ -84,6 +86,17 @@ class RequestModule {
 		};
 	};
 
+	static requestHeaders(payload: any): typeof RequestModule {
+		const newHeaders = {
+			...this.headers,
+			...payload
+		};
+
+		return class extends this {
+			static override headers = newHeaders;
+		};
+	};
+
    static leadFormat(payload: any): any {
       // Делает предварительную обработку данных перед запросом, доводит их до определенного вида
 		let result = payload;
@@ -129,11 +142,12 @@ class RequestModule {
 			throw new Error('Strategy request is not defined...');
 		}
 
-    // Собирает все в кучу: method запроса, данные запроса (его body)
-		const params = new ParamsRequest(
-			this.method,
-			this.leadFormat(this.savePayload)
-		);
+    // Собирает все в кучу: method запроса, данные запроса (его body), заголовки для нормального парсинга (его headers)
+		const params = new ParamsRequest({
+			method: this.method,
+			headers: this.headers,
+			body: this.leadFormat(this.savePayload)
+		});
 
 		try {
 			const data = await this.strategyRequestFN(this.url, params);
