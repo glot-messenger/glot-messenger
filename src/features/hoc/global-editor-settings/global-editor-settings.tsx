@@ -9,7 +9,8 @@ import {
 
 import {
 	$settingsEditorStore,
-	$columnsEditorStore
+	$columnsEditorStore,
+	$slotsEditorStore
 } from '../../../entities';
 
 const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ children }) => {
@@ -30,8 +31,14 @@ const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ childr
 		isError: isErrorColumnsEditor,
 		messageError: messageColumnsEditor,
 		getColumnsEditorAction,
-		data: dataColumnsEditor
 	} = $columnsEditorStore;
+
+	const {
+		isLoading: isLoadingSlotsEditor,
+		isError: isErrorSlotsEditor,
+		messageError: messageSlotsEditor,
+		getSlotsEditorAction
+	} = $slotsEditorStore;
 
 	useEffect(() => {
 		if (isErrorSettingsEditor) {
@@ -42,9 +49,11 @@ const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ childr
 			setGlobalMessageError(messageColumnsEditor);
 			setGlobalLoader(false);
 
-		}
-		
-			else if (isLoadingSettingsEditor) {
+		} else if (isErrorSlotsEditor) {
+			setGlobalMessageError(messageSlotsEditor);
+			setGlobalLoader(false);
+
+		} else if (isLoadingSettingsEditor) {
 			getSettingsEditorAction({ userId: '1719229880595-user-id' }); // Пользователь, который есть в базе
 			setGlobalMessageError('');
 
@@ -52,8 +61,17 @@ const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ childr
 			getColumnsEditorAction({ settingId: dataSettingsEditor?.settingsEditor?._id });
 			setGlobalMessageError('');
 
-		} else if () {
+		} else if (!isLoadingSettingsEditor && !isLoadingColumnsEditor && isLoadingSlotsEditor) {
+			getSlotsEditorAction({ columnsIds:  dataSettingsEditor?.settingsEditor?.columns });
+			setGlobalMessageError('');
 
+		} else if (!isLoadingSettingsEditor && !isLoadingColumnsEditor && !isLoadingSlotsEditor) {
+			setGlobalLoader(false);
+			setGlobalMessageError('');
+
+		} else {
+			setGlobalLoader(false);
+			setGlobalMessageError('Something went wrong when getting your editor`s settings. The development team is already figuring out the reason... We apologize...');
 		}
 	}, [
 		isLoadingSettingsEditor,
@@ -62,7 +80,10 @@ const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ childr
 		dataSettingsEditor,
 		isErrorColumnsEditor,
 		messageColumnsEditor,
-		isLoadingColumnsEditor
+		isLoadingColumnsEditor,
+		isErrorSlotsEditor,
+		messageSlotsEditor,
+		isLoadingSlotsEditor
 	]);
 
 	return (

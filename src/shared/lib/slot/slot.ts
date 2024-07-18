@@ -25,8 +25,8 @@ class Slot {
 		staticSlot = this;
    };
 
-	 async getSlots() {
-
+	 async getSlots(config: any) {
+		console.log(config); // ДОПИСАТЬ УЧАСТОК КАК У КОЛОНКИ, сюда приходит массив колонок остается только собрать объект
 	 };
 
 	 async clearSlot(config: any, updating: any) {

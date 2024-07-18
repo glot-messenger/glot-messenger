@@ -25,7 +25,7 @@ class $ColumnsEditorStore {
 		});
 
 		try {
-			if (typeof config !== 'object' || (typeof config === 'object' && !config.hasOwnProperty('settingId'))) {
+			if (typeof config !== 'object' || (typeof config === 'object' && (!config.hasOwnProperty('settingId') || !config['settingId']))) {
 				throw new Error('Failure columns editor... The config must have the property *settingId*...');
 			}
 
