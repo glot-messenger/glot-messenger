@@ -4,6 +4,7 @@ import { EditorContext } from './editor';
 
 import { $settingsEditorStore } from './settings-editor-store';
 import { $columnsEditorStore } from './columns-store';
+import { $slotsEditorStore } from './slots-store';
 
 export {
 	ConditionAuthBoxContext,
@@ -11,5 +12,6 @@ export {
 	EditorContext,
 
 	$settingsEditorStore,
-	$columnsEditorStore
+	$columnsEditorStore,
+	$slotsEditorStore
 };

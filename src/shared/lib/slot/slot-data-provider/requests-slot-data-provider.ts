@@ -1,3 +1,4 @@
 import { BaseProvider } from '../../base-provider';
 
-export const slotRequestModule = BaseProvider.request.concatUrl('slot');
+export const slotRequestModule = BaseProvider.request
+	.concatUrl('slots');

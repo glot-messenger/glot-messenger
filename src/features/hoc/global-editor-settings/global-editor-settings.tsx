@@ -15,7 +15,7 @@ import {
 const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ children }) => {
 	const [globalLoader, setGlobalLoader] = useState<boolean>(true);
 
-	const [globalError, setGlobalError] = useState<string>('');
+	const [globalMessageError, setGlobalMessageError] = useState<string>('');
 
 	const {
 		isLoading: isLoadingSettingsEditor,
@@ -29,29 +29,47 @@ const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ childr
 		isLoading: isLoadingColumnsEditor,
 		isError: isErrorColumnsEditor,
 		messageError: messageColumnsEditor,
-		getColumnsEditorAction
+		getColumnsEditorAction,
+		data: dataColumnsEditor
 	} = $columnsEditorStore;
 
 	useEffect(() => {
 		if (isErrorSettingsEditor) {
-			setGlobalError(messageSettingsEditor);
+			setGlobalMessageError(messageSettingsEditor);
 			setGlobalLoader(false);
 
-		} else if (isLoadingSettingsEditor) {
-			getSettingsEditorAction({ userId: '1719229880595-user-id' }); // Пользователь, который есть в базе
-			setGlobalError('');
+		} else if (isErrorColumnsEditor) {
+			setGlobalMessageError(messageColumnsEditor);
+			setGlobalLoader(false);
 
-		} else if (!isLoadingSettingsEditor) {
-			getColumnsEditorAction({ settingId: dataSettingsEditor?.settingsEditor?._id });
-			setGlobalError('');
 		}
-	}, [isLoadingSettingsEditor, messageSettingsEditor, isErrorSettingsEditor, dataSettingsEditor]);
+		
+			else if (isLoadingSettingsEditor) {
+			getSettingsEditorAction({ userId: '1719229880595-user-id' }); // Пользователь, который есть в базе
+			setGlobalMessageError('');
+
+		} else if (!isLoadingSettingsEditor && isLoadingColumnsEditor) {
+			getColumnsEditorAction({ settingId: dataSettingsEditor?.settingsEditor?._id });
+			setGlobalMessageError('');
+
+		} else if () {
+
+		}
+	}, [
+		isLoadingSettingsEditor,
+		messageSettingsEditor,
+		isErrorSettingsEditor,
+		dataSettingsEditor,
+		isErrorColumnsEditor,
+		messageColumnsEditor,
+		isLoadingColumnsEditor
+	]);
 
 	return (
 		<React.Fragment>
 			{
-				globalError ?
-					<MessageLite text={globalError} /> :
+				globalMessageError ?
+					<MessageLite text={globalMessageError} /> :
 				globalLoader ?
 					<Loader /> :
 					children

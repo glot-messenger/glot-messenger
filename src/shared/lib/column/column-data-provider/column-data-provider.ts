@@ -22,7 +22,7 @@ class ColumnDataProvider extends BaseProvider {
 
 		const valueColumns = await request.create();
 
-		return valueColumns.nativeUnpacking();
+		return valueColumns.jsonUnpacking();
    };
 
    override async set({ data, config }: any) {

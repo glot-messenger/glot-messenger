@@ -25,6 +25,10 @@ class Slot {
 		staticSlot = this;
    };
 
+	 async getSlots() {
+
+	 };
+
 	 async clearSlot(config: any, updating: any) {
 		if (typeof updating === 'object' && (config !== undefined || config !== null)) {
 			const containerSlot = await this.#dataProvider.update({ data: updating, config: { method: 'simpleSlotUpgrade', payload: config } });

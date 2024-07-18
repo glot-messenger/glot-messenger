@@ -28,7 +28,21 @@ class Column {
 	async getColumns(config: any) {
 		const containerData = await this.#dataProvider.get(config);
 
-		console.log(containerData, 'CONTAINER DATA');
+		if (containerData.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: 'Failure columns editor... An error occurred while receiving the editor columns.',
+				data: {
+					columnsEditor: null
+				}
+			});
+		}
+
+		return factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: 'Success columns editor! Successful receipt of the editor`s columns.',
+			data: containerData.data
+		});
 	};
 
 	//async addColumn(config: any) {
