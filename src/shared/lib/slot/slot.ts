@@ -26,7 +26,9 @@ class Slot {
    };
 
 	 async getSlots(config: any) {
-		console.log(config); // ДОПИСАТЬ УЧАСТОК КАК У КОЛОНКИ, сюда приходит массив колонок остается только собрать объект
+		const containerSlots = await this.#dataProvider.get(config);
+
+		console.log(containerSlots, 'containerSlots');
 	 };
 
 	 async clearSlot(config: any, updating: any) {

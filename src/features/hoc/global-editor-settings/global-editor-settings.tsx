@@ -41,6 +41,7 @@ const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ childr
 	} = $slotsEditorStore;
 
 	useEffect(() => {
+		// Первым делом отлавливаем любые ошибки, если они есть, то нет смысла что-то продолжать делать
 		if (isErrorSettingsEditor) {
 			setGlobalMessageError(messageSettingsEditor);
 			setGlobalLoader(false);
@@ -53,23 +54,23 @@ const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ childr
 			setGlobalMessageError(messageSlotsEditor);
 			setGlobalLoader(false);
 
-		} else if (isLoadingSettingsEditor) {
+		} else if (isLoadingSettingsEditor) { // Если настройки редактора еще не запрашивались, то делаем запрос
 			getSettingsEditorAction({ userId: '1719229880595-user-id' }); // Пользователь, который есть в базе
 			setGlobalMessageError('');
 
-		} else if (!isLoadingSettingsEditor && isLoadingColumnsEditor) {
+		} else if (!isLoadingSettingsEditor && isLoadingColumnsEditor) { // Если настройки уже были получены, а информация по колонкам не была запрошена, то делаем запрос
 			getColumnsEditorAction({ settingId: dataSettingsEditor?.settingsEditor?._id });
 			setGlobalMessageError('');
 
-		} else if (!isLoadingSettingsEditor && !isLoadingColumnsEditor && isLoadingSlotsEditor) {
-			getSlotsEditorAction({ columnsIds:  dataSettingsEditor?.settingsEditor?.columns });
+		} else if (!isLoadingSettingsEditor && !isLoadingColumnsEditor && isLoadingSlotsEditor) { // Если настройки были получены, колонки были получены, а информация по слотам все еще не была запрошена
+			getSlotsEditorAction({ columnsIds: dataSettingsEditor?.settingsEditor?.columns });
 			setGlobalMessageError('');
 
-		} else if (!isLoadingSettingsEditor && !isLoadingColumnsEditor && !isLoadingSlotsEditor) {
+		} else if (!isLoadingSettingsEditor && !isLoadingColumnsEditor && !isLoadingSlotsEditor) { // Если все данные получены, то можно отключать лоадер
 			setGlobalLoader(false);
 			setGlobalMessageError('');
 
-		} else {
+		} else { // Что-то пошло не так
 			setGlobalLoader(false);
 			setGlobalMessageError('Something went wrong when getting your editor`s settings. The development team is already figuring out the reason... We apologize...');
 		}

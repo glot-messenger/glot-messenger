@@ -18,11 +18,11 @@ class SlotDataProvider extends BaseProvider {
 	};
 
 	override async get(config: any) {
-		const request = SlotDataProvider.request.post.nativeFormat.concatUrl('fetchSlotsByIdsColumns').body(config);
+		const request = SlotDataProvider.request.post.jsonFormat.body(config);
 
 		const valueSlot = await request.create();
 
-		return valueSlot.nativeUnpacking();
+		return valueSlot.jsonUnpacking();
 	};
 
 	override async set({ data, config }: any) {
