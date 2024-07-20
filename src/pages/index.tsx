@@ -17,7 +17,6 @@ import { SpacePage } from './space';
 
 import {
 	AuthBoxConditionProvider,
-	EditorProvider,
 	GlobalEditorSettings
 } from '../features';
 
@@ -95,8 +94,6 @@ const router = createBrowserRouter([
 	{// Route уже самого редактора мессенджера 
 		path: SPACE,
 		element: (
-			// <EditorProvider>
-			// </EditorProvider>
 			<GlobalEditorSettings>
 				<SpacePage />
 			</GlobalEditorSettings>

@@ -26,118 +26,132 @@ class Slot {
    };
 
 	 async getSlots(config: any) {
-		const containerSlots = await this.#dataProvider.get(config);
+		const containerData = await this.#dataProvider.get(config);
 
-		console.log(containerSlots, 'containerSlots');
-	 };
-
-	 async clearSlot(config: any, updating: any) {
-		if (typeof updating === 'object' && (config !== undefined || config !== null)) {
-			const containerSlot = await this.#dataProvider.update({ data: updating, config: { method: 'simpleSlotUpgrade', payload: config } });
-
-			if (containerSlot.isError) {
-				return factoryContainerForResultsSomeAsyncMethods({
-					isError: true,
-					message: containerSlot.message + ' Failure slots... Clearing the slot failed.',
-					data: {
-						newSlot: null
-					}
-				});
-			}
-
-			this.#eventEmitter.emit(SLOT_MODULE_EVENT_METHOD + CLEAR_SLOT_EVENT_SEGMENT, factoryContainerForResultsSomeAsyncMethods({
-				isError: false,
-				message: 'Success slot! The slot was successfully updating clear',
-				data: containerSlot.data
-			}));
-		}
-	 };
-
-	async movingDownSlot(config: any, slots: any) {
-		const packOfSlotsForCurrentColumn = slots[config.columnId];
-
-		const index = packOfSlotsForCurrentColumn.findIndex((slot) => {
-			return slot._id === config.slotId;
-		});
-
-		const configMethods = {
-			'index + 1': 'movingDownSlotByIdColumnAndIdSlot'
-		};
-
-		if ((index !== -1) && (index !== packOfSlotsForCurrentColumn.length - 1)) {
-			const containerSlot = await this.#dataProvider.set({ data: null, config: { method: configMethods[config.position], payload: config } });
-
-			if (containerSlot.isError) {
-				return factoryContainerForResultsSomeAsyncMethods({
-					isError: true,
-					message: containerSlot.message + ' Failure slots... An error occurred when changing the order of the slot elements.',
-					data: {
-						slots: null,
-						newColumn: null
-					}
-				});
-			}
-
-			this.#eventEmitter.emit(SLOT_MODULE_EVENT_METHOD + MOVING_DOWN_SLOT_EVENT_SEGMENT, factoryContainerForResultsSomeAsyncMethods({
-				isError: false,
-				message: 'Success slot! The slot was successfully transferred.',
-				data: {
-					...containerSlot.data
-				}
-			}));
-		}
-	};
-
-	async getSlotsByIdsColumns(config: any) {
-		const constainerData = await this.#dataProvider.get(config);
-
-		if (constainerData.isError) {
+		if (containerData.isError) {
 			return factoryContainerForResultsSomeAsyncMethods({
 				isError: true,
-				message: constainerData.message + ' Failure slots... An error occurred while receiving slots.',
+				message: 'Failure slots editor... An error occurred while receiving the editor slots.',
 				data: {
-					slots: null
+					slotsEditor: null
 				}
 			});
 		}
 
 		return factoryContainerForResultsSomeAsyncMethods({
 			isError: false,
-			message: 'Success slots! Successful receipt of slots.',
-			data: {
-				slots: constainerData.data
-			}
+			message: 'Success slots editor! Successful receipt of the editor`s slots.',
+			data: containerData.data
 		});
-	};
+	 };
 
-   async createDefaultSlots({ columnId, quantityNewElements }: any) {
-      const arrayContainersModelsSlots = [];
+	//  async clearSlot(config: any, updating: any) {
+	// 	if (typeof updating === 'object' && (config !== undefined || config !== null)) {
+	// 		const containerSlot = await this.#dataProvider.update({ data: updating, config: { method: 'simpleSlotUpgrade', payload: config } });
 
-      const arrayModelsSlots = [];
+	// 		if (containerSlot.isError) {
+	// 			return factoryContainerForResultsSomeAsyncMethods({
+	// 				isError: true,
+	// 				message: containerSlot.message + ' Failure slots... Clearing the slot failed.',
+	// 				data: {
+	// 					newSlot: null
+	// 				}
+	// 			});
+	// 		}
 
-      for (let m = 0; m < quantityNewElements; m++) {
-         const instanceSlotModel = factorySlotModel({ columnId });
+	// 		this.#eventEmitter.emit(SLOT_MODULE_EVENT_METHOD + CLEAR_SLOT_EVENT_SEGMENT, factoryContainerForResultsSomeAsyncMethods({
+	// 			isError: false,
+	// 			message: 'Success slot! The slot was successfully updating clear',
+	// 			data: containerSlot.data
+	// 		}));
+	// 	}
+	//  };
 
-         const containerDataSavedInstanceSlot = await this.#dataProvider.set({ data: instanceSlotModel, config: { method: 'createSlotByIdColumn' } });
+	// async movingDownSlot(config: any, slots: any) {
+	// 	const packOfSlotsForCurrentColumn = slots[config.columnId];
 
-         arrayContainersModelsSlots.push(containerDataSavedInstanceSlot);
+	// 	const index = packOfSlotsForCurrentColumn.findIndex((slot) => {
+	// 		return slot._id === config.slotId;
+	// 	});
 
-         arrayModelsSlots.push(containerDataSavedInstanceSlot.data);
-      }
+	// 	const configMethods = {
+	// 		'index + 1': 'movingDownSlotByIdColumnAndIdSlot'
+	// 	};
 
-      const isNotErrorsContainers = arrayContainersModelsSlots.every((container) => {
-         return container.isError !== true;
-      });
+	// 	if ((index !== -1) && (index !== packOfSlotsForCurrentColumn.length - 1)) {
+	// 		const containerSlot = await this.#dataProvider.set({ data: null, config: { method: configMethods[config.position], payload: config } });
 
-      if (isNotErrorsContainers) {
-         return factoryContainerForResultsSomeAsyncMethods({ isError: false, message: 'Success slots! Successful creation of default column slots.', data: { slots: { [columnId]: arrayModelsSlots } } });
-      }
+	// 		if (containerSlot.isError) {
+	// 			return factoryContainerForResultsSomeAsyncMethods({
+	// 				isError: true,
+	// 				message: containerSlot.message + ' Failure slots... An error occurred when changing the order of the slot elements.',
+	// 				data: {
+	// 					slots: null,
+	// 					newColumn: null
+	// 				}
+	// 			});
+	// 		}
 
-      //! Error
-      // Откатить успешно созданные слоты в бд, если, например, 1 успешно создался, а с остальными произошла ошибка, произошел разрыв соединения интернета
+	// 		this.#eventEmitter.emit(SLOT_MODULE_EVENT_METHOD + MOVING_DOWN_SLOT_EVENT_SEGMENT, factoryContainerForResultsSomeAsyncMethods({
+	// 			isError: false,
+	// 			message: 'Success slot! The slot was successfully transferred.',
+	// 			data: {
+	// 				...containerSlot.data
+	// 			}
+	// 		}));
+	// 	}
+	// };
 
-      return factoryContainerForResultsSomeAsyncMethods({ isError: true, message: 'Failure slots... An error occurred when creating default slots for the column.', data: { slots: null } });
-   };
+	// async getSlotsByIdsColumns(config: any) {
+	// 	const constainerData = await this.#dataProvider.get(config);
+
+	// 	if (constainerData.isError) {
+	// 		return factoryContainerForResultsSomeAsyncMethods({
+	// 			isError: true,
+	// 			message: constainerData.message + ' Failure slots... An error occurred while receiving slots.',
+	// 			data: {
+	// 				slots: null
+	// 			}
+	// 		});
+	// 	}
+
+	// 	return factoryContainerForResultsSomeAsyncMethods({
+	// 		isError: false,
+	// 		message: 'Success slots! Successful receipt of slots.',
+	// 		data: {
+	// 			slots: constainerData.data
+	// 		}
+	// 	});
+	// };
+
+   // async createDefaultSlots({ columnId, quantityNewElements }: any) {
+   //    const arrayContainersModelsSlots = [];
+
+   //    const arrayModelsSlots = [];
+
+   //    for (let m = 0; m < quantityNewElements; m++) {
+   //       const instanceSlotModel = factorySlotModel({ columnId });
+
+   //       const containerDataSavedInstanceSlot = await this.#dataProvider.set({ data: instanceSlotModel, config: { method: 'createSlotByIdColumn' } });
+
+   //       arrayContainersModelsSlots.push(containerDataSavedInstanceSlot);
+
+   //       arrayModelsSlots.push(containerDataSavedInstanceSlot.data);
+   //    }
+
+   //    const isNotErrorsContainers = arrayContainersModelsSlots.every((container) => {
+   //       return container.isError !== true;
+   //    });
+
+   //    if (isNotErrorsContainers) {
+   //       return factoryContainerForResultsSomeAsyncMethods({ isError: false, message: 'Success slots! Successful creation of default column slots.', data: { slots: { [columnId]: arrayModelsSlots } } });
+   //    }
+
+   //    //! Error
+   //    // Откатить успешно созданные слоты в бд, если, например, 1 успешно создался, а с остальными произошла ошибка, произошел разрыв соединения интернета
+
+   //    return factoryContainerForResultsSomeAsyncMethods({ isError: true, message: 'Failure slots... An error occurred when creating default slots for the column.', data: { slots: null } });
+   // };
 };
 
 export { Slot };

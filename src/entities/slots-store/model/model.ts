@@ -24,11 +24,9 @@ class $SlotsEditorStore {
 			this.data = null;
 		});
 
-		console.log(config);
-
 		try {
-			if (typeof config !== 'object' || (typeof config === 'object' && (!config.hasOwnProperty('columnsIds') || !Array.isArray(config['columnsIds'])))) {
-				throw new Error('Failure slots editor... The config must have the property *columnsIds*...');
+			if (typeof config !== 'object' || ((typeof config === 'object' && !config.hasOwnProperty('columnsIdsWithSlotsPack')) || (typeof config === 'object' &&  typeof config['columnsIdsWithSlotsPack'] !== 'object'))) {
+				throw new Error('Failure slots editor... The config must have the property *columnsIdsWithSlotsPack*...');
 			}
 
 			const { message, isError, data } = await this.service.getSlots(config);

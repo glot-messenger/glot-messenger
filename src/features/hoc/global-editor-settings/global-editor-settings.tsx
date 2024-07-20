@@ -18,7 +18,7 @@ const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ childr
 
 	const [globalMessageError, setGlobalMessageError] = useState<string>('');
 
-	const {
+	const { // STORE настроек редактора, самый высокоуровневый объект
 		isLoading: isLoadingSettingsEditor,
 		isError: isErrorSettingsEditor,
 		messageError: messageSettingsEditor,
@@ -26,14 +26,15 @@ const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ childr
 		data: dataSettingsEditor
 	} = $settingsEditorStore;
 
-	const {
+	const { // STORE колонок редактора, которые отрисовываются на рабочем пространстве мессенджера
 		isLoading: isLoadingColumnsEditor,
 		isError: isErrorColumnsEditor,
 		messageError: messageColumnsEditor,
 		getColumnsEditorAction,
+		data: dataColumnsEditor
 	} = $columnsEditorStore;
 
-	const {
+	const { // STORE слотов редактора, слоты отрисовываются внутри колонок
 		isLoading: isLoadingSlotsEditor,
 		isError: isErrorSlotsEditor,
 		messageError: messageSlotsEditor,
@@ -63,14 +64,20 @@ const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ childr
 			setGlobalMessageError('');
 
 		} else if (!isLoadingSettingsEditor && !isLoadingColumnsEditor && isLoadingSlotsEditor) { // Если настройки были получены, колонки были получены, а информация по слотам все еще не была запрошена
-			getSlotsEditorAction({ columnsIds: dataSettingsEditor?.settingsEditor?.columns });
+			const packColumnsWithSlots = {};
+
+			dataColumnsEditor.columnsEditor.forEach((column) => {
+				packColumnsWithSlots[column._id] = column.slots;
+			});
+
+			getSlotsEditorAction({ columnsIdsWithSlotsPack: packColumnsWithSlots });
 			setGlobalMessageError('');
 
 		} else if (!isLoadingSettingsEditor && !isLoadingColumnsEditor && !isLoadingSlotsEditor) { // Если все данные получены, то можно отключать лоадер
 			setGlobalLoader(false);
 			setGlobalMessageError('');
 
-		} else { // Что-то пошло не так
+		} else { // Что-то пошло не так, тогда выводится эта ошибка
 			setGlobalLoader(false);
 			setGlobalMessageError('Something went wrong when getting your editor`s settings. The development team is already figuring out the reason... We apologize...');
 		}
@@ -84,7 +91,8 @@ const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ childr
 		isLoadingColumnsEditor,
 		isErrorSlotsEditor,
 		messageSlotsEditor,
-		isLoadingSlotsEditor
+		isLoadingSlotsEditor,
+		dataColumnsEditor
 	]);
 
 	return (

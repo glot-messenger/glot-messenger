@@ -1,8 +1,7 @@
 // PROVIDERS ==========================================================================
 import {
 	AuthBoxConditionProvider,
-	EventEmitterProvider,
-	EditorProvider
+	EventEmitterProvider
 } from './providers';
 
 // HOC ================================================================================
@@ -11,7 +10,6 @@ import { GlobalEditorSettings } from './hoc';
 export {
 	AuthBoxConditionProvider,
 	EventEmitterProvider,
-	EditorProvider,
 
 	GlobalEditorSettings
 };

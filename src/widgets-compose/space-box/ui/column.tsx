@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { observer } from 'mobx-react-lite';
 import './column-style.css';
 import type { IColumnProps } from './interafaces';
 import { Slot } from './slot';
@@ -6,8 +7,8 @@ import { Modal } from '../../../bricks';
 import type { IElementContextMenu } from '../../../shared';
 
 import {
-	EditorContext,
-	EventEmitterContext
+	EventEmitterContext,
+	$slotsEditorStore
 } from '../../../entities';
 
 import {
@@ -24,16 +25,16 @@ import {
 	configContextMenuColumn
 } from '../../../shared';
 
-const Column: React.FC<IColumnProps> = ({ data }) => {
+const Column: React.FC<IColumnProps> = observer(({ data }) => {
 	const eventEmitter = useContext(EventEmitterContext);
 
-	const { slots: slotsStoreForColumns } = useContext(EditorContext);
+	const { data: slotsPack } = $slotsEditorStore;
 
 	const [columnModalStatus, setColumnModalStatus] = useState<boolean>(false);
 
-	const { styles, slots: slotsIds, settingId, _id, accessStatusForChanges } = data;
+	const { styles, slots: arraySlotsIds, settingId, _id, accessStatusForChanges } = data;
 
-	const arraySlots = slotsStoreForColumns[_id];
+	const arraySlots = slotsPack['slotsEditor'][_id];
 
 	useEffect(() => {
 		eventEmitter.on(BUTTON_DOTS_EVENT_CLICK + COLUMN_EVENT_SEGMENT, ({ data }) => {
@@ -49,7 +50,7 @@ const Column: React.FC<IColumnProps> = ({ data }) => {
 	}, []);
 
 	return (
-		<div className='column' style={styles}>
+		<div className='column' style={{...styles}}>
 			<div className='column__head'>
 				<ButtonLock flagStatus={accessStatusForChanges} data={{ settingId, columnId: _id, value: { accessStatusForChanges: !accessStatusForChanges } }} segmentEvent={COLUMN_EVENT_SEGMENT} />
 				<ButtonDots segmentEvent={COLUMN_EVENT_SEGMENT} data={{ columnId: _id }} />
@@ -71,6 +72,6 @@ const Column: React.FC<IColumnProps> = ({ data }) => {
 			</Modal>
 		</div>
 	);
-};
+});
 
 export { Column };

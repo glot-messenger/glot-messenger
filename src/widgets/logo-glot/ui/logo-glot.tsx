@@ -5,10 +5,7 @@ import type { IElementContextMenu } from '../../../shared';
 import type { ILogoGlotProps } from './interafaces';
 import { SocialNetworkBlock } from './social-network-block';
 
-import {
-	EventEmitterContext,
-	EditorContext
-} from '../../../entities';
+import { EventEmitterContext } from '../../../entities';
 
 import {
 	ContextMenu,
@@ -34,8 +31,6 @@ import {
 
 const LogoGlot: React.FC<ILogoGlotProps> = ({ columnId, _id }) => {
 	const eventEmitter = useContext(EventEmitterContext);
-
-	const { modules, editor } = useContext(EditorContext);
 
 	const { icon, button } = configLogoGlot;
 
