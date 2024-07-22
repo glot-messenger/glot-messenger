@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import type { ISlotProps } from './interafaces';
 import './slot-style.css';
+import { observer } from 'mobx-react-lite';
 import type { IElementContextMenu } from '../../../shared';
 import { Modal } from '../../../bricks';
 
@@ -26,7 +27,7 @@ import {
 
 import { EventEmitterContext } from '../../../entities';
 
-const Slot: React.FC<ISlotProps> = ({ data }) => {
+const Slot: React.FC<ISlotProps> = observer(({ data }) => {
 	const eventEmitter = useContext(EventEmitterContext);
 
 	const { isEmpty, columnId, _id, nameWidget } = data;
@@ -63,7 +64,7 @@ const Slot: React.FC<ISlotProps> = ({ data }) => {
 
 	return (
 		<div className='slot'>
-			{/* <div className='slot__container'>
+			<div className='slot__container'>
 				{
 					nameWidget === 'logo-glot' ?
 						<LogoGlot {...data} /> :
@@ -79,10 +80,9 @@ const Slot: React.FC<ISlotProps> = ({ data }) => {
 						</ButtonWithDynamicBackground>
 					);
 				}} />
-			</Modal> */}
-			<div>9999</div>
+			</Modal>
 		</div>
 	);
-};
+});
 
 export { Slot };
