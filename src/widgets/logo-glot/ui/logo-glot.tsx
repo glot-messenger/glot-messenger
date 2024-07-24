@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { observer } from 'mobx-react-lite';
 import './logo-glot-style.css';
 import { Modal } from '../../../bricks';
 import type { IElementContextMenu } from '../../../shared';
 import type { ILogoGlotProps } from './interafaces';
 import { SocialNetworkBlock } from './social-network-block';
 
-import { EventEmitterContext } from '../../../entities';
+import {
+	EventEmitterContext,
+	$settingsEditorStore,
+	$columnsEditorStore
+} from '../../../entities';
 
 import {
 	ContextMenu,
@@ -29,7 +34,7 @@ import {
 	configLogoGlotBtnArrows
 } from '../config';
 
-const LogoGlot: React.FC<ILogoGlotProps> = ({ columnId, _id }) => {
+const LogoGlot: React.FC<ILogoGlotProps> = observer(({ columnId, _id }) => {
 	const eventEmitter = useContext(EventEmitterContext);
 
 	const { icon, button } = configLogoGlot;
@@ -39,6 +44,10 @@ const LogoGlot: React.FC<ILogoGlotProps> = ({ columnId, _id }) => {
 	const [slotModalStatus, setSlotModalStatus] = useState<boolean>(false);
 
 	const [socialNetworkModalStatus, setSocialNetworkModalStatus] = useState<boolean>(false);
+
+	const { data: settingsEditorDataStore } = $settingsEditorStore;
+
+	const { addNewColumnInEditorAction } = $columnsEditorStore;
 
 	const handlerClick = (): void => {
 		setLogoGlotModalStatus(true);
@@ -50,7 +59,9 @@ const LogoGlot: React.FC<ILogoGlotProps> = ({ columnId, _id }) => {
 		});
 
 		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + ADD_COLUMN_EVENT_SEGMENT, () => {
-			modules.column.addColumn({ settingId: editor._id });
+			if (settingsEditorDataStore && settingsEditorDataStore.settingsEditor && settingsEditorDataStore.settingsEditor._id) {
+				addNewColumnInEditorAction({ settingId: settingsEditorDataStore.settingsEditor._id });
+			}
 		});
 
 		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + SHOW_SOCIAL_NETWORK_EVENT_SEGMENT, (payload) => {
@@ -108,6 +119,6 @@ const LogoGlot: React.FC<ILogoGlotProps> = ({ columnId, _id }) => {
 			</Modal>
 		</div>
 	);
-};
+});
 
 export { LogoGlot };

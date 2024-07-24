@@ -45,6 +45,14 @@ class Column {
 		});
 	};
 
+	async addNewColumn(config: any) {
+		console.log(config, '1111');
+		const instanceColumnModel = factoryColumnModel(config);
+
+		console.log(instanceColumnModel, 'instanceColumnModel');
+		const containerData = await this.#dataProvider.set({ data: instanceColumnModel, ...config, config: { concatUrl: ['column'] } });
+	};
+
 	//async addColumn(config: any) {
 	//	// ТУТ ДОЛЖНА БЫТЬ ПРОВЕРКА МОЕГО СПЕЦИАЛЬНОГО РАЗРУЛИВАЮЩЕГО ИНТЕРФЕЙС КЛАССА, есть или нет возможности добавить колонку, т.к. колонке требуется 20% ширины пространства редактора
 	//	const instanceColumnModel = factoryColumnModel(config);

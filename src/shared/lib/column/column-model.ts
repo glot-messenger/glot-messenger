@@ -3,7 +3,7 @@ import { getUniqueId } from '../utils';
 class ColumnModel {
 	settingId: string;
 
-	_id: string;
+	_id: number;
 
 	slots: Array<any>;
 
@@ -12,7 +12,8 @@ class ColumnModel {
 	accessStatusForChanges: boolean;
 
 	constructor({ settingId }: any) {
-		this._id = getUniqueId('column');
+		//this._id = getUniqueId('column');
+		this._id = Date.now();
 		this.settingId = settingId;
 		this.accessStatusForChanges = true;
 		this.slots = [];
