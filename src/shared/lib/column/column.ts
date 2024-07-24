@@ -50,7 +50,7 @@ class Column {
 		const instanceColumnModel = factoryColumnModel(config);
 
 		console.log(instanceColumnModel, 'instanceColumnModel');
-		const containerData = await this.#dataProvider.set({ data: instanceColumnModel, ...config, config: { concatUrl: ['column'] } });
+		const containerData = await this.#dataProvider.set({ data: instanceColumnModel, ...config, configRequest: { concatUrl: ['column'] } });
 	};
 
 	//async addColumn(config: any) {

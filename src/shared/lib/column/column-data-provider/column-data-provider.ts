@@ -26,26 +26,25 @@ class ColumnDataProvider extends BaseProvider {
    };
 
    override async set(config: any) {
-		console.log('Доделать добавление колонки', config);
-
 		let request = ColumnDataProvider.request;
 
-		const { config: configReq } = config;
+		const { configRequest } = config;
 
-		if (typeof configReq === 'object' && configReq.hasOwnProperty('concatUrl') && Array.isArray(configReq['concatUrl'])) {
-			// Тут конкатинирую дополнительно путь перезаписывая Request ну и далее все сохраняю
+		if (typeof configRequest === 'object' && configRequest.hasOwnProperty('concatUrl') && Array.isArray(configRequest['concatUrl'])) {
+			const arraySegmentsUrlRequest = configRequest['concatUrl'];
+
+			for (let z = 0; z < arraySegmentsUrlRequest.length; z++) {
+				request = request.concatUrl(arraySegmentsUrlRequest[z]);
+			}
 		}
 
-		//const { method } = config;
+		delete config['configRequest'];
 
-    //  const request = ColumnDataProvider.request.post.jsonFormat.concatUrl(method ? method : 'createColumnByIdEditor').body({
-		//	data,
-		//	payload: config.payload
-		//});
+		request = request.post.jsonFormat.body(config);
 
-    //  const valueColumn = await request.create();
+		const valueColumns = await request.create();
 
-    //  return valueColumn.nativeUnpacking();
+		return valueColumns.jsonUnpacking();
    };
 
 	override async update(config: any) {
