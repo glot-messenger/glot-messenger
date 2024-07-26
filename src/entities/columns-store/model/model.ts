@@ -30,9 +30,17 @@ class $ColumnsEditorStore {
 			this.messageErrorForSomeOperation = '';
 		});
 
+		const guard = typeof config !== 'object' ?
+			true :
+			typeof config === 'object' && (!config.hasOwnProperty('settingId') || !config['settingId']) ?
+			true :
+			typeof config === 'object' && (!config.hasOwnProperty('columns') || !config['columns'] || !Array.isArray(config['columns'])) ?
+			true :
+			false;
+
 		try {
-			if (typeof config !== 'object' || (typeof config === 'object' && (!config.hasOwnProperty('settingId') || !config['settingId']))) {
-				throw new Error('Failure columns editor... The config must have the property *settingId*...');
+			if (guard) {
+				throw new Error('Failure columns editor... The config must have the property *settingId* and *columns*...');
 			}
 
 			const { message, isError, data } = await this.service.getColumns(config);

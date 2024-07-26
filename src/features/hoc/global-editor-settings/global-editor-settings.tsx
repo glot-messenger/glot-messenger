@@ -56,11 +56,11 @@ const GlobalEditorSettings: React.FC<IGlobalEditorSettings> = observer(({ childr
 			setGlobalLoader(false);
 
 		} else if (isLoadingSettingsEditor) { // Если настройки редактора еще не запрашивались, то делаем запрос
-			getSettingsEditorAction({ userId: '1719229880595-user-id' }); // Пользователь, который есть в базе
+			getSettingsEditorAction({ userId: '66a2a64c4d6b1a09ff83bd74' }); // Пользователь, который есть в базе
 			setGlobalMessageError('');
 
 		} else if (!isLoadingSettingsEditor && isLoadingColumnsEditor) { // Если настройки уже были получены, а информация по колонкам не была запрошена, то делаем запрос
-			getColumnsEditorAction({ settingId: dataSettingsEditor?.settingsEditor?._id });
+			getColumnsEditorAction({ settingId: dataSettingsEditor?.settingsEditor?._id, columns: dataSettingsEditor?.settingsEditor?.columns });
 			setGlobalMessageError('');
 
 		} else if (!isLoadingSettingsEditor && !isLoadingColumnsEditor && isLoadingSlotsEditor) { // Если настройки были получены, колонки были получены, а информация по слотам все еще не была запрошена
