@@ -5,6 +5,7 @@ import { Modal } from '../../../bricks';
 import type { IElementContextMenu } from '../../../shared';
 import type { ILogoGlotProps } from './interafaces';
 import { SocialNetworkBlock } from './social-network-block';
+import { useNavigate } from 'react-router-dom';
 
 import {
 	EventEmitterContext,
@@ -25,7 +26,9 @@ import {
 	configContextMenuSlot,
 	BUTTON_WITH_DYNAMIC_BACKGROUND,
 	ADD_COLUMN_EVENT_SEGMENT,
-	SHOW_SOCIAL_NETWORK_EVENT_SEGMENT
+	SHOW_SOCIAL_NETWORK_EVENT_SEGMENT,
+	LOG_OUT_AUTHORIZATION_EVENT_SEGMENT,
+	HOME
 } from '../../../shared';
 
 import {
@@ -35,6 +38,8 @@ import {
 } from '../config';
 
 const LogoGlot: React.FC<ILogoGlotProps> = observer(({ columnId, _id }) => {
+	const navigate = useNavigate();
+
 	const eventEmitter = useContext(EventEmitterContext);
 
 	const { icon, button } = configLogoGlot;
@@ -68,6 +73,16 @@ const LogoGlot: React.FC<ILogoGlotProps> = observer(({ columnId, _id }) => {
 			setLogoGlotModalStatus(false);
 			setSlotModalStatus(false);
 			setSocialNetworkModalStatus(true);
+		});
+
+		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + LOG_OUT_AUTHORIZATION_EVENT_SEGMENT, (payload) => {
+			console.log('Нужно написать функцию, которая сбросит стор авторизации и сбросит из LocalStorage всю информацию по авторизации.');
+
+			setLogoGlotModalStatus(false);
+			setSlotModalStatus(false);
+			setSocialNetworkModalStatus(false);
+
+			navigate(HOME);
 		});
 
 		eventEmitter.on(MODAL_EMPTY_SPACE_EVENT_CLICK, () => {

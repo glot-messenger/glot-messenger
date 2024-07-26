@@ -3,6 +3,7 @@ export const COLUMN_EVENT_SEGMENT = '.column';
 export const SLOT_EVENT_SEGMENT = '.slot';
 export const MODAL_EVENT_SEGMENT = '.modal';
 export const SOCIAL_NETWORK_EVENT_SEGMENT = '.social-network';
+export const AUTHORIZATION_EVENT_SEGMENT = '.authorization';
 
 // Actions ==============================================================================
 export const ADD_EVENT_SEGMENT = '.add';
@@ -11,6 +12,7 @@ export const UPDATE_EVENT_SEGMENT = '.update';
 export const CLEAR_EVENT_SEGMENT = '.clear';
 export const MOVING_EVENT_SEGMENT = '.moving';
 export const SHOW_EVENT_SEGMENT = '.show';
+export const LOG_OUT_SEGMENT = '.log-out';
 
 // Directions ===========================================================================
 export const DOWN_EVENT_SEGMENT = '.down';
@@ -27,3 +29,5 @@ export const UPDATE_COLUMN_EVENT_SEGMENT = COLUMN_EVENT_SEGMENT + UPDATE_EVENT_S
 export const ADD_COLUMN_EVENT_SEGMENT = COLUMN_EVENT_SEGMENT + ADD_EVENT_SEGMENT;
 // SOCIAL NETWORK
 export const SHOW_SOCIAL_NETWORK_EVENT_SEGMENT = SOCIAL_NETWORK_EVENT_SEGMENT + SHOW_EVENT_SEGMENT;
+// AUTHORIZATION ACCOUNT
+export const LOG_OUT_AUTHORIZATION_EVENT_SEGMENT = AUTHORIZATION_EVENT_SEGMENT + LOG_OUT_SEGMENT;

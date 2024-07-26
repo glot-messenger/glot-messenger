@@ -38,7 +38,8 @@ import {
 	COLUMN_MODULE_EVENT_METHOD,
 	MOVING_DOWN_SLOT_EVENT_SEGMENT,
 	SHOW_SOCIAL_NETWORK_EVENT_SEGMENT,
-	SLOT_MODULE_EVENT_METHOD
+	SLOT_MODULE_EVENT_METHOD,
+	LOG_OUT_AUTHORIZATION_EVENT_SEGMENT
 } from './core';
 
 // lib ====================================================================================
@@ -163,7 +164,8 @@ export {
 	arraySocialNetworkLinks,
 	SHOW_SOCIAL_NETWORK_EVENT_SEGMENT,
 	SLOT_MODULE_EVENT_METHOD,
-	config
+	config,
+	LOG_OUT_AUTHORIZATION_EVENT_SEGMENT
 };
 
 export type {
