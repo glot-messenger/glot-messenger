@@ -2,7 +2,8 @@ import { makeAutoObservable, runInAction } from 'mobx';
 import { factoryEditor } from '../../../shared';
 
 class $SettingsEditorStore {
-	data = null;
+	// { settingsEditor: {} }
+	data: any = null;
 
 	isLoading: boolean = true;
 
@@ -47,6 +48,12 @@ class $SettingsEditorStore {
 				this.messageError = err.message;
 				this.isLoading = false;
 			});
+		}
+	};
+
+	addIdNewColumnAction = (idNewColumn: string) => {
+		if (!this.isLoading && this.data && this.data.settingsEditor) {
+			this.data.settingsEditor.columns.push(idNewColumn);
 		}
 	};
 };

@@ -2,20 +2,12 @@ import { factoryColumnModel } from './factory-column-model';
 import { factoryColumnDataProvider } from './column-data-provider';
 import { factorySlot } from '../slot';
 import { factoryContainerForResultsSomeAsyncMethods } from '../container-for-results-some-async-methods';
-import { factoryEventEmitter } from '../event-emitter';
-
-import {
-	COLUMN_MODULE_EVENT_METHOD,
-	ADD_COLUMN_EVENT_SEGMENT
-} from '../../core';
 
 // Singleton =======================================================================
 let staticColumn: null | Column = null;
 
 class Column {
 	#dataProvider = factoryColumnDataProvider();
-
-	#eventEmitter = factoryEventEmitter();
 
 	constructor() {
 		if (staticColumn !== null) {
@@ -46,37 +38,28 @@ class Column {
 	};
 
 	async addNewColumn(config: any) {
-		console.log(config, '1111');
+		// ТУТ ДОЛЖЕН ОТРАБОТАТЬ МОЙ СПЕЦИАЛЬНЫЙ МОДУЛЬ, КОТОРЫЙ СМОТРИТ ВОЗМОЖНО ЛИ ДОБАВЛЕНИЕ НОВОЙ КОЛОНКИ В РЕДАКТОР, т.к. каждая колонка создается с определенным % ширины, а максимально у нас 100%, мы должны проверить, не превышается ли лимит
+		// ТУТ ДОЛЖНА БЫТЬ ПРОВЕРКА МОЕГО СПЕЦИАЛЬНОГО РАЗРУЛИВАЮЩЕГО ИНТЕРФЕЙС КЛАССА, есть или нет возможности добавить колонку, т.к. колонке требуется 20% ширины пространства редактора
 		const instanceColumnModel = factoryColumnModel(config);
 
-		console.log(instanceColumnModel, 'instanceColumnModel');
 		const containerData = await this.#dataProvider.set({ data: instanceColumnModel, ...config, configRequest: { concatUrl: ['column'] } });
+
+		if (containerData.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: 'Failure columns editor... An error occurred while adding a new column to the editor.',
+				data: {
+					newColumnInEditor: null
+				}
+			});
+		}
+
+		return factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: 'Success columns editor! Adding a new column to the editor was successful.',
+			data: containerData.data
+		});
 	};
-
-	//async addColumn(config: any) {
-	//	// ТУТ ДОЛЖНА БЫТЬ ПРОВЕРКА МОЕГО СПЕЦИАЛЬНОГО РАЗРУЛИВАЮЩЕГО ИНТЕРФЕЙС КЛАССА, есть или нет возможности добавить колонку, т.к. колонке требуется 20% ширины пространства редактора
-	//	const instanceColumnModel = factoryColumnModel(config);
-
-	//	const containerData = await this.#dataProvider.set({ data: instanceColumnModel, config: { method: 'addColumnByIdEditor' } });
-
-	//	if (containerData.isError) {
-	//		return factoryContainerForResultsSomeAsyncMethods({
-	//			isError: true,
-	//			message: containerData.message + ' Failure columns... Аn error occurred while adding a new column.',
-	//			data: {
-	//				columns: null
-	//			}
-	//		});
-	//	}
-
-	//	this.#eventEmitter.emit(COLUMN_MODULE_EVENT_METHOD + ADD_COLUMN_EVENT_SEGMENT, factoryContainerForResultsSomeAsyncMethods({
-	//		isError: false,
-	//		message: 'Success columns! The new column has been successfully added to the interface.',
-	//		data: {
-	//			columns: [ instanceColumnModel ]
-	//		}
-	//	}));
-	//};
 
 	//async getColumnsByIdEditorSettings(config: any) {
 	//	const containerData = await this.#dataProvider.get(config);

@@ -2,7 +2,8 @@ import { makeAutoObservable, runInAction } from 'mobx';
 import { factorySlot } from '../../../shared';
 
 class $SlotsEditorStore {
-	data = null;
+	// { slotsEditor: { 66a2b8e61a2f1d3e154d0df9: [] } }
+	data: any = null;
 
 	isLoading: boolean = true;
 
@@ -47,6 +48,12 @@ class $SlotsEditorStore {
 				this.messageError = err.message;
 				this.isLoading = false;
 			});
+		}
+	};
+
+	addEmptyPackSlotsForNewColumnAction = (idNewColumn: string) => {
+		if (!this.isLoading && this.data && this.data.slotsEditor) {
+			this.data.slotsEditor[idNewColumn] = [];
 		}
 	};
 };
