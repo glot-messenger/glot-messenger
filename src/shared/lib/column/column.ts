@@ -61,6 +61,26 @@ class Column {
 		});
 	};
 
+	async updateColumnById(config: any) {
+		const containerData = await this.#dataProvider.update({ ...config, configRequest: { concatUrl: ['column', `${config['columnId'] || '12324234234234324123'}`] } });
+
+		if (containerData.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: 'Failure columns editor... An error occurred while updating the column.',
+				data: {
+					updatedColumn: null
+				}
+			});
+		}
+
+		return factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: 'Success columns editor! The column by id was updated successfully.',
+			data: containerData.data
+		});
+	};
+
 	//async getColumnsByIdEditorSettings(config: any) {
 	//	const containerData = await this.#dataProvider.get(config);
 

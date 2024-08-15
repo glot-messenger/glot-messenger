@@ -21,6 +21,7 @@ export interface IDataProvider {
 
 interface IPayloadContextMenu {
 	position?: 'index + 1';
+	accessForChanges?: boolean;
 };
 
 export interface IElementContextMenu {

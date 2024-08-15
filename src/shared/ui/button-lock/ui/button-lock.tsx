@@ -9,6 +9,9 @@ const ButtonLock: React.FC<IButtonLockProps> = ({ flagStatus, data, segmentEvent
 	const eventEmitter = useContext(EventEmitterContext);
 
    const handlerClickBtnLock = (): void => {
+      console.log(`Event full name: ${BUTTON_LOCK_EVENT_CLICK + segmentEvent}`);
+		console.log('Передаваемая нагрузка в кнопке', { data });
+
       eventEmitter.emit(BUTTON_LOCK_EVENT_CLICK + segmentEvent, { data });
    };
 

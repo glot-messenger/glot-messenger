@@ -113,6 +113,65 @@ class $ColumnsEditorStore {
 			});
 		}
 	};
+
+	updateColumnEditorAction = async(config: any): Promise<void> => {
+		runInAction(() => {
+			this.isErrorForSomeOperation = false;
+			this.messageErrorForSomeOperation = '';
+		});
+
+		const guard = typeof config !== 'object' ?
+			true :
+			typeof config === 'object' && (!config.hasOwnProperty('columnId') || !config['columnId']) ?
+			true :
+			typeof config === 'object' && (!config.hasOwnProperty('value') || !config['value']) ?
+			true :
+			typeof config === 'object' && typeof config['value'] !== 'object' ?
+			true :
+			false;
+
+		try {
+			if (guard) {
+				throw new Error('Failure columns editor... The config must have the property *columnId* and payload *value*...');
+			}
+
+			const { message, isError, data } = await this.service.updateColumnById(config);
+
+			if (isError) {
+				throw new Error(message);
+			}
+
+			runInAction(() => {
+				const { updatedColumn } = data;
+
+				if (!this.isLoading && this.data) {
+					if (this.data.columnsEditor) {
+						let index = -1;
+
+						for (let m = 0; m < this.data.columnsEditor.length; m++) {
+							const column = this.data.columnsEditor[m];
+
+							if (column._id === updatedColumn._id) {
+								index = m;
+
+								break;
+							}
+						}
+
+						if (index >= 0) {
+							this.data.columnsEditor[index] = updatedColumn;
+						}
+					}
+				}
+			});
+
+		} catch (err: any) {
+			runInAction(() => {
+				this.isErrorForSomeOperation = true;
+				this.messageErrorForSomeOperation = err.message;
+			});
+		}
+	};
 };
 
 const $columnsEditorStore = new $ColumnsEditorStore();

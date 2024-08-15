@@ -51,7 +51,7 @@ class $SlotsEditorStore {
 		}
 	};
 
-	addEmptyPackSlotsForNewColumnAction = (idNewColumn: string) => {
+	addEmptyPackSlotsForNewColumnAction = (idNewColumn: string): void => {
 		if (!this.isLoading && this.data && this.data.slotsEditor) {
 			this.data.slotsEditor[idNewColumn] = [];
 		}

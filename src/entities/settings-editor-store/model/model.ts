@@ -51,7 +51,7 @@ class $SettingsEditorStore {
 		}
 	};
 
-	addIdNewColumnAction = (idNewColumn: string) => {
+	addIdNewColumnAction = (idNewColumn: string): void => {
 		if (!this.isLoading && this.data && this.data.settingsEditor) {
 			this.data.settingsEditor.columns.push(idNewColumn);
 		}

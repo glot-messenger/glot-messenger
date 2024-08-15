@@ -9,13 +9,13 @@ class ColumnModel {
 
 	styles: any;
 
-	accessStatusForChanges: boolean;
+	accessForChanges: boolean;
 
 	constructor({ settingId }: any) {
 		//this._id = getUniqueId('column');
 		this._id = Date.now();
 		this.settingId = settingId;
-		this.accessStatusForChanges = true;
+		this.accessForChanges = true;
 		this.slots = [];
 		this.styles = {
 			width: '20%'

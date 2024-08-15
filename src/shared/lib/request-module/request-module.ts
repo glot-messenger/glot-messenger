@@ -34,6 +34,12 @@ class RequestModule {
 		};
 	};
 
+	static get patch(): typeof RequestModule {
+		return class extends this {
+			static override method = 'PATCH';
+		};
+	};
+
    static get get(): typeof RequestModule {
       return class extends this {
          static override method = 'GET';

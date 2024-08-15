@@ -8,7 +8,8 @@ import type { IElementContextMenu } from '../../../shared';
 
 import {
 	EventEmitterContext,
-	$slotsEditorStore
+	$slotsEditorStore,
+	$columnsEditorStore
 } from '../../../entities';
 
 import {
@@ -22,7 +23,10 @@ import {
 	BUTTON_RED_EVENT_CLICK,
 	ContextMenu,
 	ButtonWithDynamicBackground,
-	configContextMenuColumn
+	configContextMenuColumn,
+	BUTTON_LOCK_EVENT_CLICK,
+	UPDATE_COLUMN_EVENT_SEGMENT,
+	BUTTON_WITH_DYNAMIC_BACKGROUND
 } from '../../../shared';
 
 const Column: React.FC<IColumnProps> = observer(({ data }) => {
@@ -30,17 +34,30 @@ const Column: React.FC<IColumnProps> = observer(({ data }) => {
 
 	const { data: slotsPack } = $slotsEditorStore;
 
+	const { updateColumnEditorAction } = $columnsEditorStore;
+
 	const [columnModalStatus, setColumnModalStatus] = useState<boolean>(false);
 
-	const { styles, slots: arraySlotsIds, settingId, _id, accessStatusForChanges } = data;
+	const { styles, slots: arraySlotsIds, settingId, _id, accessForChanges } = data;
 
 	const arraySlots = slotsPack['slotsEditor'][_id];
 
 	useEffect(() => {
-		eventEmitter.on(BUTTON_DOTS_EVENT_CLICK + COLUMN_EVENT_SEGMENT, ({ data }) => {
-			// Тут нужно слущать все события контекстного меню колонки
-			if (data.columnId === _id) {
+		eventEmitter.on(BUTTON_DOTS_EVENT_CLICK + COLUMN_EVENT_SEGMENT, ({ data: payloadDotsBtn }) => {
+			if (payloadDotsBtn.columnId === _id) {
 				setColumnModalStatus(true);
+			}
+		});
+
+		eventEmitter.on(BUTTON_LOCK_EVENT_CLICK + COLUMN_EVENT_SEGMENT, ({ data: payloadLockBtn }) => {
+			if (payloadLockBtn.columnId === _id) {
+				updateColumnEditorAction(payloadLockBtn);
+			}
+		});
+
+		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + UPDATE_COLUMN_EVENT_SEGMENT, ({ data: payloadDynamicBackgroundBtn }) => {
+			if (payloadDynamicBackgroundBtn.columnId === _id) {
+				updateColumnEditorAction(payloadDynamicBackgroundBtn);
 			}
 		});
 
@@ -52,19 +69,19 @@ const Column: React.FC<IColumnProps> = observer(({ data }) => {
 	return (
 		<div className='column' style={{...styles}}>
 			<div className='column__head'>
-				<ButtonLock flagStatus={accessStatusForChanges} data={{ settingId, columnId: _id, value: { accessStatusForChanges: !accessStatusForChanges } }} segmentEvent={COLUMN_EVENT_SEGMENT} />
+				<ButtonLock flagStatus={accessForChanges} data={{ settingId, columnId: _id, value: { accessForChanges: !accessForChanges } }} segmentEvent={COLUMN_EVENT_SEGMENT} />
 				<ButtonDots segmentEvent={COLUMN_EVENT_SEGMENT} data={{ columnId: _id }} />
 			</div>
 			<div className='column__container-slots'>
-				{arraySlots.map((slotData) => {
+				{arraySlots.map((slotData: any) => {
 					return (
 						<Slot key={slotData._id} data={slotData} />
 					);
 				})}
-			</div>
+			</div> 
 			<Modal isModal={columnModalStatus}>
 				<ContextMenu {...configContextMenuColumn} renderElementFN={({ button, icon }: IElementContextMenu) => (
-					<ButtonWithDynamicBackground {...button}>
+					<ButtonWithDynamicBackground {...button} payload={{ settingId, columnId: _id, value: button.payload }}>
 						<span className='context-menu__text'>{button.textBtn}</span>
 						<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
 					</ButtonWithDynamicBackground>

@@ -21,7 +21,8 @@ const configContextMenuColumn: IConfigContextMenu = {
 				type: 'button',
 				titleHover: 'Нажмите, чтобы добавить еще один слот в колонку.',
 				classes: 'context-menu__btn blue-blue',
-				segmentEvent: ADD_SLOT_EVENT_SEGMENT
+				segmentEvent: ADD_SLOT_EVENT_SEGMENT,
+				payload: {}
 			},
 			icon: {
 				name: 'add.svg',
@@ -36,7 +37,8 @@ const configContextMenuColumn: IConfigContextMenu = {
 				type: 'button',
 				titleHover: 'Нажмите, чтобы удалить эту колонку.',
 				classes: 'context-menu__btn red-red',
-				segmentEvent: DELETE_COLUMN_EVENT_SEGMENT
+				segmentEvent: DELETE_COLUMN_EVENT_SEGMENT,
+				payload: {}
 			},
 			icon: {
 				name: 'delete-urn.svg',
@@ -51,7 +53,10 @@ const configContextMenuColumn: IConfigContextMenu = {
 				type: 'button',
 				titleHover: 'Нажмите, чтобы включить режим колонки - закрытый для изменений.',
 				classes: 'context-menu__btn gray-blue',
-				segmentEvent: UPDATE_COLUMN_EVENT_SEGMENT
+				segmentEvent: UPDATE_COLUMN_EVENT_SEGMENT,
+				payload: {
+					accessForChanges: false
+				}
 			},
 			icon: {
 				name: 'lock-block.svg',
@@ -66,7 +71,10 @@ const configContextMenuColumn: IConfigContextMenu = {
 				type: 'button',
 				titleHover: 'Нажмите, чтобы включить режим колонки - открытый для изменений.',
 				classes: 'context-menu__btn gray-blue',
-				segmentEvent: UPDATE_COLUMN_EVENT_SEGMENT
+				segmentEvent: UPDATE_COLUMN_EVENT_SEGMENT,
+				payload: {
+					accessForChanges: true
+				}
 			},
 			icon: {
 				name: 'lock-open.svg',
@@ -80,7 +88,8 @@ const configContextMenuColumn: IConfigContextMenu = {
 				textBtn: 'Отправить колонку влево',
 				type: 'button',
 				titleHover: 'Нажмите, чтобы отправить колонку влево.',
-				classes: 'context-menu__btn gray-blue'
+				classes: 'context-menu__btn gray-blue',
+				payload: {}
 			},
 			icon: {
 				name: 'arrow-left.svg',
@@ -94,7 +103,8 @@ const configContextMenuColumn: IConfigContextMenu = {
 				textBtn: 'Отправить колонку вправо',
 				type: 'button',
 				titleHover: 'Нажмите, чтобы отправить колонку вправо.',
-				classes: 'context-menu__btn gray-blue'
+				classes: 'context-menu__btn gray-blue',
+				payload: {}
 			},
 			icon: {
 				name: 'arrow-right.svg',
@@ -108,7 +118,8 @@ const configContextMenuColumn: IConfigContextMenu = {
 				textBtn: 'Отправить колонку в начало',
 				type: 'button',
 				titleHover: 'Нажмите, чтобы отправить колонку в начало.',
-				classes: 'context-menu__btn gray-blue'
+				classes: 'context-menu__btn gray-blue',
+				payload: {}
 			},
 			icon: {
 				name: 'flag.svg',
@@ -122,7 +133,8 @@ const configContextMenuColumn: IConfigContextMenu = {
 				textBtn: 'Отправить колонку в конец',
 				type: 'button',
 				titleHover: 'Нажмите, чтобы отправить колонку в конец.',
-				classes: 'context-menu__btn gray-blue'
+				classes: 'context-menu__btn gray-blue',
+				payload: {}
 			},
 			icon: {
 				name: 'end-horizon.svg',

@@ -13,7 +13,7 @@ const ButtonWithDynamicBackground: React.FC<IButtonWithDynamicBackgroundProps> =
 		console.log(`Event full name: ${BUTTON_WITH_DYNAMIC_BACKGROUND + segmentEvent}`);
 		console.log('Передаваемая нагрузка в кнопке', payload);
 
-		eventEmitter.emit(BUTTON_WITH_DYNAMIC_BACKGROUND + segmentEvent, payload);
+		eventEmitter.emit(BUTTON_WITH_DYNAMIC_BACKGROUND + segmentEvent, { data: payload });
 	};
 
 	return (
