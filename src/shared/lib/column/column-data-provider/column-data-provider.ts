@@ -68,6 +68,28 @@ class ColumnDataProvider extends BaseProvider {
 
 		return valueColumns.jsonUnpacking();
 	};
+
+	override async operation(config: any) {
+		let request = ColumnDataProvider.request;
+
+		const { configRequest } = config;
+
+		if (typeof configRequest === 'object' && configRequest.hasOwnProperty('concatUrl') && Array.isArray(configRequest['concatUrl'])) {
+			const arraySegmentsUrlRequest = configRequest['concatUrl'];
+
+			for (let z = 0; z < arraySegmentsUrlRequest.length; z++) {
+				request = request.concatUrl(arraySegmentsUrlRequest[z]);
+			}
+		}
+
+		delete config['configRequest'];
+
+		request = request.post.jsonFormat.body(config);
+
+		const valueColumns = await request.create();
+
+		return valueColumns.jsonUnpacking();
+	};
 };
 
 export { ColumnDataProvider };

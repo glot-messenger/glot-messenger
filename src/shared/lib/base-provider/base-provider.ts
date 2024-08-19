@@ -31,6 +31,14 @@ class BaseProvider implements IDataProvider {
 			message: 'Implement the update() method in your specified provider. Now it is taken from the Base Provider.'
 		});
 	};
+
+	async operation(config: any): Promise<any> {
+		console.log('Implement the operation() method in your specified provider. Now it is taken from the Base Provider.');
+
+		return ({
+			message: 'Implement the operation() method in your specified provider. Now it is taken from the Base Provider.'
+		});
+	};
 };
 
 export { BaseProvider };

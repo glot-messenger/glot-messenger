@@ -123,7 +123,7 @@ const LogoGlot: React.FC<ILogoGlotProps> = observer(({ columnId, _id }) => {
 			</Modal>
 			<Modal isModal={slotModalStatus}>
 				<ContextMenu {...configContextMenuSlot}  renderElementFN={({ button, icon }: IElementContextMenu) => (
-					<ButtonWithDynamicBackground {...button} payload={{ columnId, slotId: _id, settingsEditorId: editor._id, ...button.payload }}>
+					<ButtonWithDynamicBackground {...button} payload={{ columnId, slotId: _id, settingId: settingsEditorDataStore?.settingsEditor?._id, ...button.payload }}>
 						<span className='context-menu__text'>{button.textBtn}</span>
 						<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
 					</ButtonWithDynamicBackground>

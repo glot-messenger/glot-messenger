@@ -38,8 +38,8 @@ class Column {
 	};
 
 	async addNewColumn(config: any) {
-		// ТУТ ДОЛЖЕН ОТРАБОТАТЬ МОЙ СПЕЦИАЛЬНЫЙ МОДУЛЬ, КОТОРЫЙ СМОТРИТ ВОЗМОЖНО ЛИ ДОБАВЛЕНИЕ НОВОЙ КОЛОНКИ В РЕДАКТОР, т.к. каждая колонка создается с определенным % ширины, а максимально у нас 100%, мы должны проверить, не превышается ли лимит
-		// ТУТ ДОЛЖНА БЫТЬ ПРОВЕРКА МОЕГО СПЕЦИАЛЬНОГО РАЗРУЛИВАЮЩЕГО ИНТЕРФЕЙС КЛАССА, есть или нет возможности добавить колонку, т.к. колонке требуется 20% ширины пространства редактора
+		//! ТУТ ДОЛЖЕН ОТРАБОТАТЬ МОЙ СПЕЦИАЛЬНЫЙ МОДУЛЬ, КОТОРЫЙ СМОТРИТ ВОЗМОЖНО ЛИ ДОБАВЛЕНИЕ НОВОЙ КОЛОНКИ В РЕДАКТОР, т.к. каждая колонка создается с определенным % ширины, а максимально у нас 100%, мы должны проверить, не превышается ли лимит
+		//! ТУТ ДОЛЖНА БЫТЬ ПРОВЕРКА МОЕГО СПЕЦИАЛЬНОГО РАЗРУЛИВАЮЩЕГО ИНТЕРФЕЙС КЛАССА, есть или нет возможности добавить колонку, т.к. колонке требуется 20% ширины пространства редактора
 		const instanceColumnModel = factoryColumnModel(config);
 
 		const containerData = await this.#dataProvider.set({ data: instanceColumnModel, ...config, configRequest: { concatUrl: ['column'] } });
@@ -62,7 +62,7 @@ class Column {
 	};
 
 	async updateColumnById(config: any) {
-		const containerData = await this.#dataProvider.update({ ...config, configRequest: { concatUrl: ['column', `${config['columnId'] || '12324234234234324123'}`] } });
+		const containerData = await this.#dataProvider.update({ ...config, configRequest: { concatUrl: ['column', `${config['columnId'] || '12324234234234324123some-id'}`] } });
 
 		if (containerData.isError) {
 			return factoryContainerForResultsSomeAsyncMethods({
@@ -77,6 +77,27 @@ class Column {
 		return factoryContainerForResultsSomeAsyncMethods({
 			isError: false,
 			message: 'Success columns editor! The column by id was updated successfully.',
+			data: containerData.data
+		});
+	};
+
+	async movingColumnById(config: any) {
+		const containerData = await this.#dataProvider.operation({ ...config, configRequest: { concatUrl: ['column', 'moving', `${config['columnId'] || '12324234234234324123some-id'}`] } });
+
+		if (containerData.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: 'Failure columns editor... An error occurred when changing the column position.',
+				data: {
+					movableColumn: null,
+					newIndex: -1
+				}
+			});
+		}
+
+		return factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: 'Success columns editor! The id column has been successfully moved to a new location.',
 			data: containerData.data
 		});
 	};

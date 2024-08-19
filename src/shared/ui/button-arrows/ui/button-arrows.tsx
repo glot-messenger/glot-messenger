@@ -8,6 +8,8 @@ const ButtonArrows: React.FC<IButtonArrowsProps> = ({ classes, type, titleHover,
 	const eventEmitter = useContext(EventEmitterContext);
 
 	const handlerClick = (): void => {
+		console.log(`Event full name: ${BUTTON_ARROWS_EVENT_CLICK + segmentEvent}`);
+
 		eventEmitter.emit(BUTTON_ARROWS_EVENT_CLICK + segmentEvent);
 	};
 

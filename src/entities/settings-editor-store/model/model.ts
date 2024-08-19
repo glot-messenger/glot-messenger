@@ -17,7 +17,8 @@ class $SettingsEditorStore {
 		makeAutoObservable(this);
 	};
 
-	getSettingsEditorAction = async(config: any): Promise<void> => { // пользователь, который есть в базе { userId: '1719229880595-user-id' }
+	// Получение настроек редактора происходит по id пользователя, который находится в базе: { userId: '1719229880595-user-id' }
+	getSettingsEditorAction = async(config: any): Promise<void> => {
 		runInAction(() => {
 			this.isLoading = true;
 			this.isError = false;
@@ -25,8 +26,14 @@ class $SettingsEditorStore {
 			this.data = null;
 		});
 
+		const guard = typeof config !== 'object' ?
+			true :
+			typeof config === 'object' && !config.hasOwnProperty('userId') ?
+			true :
+			false;
+
 		try {
-			if (typeof config !== 'object' || (typeof config === 'object' && !config.hasOwnProperty('userId'))) {
+			if (guard) {
 				throw new Error('Failure settings editor... The config must have the property *userId*...');
 			}
 
@@ -54,6 +61,12 @@ class $SettingsEditorStore {
 	addIdNewColumnAction = (idNewColumn: string): void => {
 		if (!this.isLoading && this.data && this.data.settingsEditor) {
 			this.data.settingsEditor.columns.push(idNewColumn);
+		}
+	};
+
+	setNewOrderColumnsAction = (newColumnsOrder: string[]): void => {
+		if (!this.isLoading && this.data && this.data.settingsEditor) {
+			this.data.settingsEditor.columns = newColumnsOrder;
 		}
 	};
 };

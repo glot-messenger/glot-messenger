@@ -1,16 +1,20 @@
 import { getUniqueId } from '../utils';
 
 class SlotModel {
-   _id: string;
+   _id: number;
 
    columnId: string;
 
    isEmpty: boolean;
 
+	nameWidget: string;
+
    constructor({ columnId }: any) {
-      this._id = getUniqueId('slot');
+      // this._id = getUniqueId('slot');
+		this._id = Date.now();
       this.columnId = columnId;
       this.isEmpty = true;
+		this.nameWidget = '';
    };
 };
 

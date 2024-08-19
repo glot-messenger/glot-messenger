@@ -15,7 +15,7 @@ let staticSlot: null | Slot = null;
 class Slot {
    #dataProvider = factorySlotDataProvider();
 
-	 #eventEmitter = factoryEventEmitter();
+	#eventEmitter = factoryEventEmitter();
 
    constructor() {
       if (staticSlot !== null) {
@@ -25,7 +25,7 @@ class Slot {
 		staticSlot = this;
    };
 
-	 async getSlots(config: any) {
+	async getSlots(config: any) {
 		const containerData = await this.#dataProvider.get(config);
 
 		if (containerData.isError) {
@@ -43,7 +43,29 @@ class Slot {
 			message: 'Success slots editor! Successful receipt of the editor`s slots.',
 			data: containerData.data
 		});
-	 };
+	};
+
+	async addNewSlot(config: any) {
+		const instanceSlotModel = factorySlotModel(config);
+
+		const containerData = await this.#dataProvider.set({ data: instanceSlotModel, ...config, configRequest: { concatUrl: ['slot'] } });
+
+		if (containerData.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: 'Failure slots editor... An error occurred when adding a new slot to the column.',
+				data: {
+					newSlotToTheColumnEditor: null
+				}
+			});
+		}
+
+		return factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: 'Success slots editor! Successfully adding a new slot to the editor column.',
+			data: containerData.data
+		});
+	};
 
 	//  async clearSlot(config: any, updating: any) {
 	// 	if (typeof updating === 'object' && (config !== undefined || config !== null)) {

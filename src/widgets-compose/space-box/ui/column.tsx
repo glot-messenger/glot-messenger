@@ -26,15 +26,20 @@ import {
 	configContextMenuColumn,
 	BUTTON_LOCK_EVENT_CLICK,
 	UPDATE_COLUMN_EVENT_SEGMENT,
-	BUTTON_WITH_DYNAMIC_BACKGROUND
+	BUTTON_WITH_DYNAMIC_BACKGROUND,
+	MOVING_RIGHT_COLUMN_EVENT_SEGMENT,
+	MOVING_LEFT_COLUMN_EVENT_SEGMENT,
+	MOVING_BEGINNING_COLUMN_EVENT_SEGMENT,
+	MOVING_ENDING_COLUMN_EVENT_SEGMENT,
+	ADD_SLOT_EVENT_SEGMENT
 } from '../../../shared';
 
 const Column: React.FC<IColumnProps> = observer(({ data }) => {
 	const eventEmitter = useContext(EventEmitterContext);
 
-	const { data: slotsPack } = $slotsEditorStore;
+	const { data: slotsPack, addNewSlotToTheColumnEditorAction } = $slotsEditorStore;
 
-	const { updateColumnEditorAction } = $columnsEditorStore;
+	const { updateColumnEditorAction, changingColumnEditorPositionAction } = $columnsEditorStore;
 
 	const [columnModalStatus, setColumnModalStatus] = useState<boolean>(false);
 
@@ -44,23 +49,62 @@ const Column: React.FC<IColumnProps> = observer(({ data }) => {
 
 	useEffect(() => {
 		eventEmitter.on(BUTTON_DOTS_EVENT_CLICK + COLUMN_EVENT_SEGMENT, ({ data: payloadDotsBtn }) => {
+			// Открывает контекстное меню колонки
 			if (payloadDotsBtn.columnId === _id) {
 				setColumnModalStatus(true);
 			}
 		});
 
 		eventEmitter.on(BUTTON_LOCK_EVENT_CLICK + COLUMN_EVENT_SEGMENT, ({ data: payloadLockBtn }) => {
+			// Обновление колонки по замочку (открыть/закрыть для изменений)
 			if (payloadLockBtn.columnId === _id) {
 				updateColumnEditorAction(payloadLockBtn);
 			}
 		});
 
 		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + UPDATE_COLUMN_EVENT_SEGMENT, ({ data: payloadDynamicBackgroundBtn }) => {
+			// Обновление колонки через ее контекстное меню (открыть/закрыть для изменений)
 			if (payloadDynamicBackgroundBtn.columnId === _id) {
 				updateColumnEditorAction(payloadDynamicBackgroundBtn);
 			}
 		});
 
+		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + MOVING_RIGHT_COLUMN_EVENT_SEGMENT, ({ data: payloadDynamicBackgroundBtn }) => {
+			// Обновление позиции колонки в редакторе, смещение вправо
+			if (payloadDynamicBackgroundBtn.columnId === _id) {
+				changingColumnEditorPositionAction(payloadDynamicBackgroundBtn);
+			}
+		});
+
+		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + MOVING_LEFT_COLUMN_EVENT_SEGMENT, ({ data: payloadDynamicBackgroundBtn }) => {
+			// Обновление позиции колонки в редакторе, смещение влево
+			if (payloadDynamicBackgroundBtn.columnId === _id) {
+				changingColumnEditorPositionAction(payloadDynamicBackgroundBtn);
+			}
+		});
+
+		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + MOVING_BEGINNING_COLUMN_EVENT_SEGMENT, ({ data: payloadDynamicBackgroundBtn }) => {
+			// Обновление позиции колонки в редакторе, смещение в начало
+			if (payloadDynamicBackgroundBtn.columnId === _id) {
+				changingColumnEditorPositionAction(payloadDynamicBackgroundBtn);
+			}
+		});
+
+		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + MOVING_ENDING_COLUMN_EVENT_SEGMENT, ({ data: payloadDynamicBackgroundBtn }) => {
+			// Обновление позиции колонки в редакторе, смещение в конец
+			if (payloadDynamicBackgroundBtn.columnId === _id) {
+				changingColumnEditorPositionAction(payloadDynamicBackgroundBtn);
+			}
+		});
+
+		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + ADD_SLOT_EVENT_SEGMENT, ({ data: payloadDynamicBackgroundBtn }) => {
+			// Добавление в колонку нового слота
+			if (payloadDynamicBackgroundBtn.columnId === _id) {
+				addNewSlotToTheColumnEditorAction(payloadDynamicBackgroundBtn);
+			}
+		});
+
+		// События, закрывающие модальное окно
 		eventEmitter.on(MODAL_EMPTY_SPACE_EVENT_CLICK, () => { setColumnModalStatus(false); });
 		eventEmitter.on(BUTTON_CLOSE_EVENT_CLICK + MODAL_EVENT_SEGMENT, () => { setColumnModalStatus(false); });
 		eventEmitter.on(BUTTON_RED_EVENT_CLICK + MODAL_EVENT_SEGMENT, () => { setColumnModalStatus(false); });

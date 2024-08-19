@@ -3,7 +3,11 @@ import type { IConfigContextMenu } from '../../types';
 import {
 	ADD_SLOT_EVENT_SEGMENT,
 	DELETE_COLUMN_EVENT_SEGMENT,
-	UPDATE_COLUMN_EVENT_SEGMENT
+	UPDATE_COLUMN_EVENT_SEGMENT,
+	MOVING_LEFT_COLUMN_EVENT_SEGMENT,
+	MOVING_RIGHT_COLUMN_EVENT_SEGMENT,
+	MOVING_BEGINNING_COLUMN_EVENT_SEGMENT,
+	MOVING_ENDING_COLUMN_EVENT_SEGMENT
 } from '../../core';
 
 const configContextMenuColumn: IConfigContextMenu = {
@@ -37,7 +41,7 @@ const configContextMenuColumn: IConfigContextMenu = {
 				type: 'button',
 				titleHover: 'Нажмите, чтобы удалить эту колонку.',
 				classes: 'context-menu__btn red-red',
-				segmentEvent: DELETE_COLUMN_EVENT_SEGMENT,
+				// segmentEvent: DELETE_COLUMN_EVENT_SEGMENT,
 				payload: {}
 			},
 			icon: {
@@ -89,7 +93,10 @@ const configContextMenuColumn: IConfigContextMenu = {
 				type: 'button',
 				titleHover: 'Нажмите, чтобы отправить колонку влево.',
 				classes: 'context-menu__btn gray-blue',
-				payload: {}
+				segmentEvent: MOVING_LEFT_COLUMN_EVENT_SEGMENT,
+				payload: {
+					position: 'index - 1'
+				}
 			},
 			icon: {
 				name: 'arrow-left.svg',
@@ -104,7 +111,10 @@ const configContextMenuColumn: IConfigContextMenu = {
 				type: 'button',
 				titleHover: 'Нажмите, чтобы отправить колонку вправо.',
 				classes: 'context-menu__btn gray-blue',
-				payload: {}
+				segmentEvent: MOVING_RIGHT_COLUMN_EVENT_SEGMENT,
+				payload: {
+					position: 'index + 1'
+				}
 			},
 			icon: {
 				name: 'arrow-right.svg',
@@ -119,7 +129,10 @@ const configContextMenuColumn: IConfigContextMenu = {
 				type: 'button',
 				titleHover: 'Нажмите, чтобы отправить колонку в начало.',
 				classes: 'context-menu__btn gray-blue',
-				payload: {}
+				segmentEvent: MOVING_BEGINNING_COLUMN_EVENT_SEGMENT,
+				payload: {
+					position: 'index = first'
+				}
 			},
 			icon: {
 				name: 'flag.svg',
@@ -134,7 +147,10 @@ const configContextMenuColumn: IConfigContextMenu = {
 				type: 'button',
 				titleHover: 'Нажмите, чтобы отправить колонку в конец.',
 				classes: 'context-menu__btn gray-blue',
-				payload: {}
+				segmentEvent: MOVING_ENDING_COLUMN_EVENT_SEGMENT,
+				payload: {
+					position: 'index = last'
+				}
 			},
 			icon: {
 				name: 'end-horizon.svg',
