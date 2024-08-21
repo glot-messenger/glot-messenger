@@ -61,6 +61,26 @@ class Column {
 		});
 	};
 
+	async deleteColumn(config: any) {
+		const containerData = await this.#dataProvider.delete({ ...config, configRequest: { concatUrl: ['column', `${config['columnId'] || '12324234234234324123some-id'}`] } });
+
+		if (containerData.isError) {
+			return factoryContainerForResultsSomeAsyncMethods({
+				isError: true,
+				message: 'Failure columns editor... An error occurred when deleting the editor column.',
+				data: {
+					deletedColumn: null
+				}
+			});
+		}
+
+		return factoryContainerForResultsSomeAsyncMethods({
+			isError: false,
+			message: 'Success columns editor! Deleting the column you selected from the editor was successful.',
+			data: containerData.data
+		});
+	};
+
 	async updateColumnById(config: any) {
 		const containerData = await this.#dataProvider.update({ ...config, configRequest: { concatUrl: ['column', `${config['columnId'] || '12324234234234324123some-id'}`] } });
 
@@ -90,7 +110,8 @@ class Column {
 				message: 'Failure columns editor... An error occurred when changing the column position.',
 				data: {
 					movableColumn: null,
-					newIndex: -1
+					newIndex: -1,
+					newColumnsOrder: null
 				}
 			});
 		}

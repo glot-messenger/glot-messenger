@@ -41,7 +41,7 @@ const configContextMenuColumn: IConfigContextMenu = {
 				type: 'button',
 				titleHover: 'Нажмите, чтобы удалить эту колонку.',
 				classes: 'context-menu__btn red-red',
-				// segmentEvent: DELETE_COLUMN_EVENT_SEGMENT,
+				segmentEvent: DELETE_COLUMN_EVENT_SEGMENT,
 				payload: {}
 			},
 			icon: {

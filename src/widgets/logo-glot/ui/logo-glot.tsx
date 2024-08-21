@@ -37,6 +37,7 @@ import {
 	configLogoGlotBtnArrows
 } from '../config';
 
+// Если виджет хочет добавить контекстное меню слота, то ему надо внутри себя реализовать модалку с контекстным меню слота, но всю обработку описывать у себя в useEffect не надо, за это отвечает компонент выше Slot
 const LogoGlot: React.FC<ILogoGlotProps> = observer(({ columnId, _id }) => {
 	const navigate = useNavigate();
 
@@ -60,6 +61,7 @@ const LogoGlot: React.FC<ILogoGlotProps> = observer(({ columnId, _id }) => {
 
 	useEffect(() => {
 		eventEmitter.on(BUTTON_ARROWS_EVENT_CLICK + SLOT_EVENT_SEGMENT, () => {
+			// Открывает модальное окно слота
 			setSlotModalStatus(true);
 		});
 
@@ -76,6 +78,7 @@ const LogoGlot: React.FC<ILogoGlotProps> = observer(({ columnId, _id }) => {
 		});
 
 		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + LOG_OUT_AUTHORIZATION_EVENT_SEGMENT, (payload) => {
+			// Сбрасывает текущую авторизацию пользователя
 			console.log('Нужно написать функцию, которая сбросит стор авторизации и сбросит из LocalStorage всю информацию по авторизации.');
 
 			setLogoGlotModalStatus(false);
@@ -85,6 +88,7 @@ const LogoGlot: React.FC<ILogoGlotProps> = observer(({ columnId, _id }) => {
 			navigate(HOME);
 		});
 
+		// События, закрывающие модальное окно
 		eventEmitter.on(MODAL_EMPTY_SPACE_EVENT_CLICK, () => {
 			setLogoGlotModalStatus(false);
 			setSlotModalStatus(false);
@@ -104,7 +108,7 @@ const LogoGlot: React.FC<ILogoGlotProps> = observer(({ columnId, _id }) => {
 
 	return (
 		<div className='logo-glot'>
-			<ButtonArrows {...configLogoGlotBtnArrows.button} />
+			<ButtonArrows { ...configLogoGlotBtnArrows.button } />
 			<div className='logo-glot__container'>
 				<div className='logo-glot__wrapper-btn'>
 					<button onClick={handlerClick} title={button.titleHover} type={button.type} className={`logo-glot__btn${logoGlotModalStatus ? ' target' : ''}`}>
@@ -114,16 +118,16 @@ const LogoGlot: React.FC<ILogoGlotProps> = observer(({ columnId, _id }) => {
 				</div>
 			</div>
 			<Modal isModal={logoGlotModalStatus}>
-				<ContextMenu {...configContextMenuLogoGlot} renderElementFN={({ button, icon }: IElementContextMenu) => (
-					<ButtonWithDynamicBackground {...button} payload={{ columnId, slotId: _id, ...button.payload }}>
+				<ContextMenu { ...configContextMenuLogoGlot } renderElementFN={({ button, icon }: IElementContextMenu) => (
+					<ButtonWithDynamicBackground { ...button } payload={{ columnId, slotId: _id, ...button.payload }}>
 						<span className='context-menu__text'>{button.textBtn}</span>
 						<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
 					</ButtonWithDynamicBackground>
 				)} />
 			</Modal>
 			<Modal isModal={slotModalStatus}>
-				<ContextMenu {...configContextMenuSlot}  renderElementFN={({ button, icon }: IElementContextMenu) => (
-					<ButtonWithDynamicBackground {...button} payload={{ columnId, slotId: _id, settingId: settingsEditorDataStore?.settingsEditor?._id, ...button.payload }}>
+				<ContextMenu { ...configContextMenuSlot }  renderElementFN={({ button, icon }: IElementContextMenu) => (
+					<ButtonWithDynamicBackground { ...button } payload={{ columnId, slotId: _id, isEmpty: false, value: button.payload }}>
 						<span className='context-menu__text'>{button.textBtn}</span>
 						<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
 					</ButtonWithDynamicBackground>

@@ -5,7 +5,7 @@ import { NativeResponseEngine } from '../engines-for-response';
 import type {
 	BaseResponseEngineFetchClass,
 	NativeResponseEngineClass,
-  IResponseEngineFetch,
+	IResponseEngineFetch,
 	IResponseEngineNative
 } from '../engines-for-response';
 
@@ -22,7 +22,7 @@ class RequestModule {
 
    static strategyResponse: null | BaseResponseEngineFetchClass | NativeResponseEngineClass = null;
 
-	 static headers = {};
+	static headers = {};
 
 	// static instanceCache: null | ICache & ICacheConcrate = null;
 
@@ -45,6 +45,12 @@ class RequestModule {
          static override method = 'GET';
       };
    };
+
+	static get delete(): typeof RequestModule {
+		return class extends this {
+			static override method = 'DELETE';
+		};
+	};
 
    static get jsonFormat(): typeof RequestModule {
 		return class extends this {

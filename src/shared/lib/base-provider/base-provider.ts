@@ -32,6 +32,14 @@ class BaseProvider implements IDataProvider {
 		});
 	};
 
+	async delete(config: any): Promise<any> {
+		console.log('Implement the delete() method in your specified provider. Now it is taken from the Base Provider.');
+
+		return ({
+			message: 'Implement the delete() method in your specified provider. Now it is taken from the Base Provider.'
+		});
+	};
+
 	async operation(config: any): Promise<any> {
 		console.log('Implement the operation() method in your specified provider. Now it is taken from the Base Provider.');
 

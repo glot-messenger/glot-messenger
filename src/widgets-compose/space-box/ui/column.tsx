@@ -31,7 +31,8 @@ import {
 	MOVING_LEFT_COLUMN_EVENT_SEGMENT,
 	MOVING_BEGINNING_COLUMN_EVENT_SEGMENT,
 	MOVING_ENDING_COLUMN_EVENT_SEGMENT,
-	ADD_SLOT_EVENT_SEGMENT
+	ADD_SLOT_EVENT_SEGMENT,
+	DELETE_COLUMN_EVENT_SEGMENT
 } from '../../../shared';
 
 const Column: React.FC<IColumnProps> = observer(({ data }) => {
@@ -39,7 +40,7 @@ const Column: React.FC<IColumnProps> = observer(({ data }) => {
 
 	const { data: slotsPack, addNewSlotToTheColumnEditorAction } = $slotsEditorStore;
 
-	const { updateColumnEditorAction, changingColumnEditorPositionAction } = $columnsEditorStore;
+	const { updateColumnEditorAction, changingColumnEditorPositionAction, deleteColumnByIdEditorAction } = $columnsEditorStore;
 
 	const [columnModalStatus, setColumnModalStatus] = useState<boolean>(false);
 
@@ -104,6 +105,13 @@ const Column: React.FC<IColumnProps> = observer(({ data }) => {
 			}
 		});
 
+		eventEmitter.on(BUTTON_WITH_DYNAMIC_BACKGROUND + DELETE_COLUMN_EVENT_SEGMENT, ({ data: payloadDynamicBackgroundBtn }) => {
+			// Удаление колонки со всеми слотами
+			if (payloadDynamicBackgroundBtn.columnId === _id) {
+				deleteColumnByIdEditorAction(payloadDynamicBackgroundBtn);
+			}
+		});
+
 		// События, закрывающие модальное окно
 		eventEmitter.on(MODAL_EMPTY_SPACE_EVENT_CLICK, () => { setColumnModalStatus(false); });
 		eventEmitter.on(BUTTON_CLOSE_EVENT_CLICK + MODAL_EVENT_SEGMENT, () => { setColumnModalStatus(false); });
@@ -111,7 +119,7 @@ const Column: React.FC<IColumnProps> = observer(({ data }) => {
 	}, []);
 
 	return (
-		<div className='column' style={{...styles}}>
+		<div className='column' style={{ ...styles }}>
 			<div className='column__head'>
 				<ButtonLock flagStatus={accessForChanges} data={{ settingId, columnId: _id, value: { accessForChanges: !accessForChanges } }} segmentEvent={COLUMN_EVENT_SEGMENT} />
 				<ButtonDots segmentEvent={COLUMN_EVENT_SEGMENT} data={{ columnId: _id }} />
@@ -124,7 +132,7 @@ const Column: React.FC<IColumnProps> = observer(({ data }) => {
 				})}
 			</div> 
 			<Modal isModal={columnModalStatus}>
-				<ContextMenu {...configContextMenuColumn} renderElementFN={({ button, icon }: IElementContextMenu) => (
+				<ContextMenu { ...configContextMenuColumn } renderElementFN={({ button, icon }: IElementContextMenu) => (
 					<ButtonWithDynamicBackground {...button} payload={{ settingId, columnId: _id, value: button.payload }}>
 						<span className='context-menu__text'>{button.textBtn}</span>
 						<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />

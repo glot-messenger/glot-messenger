@@ -20,9 +20,9 @@ class SlotDataProvider extends BaseProvider {
 	override async get(config: any) {
 		const request = SlotDataProvider.request.post.jsonFormat.body(config);
 
-		const valueSlot = await request.create();
+		const valueSlots = await request.create();
 
-		return valueSlot.jsonUnpacking();
+		return valueSlots.jsonUnpacking();
 	};
 
 	override async set(config: any) {
@@ -42,23 +42,76 @@ class SlotDataProvider extends BaseProvider {
 
 		request = request.post.jsonFormat.body(config);
 
-		const valueColumns = await request.create();
+		const valueSlot = await request.create();
 
-		return valueColumns.jsonUnpacking();
+		return valueSlot.jsonUnpacking();
 	};
 
-	override async update({ data, config }: any) {
-		const { method } = config;
+	override async update(config: any) {
+		let request = SlotDataProvider.request;
 
-		const request = SlotDataProvider.request.post.nativeFormat.concatUrl(method ? method : 'simpleSlotUpgrade').body({
-			data,
-			payload: config.payload
-		});
+		const { configRequest } = config;
+
+		if (typeof configRequest === 'object' && configRequest.hasOwnProperty('concatUrl') && Array.isArray(configRequest['concatUrl'])) {
+			const arraySegmentsUrlRequest = configRequest['concatUrl'];
+
+			for (let z = 0; z < arraySegmentsUrlRequest.length; z++) {
+				request = request.concatUrl(arraySegmentsUrlRequest[z]);
+			}
+		}
+
+		delete config['configRequest'];
+
+		request = request.patch.jsonFormat.body(config);
 
 		const valueSlot = await request.create();
 
-		return valueSlot.nativeUnpacking();
-	}
+		return valueSlot.jsonUnpacking();
+	};
+
+	override async delete(config: any) {
+		let request = SlotDataProvider.request;
+
+		const { configRequest } = config;
+
+		if (typeof configRequest === 'object' && configRequest.hasOwnProperty('concatUrl') && Array.isArray(configRequest['concatUrl'])) {
+			const arraySegmentsUrlRequest = configRequest['concatUrl'];
+
+			for (let z = 0; z < arraySegmentsUrlRequest.length; z++) {
+				request = request.concatUrl(arraySegmentsUrlRequest[z]);
+			}
+		}
+
+		delete config['configRequest'];
+
+		request = request.delete.jsonFormat.body(config);
+
+		const valueSlot = await request.create();
+
+		return valueSlot.jsonUnpacking();
+	};
+
+	override async operation(config: any) {
+		let request = SlotDataProvider.request;
+
+		const { configRequest } = config;
+
+		if (typeof configRequest === 'object' && configRequest.hasOwnProperty('concatUrl') && Array.isArray(configRequest['concatUrl'])) {
+			const arraySegmentsUrlRequest = configRequest['concatUrl'];
+
+			for (let z = 0; z < arraySegmentsUrlRequest.length; z++) {
+				request = request.concatUrl(arraySegmentsUrlRequest[z]);
+			}
+		}
+
+		delete config['configRequest'];
+
+		request = request.post.jsonFormat.body(config);
+
+		const valueSlot = await request.create();
+
+		return valueSlot.jsonUnpacking();
+	};
 };
 
 export { SlotDataProvider };

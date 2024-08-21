@@ -17,12 +17,15 @@ export interface IDataProvider {
 	get: (config?: any) => Promise<any>;
 	set: (data: any) => Promise<any>;
 	update: (config: any) => Promise<any>;
+	delete: (config: any) => Promise<any>;
 	operation: (config: any) => Promise<any>;
 };
 
 interface IPayloadContextMenu {
 	position?: 'index + 1' | 'index - 1' | 'index = first' | 'index = last';
 	accessForChanges?: boolean;
+	nameWidget?: '';
+	isEmpty?: boolean;
 };
 
 export interface IElementContextMenu {

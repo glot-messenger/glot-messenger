@@ -59,14 +59,26 @@ class $SettingsEditorStore {
 	};
 
 	addIdNewColumnAction = (idNewColumn: string): void => {
-		if (!this.isLoading && this.data && this.data.settingsEditor) {
+		if (!this.isLoading && this.data && this.data?.settingsEditor) {
 			this.data.settingsEditor.columns.push(idNewColumn);
 		}
 	};
 
 	setNewOrderColumnsAction = (newColumnsOrder: string[]): void => {
-		if (!this.isLoading && this.data && this.data.settingsEditor) {
+		if (!this.isLoading && this.data && this.data?.settingsEditor) {
 			this.data.settingsEditor.columns = newColumnsOrder;
+		}
+	};
+
+	deleteIdColumnAction = (idDeletedColumn: string): void => {
+		if (!this.isLoading && this.data && this.data?.settingsEditor) {
+			this.data.settingsEditor.columns = this.data.settingsEditor.columns.filter((idColumn: string): boolean => {
+				if (idColumn !== idDeletedColumn) {
+					return true;
+				}
+
+				return false;
+			});
 		}
 	};
 };

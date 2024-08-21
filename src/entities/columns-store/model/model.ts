@@ -116,6 +116,57 @@ class $ColumnsEditorStore {
 		}
 	};
 
+	// Удаление колонки редактора со всеми входящими в нее слотами осуществляется по { columnId: '66a2b8e61a2f1d3e154d0df9', settingId: '66a2a9f0738f8cc0f1aa7306' }
+	deleteColumnByIdEditorAction = async(config: any): Promise<void> => {
+		runInAction(() => {
+			this.isErrorForSomeOperation = false;
+			this.messageErrorForSomeOperation = '';
+		});
+
+		const guard = typeof config !== 'object' ?
+			true :
+			typeof config === 'object' && (!config.hasOwnProperty('settingId') || !config['settingId']) ?
+			true :
+			typeof config === 'object' && (!config.hasOwnProperty('columnId') || !config['columnId']) ?
+			true :
+			false;
+
+		try {
+			if (guard) {
+				throw new Error('Failure columns editor... The config must have the property *columnId* and property *settingId*...');
+			}
+
+			const { message, isError, data } = await this.service.deleteColumn(config);
+
+			if (isError) {
+				throw new Error(message);
+			}
+
+			runInAction(() => {
+				const { deletedColumn } = data;
+
+				if (!this.isLoading && this.data && this.data?.columnsEditor) {
+					this.data.columnsEditor = this.data.columnsEditor.filter((columnData: any): boolean => {
+						if (columnData._id !== deletedColumn._id) {
+							return true;
+						}
+
+						return false;
+					});
+
+					$settingsEditorStore.deleteIdColumnAction(deletedColumn._id);
+					$slotsEditorStore.deletePackSlotsAndKeyForDeletedColumnAction(deletedColumn._id);
+				}
+			});
+
+		} catch (err: any) {
+			runInAction(() => {
+				this.isErrorForSomeOperation = true;
+				this.messageErrorForSomeOperation = err.message;
+			});
+		}
+	};
+
 	// Обновление конкретной колонки происходит по id колонки при помощи обновляющей нагрузки value { columnId: '123943fjgld213dkjlfg213', value: { accessForChanges (ключ колонки): true } }
 	updateColumnEditorAction = async(config: any): Promise<void> => {
 		runInAction(() => {
@@ -242,12 +293,50 @@ class $ColumnsEditorStore {
 
 	addIdNewSlotAction = (idNewSlot: string, columnId: string): void => {
 		if (!this.isLoading && this.data && this.data?.columnsEditor) {
-			const searchColumn = this.data.columnsEditor.find((columnData: any) => {
+			const searchColumn = this.data.columnsEditor.find((columnData: any): boolean => {
 				return columnData._id === columnId;
 			});
 
 			if (searchColumn) {
 				searchColumn.slots.push(idNewSlot);
+			}
+		}
+	};
+
+	deleteIdSlotAction = (idDeletedSlot: string, idColumn: string): void => {
+		if (!this.isLoading && this.data && this.data?.columnsEditor) {
+			const searchColumn = this.data.columnsEditor.find((dataColumn: any): boolean => {
+				if (dataColumn._id === idColumn) {
+					return true;
+				}
+
+				return false;
+			});
+
+			if (searchColumn) {
+				searchColumn.slots = searchColumn.slots.filter((idSlot: string) => {
+					if (idSlot !== idDeletedSlot) {
+						return true;
+					}
+
+					return false;
+				});
+			}
+		}
+	};
+
+	setNewOrderSlotsAction = (newSlotsOrder: string[], idColumn: string): void => {
+		if (!this.isLoading && this.data && this.data?.columnsEditor) {
+			const searchColumn = this.data.columnsEditor.find((dataColumn: any): boolean => {
+				if (dataColumn._id === idColumn) {
+					return true;
+				}
+
+				return false;
+			});
+
+			if (searchColumn) {
+				searchColumn.slots = newSlotsOrder;
 			}
 		}
 	};

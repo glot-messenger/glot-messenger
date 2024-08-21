@@ -7,12 +7,12 @@ const ContextMenu: React.FC<IContextMenuProps> = ({ data, renderElementFN, title
    return (
       <div className='context-menu'>
          <div className='context-menu__container'>
-						<div className='context-menu__header'>
-							<img className='context-menu__icon-title' src={`/assets/icons/${icon.name}`} alt={icon.alt} />
-							<h2 className='context-menu__title'>{title}</h2>
-							<p className='context-menu__sub-title'>{subTitle}</p>
-							<span className='context-menu__element-title'></span>
-						</div>
+				<div className='context-menu__header'>
+					<img className='context-menu__icon-title' src={`/assets/icons/${icon.name}`} alt={icon.alt} />
+					<h2 className='context-menu__title'>{title}</h2>
+					<p className='context-menu__sub-title'>{subTitle}</p>
+					<span className='context-menu__element-title'></span>
+				</div>
             <ul className='context-menu__list-elements'>
                {data.map((elementData: IElementContextMenu, index: number) => {
                   return (
