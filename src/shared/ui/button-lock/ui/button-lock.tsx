@@ -4,6 +4,7 @@ import type { IButtonLockProps } from './interafaces';
 import { configForButtonLock } from '../config';
 import { EventEmitterContext } from '../../../../entities';
 import { BUTTON_LOCK_EVENT_CLICK } from '../../../core';
+import { config } from '../../../../shared';
 
 const ButtonLock: React.FC<IButtonLockProps> = ({ flagStatus, data, segmentEvent }) => {
 	const eventEmitter = useContext(EventEmitterContext);
@@ -21,7 +22,7 @@ const ButtonLock: React.FC<IButtonLockProps> = ({ flagStatus, data, segmentEvent
 
    return (
       <button onClick={handlerClickBtnLock} type='button' title={icon.titleHover} className='button-lock'>
-         <img src={`/assets/icons/${icon.name}`} alt={icon.alt} className='button-lock__icon' />
+         <img src={`${config.endPointForStatics}assets/icons/${icon.name}`} alt={icon.alt} className='button-lock__icon' />
       </button>
    );
 };

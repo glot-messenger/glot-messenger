@@ -3,7 +3,8 @@ import './logo-style.css';
 
 import {
 	LinkElement,
-	HOME
+	HOME,
+	config
 } from '../../../shared';
 
 import type { ILogoProps } from './interafaces';
@@ -16,7 +17,7 @@ const Logo: React.FC<ILogoProps> = ({ text, icon }) => {
 	return (
 		<div className='logo-block'>
 			<LinkElement typeElement='Link' to={correctPath} titleHover={titleHover} classesValue='logo-block__link'>
-				<img className='logo-block__icon' src={`/assets/icons/logo/${name}`} alt={alt} />
+				<img className='logo-block__icon' src={`${config.endPointForStatics}assets/icons/logo/${name}`} alt={alt} />
 				<span className='logo-block__title'>{text}</span>
 			</LinkElement>
 		</div>

@@ -7,6 +7,8 @@ import { configContextMenuLogoGlot } from './config-context-menu-logo-glot';
 import { configSocialNetworkBlock } from './config-social-network-block';
 import { configFeaturesBlock } from './config-features-block';
 import { configSignatureBlock } from './config-signature-block';
+import { configWhatsNewBlock } from './config-whats-new-block';
+import { configSocialNetworkWhatsNew } from './config-social-network-whats-new';
 
 export {
 	configLogoGlot,
@@ -14,5 +16,7 @@ export {
 	configLogoGlotBtnArrows,
 	configSocialNetworkBlock,
 	configFeaturesBlock,
-	configSignatureBlock
+	configSignatureBlock,
+	configWhatsNewBlock,
+	configSocialNetworkWhatsNew
 };

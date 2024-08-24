@@ -4,6 +4,7 @@ import { EventEmitterContext } from './event-emitter';
 import { $settingsEditorStore } from './settings-editor-store';
 import { $columnsEditorStore } from './columns-store';
 import { $slotsEditorStore } from './slots-store';
+import { $whatsNewStore } from './whats-new';
 
 export {
 	ConditionAuthBoxContext,
@@ -11,5 +12,6 @@ export {
 
 	$settingsEditorStore,
 	$columnsEditorStore,
-	$slotsEditorStore
+	$slotsEditorStore,
+	$whatsNewStore
 };

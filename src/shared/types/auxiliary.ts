@@ -55,6 +55,22 @@ export type IConfigContextMenu = {
 	};
 };
 
+export interface IIconDefault {
+	name: string;
+	alt: string;
+};
+
+export interface IImageDefault {
+	name: string;
+	alt: string;
+};
+
+export interface ILinkDefault {
+	path: string;
+	titleHover: string;
+	targetValue: '_blank' | '_self';
+};
+
 export interface IIcon {
 	name: string;
 	alt: string;

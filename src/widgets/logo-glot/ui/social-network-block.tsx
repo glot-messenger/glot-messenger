@@ -7,7 +7,8 @@ import { Signature } from './signature';
 import {
 	arraySocialNetworkLinks,
 	LinkElement,
-	ButtonWithDynamicBackground
+	ButtonWithDynamicBackground,
+	config
 } from '../../../shared';
 
 const SocialNetworkBlock: React.FC = () => {
@@ -17,7 +18,7 @@ const SocialNetworkBlock: React.FC = () => {
 		<div className='social-network-block'>
 			<div className='social-network-block__container'>
 				<div className='social-network-block__header'>
-					<img src={`/assets/icons/${icon.name}`} alt={icon.alt} className='social-network-block__icon' />
+					<img src={`${config.endPointForStatics}assets/icons/${icon.name}`} alt={icon.alt} className='social-network-block__icon' />
 					<h2 className='social-network-block__title'>{title}</h2>
 					<p className='social-network-block__sub-title'>{subTitle}</p>
 					<p className='social-network-block__text'>{text}</p>
@@ -31,7 +32,7 @@ const SocialNetworkBlock: React.FC = () => {
 								<li key={index} className='social-network-block__element'>
 									<LinkElement to={correctPath} titleHover={titleHover} classesValue='social-network-block__link' typeElement='nativeLink'>
 										<ButtonWithDynamicBackground type='button' titleHover={titleHover} typeElement='button' payload={{}} segmentEvent='nativeLink' classes='social-network-block__btn-link'>
-											<img className='social-network-block__img-icon' src={`/assets/icons/social-network-icons/${name}`} alt={alt} />
+											<img className='social-network-block__img-icon' src={`${config.endPointForStatics}assets/icons/social-network-icons/${name}`} alt={alt} />
 										</ButtonWithDynamicBackground>
 									</LinkElement>
 								</li>

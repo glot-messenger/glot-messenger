@@ -4,7 +4,8 @@ import { configForNotFoundPageDrawData } from '../config';
 
 import {
 	LinkElement,
-	ButtonPretty
+	ButtonPretty,
+	config
 } from '../../../shared';
 
 const NotFoundPage: React.FC = () => {
@@ -21,13 +22,13 @@ const NotFoundPage: React.FC = () => {
 				<p className='not-found__sub-title'>{subTitle}</p>
 				<LinkElement classesValue='not-found__link' to={path} titleHover={titleHover} typeElement='Link'>
 					<ButtonPretty classes='not-found__btn' type='button' typeElement='button' titleHover={titleHover}>
-						<img className='not-found__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} />
+						<img className='not-found__icon' src={`${config.endPointForStatics}assets/icons/${icon.name}`} alt={icon.alt} />
 						<span>{text}</span>
 					</ButtonPretty>
 				</LinkElement>
 			</div>
 			<div className='not-found__column'>
-				<img className='not-found__right-icon' src={`/assets/icons/${secondIcon.name}`} alt={secondIcon.alt} />
+				<img className='not-found__right-icon' src={`${config.endPointForStatics}assets/icons/${secondIcon.name}`} alt={secondIcon.alt} />
 			</div>
 		</div>
 	);

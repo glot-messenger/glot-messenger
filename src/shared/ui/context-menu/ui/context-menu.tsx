@@ -2,13 +2,14 @@ import React from 'react';
 import './context-menu-style.css';
 import type { IContextMenuProps } from './interafaces';
 import type { IElementContextMenu } from '../../../types';
+import { config } from '../../../../shared';
 
 const ContextMenu: React.FC<IContextMenuProps> = ({ data, renderElementFN, title, subTitle, icon }) => {
    return (
       <div className='context-menu'>
          <div className='context-menu__container'>
 				<div className='context-menu__header'>
-					<img className='context-menu__icon-title' src={`/assets/icons/${icon.name}`} alt={icon.alt} />
+					<img className='context-menu__icon-title' src={`${config.endPointForStatics}assets/icons/${icon.name}`} alt={icon.alt} />
 					<h2 className='context-menu__title'>{title}</h2>
 					<p className='context-menu__sub-title'>{subTitle}</p>
 					<span className='context-menu__element-title'></span>

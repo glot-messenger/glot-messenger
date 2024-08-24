@@ -11,7 +11,7 @@ import {
 	MODAL_EVENT_SEGMENT
 } from '../../../shared';
 
-const Modal: React.FC<IModalProps> = ({ isModal, children }) => {
+const Modal: React.FC<IModalProps> = ({ isModal, children, title }) => {
 	const eventEmitter = useContext(EventEmitterContext);
 
 	const handlerClickOnModalEmptySpace = (): void => {
@@ -22,7 +22,12 @@ const Modal: React.FC<IModalProps> = ({ isModal, children }) => {
 		<div className={'modal' + (isModal ? ' active' : '')} onClick={handlerClickOnModalEmptySpace}>
 			{isModal &&
 				<div onClick={(event) => event.stopPropagation()} className='modal__container'>
-					<div className='modal__header'>
+					<div className='modal__header header-modal'>
+						<div className='header-modal__container-title'>
+							{title &&
+								<h1 className='header-modal__title'>{title}</h1>
+							}
+						</div>
 						<ButtonClose segmentEvent={MODAL_EVENT_SEGMENT} />
 					</div>
 					<div className='modal__content'>

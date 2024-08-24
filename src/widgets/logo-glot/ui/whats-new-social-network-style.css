@@ -1,0 +1,56 @@
+.social-network-whats-new {
+	position: sticky;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: 500;
+	padding: 6px;
+	background: #1a1a1d;
+	box-shadow: 0 0 3px 0px #000;
+}
+
+.social-network-whats-new__text {
+	font-size: 15px;
+	color: #90959B;
+	line-height: 120%;
+	text-align: center;
+	margin-bottom: 7px;
+}
+
+.social-network-whats-new__links-list {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.social-network-whats-new__element {
+	margin: 0px 10px 10px 0px;
+}
+
+.social-network-whats-new__element:last-child {
+	margin: 0px 0px 10px 0px;
+}
+
+.social-network-whats-new__link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 7px;
+	border-radius: 15px !important;
+	background-color: #28282c;
+	box-shadow: 0 0 3px 0px #000;
+}
+
+.social-network-whats-new__element .social-network-whats-new__link {
+	transition: background-color 0.3s ease 0s;
+}
+
+.social-network-whats-new__link:hover {
+	background: #049DEA;
+}
+
+.social-network-whats-new__img {
+	width: 23px;
+	height: 23px;
+	flex: 0 0 23px;
+}

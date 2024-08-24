@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import './checkbox-field-style.css';
 import type { ICheckboxFieldProps } from './interafaces';
+import { config } from '../../../../shared';
 
 const CheckboxField: React.FC<ICheckboxFieldProps> = memo(({ label, name, error, isRequired, titleHover, onChange, description, nameIcon, alt, value }) => {
 	function checkboxClick(): void {
@@ -20,7 +21,7 @@ const CheckboxField: React.FC<ICheckboxFieldProps> = memo(({ label, name, error,
 						<input className='checkbox-field__input' type='checkbox' name={name} id={name} checked={value} value='' onChange={checkboxClick} />
 						<div className={classesChecker}>
 							{value &&
-								<img className='checkbox-field__icon-checker' src={`/assets/icons/${nameIcon}`} alt={alt} />
+								<img className='checkbox-field__icon-checker' src={`${config.endPointForStatics}assets/icons/${nameIcon}`} alt={alt} />
 							}
 						</div>
 					</div>

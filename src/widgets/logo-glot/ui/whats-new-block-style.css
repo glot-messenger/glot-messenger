@@ -1,0 +1,9 @@
+.whats-new-block {
+	background-color: #111214;
+	box-shadow: 0 0 3px 0px #000;
+	border-radius: 3px !important;
+}
+
+.whats-new-block__container {
+	padding: 15px;
+}

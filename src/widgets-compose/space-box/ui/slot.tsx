@@ -27,7 +27,8 @@ import {
 	MOVING_DOWN_SLOT_EVENT_SEGMENT,
 	MOVING_UP_SLOT_EVENT_SEGMENT,
 	MOVING_BEGINNING_SLOT_EVENT_SEGMENT,
-	MOVING_ENDING_SLOT_EVENT_SEGMENT
+	MOVING_ENDING_SLOT_EVENT_SEGMENT,
+	config
 } from '../../../shared';
 
 import { EventEmitterContext } from '../../../entities';
@@ -111,7 +112,7 @@ const Slot: React.FC<ISlotProps> = observer(({ data }) => {
 					return (
 						<ButtonWithDynamicBackground { ...button } payload={{ columnId, slotId: _id, isEmpty, value: button.payload  }}>
 							<span className='context-menu__text'>{button.textBtn}</span>
-							<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
+							<img className='context-menu__icon' src={`${config.endPointForStatics}assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
 						</ButtonWithDynamicBackground>
 					);
 				}} />

@@ -1,5 +1,9 @@
 .slot {
-   margin-bottom: 15px;
+   margin-bottom: 10px;
+}
+
+.slot:last-child {
+	margin-bottom: 0px;
 }
 
 .slot__container {

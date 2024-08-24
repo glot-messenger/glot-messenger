@@ -5,7 +5,8 @@ import type { IJoinSocialNetworkProps } from './interafaces';
 
 import {
 	LinkElement,
-	ButtonPretty
+	ButtonPretty,
+	config
 } from '../../../shared';
 
 const JoinSocialNetwork: React.FC<IJoinSocialNetworkProps> = ({ classesParent }) => {
@@ -28,7 +29,7 @@ const JoinSocialNetwork: React.FC<IJoinSocialNetworkProps> = ({ classesParent })
 								<li className='join-social-network__element' key={index}>
 									<LinkElement to={correctPath} titleHover={titleHover} classesValue='join-social-network__link' typeElement='nativeLink'>
 										<ButtonPretty classes='join-social-network__btn' type='button' typeElement='button' titleHover={titleHover}>
-											<img className='join-social-network__img' src={`/assets/icons/social-network-icons/${name}`} alt={alt} />
+											<img className='join-social-network__img' src={`${config.endPointForStatics}assets/icons/social-network-icons/${name}`} alt={alt} />
 										</ButtonPretty>
 									</LinkElement>
 								</li>

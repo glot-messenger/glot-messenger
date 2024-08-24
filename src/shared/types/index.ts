@@ -7,7 +7,10 @@ import type {
 	IElementContextMenu,
 	IConfigContextMenu,
 	IIcon,
-	ISocialNetworkLinks
+	IIconDefault,
+	ISocialNetworkLinks,
+	IImageDefault,
+	ILinkDefault
 } from './auxiliary';
 
 export type {
@@ -19,5 +22,8 @@ export type {
 	IElementContextMenu,
 	IConfigContextMenu,
 	IIcon,
-	ISocialNetworkLinks
+	ISocialNetworkLinks,
+	IIconDefault,
+	IImageDefault,
+	ILinkDefault
 };

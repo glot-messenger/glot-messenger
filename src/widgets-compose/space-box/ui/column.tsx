@@ -32,7 +32,8 @@ import {
 	MOVING_BEGINNING_COLUMN_EVENT_SEGMENT,
 	MOVING_ENDING_COLUMN_EVENT_SEGMENT,
 	ADD_SLOT_EVENT_SEGMENT,
-	DELETE_COLUMN_EVENT_SEGMENT
+	DELETE_COLUMN_EVENT_SEGMENT,
+	config
 } from '../../../shared';
 
 const Column: React.FC<IColumnProps> = observer(({ data }) => {
@@ -121,8 +122,10 @@ const Column: React.FC<IColumnProps> = observer(({ data }) => {
 	return (
 		<div className='column' style={{ ...styles }}>
 			<div className='column__head'>
-				<ButtonLock flagStatus={accessForChanges} data={{ settingId, columnId: _id, value: { accessForChanges: !accessForChanges } }} segmentEvent={COLUMN_EVENT_SEGMENT} />
-				<ButtonDots segmentEvent={COLUMN_EVENT_SEGMENT} data={{ columnId: _id }} />
+				<div className='column__head-btns-container'>
+					<ButtonLock flagStatus={accessForChanges} data={{ settingId, columnId: _id, value: { accessForChanges: !accessForChanges } }} segmentEvent={COLUMN_EVENT_SEGMENT} />
+					<ButtonDots segmentEvent={COLUMN_EVENT_SEGMENT} data={{ columnId: _id }} />
+				</div>
 			</div>
 			<div className='column__container-slots'>
 				{arraySlots.map((slotData: any) => {
@@ -130,12 +133,12 @@ const Column: React.FC<IColumnProps> = observer(({ data }) => {
 						<Slot key={slotData._id} data={slotData} />
 					);
 				})}
-			</div> 
+			</div>
 			<Modal isModal={columnModalStatus}>
 				<ContextMenu { ...configContextMenuColumn } renderElementFN={({ button, icon }: IElementContextMenu) => (
 					<ButtonWithDynamicBackground {...button} payload={{ settingId, columnId: _id, value: button.payload }}>
 						<span className='context-menu__text'>{button.textBtn}</span>
-						<img className='context-menu__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
+						<img className='context-menu__icon' src={`${config.endPointForStatics}assets/icons/${icon.name}`} alt={icon.alt} title={icon.titleHover} />
 					</ButtonWithDynamicBackground>
 				)} />
 			</Modal>

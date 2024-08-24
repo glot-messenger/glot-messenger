@@ -46,7 +46,8 @@ import {
 	MOVING_ENDING_COLUMN_EVENT_SEGMENT,
 	MOVING_UP_SLOT_EVENT_SEGMENT,
 	MOVING_BEGINNING_SLOT_EVENT_SEGMENT,
-	MOVING_ENDING_SLOT_EVENT_SEGMENT
+	MOVING_ENDING_SLOT_EVENT_SEGMENT,
+	SHOW_WHATS_NEW_EVENT_SEGMENT
 } from './core';
 
 // lib ====================================================================================
@@ -64,7 +65,9 @@ import {
 	defaultEventEmitter,
 	factoryEditor,
 	factoryColumn,
-	factorySlot
+	factorySlot,
+	getCorrectTimeForDateMs,
+	factoryWhatsNew
 } from './lib';
 
 // types ==================================================================================
@@ -74,7 +77,10 @@ import type {
 	IElementContextMenu,
 	IConfigContextMenu,
 	ISocialNetworkLinks,
-	IIcon
+	IIcon,
+	IIconDefault,
+	IImageDefault,
+	ILinkDefault
 } from './types';
 
 // ui =====================================================================================
@@ -179,7 +185,10 @@ export {
 	MOVING_ENDING_COLUMN_EVENT_SEGMENT,
 	MOVING_UP_SLOT_EVENT_SEGMENT,
 	MOVING_BEGINNING_SLOT_EVENT_SEGMENT,
-	MOVING_ENDING_SLOT_EVENT_SEGMENT
+	MOVING_ENDING_SLOT_EVENT_SEGMENT,
+	SHOW_WHATS_NEW_EVENT_SEGMENT,
+	getCorrectTimeForDateMs,
+	factoryWhatsNew
 };
 
 export type {
@@ -190,5 +199,8 @@ export type {
 	IElementContextMenu,
 	IConfigContextMenu,
 	ISocialNetworkLinks,
-	IIcon
+	IIcon,
+	IIconDefault,
+	IImageDefault,
+	ILinkDefault
 };

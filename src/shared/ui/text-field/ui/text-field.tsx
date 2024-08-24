@@ -1,16 +1,16 @@
 import React, { useState, memo, useContext } from 'react';
 import './text-field-style.css';
 import type { ITextFieldProps } from './interafaces';
+import { config } from '../../../../shared';
+import { textFieldEyeData } from '../config';
+import { EventEmitterContext } from '../../../../entities';
+import { ToggleBlock } from '../../toggle-block';
+import { APP_EVENT_CLICK } from '../../../core';
 
 import type {
 	IStylePadding,
 	IStyleBorder
 } from '../../../types';
-
-import { textFieldEyeData } from '../config';
-import { EventEmitterContext } from '../../../../entities';
-import { ToggleBlock } from '../../toggle-block';
-import { APP_EVENT_CLICK } from '../../../core';
 
 const TextField: React.FC<ITextFieldProps> = memo(({ placeholder, label, type, name, error, isRequired, titleHover, onChange, value, nameIcon, alt, description }) => {
 	// Получение контекста
@@ -72,11 +72,11 @@ const TextField: React.FC<ITextFieldProps> = memo(({ placeholder, label, type, n
 					<ToggleBlock classes='text-field__label-description' text={description} isShown={isFocusInput} />
 				</div>
 				<div className='text-field__block-input' style={borderStyleForBlockInput}>
-					<img className='text-field__icon-input' src={`/assets/icons/${nameIcon}`} alt={alt} />
+					<img className='text-field__icon-input' src={`${config.endPointForStatics}assets/icons/${nameIcon}`} alt={alt} />
 					<input onClick={handlerClickTextField} className='text-field__input' style={paddingStyleForPasswordInput} value={value} onChange={inputChange} title={titleHover} name={name} id={name} type={typeInput} placeholder={placeholder} />
 					{isPasswordTextField &&
 						<button className='text-field__display-controller' title={dataEye.icon.titleHover} onClick={updateTypeInput} type='button'>
-							<img className='text-field__flag-eye' src={`/assets/icons/${dataEye.icon.name}`} alt={dataEye.icon.alt} />
+							<img className='text-field__flag-eye' src={`${config.endPointForStatics}assets/icons/${dataEye.icon.name}`} alt={dataEye.icon.alt} />
 						</button>
 					}
 				</div>

@@ -2,7 +2,8 @@ import {
 	isNullable,
 	isNotPrimitive,
 	isContainsPropertiesTypeAndPropsInChild,
-	getUniqueId
+	getUniqueId,
+	getCorrectTimeForDateMs
 } from './utils';
 
 import {
@@ -35,6 +36,8 @@ import {
 	KEY_FOR_MULTITON_SLOT
 } from './slot';
 
+import { factoryWhatsNew } from './whats-new';
+
 export {
 	KEY_FOR_MULTITON_VALIDATOR,
 	KEY_FOR_MULTITON_EDITOR,
@@ -53,5 +56,7 @@ export {
 	factoryEditor,
 	factoryColumn,
 	factorySlot,
-	getUniqueId
+	getUniqueId,
+	getCorrectTimeForDateMs,
+	factoryWhatsNew
 };

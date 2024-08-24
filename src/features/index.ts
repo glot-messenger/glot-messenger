@@ -5,11 +5,15 @@ import {
 } from './providers';
 
 // HOC ================================================================================
-import { GlobalEditorSettings } from './hoc';
+import {
+	GlobalEditorSettings,
+	WhatsNewLoader
+} from './hoc';
 
 export {
 	AuthBoxConditionProvider,
 	EventEmitterProvider,
 
-	GlobalEditorSettings
+	GlobalEditorSettings,
+	WhatsNewLoader
 };

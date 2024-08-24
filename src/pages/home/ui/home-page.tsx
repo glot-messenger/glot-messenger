@@ -5,7 +5,8 @@ import { configForHomePageDrawData } from '../config';
 import {
 	ButtonComponent,
 	ButtonPretty,
-	LinkElement
+	LinkElement,
+	config
 } from '../../../shared';
 
 const HomePage: React.FC = () => {
@@ -23,7 +24,7 @@ const HomePage: React.FC = () => {
 
 					const content = (
 						<div className='home-page__content-btn'>
-							<img className='home-page__icon' src={`/assets/icons/${icon.name}`} alt={icon.alt} />
+							<img className='home-page__icon' src={`${config.endPointForStatics}assets/icons/${icon.name}`} alt={icon.alt} />
 							<span>{text}</span>
 						</div>
 					);

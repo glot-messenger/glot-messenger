@@ -1,10 +1,11 @@
 .column {
 	height: 100%;
-	padding: 10px;
 	background-color: #1C1F26;
 	border-left: 1px solid #8891A2;
 	border-right: 1px solid #8891A2;
 	margin-right: 2px;
+	display: flex;
+	flex-direction: column;
 }
 
 .column:last-child {
@@ -12,11 +13,22 @@
 }
 
 .column__head {
+	padding: 10px 10px 0px 10px;
+}
+
+.column__head-btns-container {
+	width: 100%;
+	height: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 15px;
 	background-color: #2B303B;
 	border-radius: 3px !important;
 	padding: 5px;
+}
+
+.column__container-slots {
+	flex: 1 1 auto;
+	overflow: auto;
+	padding: 15px 10px 15px 10px;
 }

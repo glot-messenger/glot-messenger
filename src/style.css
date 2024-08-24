@@ -1,16 +1,22 @@
 /* ОБЩАЯ СТИЛИСТИКА ДЛЯ ВСЕГО ПРИЛОЖЕНИЯ ================================================================================ */
-::-webkit-scrollbar{
-	width: 12px;
+::-webkit-scrollbar {
+	width: 4px;
 }
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
 	background: #1f2937;
 	border-radius: 100vh !important;
+	box-shadow: 0 0 2px #404756 inset;
 }
-::-webkit-scrollbar-thumb{
-	background: linear-gradient(135deg, #90959B 0%, #404756 53.01%, #2B303B 99.83%);
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(135deg, #90959B 0%, #7b7e81 53.01%, #646669 99.83%);
+	border-radius: 100vh !important;
+	cursor: pointer;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(135deg, #777b80 0%, #6e7174 53.01%, #616366 99.83%);
 }
 
 ._container {
 	max-width: 1500px;
-  margin: 0px auto;
+	margin: 0px auto;
 }

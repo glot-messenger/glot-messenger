@@ -6,6 +6,7 @@
 .loader2__container {
 	width: 100%;
 	height: 100%;
+	padding: 5px;
 }
 
 .loader2__element {

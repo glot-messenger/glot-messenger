@@ -6,9 +6,9 @@
 .btn-red__container {
 	overflow: hidden;
 	color: aliceblue;
-	font-size: 16px;
-	line-height: 120%;
-	padding: 11px;
+	font-size: 15px;
+	line-height: 104%;
+	padding: 6px;
 	border: 1px solid #DA373C;
 	background-color: #9b191e;
 	border-radius: 3px !important;
